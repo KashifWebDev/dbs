@@ -1,0 +1,34 @@
+body{
+    background-color: #51575d !important;
+    color: #f5ffff !important;
+}
+.custom_card{
+    border: 1px solid #343a40;
+    box-shadow: 0px 0px 20px 0px #8d9aa7;
+    margin: 10px 0px;
+    display: inline-flex;
+    padding: 5px 10px;
+    background-color: #2d353c;
+    border-radius: 10px;
+    height: 95%;
+}
+.circle_alert{
+    /*border: 1px solid white;*/
+    border-radius: 10px;
+    text-align: center;
+    /*font-family: 'RocknRoll One', sans-serif;*/
+}
+.shadow-black{
+    box-shadow: 1px 5px 20px 0px #ffffff40;
+}
+.apexcharts-text .apexcharts-datalabel-value{
+    color: white !important;
+}
+.auto_color_txt{
+    color: white !important;
+}
+.autoColorTable_theme{
+    color: white !important;
+    background-color: #51575d !important;
+    box-shadow: 0px 0px 17px 0px white !important;
+}
