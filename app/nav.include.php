@@ -28,7 +28,12 @@ if (isset($_SESSION["darkTheme"]) && $_SESSION["darkTheme"] == 1){
             ?>
 
             <li class="nav-item ml-3">
-                <button class="a_modal_button nav-link <?php echo $txtColor; ?>" type="button" data-toggle="modal" data-target="#addNewDevice">Add Device</button>
+<!--                <button class="a_modal_button nav-link --><?php //echo $txtColor; ?><!--" type="button" data-toggle="modal" data-target="#addNewDevice">-->
+<!--                    Add Device-->
+<!--                </button>-->
+                <a href="admin_add_device.php" class="a_modal_button nav-link <?php echo $txtColor; ?>">
+                    Add Device
+                </a>
             </li>
             <li class="nav-item ml-3">
                 <a class="nav-link <?php echo $txtColor; ?>" href="./users.php">Users Management</a>
@@ -187,7 +192,6 @@ if (isset($_SESSION["darkTheme"]) && $_SESSION["darkTheme"] == 1){
 </script>
 
 <?php
-
 if(isset($_POST['add_device'])){
     $name = $_POST['name'];
     $mac = $_POST['mac'];
