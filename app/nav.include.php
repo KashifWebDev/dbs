@@ -9,7 +9,7 @@ if (isset($_SESSION["darkTheme"]) && $_SESSION["darkTheme"] == 1){
     $themeLinkText = "Dark Theme";
 }
 ?>
-<nav class="navbar navbar-expand-sm d-flex align-items-center <?php echo $navClass; ?>">
+<nav class="navbar navbar-expand-sm d-flex align-items-center <?php echo $navClass; ?> font-roboto">
     <ul class="navbar-nav">
         <li class3="nav-item active">
             <a class="nav-link" href="#">

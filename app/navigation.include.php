@@ -14,7 +14,7 @@ $res = mysqli_query($con, $sql);
 $row = mysqli_fetch_array($res);
 $file = $row["manual"];
 ?>
-<div class="py-3 <?php echo $navClass; ?>">
+<div class="py-3 <?php echo $navClass; ?> font-roboto">
     <div class="containerr">
         <div class="row">
             <div class="col-md-5 d-flex justify-content-center">
