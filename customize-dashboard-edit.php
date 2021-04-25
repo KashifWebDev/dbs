@@ -275,7 +275,7 @@ $_SESSION['currentPath'] = "./";
                                     </a>
                                 </div>
                                 <?php
-                                $sql = "SELECT * FROM custom_graph WHERE id=$device_id";
+                                $sql = "SELECT * FROM custom_graph WHERE device_id=$device_id";
                                 $res = mysqli_query($con, $sql);
                                 $mainRow = mysqli_fetch_array($res);
                                 ?>
@@ -322,7 +322,7 @@ $_SESSION['currentPath'] = "./";
                                     </a>
                                 </div>
                                 <?php
-                                $sql = "SELECT * FROM custom_installation_info WHERE id=$device_id";
+                                $sql = "SELECT * FROM custom_installation_info WHERE device_id=$device_id";
                                 $res = mysqli_query($con, $sql);
                                 $mainRow = mysqli_fetch_array($res);
                                 ?>
@@ -443,7 +443,7 @@ $_SESSION['currentPath'] = "./";
                                     </a>
                                 </div>
                                 <?php
-                                $sql = "SELECT * FROM custom_alerts WHERE id=$device_id";
+                                $sql = "SELECT * FROM custom_alerts WHERE device_id=$device_id";
                                 $res = mysqli_query($con, $sql);
                                 $mainRow = mysqli_fetch_array($res);
                                 ?>
@@ -508,7 +508,7 @@ $_SESSION['currentPath'] = "./";
                                     </a>
                                 </div>
                                 <?php
-                                $sql = "SELECT * FROM custom_maintenance WHERE id=$device_id";
+                                $sql = "SELECT * FROM custom_maintenance WHERE device_id=$device_id";
                                 $res = mysqli_query($con, $sql);
                                 $mainRow = mysqli_fetch_array($res);
                                 ?>

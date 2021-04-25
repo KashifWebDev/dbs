@@ -152,26 +152,26 @@ $_SESSION['currentPath'] = "./";
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id="">0 - </span>
                                                 </div>
-                                                <input onkeyup="func1()" id="box1" type="text" class="form-control" placeholder="Range" name="rng1">
-                                                <input type="text" class="form-control" placeholder="Color" name="clr1">
+                                                <input onkeyup="func1()" id="box111" type="text" class="form-control" placeholder="Range" name="rng1"  value="<?php echo $mainRow["meter_range_1"]; ?>">
+                                                <input type="text" class="form-control" placeholder="Color" name="clr1" value="<?php echo $mainRow["meter_color_1"]; ?>">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text" id=""><span id="r2">0</span> - </span>
+                                                    <p class="input-group-text" id="ffff"><span id="r2">0</span> - </p>
                                                 </div>
-                                                <input onkeyup="func2()" id="box2" type="text" class="form-control" placeholder="Range" name="rng2">
-                                                <input type="text" class="form-control" placeholder="Color" name="clr2">
+                                                <input onkeyup="func2()" id="box2222" type="text" class="form-control" placeholder="Range" name="rng2" value="<?php echo $mainRow["meter_range_2"]; ?>">
+                                                <input type="text" class="form-control" placeholder="Color" name="clr2" value="<?php echo $mainRow["meter_color_2"]; ?>">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text" id=""><span id="r3">0</span> - </span>
+                                                    <p class="input-group-text" id="eeee"><span id="r3">0</span> - </p>
                                                 </div>
-                                                <input id="box3" type="text" class="form-control" placeholder="Range" name="rng3">
-                                                <input type="text" class="form-control" placeholder="Color" name="clr3">
+                                                <input id="box3" type="text" class="form-control" placeholder="Range" name="rng3" value="<?php echo $mainRow["meter_range_3"]; ?>">
+                                                <input type="text" class="form-control" placeholder="Color" name="clr3" value="<?php echo $mainRow["meter_color_3"]; ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -179,13 +179,9 @@ $_SESSION['currentPath'] = "./";
                             </div>
                         </div>
                     </div>
-                    <hr>
-
-                    <hr>
-
                 </div>
                 <div class="modal-footer border-top-0 d-flex justify-content-center">
-                    <button type="submit" name="add_device" class="btn btn-success w-100">Add</button>
+                    <button type="submit" name="add_device" class="btn btn-primary w-100">Add</button>
                 </div>
             </form>
         </div>
@@ -199,15 +195,24 @@ $_SESSION['currentPath'] = "./";
 
 <script>
     function func1(){
-        $("#r2").text($("#box1").val());
+        var name = document.getElementById("box111").value;
+        var span = document.getElementById("ffff");
+        name = name + ' - ';
+        span.textContent = name;
+        span.innerHTML = name;
+        console.log(name);
     }
     function func2(){
-        $("#r3").text($("#box2").val());
+        var name = document.getElementById("box2222").value;
+        var span = document.getElementById("eeee");
+        name = name + ' - ';
+        span.textContent = name;
+        span.innerHTML = name;
+        console.log(name);
     }
 </script>
 
 </html>
-
 
 <?php
 if(isset($_POST['add_device'])){
@@ -285,7 +290,18 @@ if(isset($_POST['add_device'])){
              meter_color_1, meter_color_2, meter_color_3, manual) VALUES
             ($user_id, '$mac', '$name', '$ranges', '$rng1', '$rng2', '$rng3', '$clr1', '$clr2', '$clr3', '$fileName')";
 
-    echo $row;
+    if(!mysqli_query($con, $row)){
+        echo mysqli_error($con);
+        die();
+    }
+    $device_id = mysqli_insert_id($con);
+
+    mysqli_query($con, "INSERT INTO custom_alerts (device_id) VALUES ($device_id)");
+    mysqli_query($con, "INSERT INTO custom_devicestatus (device_id) VALUES ($device_id)");
+    mysqli_query($con, "INSERT INTO custom_graph (device_id) VALUES ($device_id)");
+    mysqli_query($con, "INSERT INTO custom_installation_info (device_id) VALUES ($device_id)");
+    mysqli_query($con, "INSERT INTO custom_maintenance (device_id) VALUES ($device_id)");
+    mysqli_query($con, "INSERT INTO custom_sections (device_id) VALUES ($device_id)");
 
     $installation = "INSERT INTO `installation_info`(`mac`, `driver_model`, `driver_rating`, `speed`,
                                 `electric_rate`, `electric_lift`, `driver_sn`, `end_user`,
@@ -294,7 +310,7 @@ if(isset($_POST['add_device'])){
                          '$electric_lift', '$driver_sn', '$end_user', '$Installation',
                          '$Process', '$size', '$inService')";
 
-    if(mysqli_query($con, $row)){
+    if(mysqli_query($con, $installation)){
         js_redirect('admin_dashboard.php');
     }else{
         echo '<script>alert("Error! '.mysqli_error($con).'");</script>';
