@@ -173,6 +173,12 @@ table{
     border-bottom: 1px solid black;
     margin-top: 14px;
 }
+.set_font_roboto .col-6 .form-check .form-check-label{
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 4px;
+}
+
+
 
 
 

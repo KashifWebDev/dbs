@@ -38,6 +38,9 @@ if (isset($_SESSION["darkTheme"]) && $_SESSION["darkTheme"] == 1){
             <li class="nav-item ml-3">
                 <a class="nav-link <?php echo $txtColor; ?>" href="./users.php">Users Management</a>
             </li>
+            <li class="nav-item ml-3">
+                <a class="nav-link <?php echo $txtColor; ?>" href="./customize-dashboard.php">Dashboards Management</a>
+            </li>
         <?php
         }
         ?>
