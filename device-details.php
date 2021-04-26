@@ -29,15 +29,28 @@
 </style>
 <script src="assets/line_chart/canvasjs.min.js"></script>
 <body>
+<?php
+    $graph_col = 12;
+    $graph_const_height = true;
+    $showFirstRow=true;
+//    if($sectionRow["device_settings_check"]!="on" && $sectionRow["torque_gauge_check"]!="on"){
+//    $graph_const_height = true;
+//    }
+    if($sectionRow["graph_check"]!="on"){
+        $showFirstRow=false;
+    }
+?>
   <!-- Navigation -->
   <?php $device_details_page = true; require 'app/navigation.include.php'; ?>
 
   <!-- Page Content -->
   <section style="height: 90vh; overflow: hidden;" class="scree-height">
-      <div class="row h-45">
+      <div class="row <?php  if($graph_const_height) echo " graph_const_height"; ?>">
           <!-- First Box -->
           <?php
           if($sectionRow["device_settings_check"]=="on"){
+              $graph_const_height = false;
+              $graph_col = $graph_col-4;
               $sql = "SELECT * FROM custom_devicestatus WHERE device_id=$device_id";
               $res = mysqli_query($con, $sql);
               $row = mysqli_fetch_array($res);
@@ -179,6 +192,8 @@
           <!-- Second Box -->
           <?php
           if($sectionRow["torque_gauge_check"]=="on"){
+              $graph_const_height = false;
+              $graph_col = $graph_col-3;
               ?>
               <div class="col-md-3">
                   <div class="custom_card w-100 d-block">
@@ -259,7 +274,7 @@
               $res = mysqli_query($con, $sql);
               $row = mysqli_fetch_array($res);
           ?>
-              <div class="col" style="">
+              <div class="col-<?php echo $graph_col;?>" style="">
                   <script>
                       var chart = new CanvasJS.Chart();
                       window.onload = function () {
@@ -327,11 +342,15 @@
               </div>
           <?php
           }
-          ?>
+          if($showFirstRow){
+              ?>
+
       </div>
-      <br>
+      <div class="row h-45 d-flex justify-content-center">
+          <?php
+          }
+          ?>
       <!-- SECOND LINE  -->
-      <div class="row h-45 second_row_class">
           <!-- 4th box -->
           <?php
           $sql = "SELECT * FROM custom_installation_info WHERE device_id=$device_id";
@@ -339,7 +358,7 @@
           $row1 = mysqli_fetch_array($res);
           if($sectionRow["installation_info_check"]=="on"){
               ?>
-              <div class="col-md-4">
+              <div class="col-md-4 h-45 second_row_class <?php if($graph_const_height) echo " mt-50_per_for_graphmt-50_per_for_graph";?>">
                   <div class="custom_card w-100 d-flex flex-column bar_font_size">
                       <p class="text-center font-weight-bolder font-size-larger m-0">INSTALLATION INFORMATION</p>
                       <?php
@@ -452,7 +471,7 @@
               $res = mysqli_query($con, $sql);
               $row = mysqli_fetch_array($res);
               ?>
-              <div class="col-md-4 alert_details_margin_top">
+              <div class="col-md-4 alert_details_margin_top h-45 second_row_class <?php if($graph_const_height) echo " mt-50_per_for_graphmt-50_per_for_graph";?>">
                   <div class="custom_card w-100 d-flex flex-column bar_font_size">
                       <p class="text-center font-weight-bolder font-size-larger m-0">ALERTS</p>
                       <table class="text-dark-grey auto_color_txt">
@@ -511,7 +530,7 @@
               $row1 = mysqli_fetch_array($res);
 //              print_r($row1);
               ?>
-              <div class="col-md-4 maintenance_record_margin_top">
+              <div class="col-md-4 maintenance_record_margin_top h-45 second_row_class <?php if($graph_const_height) echo " mt-50_per_for_graphmt-50_per_for_graph";?>">
                   <div class="custom_card w-100 d-flex flex-column bar_font_size">
                       <?php
                       $sql = "SELECT * FROM maintenance_record ORDER BY id DESC LIMIT 1";
@@ -608,8 +627,13 @@
               </div>
               <?php
           }
-          ?>
+
+          if($showFirstRow){
+              ?>
       </div>
+              <?php
+          }
+          ?>
   </section>
 
   <!-- Add Record -->

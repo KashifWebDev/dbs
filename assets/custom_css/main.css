@@ -15,7 +15,13 @@ w-99{
     width: 99% !important;
 }
 .h-45{
-    height: 47% !important;
+    /*height: 47% !important;*/
+}
+.graph_const_height{
+    height: 45%;
+}
+.mt-50_per_for_graph{
+    margin-top: 50% !important;
 }
 .h-80{
     height: 80% !important;;
