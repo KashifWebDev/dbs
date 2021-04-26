@@ -45,7 +45,7 @@
 
   <!-- Page Content -->
   <section style="height: 90vh; overflow: hidden;" class="scree-height">
-      <div class="row <?php  if($graph_const_height) echo " graph_const_height"; ?>">
+      <div class="row <?php  if($graph_const_height) echo " graph_const_height"; if(!$showFirstRow) echo " d-flex justify-content-center"; ?>">
           <!-- First Box -->
           <?php
           if($sectionRow["device_settings_check"]=="on"){
