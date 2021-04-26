@@ -46,6 +46,7 @@ $_SESSION['currentPath'] = "./";
                                 $sql = "SELECT * FROM custom_sections WHERE device_id=$device_id";
                                 $res = mysqli_query($con, $sql);
                                 $mainRow = mysqli_fetch_array($res);
+                                $graphTitle = $mainRow["graph_title"];
                                 ?>
                                 <div id="collapseOne" class="collapse show">
                                     <div class="card-body">
@@ -78,7 +79,7 @@ $_SESSION['currentPath'] = "./";
                                                                            name="graph_check">
                                                                 </div>
                                                             </div>
-                                                            <input type="text" class="form-control" value="<?php echo $mainRow["graph_title"]; ?>" name="graph_title">
+                                                            <input type="text" class="form-control" value="<?php echo $graphTitle; ?>" name="graph_title">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -286,7 +287,7 @@ $_SESSION['currentPath'] = "./";
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="exampleInputEmail1">Graph Title</label>
-                                                        <input type="text" value="<?php echo $mainRow["graph_title"]; ?>" class="form-control" name="graph_title">
+                                                        <input type="text" value="<?php echo $graphTitle ?>" class="form-control" name="graph_title">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="exampleInputPassword1">Graph Line Name</label>
@@ -661,6 +662,9 @@ if(isset($_POST['custom_sections'])){
             torque_gauge_check='$torque_gauge_check', torque_title='$torque_title', graph_check='$graph_check', graph_title='$graph_title',
             installation_info_check='$installation_info_check', installation_info_title='$installation_info_title', alerts_check='$alerts_check',
             alerts_title='$alerts_title', maintenance_check='$maintenance_check', maintenance_title='$maintenance_title' WHERE device_id= $device_id";
+
+
+
     runQuery($sql, 'Sections Selection Updated!');
 }
 
@@ -706,6 +710,9 @@ if(isset($_POST["graph_settings"])){
     $sql = "UPDATE custom_graph SET
             graph_title='$graph_title', line_name='$line_name', line_color='$line_color', y_unit='$y_unit'
             WHERE device_id= $device_id";
+
+    mysqli_query($con, "UPDATE custom_sections SET graph_title='$graph_title' ");
+
     runQuery($sql, 'Graph Settings updated');
 }
 

@@ -267,7 +267,7 @@
                               animationEnabled: true,
                               backgroundColor: "<?php echo $_SESSION['darkTheme']==0 ? '#dedede' : '#2d353c'; ?>",
                               title:{
-                                  text: "<?php echo $row['graph_title']; ?>",
+                                  text: "<?php echo $sectionRow['graph_title']; ?>",
                                   fontFamily:'Helvetica Neue, Helvetica, Arial, sans-serif',
                                   fontWeight: "bold",
                                   fontColor: "<?php echo $_SESSION['darkTheme']==0 ? 'black' : '#d2d2c9'; ?>",
