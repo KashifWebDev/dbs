@@ -448,30 +448,56 @@
           ?>
           <!-- 5th box --><?php
           if($sectionRow["alerts_check"]=="on"){
+              $sql = "SELECT * FROM custom_alerts WHERE device_id=$device_id";
+              $res = mysqli_query($con, $sql);
+              $row = mysqli_fetch_array($res);
               ?>
               <div class="col-md-4 alert_details_margin_top">
                   <div class="custom_card w-100 d-flex flex-column bar_font_size">
                       <p class="text-center font-weight-bolder font-size-larger m-0">ALERTS</p>
                       <table class="text-dark-grey auto_color_txt">
-                          <tr><td><i>Today:</i></td></tr>
-                          <tr class="alert_info_bg_red">
-                              <td class="font-weight-bold">Oil Change Overdue (48 Days)</td>
-                              <td class="text-left">Main Gear</td>
-                          </tr>
+                          <?php
+                          if($row["today_check"]=="on"){
+                              ?>
+                              <tr><td><i><?php echo $row["today_title"]; ?> :</i></td></tr>
+                              <tr class="alert_info_bg_red">
+                                  <td class="font-weight-bold">Oil Change Overdue (48 Days)</td>
+                                  <td class="text-left">Main Gear</td>
+                              </tr>
+                              <?php
+                          }
+                          ?>
+                          <?php
+                          if($row["last_7_check"]=="on"){
+                              ?>
+                              <tr><td><i><?php echo $row["last_7_title"]; ?> :</i></td></tr>
+                              <?php
+                          }
+                          ?>
+                          <?php
+                          if($row["last_mnth_check"]=="on"){
+                              ?>
+                              <tr><td><i><?php echo $row["last_mnth_title"]; ?> :</i></td></tr>
+                              <tr>
+                                  <td class="font-weight-bold">10/26/20, 09:26:</td>
+                                  <td class="text-left">Lift Operation (Lower)</td>
+                              </tr>
+                              <?php
+                          }
+                          ?>
+                          <?php
+                          if($row["last_6mnth_check"]=="on"){
+                              ?>
+                              <tr><td><i><?php echo $row["last_6mnth_title"]; ?> :</i></td></tr>
+                              <tr>
+                                  <td class="font-weight-bold">08/26/20, 16:20:</td>
+                                  <td class="text-left">Alarm</td>
+                              </tr>
+                              <?php
+                          }
+                          ?>
                           <!--                    <tr><td>&nbsp;</td></tr>-->
-                          <tr><td><i>Last 7 days:</i></td></tr>
                           <!--                    <tr><td>&nbsp;</td></tr>-->
-                          <tr><td><i>Last Month:</i></td></tr>
-                          <tr>
-                              <td class="font-weight-bold">10/26/20, 09:26:</td>
-                              <td class="text-left">Lift Operation (Lower)</td>
-                          </tr>
-                          <!--                    <tr><td>&nbsp;</td></tr>-->
-                          <tr><td><i>Last 6 Months:</i></td></tr>
-                          <tr>
-                              <td class="font-weight-bold">08/26/20, 16:20:</td>
-                              <td class="text-left">Alarm</td>
-                          </tr>
                       </table>
                   </div>
               </div>
@@ -480,6 +506,10 @@
           ?>
           <!-- 6th box --><?php
           if($sectionRow["maintenance_check"]=="on"){
+              $sql = "SELECT * FROM custom_maintenance WHERE device_id=$device_id";
+              $res = mysqli_query($con, $sql);
+              $row1 = mysqli_fetch_array($res);
+//              print_r($row1);
               ?>
               <div class="col-md-4 maintenance_record_margin_top">
                   <div class="custom_card w-100 d-flex flex-column bar_font_size">
@@ -497,38 +527,72 @@
                       ?>
                       <p class="text-center font-weight-bolder font-size-larger m-0">MAINTENANCE RECORD</p>
                       <table class="text-dark-grey auto_color_txt">
-                          <tr class="alert_info_bg_red">
-                              <td class="font-weight-bold">Last Oil Change (main gear):</td>
-                              <td class="text-left"><?php echo $last_oil_main_gear; ?></td>
-                          </tr>
-                          <tr>
-                              <td class="font-weight-bold">Next Oil Change (main gear):</td>
-                              <td class="text-left">TBD</td>
-                          </tr>
-                          <tr>
-                              <td class="font-weight-bold">Last Oil Change (lift PU):</td>
-                              <td class="text-left"><?php echo $last_oil_pdu; ?></td>
-                          </tr>
-                          <tr>
-                              <td class="font-weight-bold">Next Oil Change (lift PU):</td>
-                              <td class="text-left"><?php echo $nxt_oil_lift_pdu; ?></td>
-                          </tr>
-                          <tr>
-                              <td class="font-weight-bold">Next Schedule Service:</td>
-                              <td class="text-left"><?php echo $nxt_sch_service; ?></td>
-                          </tr>
-                          <tr>
-                              <td class="font-weight-bold">DBS Warranty:</td>
-                              <td class="text-left">Exp 12/03/2020</td>
-                          </tr>
-                          <tr>
-                              <td class="font-weight-bold">Last Repair(INC #):</td>
-                              <td class="text-left"><?php echo $last_repair; ?></td>
-                          </tr>
-                          <tr>
-                              <td class="font-weight-bold">Parts Repaired:</td>
-                              <td class="text-left"><?php echo $parts_repaired; ?></td>
-                          </tr>
+                          <?php
+                          if($row1["last_oil_change_main_check"]=="on"){
+                              ?>
+                              <tr class="alert_info_bg_red">
+                                  <td class="font-weight-bold"><?php echo $row1["last_oil_change_main_title"]; ?> :</td>
+                                  <td class="text-left"><?php echo $last_oil_main_gear; ?></td>
+                              </tr>
+                              <?php
+                          }
+                          if($row1["next_oil_change_main_check"]=="on"){
+                              ?>
+                              <tr class="">
+                                  <td class="font-weight-bold"><?php echo $row1["next_oil_change_main_title"]; ?> :</td>
+                                  <td class="text-left">TBD</td>
+                              </tr>
+                              <?php
+                          }
+                          if($row1["last_oil_lift_check"]=="on"){
+                              ?>
+                              <tr class="">
+                                  <td class="font-weight-bold"><?php echo $row1["last_oil_lift_title"]; ?> :</td>
+                                  <td class="text-left"><?php echo $last_oil_pdu; ?></td>
+                              </tr>
+                              <?php
+                          }
+                          if($row1["next_oil_lift_check"]=="on"){
+                              ?>
+                              <tr class="">
+                                  <td class="font-weight-bold"><?php echo $row1["next_oil_lift_title"]; ?> :</td>
+                                  <td class="text-left"><?php echo $nxt_oil_lift_pdu; ?></td>
+                              </tr>
+                              <?php
+                          }
+                          if($row1["next_service_check"]=="on"){
+                              ?>
+                              <tr class="">
+                                  <td class="font-weight-bold"><?php echo $row1["next_service_title"]; ?> :</td>
+                                  <td class="text-left"><?php echo $nxt_sch_service; ?></td>
+                              </tr>
+                              <?php
+                          }
+                          if($row1["dbs_warranty_check"]=="on"){
+                              ?>
+                              <tr class="">
+                                  <td class="font-weight-bold"><?php echo $row1["dbs_warranty_title"]; ?> :</td>
+                                  <td class="text-left">Exp 12/03/2020</td>
+                              </tr>
+                              <?php
+                          }
+                          if($row1["last_repair_check"]=="on"){
+                              ?>
+                              <tr class="">
+                                  <td class="font-weight-bold"><?php echo $row1["last_repair_title"]; ?> :</td>
+                                  <td class="text-left"><?php echo $last_repair; ?></td>
+                              </tr>
+                              <?php
+                          }
+                          if($row1["parts_repaired_check"]=="on"){
+                              ?>
+                              <tr class="">
+                                  <td class="font-weight-bold"><?php echo $row1["parts_repaired_title"]; ?> :</td>
+                                  <td class="text-left"><?php echo $parts_repaired; ?></td>
+                              </tr>
+                              <?php
+                          }
+                          ?>
                       </table>
                       <div class="mt-2 d-flex justify-content-end">
                           <button class="btn text-white font-weight-bold border-0" style="background-color: #009cde"

@@ -520,26 +520,26 @@ $_SESSION['currentPath'] = "./";
                                                     <div class="input-group mb-3">
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">
-                                                                <input type="checkbox" name="last_oil_check" <?php if($mainRow["last_oil_check"]=="on") echo "checked"; ?>>
+                                                                <input type="checkbox" name="last_oil_change_main_check" <?php if($mainRow["last_oil_change_main_check"]=="on") echo "checked"; ?>>
                                                             </div>
                                                         </div>
-                                                        <input type="text" class="form-control" name="last_oil_title" value="<?php echo $mainRow["last_oil_title"]; ?>">
+                                                        <input type="text" class="form-control" name="last_oil_change_main_title" value="<?php echo $mainRow["last_oil_change_main_title"]; ?>">
                                                     </div>
                                                     <div class="input-group mb-3">
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">
-                                                                <input type="checkbox" name="driver_rating_check" <?php if($mainRow["driver_rating_check"]=="on") echo "checked"; ?>>
+                                                                <input type="checkbox" name="next_oil_change_main_check" <?php if($mainRow["next_oil_change_main_check"]=="on") echo "checked"; ?>>
                                                             </div>
                                                         </div>
-                                                        <input type="text" class="form-control" name="driver_rating_title" value="<?php echo $mainRow["driver_rating_title"]; ?>">
+                                                        <input type="text" class="form-control" name="next_oil_change_main_title" value="<?php echo $mainRow["next_oil_change_main_title"]; ?>">
                                                     </div>
                                                     <div class="input-group mb-3">
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">
-                                                                <input type="checkbox" name="next_service_check" <?php if($mainRow["next_service_check"]=="on") echo "checked"; ?>>
+                                                                <input type="checkbox" name="last_oil_lift_check" <?php if($mainRow["last_oil_lift_check"]=="on") echo "checked"; ?>>
                                                             </div>
                                                         </div>
-                                                        <input type="text" class="form-control" name="next_service_title" value="<?php echo $mainRow["next_service_title"]; ?>">
+                                                        <input type="text" class="form-control" name="last_oil_lift_title" value="<?php echo $mainRow["last_oil_lift_title"]; ?>">
                                                     </div>
                                                     <div class="input-group mb-3">
                                                         <div class="input-group-prepend">
@@ -554,10 +554,10 @@ $_SESSION['currentPath'] = "./";
                                                     <div class="input-group mb-3">
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">
-                                                                <input type="checkbox" name="next_oil_check" <?php if($mainRow["next_oil_check"]=="on") echo "checked"; ?>>
+                                                                <input type="checkbox" name="next_service_check" <?php if($mainRow["next_service_check"]=="on") echo "checked"; ?>>
                                                             </div>
                                                         </div>
-                                                        <input type="text" class="form-control" name="next_oil_title" value="<?php echo $mainRow["next_oil_title"]; ?>">
+                                                        <input type="text" class="form-control" name="next_service_title" value="<?php echo $mainRow["next_service_title"]; ?>">
                                                     </div>
                                                     <div class="input-group mb-3">
                                                         <div class="input-group-prepend">
@@ -762,12 +762,12 @@ if(isset($_POST["alerts_settings"])){
 }
 
 if(isset($_POST["maintenance_update"])){
-    $last_oil_check = $_POST["last_oil_check"];
-    $last_oil_title = $_POST["last_oil_title"];
-    $next_oil_check = $_POST["next_oil_check"];
-    $next_oil_title = $_POST["next_oil_title"];
-    $driver_rating_check = $_POST["driver_rating_check"];
-    $driver_rating_title = $_POST["driver_rating_title"];
+    $last_oil_change_main_check = $_POST["last_oil_change_main_check"];
+    $last_oil_change_main_title = $_POST["last_oil_change_main_title"];
+    $next_oil_change_main_check = $_POST["next_oil_change_main_check"];
+    $next_oil_change_main_title = $_POST["next_oil_change_main_title"];
+    $last_oil_lift_check = $_POST["last_oil_lift_check"];
+    $last_oil_lift_title = $_POST["last_oil_lift_title"];
     $next_oil_lift_check = $_POST["next_oil_lift_check"];
     $next_oil_lift_title = $_POST["next_oil_lift_title"];
     $next_service_check = $_POST["next_service_check"];
@@ -779,8 +779,10 @@ if(isset($_POST["maintenance_update"])){
     $parts_repaired_check = $_POST["parts_repaired_check"];
     $parts_repaired_title = $_POST["parts_repaired_title"];
 
-    $sql = "UPDATE custom_maintenance SET last_oil_check='$last_oil_check', last_oil_title='$last_oil_title', next_oil_check='$next_oil_check',
-            next_oil_title='$next_oil_title', driver_rating_check='$driver_rating_check', driver_rating_title='$driver_rating_title',
+    $sql = "UPDATE custom_maintenance SET last_oil_change_main_check='$last_oil_change_main_check', last_oil_change_main_title='$last_oil_change_main_title',
+            next_oil_change_main_check='$next_oil_change_main_check',
+            next_oil_change_main_title='$next_oil_change_main_title', last_oil_lift_check='$last_oil_lift_check',
+            last_oil_lift_title='$last_oil_lift_title',
             next_oil_lift_check='$next_oil_lift_check', next_oil_lift_title='$next_oil_lift_title', next_service_check='$next_service_check',
             next_service_title='$next_service_title', dbs_warranty_check='$dbs_warranty_check', dbs_warranty_title='$dbs_warranty_title',
             last_repair_check='$last_repair_check', last_repair_title = '$last_repair_title', parts_repaired_check='$parts_repaired_check', 
