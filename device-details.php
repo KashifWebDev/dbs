@@ -5,10 +5,13 @@
     if (!isset($_SESSION["darkTheme"])){
         $_SESSION["darkTheme"] = 0;
     }
-//    print_r($_SESSION);
+
     $_SESSION['currentPath'] = "./";
-//    require 'app/main.php';
     $_SESSION["device_details_id"] = $device_id = isset($_GET['id']) ? $_GET['id'] : 0;
+
+    $sql = "SELECT * FROM custom_sections WHERE device_id=$device_id";
+    $res = mysqli_query($con, $sql);
+    $sectionRow = mysqli_fetch_array($res);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,384 +36,492 @@
   <section style="height: 90vh; overflow: hidden;" class="scree-height">
       <div class="row h-45">
           <!-- First Box -->
-          <div class="col-md-4">
-              <div class="custom_card w-100">
-                  <div class="row no-gutters w-100 h-100">
-                      <div class="col-md-5">
-                          <center>
-                              <div id="lift_chart" style="max-width: 150px;">Lift chart</div>
-                          </center>
-                      </div>
-                      <div class="col-md-7 d-flex align-items-end justify-content-center">
-                          <div class="row no-gutters">
-                              <?php $class= "col-lg-6 col-md-12 col-sm-12"; ?>
-                              <div id="flagBox" class="<?php echo $class; ?>">
-                                  <div class="d-flex align-content-center">
-                                      <div class="circle_max_height circle_alert mr-2" id="loss_motion">
-                                      </div>
-                                      <p class="d-flex align-items-center justify-content-center font-weight-bold circles_font_size">
-                                          ALARM
-                                      </p>
-                                  </div>
+          <?php
+          if($sectionRow["device_settings_check"]=="on"){
+              $sql = "SELECT * FROM custom_devicestatus WHERE device_id=$device_id";
+              $res = mysqli_query($con, $sql);
+              $row = mysqli_fetch_array($res);
+              ?>
+              <div class="col-md-4">
+                  <div class="custom_card w-100">
+                      <div class="row no-gutters w-100 h-100">
+                          <?php
+                          if($row["a1"]=="on"){
+                              ?>
+                              <div class="col-md-5">
+                                  <center>
+                                      <div id="lift_chart" style="max-width: 150px;">Lift chart</div>
+                                  </center>
                               </div>
-                              <div id="flagBox" class="<?php echo $class; ?>">
-                                  <div class="d-flex align-content-center">
-                                      <div class="circle_max_height circle_alert mr-2" id="cutoff">
+                          <?php
+                          }
+                          ?>
+                          <div class="col d-flex align-items-center justify-content-center">
+                              <div class="row no-gutters">
+                                  <?php $class= "col-6"; ?>
+                                  <!--alarm-->
+                                  <?php
+                                  if($row["a3"]=="on"){
+                                      ?>
+                                      <div id="flagBox" class="<?php echo $class; ?>">
+                                          <div class="d-flex align-content-center">
+                                              <div class="circle_max_height circle_alert mr-2" id="loss_motion">
+                                              </div>
+                                              <p class="d-flex align-items-center justify-content-center font-weight-bold circles_font_size">
+                                                  ALARM
+                                              </p>
+                                          </div>
                                       </div>
-                                      <p class="d-flex align-items-center justify-content-center font-weight-bold circles_font_size">
-                                          CUTOFF
-                                      </p>
-                                  </div>
-                              </div>
-                              <div id="flagBox" class="<?php echo $class; ?>">
-                                  <div class="d-flex align-content-center">
-                                      <div class="circle_max_height circle_alert mr-2" id="lift_active">
+                                      <?php
+                                  }
+                                  ?>
+                                  <!--CUTOFF-->
+                                  <?php
+                                  if($row["a5"]=="on"){
+                                      ?>
+                                      <div id="flagBox" class="<?php echo $class; ?>">
+                                          <div class="d-flex align-content-center">
+                                              <div class="circle_max_height circle_alert mr-2" id="cutoff">
+                                              </div>
+                                              <p class="d-flex align-items-center justify-content-center font-weight-bold circles_font_size">
+                                                  CUTOFF
+                                              </p>
+                                          </div>
                                       </div>
-                                      <p class="d-flex align-items-center justify-content-center font-weight-bold circles_font_size">
-                                          LIFT ACTIVE
-                                      </p>
-                                  </div>
-                              </div>
-                              <div id="flagBox" class="<?php echo $class; ?>">
-                                  <div class="d-flex align-content-center">
-                                      <div class="circle_max_height circle_alert mr-2" id="water_in_oil">
+                                      <?php
+                                  }
+                                  ?>
+                                  <!--LIFT ACTIVE-->
+                                  <?php
+                                  if($row["a7"]=="on"){
+                                      ?>
+                                      <div id="flagBox" class="<?php echo $class; ?>">
+                                          <div class="d-flex align-content-center">
+                                              <div class="circle_max_height circle_alert mr-2" id="lift_active">
+                                              </div>
+                                              <p class="d-flex align-items-center justify-content-center font-weight-bold circles_font_size">
+                                                  LIFT ACTIVE
+                                              </p>
+                                          </div>
                                       </div>
-                                      <p class="d-flex align-items-center justify-content-center font-weight-bold circles_font_size">
-                                          WATER IN OIL
-                                      </p>
-                                  </div>
-                              </div>
-                              <div id="flagBox" class="<?php echo $class; ?>">
-                                  <div class="d-flex align-content-center">
-                                      <div class="circle_max_height circle_alert mr-2" id="low_oil">
+                                      <?php
+                                  }
+                                  ?>
+                                  <!--WATER IN OIL-->
+                                  <?php
+                                  if($row["a2"]=="on"){
+                                      ?>
+                                      <div id="flagBox" class="<?php echo $class; ?>">
+                                          <div class="d-flex align-content-center">
+                                              <div class="circle_max_height circle_alert mr-2" id="water_in_oil">
+                                              </div>
+                                              <p class="d-flex align-items-center justify-content-center font-weight-bold circles_font_size">
+                                                  WATER IN OIL
+                                              </p>
+                                          </div>
                                       </div>
-                                      <p class="d-flex align-items-center justify-content-center font-weight-bold circles_font_size">
-                                          LOW OIL
-                                      </p>
-                                  </div>
-                              </div>
-                              <div id="flagBox" class="<?php echo $class; ?>">
-                                  <div class="d-flex align-content-center">
-                                      <div class="circle_max_height alert-green circle_alert mr-2" id="loss_motionn">
+                                      <?php
+                                  }
+                                  ?>
+                                  <!--LOW OIL-->
+                                  <?php
+                                  if($row["a4"]=="on"){
+                                      ?>
+                                      <div id="flagBox" class="<?php echo $class; ?>">
+                                          <div class="d-flex align-content-center">
+                                              <div class="circle_max_height circle_alert mr-2" id="low_oil">
+                                              </div>
+                                              <p class="d-flex align-items-center justify-content-center font-weight-bold circles_font_size">
+                                                  LOW OIL
+                                              </p>
+                                          </div>
                                       </div>
-                                      <p class="d-flex align-items-center justify-content-center font-weight-bold circles_font_size">
-                                          LOSS MOTION
-                                      </p>
-                                  </div>
-                              </div>
-                              <div id="flagbox" class="col-12 d-flex flex-column align-items-center justify-content-center">
-                                      <p class="mr-3 tempText m-0">Oil Temperature :</p>
-                                      <p class="text-danger">
+                                      <?php
+                                  }
+                                  ?>
+                                  <!--LOSS MOTION--><?php
+                                  if($row["a6"]=="on"){
+                                      ?>
+                                      <div id="flagBox" class="<?php echo $class; ?>">
+                                          <div class="d-flex align-content-center">
+                                              <div class="circle_max_height alert-green circle_alert mr-2" id="loss_motionn">
+                                              </div>
+                                              <p class="d-flex align-items-center justify-content-center font-weight-bold circles_font_size">
+                                                  LOSS MOTION
+                                              </p>
+                                          </div>
+                                      </div>
+                                      <?php
+                                  }
+                                  ?>
+                                  <!--Temperature--><?php
+                                  if($row["a8"]=="on"){
+                                      ?>
+                                      <div id="flagbox" class="col-12 d-flex flex-column align-items-center justify-content-center">
+                                          <p class="mr-3 tempText m-0">Oil Temperature :</p>
+                                          <p class="text-danger">
                                               <span id="tempValue">99</span>
                                               <span id="tempValue" class="ml-2">°F</span>
                                           </p>
-                                  </p>
+                                          </p>
+                                      </div>
+                                      <?php
+                                  }
+                                  ?>
                               </div>
                           </div>
                       </div>
                   </div>
               </div>
-          </div>
+          <?php
+          }
+          ?>
           <!-- Second Box -->
-          <div class="col-md-3">
-              <div class="custom_card w-100 d-block">
-                  <div class="col-md-12 d-flex justify-content-center w-100 h-100">
-                      <canvas
-                              id="gauge-id"
-                      ></canvas>
-                  </div>
+          <?php
+          if($sectionRow["torque_gauge_check"]=="on"){
+              ?>
+              <div class="col-md-3">
+                  <div class="custom_card w-100 d-block">
+                      <div class="col-md-12 d-flex justify-content-center w-100 h-100">
+                          <canvas
+                                  id="gauge-id"
+                          ></canvas>
+                      </div>
 
-                  <script type="text/javascript" src="https://canvas-gauges.com/download/latest/radial/gauge.min.js"></script>
-                  <script>
-                      <?php
-                      $sql = "SELECT * FROM user_and_devices WHERE id=$device_id";
-                      $res = mysqli_query($con, $sql);
-                      $row = mysqli_fetch_array($res);
-                      $rng1 = $row["meter_range_1"];
-                      $rng2 = $row["meter_range_2"];
-                      $rng3 = $row["meter_range_3"];
-                      $clr1 = $row["meter_color_1"];
-                      $clr2 = $row["meter_color_2"];
-                      $clr3 = $row["meter_color_3"];
-                      ?>
-                      window.onresize = function(){ location.reload(); }
-                      var gauge = new RadialGauge({
-                          renderTo: 'gauge-id', // identifier of HTML canvas element or element itself
-                          width: 0,
-                          height: 0,
-                          fontNumbersSize: 15,
-                          title: "TORQUE",
-                          units: 'FT-LBS x1000',
-                          value: 0,
-                          minValue: 0,
-                          maxValue: <?php echo $rng3 ?>,
-                          majorTicks: [
-                              <?php
-                              $values = explode(",", $row["meter_ranges"]);
-                              foreach($values as $value) {
+                      <script type="text/javascript" src="https://canvas-gauges.com/download/latest/radial/gauge.min.js"></script>
+                      <script>
+                          <?php
+                          $sql = "SELECT * FROM user_and_devices WHERE id=$device_id";
+                          $res = mysqli_query($con, $sql);
+                          $row = mysqli_fetch_array($res);
+                          $rng1 = $row["meter_range_1"];
+                          $rng2 = $row["meter_range_2"];
+                          $rng3 = $row["meter_range_3"];
+                          $clr1 = $row["meter_color_1"];
+                          $clr2 = $row["meter_color_2"];
+                          $clr3 = $row["meter_color_3"];
+                          ?>
+                          window.onresize = function(){ location.reload(); }
+                          var gauge = new RadialGauge({
+                              renderTo: 'gauge-id', // identifier of HTML canvas element or element itself
+                              width: 0,
+                              height: 0,
+                              fontNumbersSize: 15,
+                              title: "TORQUE",
+                              units: 'FT-LBS x1000',
+                              value: 0,
+                              minValue: 0,
+                              maxValue: <?php echo $rng3 ?>,
+                              majorTicks: [
+                                  <?php
+                                  $values = explode(",", $row["meter_ranges"]);
+                                  foreach($values as $value) {
 //                                  echo "'$values', ";
-                                  echo $value.',';
-                              }
-                              ?>
-                          ],
-                          minorTicks: 2,
-                          strokeTicks: false,
-                          highlights: [
-                              { from: 0, to: <?php echo $rng1 ?>, color: '<?php echo $clr1 ?>' },
-                              { from: <?php echo $rng1 ?>, to: <?php echo $rng2 ?>, color: '<?php echo $clr2 ?>' },
-                              { from: <?php echo $rng2 ?>, to: <?php echo $rng3 ?>, color: '<?php echo $clr3 ?>' }
-                          ],
-                          colorPlate: '#e5e7ea',
-                          colorMajorTicks: '#494949',
-                          colorMinorTicks: '494949',
-                          colorTitle: '494949',
-                          colorUnits: '494949',
-                          colorNumbers: '494949',
-                          colorNeedleStart: 'rgba(240, 128, 128, 1)',
-                          colorNeedleEnd: 'rgba(255, 160, 122, .9)',
-                          valueBox: true,
-                          animationRule: 'bounce'
-                      });
-                      // draw initially
-                      gauge.draw();
-                      // animate
-                      // setInterval(() => {
-                      //     gauge.value = Math.random() * -30000 + 30000;
-                      // }, 1000);
+                                      echo $value.',';
+                                  }
+                                  ?>
+                              ],
+                              minorTicks: 2,
+                              strokeTicks: false,
+                              highlights: [
+                                  { from: 0, to: <?php echo $rng1 ?>, color: '<?php echo $clr1 ?>' },
+                                  { from: <?php echo $rng1 ?>, to: <?php echo $rng2 ?>, color: '<?php echo $clr2 ?>' },
+                                  { from: <?php echo $rng2 ?>, to: <?php echo $rng3 ?>, color: '<?php echo $clr3 ?>' }
+                              ],
+                              colorPlate: '#e5e7ea',
+                              colorMajorTicks: '#494949',
+                              colorMinorTicks: '494949',
+                              colorTitle: '494949',
+                              colorUnits: '494949',
+                              colorNumbers: '494949',
+                              colorNeedleStart: 'rgba(240, 128, 128, 1)',
+                              colorNeedleEnd: 'rgba(255, 160, 122, .9)',
+                              valueBox: true,
+                              animationRule: 'bounce'
+                          });
+                          // draw initially
+                          gauge.draw();
+                          // animate
+                          // setInterval(() => {
+                          //     gauge.value = Math.random() * -30000 + 30000;
+                          // }, 1000);
 
-                  </script>
+                      </script>
+                  </div>
               </div>
-          </div>
+          <?php
+          }
+          ?>
           <!-- Third Box -->
-          <div class="col-md-5" style="">
-              <script>
-                  var chart = new CanvasJS.Chart();
-                  window.onload = function () {
-                      chart = new CanvasJS.Chart("chartContainer", {
-                          animationEnabled: true,
-                          backgroundColor: "<?php echo $_SESSION['darkTheme']==0 ? '#dedede' : '#2d353c'; ?>",
-                          title:{
-                              text: "TORQUE HISTORY",
-                              fontFamily:'Helvetica Neue, Helvetica, Arial, sans-serif',
-                              fontWeight: "bold",
-                              fontColor: "<?php echo $_SESSION['darkTheme']==0 ? 'black' : '#d2d2c9'; ?>",
-                              fontSize: 24
-                          },
-                          //legend:{
-                          //    cursor: "pointer",
-                          //    fontSize: 16,
-                          //    itemclick: toggleDataSeries,
-                          //    fontColor: "<?php //echo $_SESSION['darkTheme']==0 ? 'black' : '#d2d2c9'; ?>//"
-                          //},
-                          axisX:{
-                              labelFontColor: "<?php echo $_SESSION['darkTheme']==0 ? 'black' : '#d2d2c9'; ?>",
-                              labelAngle: -90/90,
-                              labelMaxWidth: 90
-                          },
-                          axisY: {
-                              labelFontColor: "<?php echo $_SESSION['darkTheme']==0 ? 'black' : '#d2d2c9'; ?>",
-                              title: "℉ / FT-LBS"
-                          },
-                          toolTip:{
-                              shared: true
-                          },
-                          data: [
-                              {
-                                  name: "Torque",
-                                  type: "spline",
-                                  color: "#009cde",
-                                  showInLegend: true,
-                                  dataPoints: [{}]
-                              }
-                              // ,{
-                              //     name: "Temp",
-                              //     type: "spline",
-                              //     color: "#dc3545",
-                              //     showInLegend: true,
-                              //     dataPoints: [{}]
-                              // }
-                          ]
-                      });
-                      chart.render();
+          <?php
+          if($sectionRow["graph_check"]=="on"){
+              $sql = "SELECT * FROM custom_graph WHERE device_id=$device_id";
+              $res = mysqli_query($con, $sql);
+              $row = mysqli_fetch_array($res);
+          ?>
+              <div class="col" style="">
+                  <script>
+                      var chart = new CanvasJS.Chart();
+                      window.onload = function () {
+                          chart = new CanvasJS.Chart("chartContainer", {
+                              animationEnabled: true,
+                              backgroundColor: "<?php echo $_SESSION['darkTheme']==0 ? '#dedede' : '#2d353c'; ?>",
+                              title:{
+                                  text: "<?php echo $row['graph_title']; ?>",
+                                  fontFamily:'Helvetica Neue, Helvetica, Arial, sans-serif',
+                                  fontWeight: "bold",
+                                  fontColor: "<?php echo $_SESSION['darkTheme']==0 ? 'black' : '#d2d2c9'; ?>",
+                                  fontSize: 24
+                              },
+                              //legend:{
+                              //    cursor: "pointer",
+                              //    fontSize: 16,
+                              //    itemclick: toggleDataSeries,
+                              //    fontColor: "<?php //echo $_SESSION['darkTheme']==0 ? 'black' : '#d2d2c9'; ?>//"
+                              //},
+                              axisX:{
+                                  labelFontColor: "<?php echo $_SESSION['darkTheme']==0 ? 'black' : '#d2d2c9'; ?>",
+                                  labelAngle: -90/90,
+                                  labelMaxWidth: 90
+                              },
+                              axisY: {
+                                  labelFontColor: "<?php echo $_SESSION['darkTheme']==0 ? 'black' : '#d2d2c9'; ?>",
+                                  title: "<?php echo $row['y_unit']; ?>"
+                              },
+                              toolTip:{
+                                  shared: true
+                              },
+                              data: [
+                                  {
+                                      name: "<?php echo $row['line_name']; ?>",
+                                      type: "spline",
+                                      color: "<?php echo $row['line_color']; ?>",
+                                      showInLegend: true,
+                                      dataPoints: [{}]
+                                  }
+                                  // ,{
+                                  //     name: "Temp",
+                                  //     type: "spline",
+                                  //     color: "#dc3545",
+                                  //     showInLegend: true,
+                                  //     dataPoints: [{}]
+                                  // }
+                              ]
+                          });
+                          chart.render();
 
-                  }
+                      }
 
-                  function toggleDataSeries(e){
-                      if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-                          e.dataSeries.visible = false;
+                      function toggleDataSeries(e){
+                          if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                              e.dataSeries.visible = false;
+                          }
+                          else{
+                              e.dataSeries.visible = true;
+                          }
                       }
-                      else{
-                          e.dataSeries.visible = true;
-                      }
-                  }
-              </script>
-              <div style="width: 100%;">
-                  <div class="line_chart_margin_top" id="chartContainer" style="height: 97%; margin-top: 1%;width: 100%;box-shadow: 0px 0px 20px 0px #8d9aa7;"></div>
+                  </script>
+                  <div style="width: 100%;">
+                      <div class="line_chart_margin_top" id="chartContainer" style="height: 97%; margin-top: 1%;width: 100%;box-shadow: 0px 0px 20px 0px #8d9aa7;"></div>
+                  </div>
               </div>
-          </div>
+          <?php
+          }
+          ?>
       </div>
       <br>
       <!-- SECOND LINE  -->
       <div class="row h-45 second_row_class">
           <!-- 4th box -->
-          <div class="col-md-4">
-              <div class="custom_card w-100 d-flex flex-column bar_font_size">
-                  <p class="text-center font-weight-bolder font-size-larger m-0">INSTALLATION INFORMATION</p>
-                  <?php
-                  $sql = "SELECT * FROM user_and_devices WHERE id=$device_id";
-                  $res = mysqli_query($con, $sql);
-                  $row = mysqli_fetch_array($res);
-                  $mac = $row["mac"];
-                  $sql = "SELECT * FROM installation_info WHERE mac='$mac'";
-                  $res = mysqli_query($con, $sql);
-                  $installationInfo = mysqli_fetch_array($res);
-                  ?>
-                  <table class="text-dark-grey bar_font_size auto_color_txt">
-                      <tr>
-                          <td class="font-weight-bold">Drive Model:</td>
-                          <td><?php echo $installationInfo["driver_model"]; ?></td>
-                      </tr>
-                      <tr>
-                          <td class="font-weight-bold">Driver Continuous Rating:</td>
-                          <td><?php echo $installationInfo["driver_rating"]; ?></td>
-                      </tr>
-                      <tr>
-                          <td class="font-weight-bold">Output Speed:</td>
-                          <td><?php echo $installationInfo["speed"]; ?></td>
-                      </tr>
-                      <tr>
-                          <td class="font-weight-bold">Electric Motor Rake:</td>
-                          <td><?php echo $installationInfo["electric_rate"]; ?></td>
-                      </tr>
-                      <tr>
-                          <td class="font-weight-bold">Electric Motor Lift:</td>
-                          <td><?php echo $installationInfo["electric_lift"]; ?></td>
-                      </tr>
-                      <tr>
-                          <td class="font-weight-bold">Driver SN:</td>
-                          <td><?php echo $installationInfo["driver_sn"]; ?></td>
-                      </tr>
-                      <tr>
-                          <td class="font-weight-bold">End User:</td>
-                          <td><?php echo $installationInfo["end_user"]; ?></td>
-                      </tr>
-                      <tr>
-                          <td class="font-weight-bold">Installation:</td>
-                          <td><?php echo $installationInfo["installation"]; ?></td>
-                      </tr>
-                      <tr>
-                          <td class="font-weight-bold">Process:</td>
-                          <td><?php echo $installationInfo["process"]; ?></td>
-                      </tr>
-                      <tr>
-                          <td class="font-weight-bold">Basin Size (diameter):</td>
-                          <td><?php echo $installationInfo["basin_size"]; ?></td>
-                      </tr>
-                      <tr>
-                          <td class="font-weight-bold">In Service Since:</td>
-                          <td><?php echo $installationInfo["service_since"]; ?></td>
+          <?php
+          $sql = "SELECT * FROM custom_graph WHERE device_id=$device_id";
+          $res = mysqli_query($con, $sql);
+          $row1 = mysqli_fetch_array($res);
+          if($sectionRow["installation_info_check"]=="on"){
+              ?>
+              <div class="col-md-4">
+                  <div class="custom_card w-100 d-flex flex-column bar_font_size">
+                      <p class="text-center font-weight-bolder font-size-larger m-0">INSTALLATION INFORMATION</p>
+                      <?php
+                      $sql = "SELECT * FROM user_and_devices WHERE id=$device_id";
+                      $res = mysqli_query($con, $sql);
+                      $row = mysqli_fetch_array($res);
+                      $mac = $row["mac"];
+                      $sql = "SELECT * FROM installation_info WHERE mac='$mac'";
+                      $res = mysqli_query($con, $sql);
+                      $installationInfo = mysqli_fetch_array($res);
+                      ?>
+                      <table class="text-dark-grey bar_font_size auto_color_txt">
                           <?php
-                          if($_SESSION['is_admin']){
+                          if($row1["drive_model_check"]=="on"){
                               ?>
-                              <td>
-                                  <button class="btn btn-info" data-toggle="modal" data-target="#addNewDevice">Edit</button>
-                              </td>
+                              <tr>
+                                  <td class="font-weight-bold"><?php echo $row1["drive_model_title"] ?> :</td>
+                                  <td><?php echo $installationInfo["driver_model"]; ?></td>
+                              </tr>
                               <?php
                           }
                           ?>
-                      </tr>
-                  </table>
-              </div>
-          </div>
-          <!-- 5th box -->
-          <div class="col-md-4 alert_details_margin_top">
-              <div class="custom_card w-100 d-flex flex-column bar_font_size">
-                  <p class="text-center font-weight-bolder font-size-larger m-0">ALERTS</p>
-                  <table class="text-dark-grey auto_color_txt">
-                      <tr><td><i>Today:</i></td></tr>
-                      <tr class="alert_info_bg_red">
-                          <td class="font-weight-bold">Oil Change Overdue (48 Days)</td>
-                          <td class="text-left">Main Gear</td>
-                      </tr>
-                      <!--                    <tr><td>&nbsp;</td></tr>-->
-                      <tr><td><i>Last 7 days:</i></td></tr>
-                      <!--                    <tr><td>&nbsp;</td></tr>-->
-                      <tr><td><i>Last Month:</i></td></tr>
-                      <tr>
-                          <td class="font-weight-bold">10/26/20, 09:26:</td>
-                          <td class="text-left">Lift Operation (Lower)</td>
-                      </tr>
-                      <!--                    <tr><td>&nbsp;</td></tr>-->
-                      <tr><td><i>Last 6 Months:</i></td></tr>
-                      <tr>
-                          <td class="font-weight-bold">08/26/20, 16:20:</td>
-                          <td class="text-left">Alarm</td>
-                      </tr>
-                  </table>
-              </div>
-          </div>
-          <!-- 6th box -->
-          <div class="col-md-4 maintenance_record_margin_top">
-              <div class="custom_card w-100 d-flex flex-column bar_font_size">
-                  <?php
-                  $sql = "SELECT * FROM maintenance_record ORDER BY id DESC LIMIT 1";
-                  $res = mysqli_query($con, $sql);
-                  $row = mysqli_fetch_array($res);
-                  $format = 'd-M-Y';
-                  $last_oil_main_gear = date ($format, strtotime($row["last_oil_change_main_gear"]));
-                  $last_oil_pdu = date ($format, strtotime($row["last_oil_pdu"]));
-                  $nxt_oil_lift_pdu = date ($format, strtotime($row["next_oil_change_lift_pu"]));
-                  $nxt_sch_service = date ($format, strtotime($row["next_schedule_service"]));
-                  $last_repair = $row["last_repair"];
-                  $parts_repaired = $row["parts_prepaired"];
-                  ?>
-                  <p class="text-center font-weight-bolder font-size-larger m-0">MAINTENANCE RECORD</p>
-                  <table class="text-dark-grey auto_color_txt">
-                      <tr class="alert_info_bg_red">
-                          <td class="font-weight-bold">Last Oil Change (main gear):</td>
-                          <td class="text-left"><?php echo $last_oil_main_gear; ?></td>
-                      </tr>
-                      <tr>
-                          <td class="font-weight-bold">Next Oil Change (main gear):</td>
-                          <td class="text-left">TBD</td>
-                      </tr>
-                      <tr>
-                          <td class="font-weight-bold">Last Oil Change (lift PU):</td>
-                          <td class="text-left"><?php echo $last_oil_pdu; ?></td>
-                      </tr>
-                      <tr>
-                          <td class="font-weight-bold">Next Oil Change (lift PU):</td>
-                          <td class="text-left"><?php echo $nxt_oil_lift_pdu; ?></td>
-                      </tr>
-                      <tr>
-                          <td class="font-weight-bold">Next Schedule Service:</td>
-                          <td class="text-left"><?php echo $nxt_sch_service; ?></td>
-                      </tr>
-                      <tr>
-                          <td class="font-weight-bold">DBS Warranty:</td>
-                          <td class="text-left">Exp 12/03/2020</td>
-                      </tr>
-                      <tr>
-                          <td class="font-weight-bold">Last Repair(INC #):</td>
-                          <td class="text-left"><?php echo $last_repair; ?></td>
-                      </tr>
-                      <tr>
-                          <td class="font-weight-bold">Parts Repaired:</td>
-                          <td class="text-left"><?php echo $parts_repaired; ?></td>
-                      </tr>
-                  </table>
-                  <div class="mt-2 d-flex justify-content-end">
-                      <button class="btn text-white font-weight-bold border-0" style="background-color: #009cde"
-                              data-toggle="modal" data-target="#addRecord">Edit</button>
-                      <button class="btn text-white font-weight-bold border-0 mx-3" style="background-color: #009cde"
-                              data-toggle="modal" data-target="#previousRecord">History</button>
+                          <?php
+                          if($row1["drive_rating_check"]=="on"){
+                              ?>
+                              <tr>
+                                  <td class="font-weight-bold"><?php echo $row1["drive_rating_title"] ?> :</td>
+                                  <td><?php echo $installationInfo["driver_rating"]; ?></td>
+                              </tr>
+                              <?php
+                          }
+                          ?>
+                          <tr>
+                              <td class="font-weight-bold">Output Speed:</td>
+                              <td><?php echo $installationInfo["speed"]; ?></td>
+                          </tr>
+                          <tr>
+                              <td class="font-weight-bold">Electric Motor Rake:</td>
+                              <td><?php echo $installationInfo["electric_rate"]; ?></td>
+                          </tr>
+                          <tr>
+                              <td class="font-weight-bold">Electric Motor Lift:</td>
+                              <td><?php echo $installationInfo["electric_lift"]; ?></td>
+                          </tr>
+                          <tr>
+                              <td class="font-weight-bold">Driver SN:</td>
+                              <td><?php echo $installationInfo["driver_sn"]; ?></td>
+                          </tr>
+                          <tr>
+                              <td class="font-weight-bold">End User:</td>
+                              <td><?php echo $installationInfo["end_user"]; ?></td>
+                          </tr>
+                          <tr>
+                              <td class="font-weight-bold">Installation:</td>
+                              <td><?php echo $installationInfo["installation"]; ?></td>
+                          </tr>
+                          <tr>
+                              <td class="font-weight-bold">Process:</td>
+                              <td><?php echo $installationInfo["process"]; ?></td>
+                          </tr>
+                          <tr>
+                              <td class="font-weight-bold">Basin Size (diameter):</td>
+                              <td><?php echo $installationInfo["basin_size"]; ?></td>
+                          </tr>
+                          <tr>
+                              <td class="font-weight-bold">In Service Since:</td>
+                              <td><?php echo $installationInfo["service_since"]; ?></td>
+                              <?php
+                              if($_SESSION['is_admin']){
+                                  ?>
+                                  <td>
+                                      <button class="btn btn-info" data-toggle="modal" data-target="#addNewDevice">Edit</button>
+                                  </td>
+                                  <?php
+                              }
+                              ?>
+                          </tr>
+                      </table>
                   </div>
-<!--                  <div class="mt-2 d-flex justify-content-around">-->
-<!--                      <div class="btn btn-success" data-toggle="modal" data-target="#addRecord">Edit Maintenance</div>-->
-<!--                      <div class="btn btn-primary" data-toggle="modal" data-target="#previousRecord">Maintenance History</div>-->
-<!--                  </div>-->
               </div>
-          </div>
+              <?php
+          }
+          ?>
+          <!-- 5th box --><?php
+          if($sectionRow["alerts_check"]=="on"){
+              ?>
+              <div class="col-md-4 alert_details_margin_top">
+                  <div class="custom_card w-100 d-flex flex-column bar_font_size">
+                      <p class="text-center font-weight-bolder font-size-larger m-0">ALERTS</p>
+                      <table class="text-dark-grey auto_color_txt">
+                          <tr><td><i>Today:</i></td></tr>
+                          <tr class="alert_info_bg_red">
+                              <td class="font-weight-bold">Oil Change Overdue (48 Days)</td>
+                              <td class="text-left">Main Gear</td>
+                          </tr>
+                          <!--                    <tr><td>&nbsp;</td></tr>-->
+                          <tr><td><i>Last 7 days:</i></td></tr>
+                          <!--                    <tr><td>&nbsp;</td></tr>-->
+                          <tr><td><i>Last Month:</i></td></tr>
+                          <tr>
+                              <td class="font-weight-bold">10/26/20, 09:26:</td>
+                              <td class="text-left">Lift Operation (Lower)</td>
+                          </tr>
+                          <!--                    <tr><td>&nbsp;</td></tr>-->
+                          <tr><td><i>Last 6 Months:</i></td></tr>
+                          <tr>
+                              <td class="font-weight-bold">08/26/20, 16:20:</td>
+                              <td class="text-left">Alarm</td>
+                          </tr>
+                      </table>
+                  </div>
+              </div>
+              <?php
+          }
+          ?>
+          <!-- 6th box --><?php
+          if($sectionRow["maintenance_check"]=="on"){
+              ?>
+              <div class="col-md-4 maintenance_record_margin_top">
+                  <div class="custom_card w-100 d-flex flex-column bar_font_size">
+                      <?php
+                      $sql = "SELECT * FROM maintenance_record ORDER BY id DESC LIMIT 1";
+                      $res = mysqli_query($con, $sql);
+                      $row = mysqli_fetch_array($res);
+                      $format = 'd-M-Y';
+                      $last_oil_main_gear = date ($format, strtotime($row["last_oil_change_main_gear"]));
+                      $last_oil_pdu = date ($format, strtotime($row["last_oil_pdu"]));
+                      $nxt_oil_lift_pdu = date ($format, strtotime($row["next_oil_change_lift_pu"]));
+                      $nxt_sch_service = date ($format, strtotime($row["next_schedule_service"]));
+                      $last_repair = $row["last_repair"];
+                      $parts_repaired = $row["parts_prepaired"];
+                      ?>
+                      <p class="text-center font-weight-bolder font-size-larger m-0">MAINTENANCE RECORD</p>
+                      <table class="text-dark-grey auto_color_txt">
+                          <tr class="alert_info_bg_red">
+                              <td class="font-weight-bold">Last Oil Change (main gear):</td>
+                              <td class="text-left"><?php echo $last_oil_main_gear; ?></td>
+                          </tr>
+                          <tr>
+                              <td class="font-weight-bold">Next Oil Change (main gear):</td>
+                              <td class="text-left">TBD</td>
+                          </tr>
+                          <tr>
+                              <td class="font-weight-bold">Last Oil Change (lift PU):</td>
+                              <td class="text-left"><?php echo $last_oil_pdu; ?></td>
+                          </tr>
+                          <tr>
+                              <td class="font-weight-bold">Next Oil Change (lift PU):</td>
+                              <td class="text-left"><?php echo $nxt_oil_lift_pdu; ?></td>
+                          </tr>
+                          <tr>
+                              <td class="font-weight-bold">Next Schedule Service:</td>
+                              <td class="text-left"><?php echo $nxt_sch_service; ?></td>
+                          </tr>
+                          <tr>
+                              <td class="font-weight-bold">DBS Warranty:</td>
+                              <td class="text-left">Exp 12/03/2020</td>
+                          </tr>
+                          <tr>
+                              <td class="font-weight-bold">Last Repair(INC #):</td>
+                              <td class="text-left"><?php echo $last_repair; ?></td>
+                          </tr>
+                          <tr>
+                              <td class="font-weight-bold">Parts Repaired:</td>
+                              <td class="text-left"><?php echo $parts_repaired; ?></td>
+                          </tr>
+                      </table>
+                      <div class="mt-2 d-flex justify-content-end">
+                          <button class="btn text-white font-weight-bold border-0" style="background-color: #009cde"
+                                  data-toggle="modal" data-target="#addRecord">Edit</button>
+                          <button class="btn text-white font-weight-bold border-0 mx-3" style="background-color: #009cde"
+                                  data-toggle="modal" data-target="#previousRecord">History</button>
+                      </div>
+                      <!--                  <div class="mt-2 d-flex justify-content-around">-->
+                      <!--                      <div class="btn btn-success" data-toggle="modal" data-target="#addRecord">Edit Maintenance</div>-->
+                      <!--                      <div class="btn btn-primary" data-toggle="modal" data-target="#previousRecord">Maintenance History</div>-->
+                      <!--                  </div>-->
+                  </div>
+              </div>
+              <?php
+          }
+          ?>
       </div>
   </section>
 
