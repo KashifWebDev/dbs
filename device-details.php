@@ -282,7 +282,7 @@
                               axisX:{
                                   labelFontColor: "<?php echo $_SESSION['darkTheme']==0 ? 'black' : '#d2d2c9'; ?>",
                                   labelAngle: -90/90,
-                                  labelMaxWidth: 90
+                                  labelMaxWidth: 80
                               },
                               axisY: {
                                   labelFontColor: "<?php echo $_SESSION['darkTheme']==0 ? 'black' : '#d2d2c9'; ?>",
@@ -321,8 +321,8 @@
                           }
                       }
                   </script>
-                  <div style="width: 100%;">
-                      <div class="line_chart_margin_top" id="chartContainer" style="height: 97%; margin-top: 1%;width: 100%;box-shadow: 0px 0px 20px 0px #8d9aa7;"></div>
+                  <div style="width: 100%;height: 95%">
+                      <div class="line_chart_margin_top" id="chartContainer" style="height: 100%; margin-top: 1%;width: 100%;box-shadow: 0px 0px 20px 0px #8d9aa7;"></div>
                   </div>
               </div>
           <?php
