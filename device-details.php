@@ -334,7 +334,7 @@
       <div class="row h-45 second_row_class">
           <!-- 4th box -->
           <?php
-          $sql = "SELECT * FROM custom_graph WHERE device_id=$device_id";
+          $sql = "SELECT * FROM custom_installation_info WHERE device_id=$device_id";
           $res = mysqli_query($con, $sql);
           $row1 = mysqli_fetch_array($res);
           if($sectionRow["installation_info_check"]=="on"){
@@ -359,64 +359,87 @@
                                   <td class="font-weight-bold"><?php echo $row1["drive_model_title"] ?> :</td>
                                   <td><?php echo $installationInfo["driver_model"]; ?></td>
                               </tr>
-                              <?php
-                          }
-                          ?>
-                          <?php
+                              <?php }
                           if($row1["drive_rating_check"]=="on"){
                               ?>
                               <tr>
                                   <td class="font-weight-bold"><?php echo $row1["drive_rating_title"] ?> :</td>
                                   <td><?php echo $installationInfo["driver_rating"]; ?></td>
                               </tr>
-                              <?php
-                          }
-                          ?>
-                          <tr>
-                              <td class="font-weight-bold">Output Speed:</td>
-                              <td><?php echo $installationInfo["speed"]; ?></td>
-                          </tr>
-                          <tr>
-                              <td class="font-weight-bold">Electric Motor Rake:</td>
-                              <td><?php echo $installationInfo["electric_rate"]; ?></td>
-                          </tr>
-                          <tr>
-                              <td class="font-weight-bold">Electric Motor Lift:</td>
-                              <td><?php echo $installationInfo["electric_lift"]; ?></td>
-                          </tr>
-                          <tr>
-                              <td class="font-weight-bold">Driver SN:</td>
-                              <td><?php echo $installationInfo["driver_sn"]; ?></td>
-                          </tr>
-                          <tr>
-                              <td class="font-weight-bold">End User:</td>
-                              <td><?php echo $installationInfo["end_user"]; ?></td>
-                          </tr>
-                          <tr>
-                              <td class="font-weight-bold">Installation:</td>
-                              <td><?php echo $installationInfo["installation"]; ?></td>
-                          </tr>
-                          <tr>
-                              <td class="font-weight-bold">Process:</td>
-                              <td><?php echo $installationInfo["process"]; ?></td>
-                          </tr>
-                          <tr>
-                              <td class="font-weight-bold">Basin Size (diameter):</td>
-                              <td><?php echo $installationInfo["basin_size"]; ?></td>
-                          </tr>
-                          <tr>
-                              <td class="font-weight-bold">In Service Since:</td>
-                              <td><?php echo $installationInfo["service_since"]; ?></td>
-                              <?php
-                              if($_SESSION['is_admin']){
-                                  ?>
-                                  <td>
-                                      <button class="btn btn-info" data-toggle="modal" data-target="#addNewDevice">Edit</button>
-                                  </td>
-                                  <?php
-                              }
+                              <?php }
+                          if($row1["drive_speed_check"]=="on"){
                               ?>
-                          </tr>
+                              <tr>
+                                  <td class="font-weight-bold"><?php echo $row1["drive_speed_title"] ?> :</td>
+                                  <td><?php echo $installationInfo["speed"]; ?></td>
+                              </tr>
+                              <?php }
+                          if($row1["drive_motor_check"]=="on"){
+                              ?>
+                              <tr>
+                                  <td class="font-weight-bold"><?php echo $row1["drive_motor_title"] ?> :</td>
+                                  <td><?php echo $installationInfo["electric_rate"]; ?></td>
+                              </tr>
+                              <?php }
+                          if($row1["drive_lift_check"]=="on"){
+                              ?>
+                              <tr>
+                                  <td class="font-weight-bold"><?php echo $row1["drive_lift_title"] ?> :</td>
+                                  <td><?php echo $installationInfo["electric_lift"]; ?></td>
+                              </tr>
+                              <?php }
+                          if($row1["driver_sn_check"]=="on"){
+                              ?>
+                              <tr>
+                                  <td class="font-weight-bold"><?php echo $row1["driver_sn_title"] ?> :</td>
+                                  <td><?php echo $installationInfo["driver_sn"]; ?></td>
+                              </tr>
+                              <?php }
+                          if($row1["driver_user_check"]=="on"){
+                              ?>
+                              <tr>
+                                  <td class="font-weight-bold"><?php echo $row1["driver_user_title"] ?> :</td>
+                                  <td><?php echo $installationInfo["end_user"]; ?></td>
+                              </tr>
+                              <?php }
+                          if($row1["driver_installation_check"]=="on"){
+                              ?>
+                              <tr>
+                                  <td class="font-weight-bold"><?php echo $row1["driver_installation_title"] ?> :</td>
+                                  <td><?php echo $installationInfo["installation"]; ?></td>
+                              </tr>
+                              <?php }
+                          if($row1["driver_process_check"]=="on"){
+                              ?>
+                              <tr>
+                                  <td class="font-weight-bold"><?php echo $row1["driver_process_title"] ?> :</td>
+                                  <td><?php echo $installationInfo["process"]; ?></td>
+                              </tr>
+                              <?php }
+                          if($row1["driver_size_check"]=="on"){
+                              ?>
+                              <tr>
+                                  <td class="font-weight-bold"><?php echo $row1["driver_size_title"] ?> :</td>
+                                  <td><?php echo $installationInfo["basin_size"]; ?></td>
+                              </tr>
+                              <?php }
+                          if($row1["drive_service_check"]=="on"){
+                              ?>
+                              <tr>
+                                  <td class="font-weight-bold"><?php echo $row1["drive_service_title"] ?> :</td>
+                                  <td><?php echo $installationInfo["service_since"]; ?></td>
+                                  <?php
+                                  if($_SESSION['is_admin']){
+                                      ?>
+                                      <td>
+                                          <button class="btn btn-info" data-toggle="modal" data-target="#addNewDevice">Edit</button>
+                                      </td>
+                                      <?php
+                                  }
+                                  ?>
+                              </tr>
+                              <?php }
+                          ?>
                       </table>
                   </div>
               </div>
