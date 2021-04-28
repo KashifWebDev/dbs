@@ -11,7 +11,20 @@ verify_is_admin();
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"></link>
-
+<?php
+if ($_SESSION["darkTheme"] == 1){
+    ?>
+    <style>
+        table.dataTable tbody tr {
+            background-color: #6b6b6b !important;
+        }
+        .dataTables_length, #example_filter, .dataTables_info, #example_previous, #example_next{
+            color: white !important;
+        }
+    </style>
+    <?php
+}
+?>
 <body>
 <!-- Navigation -->
 <?php require 'app/nav.include.php'; ?>
