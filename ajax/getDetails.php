@@ -50,8 +50,13 @@ if (mysqli_num_rows($res1)) {
             $tempValue
         );
 
+    $torqueValue = $row['Torque'];
+    if(isset($_SESSION["torque-FtLbs"]) && $_SESSION["torque-FtLbs"]===false){
+        $torqueValue = $torqueValue / 0.73756; // in C
+    }
+
         array_push($obj[0], $data);
-        array_push($obj['torque'], $row['Torque']);
+        array_push($obj['torque'], $torqueValue);
 
     $sql1 = "SELECT * FROM recorded_values WHERE mac='$mac' ORDER BY id  DESC LIMIT 10 ";
     $sql1 = "SELECT * FROM (
@@ -62,6 +67,7 @@ if (mysqli_num_rows($res1)) {
     while($row = mysqli_fetch_array($res)) {
         $time = get_time($row["date_time"]);
         $date = get_date($row["date_time"]);
+
 //        $time = $row["time_now"];
 //        $date = $row["date_now"];
         $date_time = $date.' ('.$time.')';
@@ -81,6 +87,12 @@ function get_date($timestamp){
 }
 function get_time($timestamp){
     $new_time = explode(" ",$timestamp);
-    return date("g:i a", strtotime($new_time[1]));
+    if(isset($_SESSION["time-24"]) && $_SESSION["time-24"]===true){
+        $time = date("H:i", strtotime($new_time[1]));
+//        $time = date("g:i a", strtotime($new_time[1]));
+    }else{
+        $time = date("g:i a", strtotime($new_time[1]));
+    }
+    return $time;
 }
 ?>

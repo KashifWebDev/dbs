@@ -214,6 +214,11 @@
                       <script type="text/javascript" src="https://canvas-gauges.com/download/latest/radial/gauge.min.js"></script>
                       <script>
                           <?php
+                          $sql = "SELECT * FROM custom_sections WHERE id=$device_id";
+                          $res = mysqli_query($con, $sql);
+                          $row = mysqli_fetch_array($res);
+                          $torque_title = $row["torque_title"];
+
                           $sql = "SELECT * FROM user_and_devices WHERE id=$device_id";
                           $res = mysqli_query($con, $sql);
                           $row = mysqli_fetch_array($res);
@@ -230,8 +235,8 @@
                               width: 0,
                               height: 0,
                               fontNumbersSize: 15,
-                              title: "TORQUE",
-                              units: 'FT-LBS x1000',
+                              title: "<?php echo $torque_title; ?>",
+                              units: '<?php if(isset($_SESSION["torque-FtLbs"]) && $_SESSION["torque-FtLbs"]===false) echo "Nm"; else echo "FT-LBS" ?>',
                               value: 0,
                               minValue: 0,
                               maxValue: <?php echo $rng3 ?>,

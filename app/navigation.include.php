@@ -162,45 +162,56 @@ if(isset($_POST["update_userr"])){
                             <label class="form-check-label" >°F</label>
                         </div>
                         <div class="form-check form-check-inline ml-3">
-                            <input class="form-check-input" type="radio" name="temperature_unit"  value="c" value="c" <?php if($row1["temp"]=="c") echo "checked"; ?>>
+                            <input class="form-check-input" type="radio" name="temperature_unit" value="c" <?php if($row1["temp"]=="c") echo "checked"; ?>>
                             <label class="form-check-label" >°C</label>
                         </div>
                     </div>
                     <div class="form-group row text-dark">
                         <label for="inputEmail3" class="col-form-label col-3 mx-3 font-weight-bold">Torque</label>
                         <div class="form-check form-check-inline ml-3">
-                            <input class="form-check-input" type="radio" name="torque_unit"  value="ft-lbs" value="ft-lbs" <?php if($row1["torque"]=="ft-lbs") echo "checked"; ?>>
+                            <input class="form-check-input" type="radio" name="torque_unit" value="ft-lbs" <?php if($row1["torque"]=="ft-lbs") echo "checked"; ?>>
                             <label class="form-check-label" >ft-lbs</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="torque_unit"  value="nm" value="nm" <?php if($row1["torque"]=="nm") echo "checked"; ?>>
+                            <input class="form-check-input" type="radio" name="torque_unit" value="nm" <?php if($row1["torque"]=="nm") echo "checked"; ?>>
                             <label class="form-check-label" >Nm</label>
                         </div>
                     </div>
                     <div class="form-group row text-dark">
                         <label for="inputEmail3" class="col-form-label col-3 mx-3 font-weight-bold">Pressure</label>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="pressure_unit"  value="bar" value="bar" <?php if($row1["pressure"]=="bar") echo "checked"; ?>>
+                            <input class="form-check-input" type="radio" name="pressure_unit" value="bar" <?php if($row1["pressure"]=="bar") echo "checked"; ?>>
                             <label class="form-check-label" >Bar</label>
                         </div>
                         <div class="form-check form-check-inline ml-3">
-                            <input class="form-check-input" type="radio" name="pressure_unit" value="psi" value="psi" <?php if($row1["pressure"]=="psi") echo "checked"; ?>>
+                            <input class="form-check-input" type="radio" name="pressure_unit" value="psi" <?php if($row1["pressure"]=="psi") echo "checked"; ?>>
                             <label class="form-check-label">psi</label>
                         </div>
                         <div class="form-check form-check-inline ml-3">
-                            <input class="form-check-input" type="radio" name="pressure_unit" id value="pa" value="pa" <?php if($row1["pressure"]=="pa") echo "checked"; ?>>
+                            <input class="form-check-input" type="radio" name="pressure_unit" value="pa" <?php if($row1["pressure"]=="pa") echo "checked"; ?>>
                             <label class="form-check-label">Pa</label>
                         </div>
                     </div>
                     <div class="form-group row text-dark">
                         <label for="inputEmail3" class="col-form-label col-3 mx-3 font-weight-bold">Distance</label>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="distance_unit" value="mm" value="mm" <?php if($row1["distance"]=="mm") echo "checked"; ?>>
+                            <input class="form-check-input" type="radio" name="distance_unit"  value="mm" <?php if($row1["distance"]=="mm") echo "checked"; ?>>
                             <label class="form-check-label">mm</label>
                         </div>
                         <div class="form-check form-check-inline ml-3">
-                            <input class="form-check-input" type="radio" name="distance_unit" value="in" value="in" <?php if($row1["distance"]=="in") echo "checked"; ?>>
+                            <input class="form-check-input" type="radio" name="distance_unit"  value="in" <?php if($row1["distance"]=="in") echo "checked"; ?>>
                             <label class="form-check-label">in</label>
+                        </div>
+                    </div>
+                    <div class="form-group row text-dark">
+                        <label for="inputEmail3" class="col-form-label col-3 mx-3 font-weight-bold">Time</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="time_format"  value="12" <?php if($row1["time_format"]=="12") echo "checked"; ?>>
+                            <label class="form-check-label">12 Hours</label>
+                        </div>
+                        <div class="form-check form-check-inline ml-3">
+                            <input class="form-check-input" type="radio" name="time_format" value="24" <?php if($row1["time_format"]=="24") echo "checked"; ?>>
+                            <label class="form-check-label">24 Hours</label>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -223,17 +234,21 @@ if(isset($_POST["update_units"])){
     $torque_unit = $_POST["torque_unit"];
     $pressure_unit = $_POST["pressure_unit"];
     $distance_unit = $_POST["distance_unit"];
+    $time = $_POST["time_format"];
 
     session_start();
-    if($temperature_unit=="c"){
-        $_SESSION["Celcius"] = true;
-    }
-    if($temperature_unit=="f"){
-        $_SESSION["Celcius"] = false;
-    }
+    //FOr temp
+    if($temperature_unit=="c"){ $_SESSION["Celcius"] = true; }
+    if($temperature_unit=="f"){ $_SESSION["Celcius"] = false; }
+    //For Time
+    if($time=="12"){ $_SESSION["time-24"] = false; }
+    if($time=="24"){ $_SESSION["time-24"] = true; }
+    //For Torque
+    if($torque_unit=="ft-lbs"){ $_SESSION["torque-FtLbs"] = true; }
+    if($torque_unit=="nm"){ $_SESSION["torque-FtLbs"] = false; }
 
     $sql = "UPDATE dashboard_units SET temp='$temperature_unit', torque='$torque_unit', pressure='$pressure_unit',
-            distance='$distance_unit' WHERE id=$device_id";
+            distance='$distance_unit', time_format=$time WHERE id=$device_id";
 
     if(mysqli_query($con, $sql)){
 //                    header('Location: users.php');

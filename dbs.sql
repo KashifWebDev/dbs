@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2021 at 02:29 PM
+-- Generation Time: Apr 28, 2021 at 03:17 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.5.37
 
@@ -252,15 +252,16 @@ CREATE TABLE `dashboard_units` (
   `temp` varchar(50) NOT NULL DEFAULT 'f',
   `torque` varchar(50) NOT NULL DEFAULT 'ft-lbs',
   `pressure` varchar(50) NOT NULL DEFAULT 'bar',
-  `distance` varchar(50) NOT NULL DEFAULT 'mm'
+  `distance` varchar(50) NOT NULL DEFAULT 'mm',
+  `time_format` int(2) NOT NULL DEFAULT '12'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `dashboard_units`
 --
 
-INSERT INTO `dashboard_units` (`id`, `device_id`, `temp`, `torque`, `pressure`, `distance`) VALUES
-(1, 1, 'f', 'nm', 'psi', 'in');
+INSERT INTO `dashboard_units` (`id`, `device_id`, `temp`, `torque`, `pressure`, `distance`, `time_format`) VALUES
+(1, 1, 'f', 'ft-lbs', 'bar', 'in', 12);
 
 -- --------------------------------------------------------
 
