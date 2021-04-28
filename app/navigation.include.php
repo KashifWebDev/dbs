@@ -158,48 +158,48 @@ if(isset($_POST["update_userr"])){
                     <div class="form-group row text-dark">
                         <label for="inputEmail3" class="col-form-label col-3 mx-3 font-weight-bold">Temperature</label>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="temperature_unit" value="f" checked>
+                            <input class="form-check-input" type="radio" name="temperature_unit" value="f" <?php if($row1["temp"]=="f") echo "checked"; ?>>
                             <label class="form-check-label" >°F</label>
                         </div>
                         <div class="form-check form-check-inline ml-3">
-                            <input class="form-check-input" type="radio" name="temperature_unit"  value="c">
+                            <input class="form-check-input" type="radio" name="temperature_unit"  value="c" value="c" <?php if($row1["temp"]=="c") echo "checked"; ?>>
                             <label class="form-check-label" >°C</label>
                         </div>
                     </div>
                     <div class="form-group row text-dark">
                         <label for="inputEmail3" class="col-form-label col-3 mx-3 font-weight-bold">Torque</label>
                         <div class="form-check form-check-inline ml-3">
-                            <input class="form-check-input" type="radio" name="torque_unit"  value="ft-lbs">
+                            <input class="form-check-input" type="radio" name="torque_unit"  value="ft-lbs" value="ft-lbs" <?php if($row1["torque"]=="ft-lbs") echo "checked"; ?>>
                             <label class="form-check-label" >ft-lbs</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="torque_unit"  value="nm">
+                            <input class="form-check-input" type="radio" name="torque_unit"  value="nm" value="nm" <?php if($row1["torque"]=="nm") echo "checked"; ?>>
                             <label class="form-check-label" >Nm</label>
                         </div>
                     </div>
                     <div class="form-group row text-dark">
                         <label for="inputEmail3" class="col-form-label col-3 mx-3 font-weight-bold">Pressure</label>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="pressure_unit"  value="bar">
+                            <input class="form-check-input" type="radio" name="pressure_unit"  value="bar" value="bar" <?php if($row1["pressure"]=="bar") echo "checked"; ?>>
                             <label class="form-check-label" >Bar</label>
                         </div>
                         <div class="form-check form-check-inline ml-3">
-                            <input class="form-check-input" type="radio" name="pressure_unit" value="psi">
+                            <input class="form-check-input" type="radio" name="pressure_unit" value="psi" value="psi" <?php if($row1["pressure"]=="psi") echo "checked"; ?>>
                             <label class="form-check-label">psi</label>
                         </div>
                         <div class="form-check form-check-inline ml-3">
-                            <input class="form-check-input" type="radio" name="pressure_unit" id value="pa">
+                            <input class="form-check-input" type="radio" name="pressure_unit" id value="pa" value="pa" <?php if($row1["pressure"]=="pa") echo "checked"; ?>>
                             <label class="form-check-label">Pa</label>
                         </div>
                     </div>
                     <div class="form-group row text-dark">
                         <label for="inputEmail3" class="col-form-label col-3 mx-3 font-weight-bold">Distance</label>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="distance_unit" value="mm">
+                            <input class="form-check-input" type="radio" name="distance_unit" value="mm" value="mm" <?php if($row1["distance"]=="mm") echo "checked"; ?>>
                             <label class="form-check-label">mm</label>
                         </div>
                         <div class="form-check form-check-inline ml-3">
-                            <input class="form-check-input" type="radio" name="distance_unit" value="in">
+                            <input class="form-check-input" type="radio" name="distance_unit" value="in" value="in" <?php if($row1["distance"]=="in") echo "checked"; ?>>
                             <label class="form-check-label">in</label>
                         </div>
                     </div>
@@ -218,7 +218,7 @@ if(isset($_POST["update_userr"])){
 </div>
 <?php
 if(isset($_POST["update_units"])){
-    print_r($_POST); exit(); die();
+//    print_r($_POST); exit(); die();
     $temperature_unit = $_POST["temperature_unit"];
     $torque_unit = $_POST["torque_unit"];
     $pressure_unit = $_POST["pressure_unit"];
