@@ -10,10 +10,10 @@ if (isset($_SESSION["darkTheme"]) && $_SESSION["darkTheme"] == 1){
 }
 ?>
 <nav class="navbar navbar-expand-sm d-flex align-items-center <?php echo $navClass; ?> font-roboto">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav d-flex align-items-center">
         <li class3="nav-item active">
             <a class="nav-link" href="#">
-                <img style="height: 30px;" src="assets/imgs/dbs.png">
+                <img style="height: 40px;" src="assets/imgs/dbs.png">
             </a>
         </li>
         <li class="nav-item ml-3">

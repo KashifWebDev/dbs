@@ -16,7 +16,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `project_dbs`
@@ -39,7 +39,7 @@ CREATE TABLE `custom_alerts` (
   `last_mnth_title` varchar(50) NOT NULL DEFAULT 'Last Month',
   `last_6mnth_check` varchar(50) NOT NULL DEFAULT 'on',
   `last_6mnth_title` varchar(50) NOT NULL DEFAULT 'Last Six Months'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `custom_alerts`
@@ -100,8 +100,8 @@ CREATE TABLE `custom_graph` (
   `graph_title` varchar(30) NOT NULL DEFAULT 'TORQUE HISTORY',
   `line_color` varchar(20) NOT NULL DEFAULT '#009cde',
   `line_name` varchar(20) NOT NULL DEFAULT 'Torque',
-  `y_unit` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'FT-LBS'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `y_unit` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'FT-LBS'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `custom_graph`
@@ -148,7 +148,7 @@ CREATE TABLE `custom_installation_info` (
   `driver_process_title` varchar(50) NOT NULL DEFAULT 'Process',
   `driver_size_check` varchar(20) NOT NULL DEFAULT 'on',
   `driver_size_title` varchar(50) NOT NULL DEFAULT 'Basin Size (diameter)'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `custom_installation_info`
@@ -173,12 +173,12 @@ INSERT INTO `custom_installation_info` (`id`, `device_id`, `drive_model_check`, 
 CREATE TABLE `custom_maintenance` (
   `id` int NOT NULL,
   `device_id` int NOT NULL,
-  `last_oil_change_main_check` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'on',
-  `last_oil_change_main_title` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT ' Last Oil Change (main gear)',
-  `next_oil_change_main_check` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'on',
-  `next_oil_change_main_title` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'Next Oil Change (main gear)',
-  `last_oil_lift_check` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'on',
-  `last_oil_lift_title` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'Last Oil Change (lift PU)',
+  `last_oil_change_main_check` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'on',
+  `last_oil_change_main_title` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT ' Last Oil Change (main gear)',
+  `next_oil_change_main_check` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'on',
+  `next_oil_change_main_title` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'Next Oil Change (main gear)',
+  `last_oil_lift_check` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'on',
+  `last_oil_lift_title` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'Last Oil Change (lift PU)',
   `next_oil_lift_check` varchar(50) NOT NULL DEFAULT 'on',
   `next_oil_lift_title` varchar(50) NOT NULL DEFAULT 'Next Oil Change (lift PU)',
   `next_service_check` varchar(50) NOT NULL DEFAULT 'on',
@@ -189,7 +189,7 @@ CREATE TABLE `custom_maintenance` (
   `last_repair_title` varchar(50) NOT NULL DEFAULT 'Last Repair(INC #)',
   `parts_repaired_check` varchar(50) NOT NULL DEFAULT 'on',
   `parts_repaired_title` varchar(50) NOT NULL DEFAULT 'Parts Repaired'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `custom_maintenance`
@@ -262,7 +262,7 @@ CREATE TABLE `installation_info` (
   `process` varchar(30) NOT NULL,
   `basin_size` varchar(30) NOT NULL,
   `service_since` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `installation_info`
@@ -292,7 +292,7 @@ CREATE TABLE `maintenance_record` (
   `last_repair` varchar(50) NOT NULL,
   `last_oil_change_main_gear` date NOT NULL,
   `parts_prepaired` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `maintenance_record`
@@ -328,7 +328,7 @@ CREATE TABLE `recorded_values` (
   `temp3` float NOT NULL,
   `Torque` int NOT NULL,
   `date_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `recorded_values`
@@ -5022,7 +5022,7 @@ CREATE TABLE `user_and_devices` (
   `meter_color_2` varchar(20) NOT NULL,
   `meter_color_3` varchar(20) NOT NULL,
   `manual` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `user_and_devices`

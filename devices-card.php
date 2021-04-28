@@ -11,7 +11,7 @@
 
         <div class="<?php echo $boxClass; ?> shadow-black px-3 py-2 border-radius-10px">
             <div class="d-flex">
-                <a href="device-details.php?id=<?php echo $row['id']; ?>" style="width: 95%;text-decoration: none;" class="d-flex text-dark">
+                <a href="device-details.php?id=<?php echo $row['id']; ?>" style="width: 95%;text-decoration: none;" class="d-flex auto_color_txt">
                     <div class="w-15">
                         <i class="fas fa-desktop <?php echo $fontColor; ?> fa-2x mt-3"></i>
                     </div>

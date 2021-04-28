@@ -12,6 +12,22 @@ verify_is_admin();
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"></link>
 
+<?php
+if ($_SESSION["darkTheme"] == 1){
+   ?>
+    <style>
+        table.dataTable tbody tr {
+            background-color: #6b6b6b !important;
+        }
+        .dataTables_length, #example_filter, .dataTables_info, #example_previous, #example_next{
+            color: white !important;
+        }
+    </style>
+<?php
+}
+?>
+
+
 <body>
 <!-- Navigation -->
 <?php require 'app/nav.include.php'; ?>
@@ -92,12 +108,13 @@ verify_is_admin();
                             ?>
                         </a>
                         <a href="users.php?delUser=<?php echo $row['id']; ?>" class="btn btn-danger">
-                            Delete
+                            <i class="fas fa-trash"></i> Delete
                         </a>
                         <a href="users.php?delUser=<?php echo $row['id']; ?>" class="btn btn-primary" data-toggle="modal" data-target="#update_<?php echo $rand; ?>">
-                            Update
+                            <i class="fas fa-edit"></i> Update
                         </a>
-                        <a href="users.php?blockUser=<?php echo $row['id']; ?>&action=<?php echo $action; ?>" class="btn btn-warning">
+                        <a href="users.php?blockUser=<?php echo $row['id']; ?>&action=<?php echo $action; ?>" class="btn btn-info">
+                            <i class="fas fa-shield-alt text-white mr-2"></i>
                             <?php
                             if($row["blocked"]){
                                 echo 'Unblock';
@@ -137,6 +154,10 @@ verify_is_admin();
                                         <label for="pwd" style="color: black;">Password:</label>
                                         <input type="password" class="form-control" name="password" placeholder="Enter password" id="pwd" value="<?php echo $row['password']; ?>">
                                     </div>
+                                    <div class="form-group">
+                                        <label for="email" style="color: black;">Contact Number:</label>
+                                        <input type="text" class="form-control" name="contact" placeholder="+1 584 458 485" id="email" value="<?php echo $row['contact']; ?>">
+                                    </div>
                                     <button type="submit" class="btn btn-primary" name="update_user">Update</button>
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                                     <input type="hidden" value="<?php echo $row['id']; ?>" name="user_id">
@@ -152,8 +173,9 @@ verify_is_admin();
                 $name = $_POST["username"];
                 $email = $_POST["email"];
                 $password = $_POST["password"];
+                $contact = $_POST["contact"];
                 $user_id = $_POST["user_id"];
-                $sql = "UPDATE users SET username='$name', email='$email', password='$password' WHERE id=$user_id";
+                $sql = "UPDATE users SET username='$name', email='$email', password='$password', contact='$contact' WHERE id=$user_id";
                 if(mysqli_query($con, $sql)){
 //                    header('Location: users.php');
                     echo '
