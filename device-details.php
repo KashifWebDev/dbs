@@ -78,7 +78,7 @@
                                       ?>
                                       <div id="flagBox" class="<?php echo $class; ?>">
                                           <div class="d-flex align-content-center">
-                                              <div class="circle_max_height circle_alert mr-2" id="loss_motion">
+                                              <div class="circle_max_height circle_alert mr-2" id="alarm">
                                               </div>
                                               <p class="d-flex align-items-center justify-content-center font-weight-bold circles_font_size">
                                                   ALARM
@@ -157,7 +157,7 @@
                                       ?>
                                       <div id="flagBox" class="<?php echo $class; ?>">
                                           <div class="d-flex align-content-center">
-                                              <div class="circle_max_height alert-green circle_alert mr-2" id="loss_motionn">
+                                              <div class="circle_max_height circle_alert mr-2" id="loss_motion">
                                               </div>
                                               <p class="d-flex align-items-center justify-content-center font-weight-bold circles_font_size">
                                                   LOSS MOTION
@@ -173,8 +173,16 @@
                                       <div id="flagbox" class="col-12 d-flex flex-column align-items-center justify-content-center">
                                           <p class="mr-3 tempText m-0">Oil Temperature :</p>
                                           <p class="text-danger">
-                                              <span id="tempValue">99</span>
-                                              <span id="tempValue" class="ml-2">°F</span>
+                                              <span id="tempValue" class="tempValueFormAPI">--</span>
+                                              <span id="tempValue" class="ml-2">
+                                              <?php
+                                              if(isset($_SESSION["Celcius"]) && $_SESSION["Celcius"]===true){
+                                                  echo "°C";
+                                              }else{
+                                                  echo "°F";
+                                              }
+                                              ?>
+                                              </span>
                                           </p>
                                           </p>
                                       </div>
@@ -873,12 +881,12 @@
         // console.log("update function here");
         setInterval(function() {
             $.getJSON("ajax/getDetails.php", {device_id: "<?php echo $_SESSION['device_details_id']; ?>"}, function(data) {
-                // console.log(data);
+                console.log(data);
                 updateFields(
                     data[0][0][0],
                     data[0][0][1],
                     data[0][0][2],
-                    data[0][3],
+                    data[0][0][3],
                     data[0][0][4],
                     data[0][0][5],
                     data[0][0][6],
@@ -1032,8 +1040,13 @@
             "events": {
                 "rendered": function(evtObj, argObj) {
                     evtObj.sender.intervalVar = setInterval(function() {
-                        var prcnt = parseInt(Math.floor(Math.random() * 101));
-                        FusionCharts.items["cpu-linear-gauge-1"].feedData("value=" + prcnt);
+                        // var prcnt = parseInt(Math.floor(Math.random() * 101));
+                        // FusionCharts.items["cpu-linear-gauge-1"].feedData("value=" + prcnt);
+                        //Real TIme value
+                        $.getJSON("ajax/getLiftValue.php", {id: "<?php echo $device_id; ?>"}, function(data) {
+                            console.log("Bar live data: "+data);
+                            FusionCharts.items["cpu-linear-gauge-1"].feedData("value=" + data[0]);
+                        });
                     }, 5000);
                 },
                 "disposed": function(evtObj, argObj) {

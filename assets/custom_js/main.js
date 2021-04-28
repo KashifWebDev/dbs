@@ -8,6 +8,8 @@ function updateFields(circle1, circle2, circle3, circle4, circle5, circle6, bar1
     // $("#second_progress").text(value2);
     $("#vertical_bar_value_1").text(bar1);
     $("#vertical_bar_value_2").text(bar2);
+    $(".tempValueFormAPI").text(bar2);
+    console.log("Temp Val: :" + bar2);
 
 
     //SETTING ALERT CIRCLES

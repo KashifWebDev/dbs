@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2021 at 01:18 PM
+-- Generation Time: Apr 28, 2021 at 02:29 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.5.37
 
@@ -260,7 +260,7 @@ CREATE TABLE `dashboard_units` (
 --
 
 INSERT INTO `dashboard_units` (`id`, `device_id`, `temp`, `torque`, `pressure`, `distance`) VALUES
-(1, 1, 'c', 'nm', 'pa', 'in');
+(1, 1, 'f', 'nm', 'psi', 'in');
 
 -- --------------------------------------------------------
 

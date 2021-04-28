@@ -7,6 +7,7 @@ header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,
 
 
 require '../app/db.php';
+session_start();
 
 $id = $_GET["device_id"];
 $sql = "SELECT * FROM user_and_devices WHERE id=$id";
@@ -30,7 +31,15 @@ $res1 = mysqli_query($con, $sql1);
 $obj = array([], 'graph' => [], 'torque' => []);
 if (mysqli_num_rows($res1)) {
     $row = mysqli_fetch_array($res1);
-        $data = array(
+
+    if(isset($_SESSION["Celcius"]) && $_SESSION["Celcius"]===true){
+        $tempValue = round(($row["oilTemp_verticalBar"] - 32) * (5/9)); // in C
+    }else{
+//        $tempValue = (int) (($row["oilTemp_verticalBar"] * 9 / 5) + 32); // in F
+        $tempValue = $row["oilTemp_verticalBar"]; // in F
+    }
+
+    $data = array(
             $row["alarm_cirlcleVal"],
             $row["cutOff_cirlcleVal"],
             $row["liftActive_cirlcleVal"],
@@ -38,7 +47,7 @@ if (mysqli_num_rows($res1)) {
             $row["lowOil_cirlcleVal"],
             $row["lossMotion_cirlcleVal"],
             $row["leftPosition_verticalBar"],
-            $row["oilTemp_verticalBar"]
+            $tempValue
         );
 
         array_push($obj[0], $data);

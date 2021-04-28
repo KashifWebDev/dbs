@@ -224,6 +224,14 @@ if(isset($_POST["update_units"])){
     $pressure_unit = $_POST["pressure_unit"];
     $distance_unit = $_POST["distance_unit"];
 
+    session_start();
+    if($temperature_unit=="c"){
+        $_SESSION["Celcius"] = true;
+    }
+    if($temperature_unit=="f"){
+        $_SESSION["Celcius"] = false;
+    }
+
     $sql = "UPDATE dashboard_units SET temp='$temperature_unit', torque='$torque_unit', pressure='$pressure_unit',
             distance='$distance_unit' WHERE id=$device_id";
 
