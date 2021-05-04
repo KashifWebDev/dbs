@@ -6,15 +6,12 @@ $username = "turkvjwp_fingerprinttest";
 $password = "fingerprinttest";
 $dbname = "turkvjwp_dbs";
 
-//$servername = "localhost";
-//$username = "root";
-//$password = "kashif@123";
-//$dbname = "project_dbs";
+
 
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "dbs";
+$dbname = "project_dbs";
 
 $con = mysqli_connect($servername, $username, $password, $dbname);
 if(!$con){ ?>

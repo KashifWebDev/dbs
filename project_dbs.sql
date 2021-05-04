@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 5.1.0
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2021 at 03:17 PM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 5.5.37
+-- Generation Time: May 04, 2021 at 11:22 AM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `dbs`
+-- Database: `project_dbs`
 --
 
 -- --------------------------------------------------------
@@ -253,7 +254,7 @@ CREATE TABLE `dashboard_units` (
   `torque` varchar(50) NOT NULL DEFAULT 'ft-lbs',
   `pressure` varchar(50) NOT NULL DEFAULT 'bar',
   `distance` varchar(50) NOT NULL DEFAULT 'mm',
-  `time_format` int(2) NOT NULL DEFAULT '12'
+  `time_format` int(2) NOT NULL DEFAULT 12
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -261,7 +262,7 @@ CREATE TABLE `dashboard_units` (
 --
 
 INSERT INTO `dashboard_units` (`id`, `device_id`, `temp`, `torque`, `pressure`, `distance`, `time_format`) VALUES
-(1, 1, 'f', 'ft-lbs', 'bar', 'in', 12);
+(1, 1, 'f', 'ft-lbs', 'bar', 'in', 24);
 
 -- --------------------------------------------------------
 
@@ -348,7 +349,7 @@ CREATE TABLE `recorded_values` (
   `temp2` float NOT NULL,
   `temp3` float NOT NULL,
   `Torque` int(11) NOT NULL,
-  `date_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date_time` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -5009,22 +5010,20 @@ CREATE TABLE `users` (
   `username` varchar(20) NOT NULL,
   `email` varchar(30) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `is_admin` tinyint(1) NOT NULL DEFAULT '0',
-  `blocked` tinyint(1) NOT NULL DEFAULT '0',
-  `contact` varchar(50) DEFAULT NULL
+  `is_admin` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `password`, `is_admin`, `blocked`, `contact`) VALUES
-(1, 'Administrator', 'admin@admin.com', 'admin@123', 1, 0, NULL),
-(2, 'User', 'user@user.com', 'user@123', 0, 0, '323232444'),
-(19, 'Test User', 'kashifkhan@loketa.com', 'Test User', 0, 0, NULL),
-(20, 'abc', 'abc@def.com', 'abc@def.com', 0, 0, NULL),
-(22, 'aaa', 'adf@adf.root', 'adf@adf.root', 0, 0, NULL),
-(27, 'abc', 'abc@aaaa.2q', 'abc@aaaa.2q', 0, 0, '3232324');
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `is_admin`) VALUES
+(1, 'Administrator', 'admin@admin.com', 'admin@123', 1),
+(2, 'User', 'user@user.com', 'user@123', 0),
+(19, 'Test User', 'kashifkhan@loketa.com', 'Test User', 0),
+(20, 'abc', 'abc@def.com', 'abc@def.com', 0),
+(22, 'aaa', 'adf@adf.root', 'adf@adf.root', 0),
+(27, 'abc', 'abc@aaaa.2q', 'abc@aaaa.2q', 0);
 
 -- --------------------------------------------------------
 
@@ -5126,8 +5125,7 @@ ALTER TABLE `recorded_values`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`),
-  ADD UNIQUE KEY `email_2` (`email`),
-  ADD UNIQUE KEY `id` (`id`);
+  ADD UNIQUE KEY `email_2` (`email`);
 
 --
 -- Indexes for table `user_and_devices`
@@ -5144,61 +5142,74 @@ ALTER TABLE `user_and_devices`
 --
 ALTER TABLE `custom_alerts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
 -- AUTO_INCREMENT for table `custom_devicestatus`
 --
 ALTER TABLE `custom_devicestatus`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
 -- AUTO_INCREMENT for table `custom_graph`
 --
 ALTER TABLE `custom_graph`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
 -- AUTO_INCREMENT for table `custom_installation_info`
 --
 ALTER TABLE `custom_installation_info`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
 -- AUTO_INCREMENT for table `custom_maintenance`
 --
 ALTER TABLE `custom_maintenance`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
 -- AUTO_INCREMENT for table `custom_sections`
 --
 ALTER TABLE `custom_sections`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
 -- AUTO_INCREMENT for table `dashboard_units`
 --
 ALTER TABLE `dashboard_units`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `installation_info`
 --
 ALTER TABLE `installation_info`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
 -- AUTO_INCREMENT for table `maintenance_record`
 --
 ALTER TABLE `maintenance_record`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `recorded_values`
 --
 ALTER TABLE `recorded_values`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4635;
+
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
 --
 -- AUTO_INCREMENT for table `user_and_devices`
 --
 ALTER TABLE `user_and_devices`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
