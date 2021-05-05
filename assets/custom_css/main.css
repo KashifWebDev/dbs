@@ -183,6 +183,13 @@ table{
     font-family: 'Roboto', sans-serif;
     margin-bottom: 4px;
 }
+#navHeading{
+    font-weight: 500;
+    font-size: revert;
+}
+.font-size-xLarger{
+    font-size: x-large;
+}
 
 
 

@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: May 04, 2021 at 06:36 AM
--- Server version: 10.3.28-MariaDB-log-cll-lve
--- PHP Version: 7.3.26
+-- Host: 127.0.0.1
+-- Generation Time: May 05, 2021 at 08:11 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `turkvjwp_dbs`
+-- Database: `project_dbs`
 --
 
 -- --------------------------------------------------------
@@ -5777,10 +5776,7 @@ CREATE TABLE `user_and_devices` (
 --
 
 INSERT INTO `user_and_devices` (`id`, `user_id`, `mac`, `device_name`, `meter_ranges`, `meter_range_1`, `meter_range_2`, `meter_range_3`, `meter_color_1`, `meter_color_2`, `meter_color_3`, `manual`) VALUES
-(1, 2, 'testing:mac', 'Testing Device', '0,2500,5000,7500,10000,12500,15000,175000,20000,22500,25000,27500,30000000', 10000, 20000, 30000, '#62B58F', '#FFC533', '#F2726F', ''),
-(26, 22, 'test', 'test', '1,5,10', 4, 7, 10, 'yellow', 'pink', 'brown', 'Dashboard functionality control - Rev 4-9-21 (1).docx'),
-(37, 27, 'kkkk', 'kkkk', '1,2,3,4,5,6,7,8,9,10', 3, 7, 10, 'purple', 'pink', 'green', 'Mentor Unsubscribe mock - v1.2.png'),
-(38, 2, '11:22:33:44:55', 'adsasdasd', '1,5,10', 0, 0, 0, '', '', '', 'DF62_CL0544-0558-9-00_specSheet.pdf');
+(1, 2, 'testing:mac', 'Testing Device', '0,2500,5000,7500,10000,12500,15000,175000,20000,22500,25000,27500,30000000', 10000, 20000, 30000, '#62B58F', '#FFC533', '#F2726F', '');
 
 --
 -- Indexes for dumped tables
