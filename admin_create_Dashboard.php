@@ -30,8 +30,28 @@ $_SESSION['currentPath'] = "./";
                     <!--Dashboard Information Tab-->
                     <div class="tab-pane fade show active bg-white shadow p-3" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                         <div class="form-group">
+                            <label>Select Device</label>
+                            <select class="form-control" id="sel1" name="device_id" required>
+                                <option>-- Select device to link --</option>
+                                <?php
+                                require 'app/db.php';
+                                $sql = "SELECT * FROM user_and_devices";
+                                $res = mysqli_query($con, $sql);
+                                while($row = mysqli_fetch_array($res)){
+                                    ?>
+                                    <option value="<?php echo $row["id"]; ?>"><?php echo $row["device_name"].' ('.$row["mac"].')'; ?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label>Dashboard Name</label>
                             <input type="text" class="form-control" placeholder="New Dashboard" name="dashboardName">
+                        </div>
+                        <div class="form-group">
+                            <label>Site Operator's Email Address</label>
+                            <input type="email" class="form-control" placeholder="User Email" name="userEmail">
                         </div>
                     </div>
 
@@ -103,7 +123,7 @@ $_SESSION['currentPath'] = "./";
                         <h2 id="navHeading" class="font-roboto">Horizontal Lines</h2>
                         <hr>
                         <form>
-                            <div id="element1" class="form-group row">
+                            <div id="row1" class="form-group row">
                                 <label for="inputPassword" class="mx-2 ml-3 col-form-label">Line Name</label>
                                 <div>
                                     <input type="text" class="form-control" id="inputPassword" placeholder="Alarm" name="graphLineName1">
@@ -117,9 +137,9 @@ $_SESSION['currentPath'] = "./";
                                         </div>
                                     </div>
                                 </div>
-                                <i class="fas fa-trash-alt text-danger font-size-xLarger ml-4 mt-2" id="removeElememnt1"></i>
+                                <i class="fas fa-trash-alt text-danger font-size-xLarger ml-4 mt-2" id="delRow1"></i>
                             </div>
-                            <div id="element2" class="form-group row">
+                            <div id="row2" class="form-group row">
                                 <label for="inputPassword" class="mx-2 ml-3 col-form-label">Line Name</label>
                                 <div>
                                     <input type="text" class="form-control" id="inputPassword" placeholder="Alarm" name="graphLineName1">
@@ -133,14 +153,29 @@ $_SESSION['currentPath'] = "./";
                                         </div>
                                     </div>
                                 </div>
-                                <i class="fas fa-trash-alt text-danger font-size-xLarger ml-4 mt-2"></i>
+                                <i class="fas fa-trash-alt text-danger font-size-xLarger ml-4 mt-2" id="delRow2"></i>
                             </div>
 
-                            <button class="btn btn-primary ml-1" type="button">
+                            <button class="btn btn-primary ml-1" type="button" id="addRow">
                                 <i class="fas fa-plus"></i>
                             </button>
-                            <script>
-
+                            <script type="text/javascript">
+                                $("#addRow").hide();
+                                $("#delRow1").click(function(){
+                                    $("#row1").hide();
+                                    $("#addRow").show();
+                                });
+                                $("#delRow2").click(function(){
+                                    $("#row2").hide();
+                                    $("#addRow").show();
+                                });
+                                $("#addRow").click(function(){
+                                    if($("#row1").is(":visible")){
+                                        $("#row2").show();
+                                    } else{
+                                        $("#row1").show();
+                                    }
+                                });
                             </script>
                         </form>
                     </div>

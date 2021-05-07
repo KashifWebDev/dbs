@@ -152,8 +152,8 @@ $_SESSION['currentPath'] = "./";
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id="">0 - </span>
                                                 </div>
-                                                <input onkeyup="func1()" id="box111" type="text" class="form-control" placeholder="Range" name="rng1"  value="<?php echo $mainRow["meter_range_1"]; ?>">
-                                                <input type="text" class="form-control" placeholder="Color" name="clr1" value="<?php echo $mainRow["meter_color_1"]; ?>">
+                                                <input onkeyup="func1()" id="box111" type="text" class="form-control" placeholder="Range" name="rng1">
+                                                <input type="text" class="form-control" placeholder="Color" name="clr1">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -161,8 +161,8 @@ $_SESSION['currentPath'] = "./";
                                                 <div class="input-group-prepend">
                                                     <p class="input-group-text" id="ffff"><span id="r2">0</span> - </p>
                                                 </div>
-                                                <input onkeyup="func2()" id="box2222" type="text" class="form-control" placeholder="Range" name="rng2" value="<?php echo $mainRow["meter_range_2"]; ?>">
-                                                <input type="text" class="form-control" placeholder="Color" name="clr2" value="<?php echo $mainRow["meter_color_2"]; ?>">
+                                                <input onkeyup="func2()" id="box2222" type="text" class="form-control" placeholder="Range" name="rng2">
+                                                <input type="text" class="form-control" placeholder="Color" name="clr2">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -170,8 +170,8 @@ $_SESSION['currentPath'] = "./";
                                                 <div class="input-group-prepend">
                                                     <p class="input-group-text" id="eeee"><span id="r3">0</span> - </p>
                                                 </div>
-                                                <input id="box3" type="text" class="form-control" placeholder="Range" name="rng3" value="<?php echo $mainRow["meter_range_3"]; ?>">
-                                                <input type="text" class="form-control" placeholder="Color" name="clr3" value="<?php echo $mainRow["meter_color_3"]; ?>">
+                                                <input id="box3" type="text" class="form-control" placeholder="Range" name="rng3">
+                                                <input type="text" class="form-control" placeholder="Color" name="clr3">
                                             </div>
                                         </div>
                                     </div>
