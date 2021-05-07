@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 05, 2021 at 08:11 PM
+-- Generation Time: May 07, 2021 at 09:25 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -45,15 +45,34 @@ CREATE TABLE `custom_alerts` (
 --
 
 INSERT INTO `custom_alerts` (`id`, `device_id`, `today_check`, `today_title`, `last_7_check`, `last_7_title`, `last_mnth_check`, `last_mnth_title`, `last_6mnth_check`, `last_6mnth_title`) VALUES
-(1, 1, 'on', 'Todayx', 'on', 'Last 7 Days', 'on', 'Last Month', 'on', 'Last Six Months'),
-(2, 26, 'on', 'Today', 'on', 'Last 7 Days', 'on', 'Last Month', 'on', 'Last Six Months'),
-(3, 28, 'on', 'Today', 'on', 'Last 7 Days', 'on', 'Last Month', 'on', 'Last Six Months'),
-(4, 30, 'on', 'Today', 'on', 'Last 7 Days', 'on', 'Last Month', 'on', 'Last Six Months'),
-(5, 32, 'on', 'Today', 'on', 'Last 7 Days', 'on', 'Last Month', 'on', 'Last Six Months'),
-(6, 34, 'on', 'Today', 'on', 'Last 7 Days', 'on', 'Last Month', 'on', 'Last Six Months'),
-(7, 36, 'on', 'Today', 'on', 'Last 7 Days', 'on', 'Last Month', 'on', 'Last Six Months'),
-(8, 37, 'on', 'Today', 'on', 'Last 7 Days', 'on', 'Last Month', 'on', 'Last Six Months'),
-(9, 38, 'on', 'Today', 'on', 'Last 7 Days', 'on', 'Last Month', 'on', 'Last Six Months');
+(1, 0, 'on', 'Todayx', 'on', 'Last 7 Days', 'on', 'Last Month', 'on', 'Last Six Months'),
+(10, 40, 'on', 'Todayx', 'on', 'Last 7 Days', 'on', 'Last Month', 'on', 'Last Six Months'),
+(11, 41, '', '<br /><b>Warning</b>:  Trying to access array offs', '', '<br /><b>Warning</b>:  Trying to access array offs', '', '<br /><b>Warning</b>:  Trying to access array offs', '', '<br /><b>Warning</b>:  Trying to access array offs');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `custom_dashboards`
+--
+
+CREATE TABLE `custom_dashboards` (
+  `id` int(11) NOT NULL,
+  `device_id` int(50) NOT NULL,
+  `user_id` int(50) NOT NULL,
+  `dashboardName` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `custom_dashboards`
+--
+
+INSERT INTO `custom_dashboards` (`id`, `device_id`, `user_id`, `dashboardName`, `email`) VALUES
+(9, 40, 2, 'dashboard Name Here', 'kashifkhan@loketa.com'),
+(12, 41, 0, '', ''),
+(13, 41, 19, 'dashboard Name Here', 'kashifkhan@loketa.com'),
+(14, 41, 19, 'dashboard Name Here', 'kashifkhan@loketa.com'),
+(15, 41, 19, 'dashboard Name Here', 'kashifkhan@loketa.com');
 
 -- --------------------------------------------------------
 
@@ -79,15 +98,9 @@ CREATE TABLE `custom_devicestatus` (
 --
 
 INSERT INTO `custom_devicestatus` (`id`, `device_id`, `a1`, `a2`, `a3`, `a4`, `a5`, `a6`, `a7`, `a8`) VALUES
-(1, 1, 'on', '', 'on', '', 'on', '', '', 'on'),
-(2, 26, 'on', 'on', 'on', 'on', 'on', 'on', 'on', 'on'),
-(3, 28, 'on', 'on', 'on', 'on', 'on', 'on', 'on', 'on'),
-(4, 30, 'on', 'on', 'on', 'on', 'on', 'on', 'on', 'on'),
-(5, 32, 'on', 'on', 'on', 'on', 'on', 'on', 'on', 'on'),
-(6, 34, 'on', 'on', 'on', 'on', 'on', 'on', 'on', 'on'),
-(7, 36, 'on', 'on', 'on', 'on', 'on', 'on', 'on', 'on'),
-(8, 37, 'on', 'on', 'on', 'on', 'on', 'on', 'on', 'on'),
-(9, 38, 'on', 'on', 'on', 'on', 'on', 'on', 'on', 'on');
+(1, 0, 'on', 'on', 'on', 'on', 'on', 'on', 'on', 'on'),
+(10, 40, 'on', 'on', 'on', 'on', 'on', 'on', 'on', 'on'),
+(11, 41, '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -101,23 +114,27 @@ CREATE TABLE `custom_graph` (
   `graph_title` varchar(30) NOT NULL DEFAULT 'TORQUE HISTORY',
   `line_color` varchar(20) NOT NULL DEFAULT '#009cde',
   `line_name` varchar(20) NOT NULL DEFAULT 'Torque',
-  `y_unit` varchar(20) NOT NULL DEFAULT 'FT-LBS'
+  `y_unit` varchar(20) NOT NULL DEFAULT 'FT-LBS',
+  `line1` varchar(50) NOT NULL,
+  `line1_value` int(50) NOT NULL,
+  `line2` varchar(50) NOT NULL,
+  `line2_value` int(50) NOT NULL,
+  `show_legends` varchar(10) NOT NULL,
+  `legends1` varchar(10) NOT NULL,
+  `legends2` varchar(10) NOT NULL,
+  `legends3` varchar(10) NOT NULL,
+  `legends4` varchar(10) NOT NULL,
+  `legends5` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `custom_graph`
 --
 
-INSERT INTO `custom_graph` (`id`, `device_id`, `graph_title`, `line_color`, `line_name`, `y_unit`) VALUES
-(1, 1, 'Graph112', '#009cde', 'Torque', 'FT-LBS'),
-(2, 26, 'Graph112', 'blue', 'Torque', 'ft-lbs'),
-(3, 28, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS'),
-(4, 30, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS'),
-(5, 32, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS'),
-(6, 34, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS'),
-(7, 36, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS'),
-(8, 37, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS'),
-(9, 38, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS');
+INSERT INTO `custom_graph` (`id`, `device_id`, `graph_title`, `line_color`, `line_name`, `y_unit`, `line1`, `line1_value`, `line2`, `line2_value`, `show_legends`, `legends1`, `legends2`, `legends3`, `legends4`, `legends5`) VALUES
+(1, 0, 'Graph112', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', '', '', '', '', ''),
+(10, 40, 'Graphs', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', '', '', '', '', ''),
+(11, 41, 'Graph', '<br /><b>Warning</b>', '<br /><b>Warning</b>', '<br /><b>Warning</b>', '', 0, '', 0, '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -157,15 +174,9 @@ CREATE TABLE `custom_installation_info` (
 --
 
 INSERT INTO `custom_installation_info` (`id`, `device_id`, `drive_model_check`, `drive_model_title`, `drive_rating_check`, `drive_rating_title`, `drive_speed_check`, `drive_speed_title`, `drive_motor_check`, `drive_motor_title`, `drive_lift_check`, `drive_lift_title`, `drive_service_check`, `drive_service_title`, `driver_sn_check`, `driver_sn_title`, `driver_user_check`, `driver_user_title`, `driver_installation_check`, `driver_installation_title`, `driver_process_check`, `driver_process_title`, `driver_size_check`, `driver_size_title`) VALUES
-(1, 1, 'on', 'Drive Model', 'on', 'Driver Continuous Rating', 'on', 'Output Speed', 'on', 'Electric Motor Rake', 'on', 'Electric Motor Lift', 'on', 'In Service Since', 'on', 'Driver SN', 'on', 'End User', 'on', 'Installation', 'on', 'Process', 'on', 'Basin Size (diameter)'),
-(2, 26, 'on', 'Drive Model', 'on', 'Driver Continuous Rating', 'on', 'Output Speed', 'on', 'Electric Motor Rake', 'on', 'Electric Motor Lift', 'on', 'In Service Since', 'on', 'Driver SN', 'on', 'End User', 'on', 'Installation', 'on', 'Process', 'on', 'Basin Size (diameter)'),
-(3, 28, 'on', 'Drive Model', 'on', 'Driver Continuous Rating', 'on', 'Output Speed', 'on', 'Electric Motor Rake', 'on', 'Electric Motor Lift', 'on', 'In Service Since', 'on', 'Driver SN', 'on', 'End User', 'on', 'Installation', 'on', 'Process', 'on', 'Basin Size (diameter)'),
-(4, 30, 'on', 'Drive Model', 'on', 'Driver Continuous Rating', 'on', 'Output Speed', 'on', 'Electric Motor Rake', 'on', 'Electric Motor Lift', 'on', 'In Service Since', 'on', 'Driver SN', 'on', 'End User', 'on', 'Installation', 'on', 'Process', 'on', 'Basin Size (diameter)'),
-(5, 32, 'on', 'Drive Model', 'on', 'Driver Continuous Rating', 'on', 'Output Speed', 'on', 'Electric Motor Rake', 'on', 'Electric Motor Lift', 'on', 'In Service Since', 'on', 'Driver SN', 'on', 'End User', 'on', 'Installation', 'on', 'Process', 'on', 'Basin Size (diameter)'),
-(6, 34, 'on', 'Drive Model', 'on', 'Driver Continuous Rating', 'on', 'Output Speed', 'on', 'Electric Motor Rake', 'on', 'Electric Motor Lift', 'on', 'In Service Since', 'on', 'Driver SN', 'on', 'End User', 'on', 'Installation', 'on', 'Process', 'on', 'Basin Size (diameter)'),
-(7, 36, 'on', 'Drive Model', 'on', 'Driver Continuous Rating', 'on', 'Output Speed', 'on', 'Electric Motor Rake', 'on', 'Electric Motor Lift', 'on', 'In Service Since', 'on', 'Driver SN', 'on', 'End User', 'on', 'Installation', 'on', 'Process', 'on', 'Basin Size (diameter)'),
-(8, 37, 'on', 'Drive Model', 'on', 'Driver Continuous Rating', 'on', 'Output Speed', 'on', 'Electric Motor Rake', 'on', 'Electric Motor Lift', 'on', 'In Service Since', 'on', 'Driver SN', 'on', 'End User', 'on', 'Installation', 'on', 'Process', 'on', 'Basin Size (diameter)'),
-(9, 38, 'on', 'Drive Model', 'on', 'Driver Continuous Rating', 'on', 'Output Speed', 'on', 'Electric Motor Rake', 'on', 'Electric Motor Lift', 'on', 'In Service Since', 'on', 'Driver SN', 'on', 'End User', 'on', 'Installation', 'on', 'Process', 'on', 'Basin Size (diameter)');
+(1, 0, 'on', 'Drive Model', 'on', 'Driver Continuous Rating', 'on', 'Output Speed', 'on', 'Electric Motor Rake', 'on', 'Electric Motor Lift', 'on', 'In Service Since', 'on', 'Driver SN', 'on', 'End User', 'on', 'Installation', 'on', 'Process', 'on', 'Basin Size (diameter)'),
+(10, 40, 'on', 'Drive Model', 'on', 'Driver Continuous Rating', 'on', 'Output Speed', 'on', 'Electric Motor Rake', 'on', 'Electric Motor Lift', 'on', 'In Service Since', 'on', 'Driver SN', 'on', 'End User', 'on', 'Installation', 'on', 'Process', 'on', 'Basin Size (diameter)'),
+(11, 41, '', '<br /><b>Warning</b>:  Trying to access array offs', '', '<br /><b>Warning</b>:  Trying to access array offs', '', '<br /><b>Warning</b>:  Trying to access array offs', '', '<br /><b>Warning</b>:  Trying to access array offs', '', '<br /><b>Warning</b>:  Trying to access array offs', '', '<br /><b>Warning</b>:  Trying to access array offs', '', '<br /><b>Warning</b>:  Trying to access array offs', '', '<br /><b>Warning</b>:  Trying to access array offs', '', '<br /><b>Warning</b>:  Trying to access array offs', '', '<br /><b>Warning</b>:  Trying to access array offs', 'on', 'Basin Size (diameter)');
 
 -- --------------------------------------------------------
 
@@ -199,15 +210,9 @@ CREATE TABLE `custom_maintenance` (
 --
 
 INSERT INTO `custom_maintenance` (`id`, `device_id`, `last_oil_change_main_check`, `last_oil_change_main_title`, `next_oil_change_main_check`, `next_oil_change_main_title`, `last_oil_lift_check`, `last_oil_lift_title`, `next_oil_lift_check`, `next_oil_lift_title`, `next_service_check`, `next_service_title`, `dbs_warranty_check`, `dbs_warranty_title`, `last_repair_check`, `last_repair_title`, `parts_repaired_check`, `parts_repaired_title`) VALUES
-(1, 1, 'on', 'Next Oil Change (main gear)', 'on', 'Next Oil Change (main gear)', 'on', 'Driver Continuous Rating', 'on', 'days', 'on', 'Time Interval', 'on', 'DBS Warrantyr', 'on', 'Last Repair(INC #)', 'on', 'Parts Repaired'),
-(2, 26, 'on', 'Last Oil Change (main gear)', 'on', 'Next Oil Change (main gear):', 'on', 'Last Oil Change (lift PU)', 'on', 'Next Oil Change (lift PU)', 'on', 'Next Schedule Service', 'on', 'DBS Warranty', 'on', 'Last Repair(INC #)', 'on', 'Parts Repaired'),
-(3, 28, 'on', 'Last Oil Change (main gear)', 'on', 'Next Oil Change (main gear):', 'on', 'Driver Continuous Rating', 'on', 'Next Oil Change (lift PU)', 'on', 'Next Schedule Service', 'on', 'DBS Warranty', 'on', 'Last Repair(INC #)', 'on', 'Parts Repaired'),
-(4, 30, 'on', 'Last Oil Change (main gear)', 'on', 'Next Oil Change (main gear):', 'on', 'Driver Continuous Rating', 'on', 'Next Oil Change (lift PU)', 'on', 'Next Schedule Service', 'on', 'DBS Warranty', 'on', 'Last Repair(INC #)', 'on', 'Parts Repaired'),
-(5, 32, 'on', 'Last Oil Change (main gear)', 'on', 'Next Oil Change (main gear):', 'on', 'Driver Continuous Rating', 'on', 'Next Oil Change (lift PU)', 'on', 'Next Schedule Service', 'on', 'DBS Warranty', 'on', 'Last Repair(INC #)', 'on', 'Parts Repaired'),
-(6, 34, 'on', 'Last Oil Change (main gear)', 'on', 'Next Oil Change (main gear):', 'on', 'Driver Continuous Rating', 'on', 'Next Oil Change (lift PU)', 'on', 'Next Schedule Service', 'on', 'DBS Warranty', 'on', 'Last Repair(INC #)', 'on', 'Parts Repaired'),
-(7, 36, 'on', 'Last Oil Change (main gear)', 'on', 'Next Oil Change (main gear):', 'on', 'Driver Continuous Rating', 'on', 'Next Oil Change (lift PU)', 'on', 'Next Schedule Service', 'on', 'DBS Warranty', 'on', 'Last Repair(INC #)', 'on', 'Parts Repaired'),
-(8, 37, 'on', 'Last Oil Change (main gear)', 'on', 'Next Oil Change (main gear):', 'on', 'Driver Continuous Rating', 'on', 'Next Oil Change (lift PU)', 'on', 'Next Schedule Service', 'on', 'DBS Warranty', 'on', 'Last Repair(INC #)', 'on', 'Parts Repaired'),
-(9, 38, 'on', ' Last Oil Change (main gear)', 'on', 'Next Oil Change (main gear)', 'on', 'Last Oil Change (lift PU)', 'on', 'Next Oil Change (lift PU)', 'on', 'Next Schedule Service', 'on', 'DBS Warranty', 'on', 'Last Repair(INC #)', 'on', 'Parts Repaired');
+(1, 0, 'on', 'Next Oil Change (main gear)', 'on', 'Next Oil Change (main gear)', 'on', 'Driver Continuous Rating', 'on', 'days', 'on', 'Time Interval', 'on', 'DBS Warrantyr', 'on', 'Last Repair(INC #)', 'on', 'Parts Repaired'),
+(10, 40, 'on', 'Next Oil Change (main gear)', 'on', 'Next Oil Change (main gear)', 'on', 'Driver Continuous Rating', 'on', 'days', 'on', 'Time Interval', 'on', 'DBS Warrantyr', 'on', 'Last Repair(INC #)', 'on', 'Parts Repaired'),
+(11, 41, '', '<br /><b>Warning</b>:  Trying to access array offs', '', '<br /><b>Warning</b>:  Trying to access array offs', '', '<br /><b>Warning</b>:  Trying to access array offs', '', '<br /><b>Warning</b>:  Trying to access array offs', '', '<br /><b>Warning</b>:  Trying to access array offs', '', '<br /><b>Warning</b>:  Trying to access array offs', '', '<br /><b>Warning</b>:  Trying to access array offs', '', '<br /><b>Warning</b>:  Trying to access array offs');
 
 -- --------------------------------------------------------
 
@@ -237,15 +242,9 @@ CREATE TABLE `custom_sections` (
 --
 
 INSERT INTO `custom_sections` (`id`, `device_id`, `device_settings_check`, `torque_gauge_check`, `graph_check`, `installation_info_check`, `alerts_check`, `maintenance_check`, `installation_info_title`, `alerts_title`, `maintenance_title`, `device_settings_title`, `graph_title`, `torque_title`) VALUES
-(1, 1, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFO', 'ALERTS', 'MAINTENANCE RECORD0', 'Device Settings', 'Graph112', 'Torque Gauge'),
-(2, 26, 'on', 'on', 'on', 'on', 'on', 'on', 'Installation', 'ALERTS', 'MAINTENANCE RECORD', 'PANEL DEVICES', 'Graph112', 'Torque Gauge'),
-(3, 28, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph112', 'Torque Gauge'),
-(4, 30, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph112', 'Torque Gauge'),
-(5, 32, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph112', 'Torque Gauge'),
-(6, 34, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph112', 'Torque Gauge'),
-(7, 36, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph112', 'Torque Gauge'),
-(8, 37, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph112', 'Torque Gauge'),
-(9, 38, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge');
+(1, 0, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFO', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
+(11, 40, 'on', 'on', '', 'on', 'on', 'on', 'INSTALLATION INFO', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
+(12, 41, '', 'on', '', '', 'on', '', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge');
 
 -- --------------------------------------------------------
 
@@ -268,7 +267,9 @@ CREATE TABLE `dashboard_units` (
 --
 
 INSERT INTO `dashboard_units` (`id`, `device_id`, `temp`, `torque`, `pressure`, `distance`, `time_format`) VALUES
-(1, 1, 'c', 'ft-lbs', 'bar', 'in', 24);
+(1, 0, 'c', 'ft-lbs', 'bar', 'in', 24),
+(2, 40, 'f', 'ft-lbs', 'bar', 'mm', 12),
+(3, 41, 'f', 'ft-lbs', 'bar', 'mm', 12);
 
 -- --------------------------------------------------------
 
@@ -315,6 +316,7 @@ INSERT INTO `installation_info` (`id`, `mac`, `driver_model`, `driver_rating`, `
 
 CREATE TABLE `maintenance_record` (
   `id` int(11) NOT NULL,
+  `device_id` int(11) NOT NULL,
   `last_oil_pdu` date NOT NULL,
   `next_oil_change_lift_pu` date NOT NULL,
   `next_schedule_service` date NOT NULL,
@@ -327,15 +329,15 @@ CREATE TABLE `maintenance_record` (
 -- Dumping data for table `maintenance_record`
 --
 
-INSERT INTO `maintenance_record` (`id`, `last_oil_pdu`, `next_oil_change_lift_pu`, `next_schedule_service`, `last_repair`, `last_oil_change_main_gear`, `parts_prepaired`) VALUES
-(1, '2021-04-28', '2021-04-27', '2021-04-26', '1234', '2021-04-02', 'na'),
-(2, '2021-04-01', '2021-04-03', '2021-04-04', 'N/A', '2021-04-02', 'N/A'),
-(3, '2021-04-01', '2021-04-03', '2021-04-04', 'N/A', '2021-04-02', 'N/A'),
-(4, '2021-04-01', '2021-04-03', '2021-04-04', 'N/A', '2021-04-02', 'N/A'),
-(5, '2021-04-09', '2021-04-11', '2021-04-12', 'abv', '2021-04-10', 'def'),
-(6, '2021-04-14', '2021-04-16', '2021-04-17', '333', '2021-04-15', '444'),
-(7, '2021-04-27', '0000-00-00', '0000-00-00', 'N/A', '0000-00-00', 'N/A'),
-(8, '0000-00-00', '0000-00-00', '2021-04-21', 'N/A', '0000-00-00', 'N/A');
+INSERT INTO `maintenance_record` (`id`, `device_id`, `last_oil_pdu`, `next_oil_change_lift_pu`, `next_schedule_service`, `last_repair`, `last_oil_change_main_gear`, `parts_prepaired`) VALUES
+(1, 0, '2021-04-28', '2021-04-27', '2021-04-26', '1234', '2021-04-02', 'na'),
+(2, 0, '2021-04-01', '2021-04-03', '2021-04-04', 'N/A', '2021-04-02', 'N/A'),
+(3, 0, '2021-04-01', '2021-04-03', '2021-04-04', 'N/A', '2021-04-02', 'N/A'),
+(4, 0, '2021-04-01', '2021-04-03', '2021-04-04', 'N/A', '2021-04-02', 'N/A'),
+(5, 0, '2021-04-09', '2021-04-11', '2021-04-12', 'abv', '2021-04-10', 'def'),
+(6, 0, '2021-04-14', '2021-04-16', '2021-04-17', '333', '2021-04-15', '444'),
+(7, 0, '2021-04-27', '0000-00-00', '0000-00-00', 'N/A', '0000-00-00', 'N/A'),
+(8, 0, '0000-00-00', '0000-00-00', '2021-04-21', 'N/A', '0000-00-00', 'N/A');
 
 -- --------------------------------------------------------
 
@@ -5776,7 +5778,8 @@ CREATE TABLE `user_and_devices` (
 --
 
 INSERT INTO `user_and_devices` (`id`, `user_id`, `mac`, `device_name`, `meter_ranges`, `meter_range_1`, `meter_range_2`, `meter_range_3`, `meter_color_1`, `meter_color_2`, `meter_color_3`, `manual`) VALUES
-(1, 2, 'testing:mac', 'Testing Device', '0,2500,5000,7500,10000,12500,15000,175000,20000,22500,25000,27500,30000000', 10000, 20000, 30000, '#62B58F', '#FFC533', '#F2726F', '');
+(40, 0, 'testing:mac', 'Testing Device', '', 0, 0, 0, '', '', '', 'michaalis-attachments.zip'),
+(41, 0, 'testing:macadsf', 'ASJDFKLAFJK ADKJF', '', 0, 0, 0, '', '', '', 'michaalis-attachments.zip');
 
 --
 -- Indexes for dumped tables
@@ -5786,6 +5789,12 @@ INSERT INTO `user_and_devices` (`id`, `user_id`, `mac`, `device_name`, `meter_ra
 -- Indexes for table `custom_alerts`
 --
 ALTER TABLE `custom_alerts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `custom_dashboards`
+--
+ALTER TABLE `custom_dashboards`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -5865,43 +5874,49 @@ ALTER TABLE `user_and_devices`
 -- AUTO_INCREMENT for table `custom_alerts`
 --
 ALTER TABLE `custom_alerts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `custom_dashboards`
+--
+ALTER TABLE `custom_dashboards`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `custom_devicestatus`
 --
 ALTER TABLE `custom_devicestatus`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `custom_graph`
 --
 ALTER TABLE `custom_graph`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `custom_installation_info`
 --
 ALTER TABLE `custom_installation_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `custom_maintenance`
 --
 ALTER TABLE `custom_maintenance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `custom_sections`
 --
 ALTER TABLE `custom_sections`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `dashboard_units`
 --
 ALTER TABLE `dashboard_units`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `installation_info`
@@ -5931,7 +5946,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_and_devices`
 --
 ALTER TABLE `user_and_devices`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
