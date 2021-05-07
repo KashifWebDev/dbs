@@ -162,38 +162,38 @@ function runQuery($sql, $msg){
                     <div class="tab-pane fade bg-white shadow p-3" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                         <h2 id="navHeading" class="font-roboto">Horizontal Lines</h2>
                         <hr>
-                            <div id="row1" class="form-group row">
-                                <label for="inputPassword" class="mx-2 ml-3 col-form-label">Line Name</label>
-                                <div>
-                                    <input type="text" class="form-control" id="inputPassword" placeholder="Alarm" name="graphLineName1">
-                                </div>
-                                <label for="inputPassword" class="mx-2 col-form-label">Line Value:</label>
-                                <div>
-                                    <div class="input-group mb-3">
-                                        <input type="number" class="form-control" placeholder="27000" name="graphValue1">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text" id="basic-addon2">ft-lbs</span>
-                                        </div>
+                        <div id="row1" class="form-group row">
+                            <label for="inputPassword" class="mx-2 ml-3 col-form-label">Line Name</label>
+                            <div>
+                                <input type="text" class="form-control" id="graphinput1" placeholder="Alarm" name="graphLineName1">
+                            </div>
+                            <label for="inputPassword" class="mx-2 col-form-label">Line Value:</label>
+                            <div>
+                                <div class="input-group mb-3">
+                                    <input type="number" class="form-control" id="graphinput2" placeholder="27000" name="graphValue1">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" id="basic-addon2">ft-lbs</span>
                                     </div>
                                 </div>
-                                <i class="fas fa-trash-alt text-danger font-size-xLarger ml-4 mt-2" id="delRow1"></i>
                             </div>
-                            <div id="row2" class="form-group row">
-                                <label for="inputPassword" class="mx-2 ml-3 col-form-label">Line Name</label>
-                                <div>
-                                    <input type="text" class="form-control" id="inputPassword" placeholder="Cutoff" name="graphLineName2">
-                                </div>
-                                <label for="inputPassword" class="mx-2 col-form-label">Line Value:</label>
-                                <div>
-                                    <div class="input-group mb-3">
-                                        <input type="number" class="form-control" placeholder="35000" name="graphValue2">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text" id="basic-addon2">ft-lbs</span>
-                                        </div>
+                            <i class="fas fa-trash-alt text-danger font-size-xLarger ml-4 mt-2" id="delRow1"></i>
+                        </div>
+                        <div id="row2" class="form-group row">
+                            <label for="inputPassword" class="mx-2 ml-3 col-form-label">Line Name</label>
+                            <div>
+                                <input type="text" class="form-control" id="graphinput3" placeholder="Cutoff" name="graphLineName2">
+                            </div>
+                            <label for="inputPassword" class="mx-2 col-form-label">Line Value:</label>
+                            <div>
+                                <div class="input-group mb-3">
+                                    <input type="number" class="form-control" id="graphinput4" placeholder="35000" name="graphValue2">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" id="basic-addon2">ft-lbs</span>
                                     </div>
                                 </div>
-                                <i class="fas fa-trash-alt text-danger font-size-xLarger ml-4 mt-2" id="delRow2"></i>
                             </div>
+                            <i class="fas fa-trash-alt text-danger font-size-xLarger ml-4 mt-2" id="delRow2"></i>
+                        </div>
 
                             <button class="btn btn-primary ml-1" type="button" id="addRow">
                                 <i class="fas fa-plus"></i>
@@ -234,31 +234,35 @@ function runQuery($sql, $msg){
                             </div>
                         </div>
 
-                            <script type="text/javascript">
-                                $("#legendsCheck").hide();
-                                $("#addRow").hide();
-                                $("#showLegendsDiv").click(function(){
-                                    $("#legendsCheck").toggle();
-                                });
-                                $("#delRow1").click(function(){
-                                    $("#row1").hide();
-                                    $("#addRow").show();
-                                });
-                                $("#delRow2").click(function(){
-                                    $("#row2").hide();
-                                    $("#addRow").show();
-                                });
-                                $("#addRow").click(function(){
-                                    if($("#row1").is(":visible")){
-                                        $("#row2").show();
-                                    } else{
-                                        $("#row1").show();
-                                    }
-                                    if($("#delRow2").is(":visible") && $("#addRow").is(":visible")){
-                                        $("#addRow").hide();
-                                    }
-                                });
-                            </script>
+                        <script type="text/javascript">
+                            $("#legendsCheck").hide();
+                            $("#addRow").hide();
+                            $("#showLegendsDiv").click(function(){
+                                $("#legendsCheck").toggle();
+                            });
+                            $("#delRow1").click(function(){
+                                $("#row1").hide();
+                                $("#addRow").show();
+                                $("#graphinput1").val("");
+                                $("#graphinput2").val("");
+                            });
+                            $("#delRow2").click(function(){
+                                $("#row2").hide();
+                                $("#addRow").show();
+                                $("#graphinput3").val("");
+                                $("#graphinput4").val("");
+                            });
+                            $("#addRow").click(function(){
+                                if($("#row1").is(":visible")){
+                                    $("#row2").show();
+                                } else{
+                                    $("#row1").show();
+                                }
+                                if($("#delRow2").is(":visible") && $("#addRow").is(":visible")){
+                                    $("#addRow").hide();
+                                }
+                            });
+                        </script>
                     </div>
 
                     <!--Ui Components Tab-->
@@ -877,10 +881,24 @@ function runQuery($sql, $msg){
             $clr2 = $_POST["clr2"];
             $rng3 = $_POST["rng3"];
             $clr3 = $_POST["clr3"];
+            $graphLineName1 = $_POST["graphLineName1"];
+            $graphValue1 = $_POST["graphValue1"];
+            $graphLineName2 = $_POST["graphLineName2"];
+            $graphValue2 = $_POST["graphValue2"];
+            $allLegendsCheck = $_POST["allLegendsCheck"];
+            $legend1 = $_POST["legend1"];
+            $legend2 = $_POST["legend2"];
+            $legend3 = $_POST["legend3"];
+            $legend4 = $_POST["legend4"];
+            $legend5 = $_POST["legend5"];
+
 
             $sql = "UPDATE user_and_devices SET
             meter_ranges='$ranges', meter_range_1='$rng1', meter_range_2='$rng2', meter_range_3='$rng3', 
-             meter_color_1='$clr1', meter_color_2='$clr2', meter_color_3='$clr3' WHERE id= $device_id";
+             meter_color_1='$clr1', meter_color_2='$clr2', meter_color_3='$clr3', line1 = '$graphValue1',  line1_value = '$graphValue1',
+            line2 = '$graphValue2',  line2_value = '$graphValue2', show_legends = '$allLegendsCheck', legends1 = '$legend1', legends2 = '$legend2',
+            legends3 = '$legend3', legends4 = '$legend4', legends5 = '$legend5'
+            WHERE id= $device_id";
 
             runQuery($sql, 'Torque Settings updated');
 

@@ -4,7 +4,6 @@ session_start();
 $_SESSION['currentPath'] = "./";
 
 $device_id = isset($_GET["id"]) ? $_GET["id"] : null;
-
 function runQuery($sql, $msg){
     require 'app/db.php';
 //            $actual_link = $_SERVER['REQUEST_URI'];
@@ -65,7 +64,6 @@ function runQuery($sql, $msg){
                                 $sql = "SELECT * FROM custom_dashboards WHERE device_id = $device_id";
                                 $res = mysqli_query($con, $sql);
                                 $row1 = mysqli_fetch_array($res);
-
 
                                 $sql = "SELECT * FROM user_and_devices";
                                 $res = mysqli_query($con, $sql);
@@ -183,15 +181,21 @@ function runQuery($sql, $msg){
                     <div class="tab-pane fade bg-white shadow p-3" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                         <h2 id="navHeading" class="font-roboto">Horizontal Lines</h2>
                         <hr>
+                        <?php
+                            $sql = "SELECT * FROM custom_graph WHERE device_id = $device_id";
+                            $res = mysqli_query($con, $sql);
+                            $row = mysqli_fetch_array($res);
+                            print_r($row);
+                        ?>
                             <div id="row1" class="form-group row">
                                 <label for="inputPassword" class="mx-2 ml-3 col-form-label">Line Name</label>
                                 <div>
-                                    <input type="text" class="form-control" id="inputPassword" placeholder="Alarm" name="graphLineName1">
+                                    <input type="text" class="form-control" id="graphinput1" placeholder="Alarm" name="graphLineName1" value="<?php echo $row["line1"]; ?>">
                                 </div>
                                 <label for="inputPassword" class="mx-2 col-form-label">Line Value:</label>
                                 <div>
                                     <div class="input-group mb-3">
-                                        <input type="number" class="form-control" placeholder="27000" name="graphValue1">
+                                        <input type="number" class="form-control" id="graphinput2" placeholder="27000" name="graphValue1" value="<?php echo $row["line1_value"]; ?>">
                                         <div class="input-group-append">
                                             <span class="input-group-text" id="basic-addon2">ft-lbs</span>
                                         </div>
@@ -202,12 +206,12 @@ function runQuery($sql, $msg){
                             <div id="row2" class="form-group row">
                                 <label for="inputPassword" class="mx-2 ml-3 col-form-label">Line Name</label>
                                 <div>
-                                    <input type="text" class="form-control" id="inputPassword" placeholder="Cutoff" name="graphLineName2">
+                                    <input type="text" class="form-control" id="graphinput3" placeholder="Cutoff" name="graphLineName2" value="<?php echo $row["line2"]; ?>">
                                 </div>
                                 <label for="inputPassword" class="mx-2 col-form-label">Line Value:</label>
                                 <div>
                                     <div class="input-group mb-3">
-                                        <input type="number" class="form-control" placeholder="35000" name="graphValue2">
+                                        <input type="number" class="form-control" id="graphinput4" placeholder="35000" name="graphValue2" value="<?php echo $row["line2_value"]; ?>">
                                         <div class="input-group-append">
                                             <span class="input-group-text" id="basic-addon2">ft-lbs</span>
                                         </div>
@@ -224,33 +228,33 @@ function runQuery($sql, $msg){
                         <hr>
                         <div class="form-check-inline">
                             <label class="form-check-label">
-                                <input id="showLegendsDiv" type="checkbox" class="form-check-input" name="allLegendsCheck">Plot Legends and Markers
+                                <input id="showLegendsDiv" type="checkbox" class="form-check-input" name="allLegendsCheck" <?php if($row["show_legends"]=="on"){echo "checked";} ?>>Plot Legends and Markers
                             </label>
                         </div>
                         <div id="legendsCheck" class="mt-3">
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" name="legend1">Alarm
+                                    <input type="checkbox" class="form-check-input" name="legend1" <?php if($row["legends1"]=="on"){echo "checked";} ?>>Alarm
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" name="legend2">CutOff
+                                    <input type="checkbox" class="form-check-input" name="legend2" <?php if($row["legends2"]=="on"){echo "checked";} ?>>CutOff
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" name="legend3">Lift Lower
+                                    <input type="checkbox" class="form-check-input" name="legend3" <?php if($row["legends3"]=="on"){echo "checked";} ?>>Lift Lower
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" name="legend4">Lift Raise
+                                    <input type="checkbox" class="form-check-input" name="legend4" <?php if($row["legends4"]=="on"){echo "checked";} ?>>Lift Raise
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" name="legend5">Loss Motion
+                                    <input type="checkbox" class="form-check-input" name="legend5" <?php if($row["legends5"]=="on"){echo "checked";} ?>>Loss Motion
                                 </label>
                             </div>
                         </div>
@@ -264,10 +268,14 @@ function runQuery($sql, $msg){
                                 $("#delRow1").click(function(){
                                     $("#row1").hide();
                                     $("#addRow").show();
+                                    $("#graphinput1").val("");
+                                    $("#graphinput2").val("");
                                 });
                                 $("#delRow2").click(function(){
                                     $("#row2").hide();
                                     $("#addRow").show();
+                                    $("#graphinput3").val("");
+                                    $("#graphinput4").val("");
                                 });
                                 $("#addRow").click(function(){
                                     if($("#row1").is(":visible")){
@@ -294,8 +302,8 @@ function runQuery($sql, $msg){
                                         </a>
                                     </div>
                                     <?php
-                                    $defaultSettingsId = 1;
-                                    $sql = "SELECT * FROM custom_sections WHERE id=$defaultSettingsId";
+                                    $defaultSettingsId = $device_id;
+                                    $sql = "SELECT * FROM custom_sections WHERE device_id=$defaultSettingsId";
                                     $res = mysqli_query($con, $sql);
                                     $mainRow = mysqli_fetch_array($res);
                                     $graphTitle = $mainRow["graph_title"];
@@ -854,17 +862,17 @@ function runQuery($sql, $msg){
 
 
        // if(isset($_POST['custom_sections'])){
-            $device_settings_check = $_POST['device_settings_check'];
+            $device_settings_check = isset($_POST['device_settings_check']) ? $_POST['device_settings_check'] : '';
             $device_settings_title = $_POST['device_settings_title'];
             $torque_gauge_check = $_POST['torque_gauge_check'];
             $torque_title = $_POST['torque_title'];
             $graph_check = isset($_POST['graph_check']) ? $_POST['graph_check'] : '';
             $graph_title = $_POST['graph_title'];
-            $installation_info_check = $_POST['installation_info_check'];
+            $installation_info_check = isset($_POST['installation_info_check']) ? $_POST['installation_info_check'] : "";
             $installation_info_title = $_POST['installation_info_title'];
             $alerts_check = $_POST['alerts_check'];
             $alerts_title = $_POST['alerts_title'];
-            $maintenance_check = $_POST['maintenance_check'];
+            $maintenance_check = isset($_POST['maintenance_check']) ? $_POST['maintenance_check'] : "";
             $maintenance_title = $_POST['maintenance_title'];
             $sql = "UPDATE custom_sections SET device_settings_check='$device_settings_check', device_settings_title='$device_settings_title',
             torque_gauge_check='$torque_gauge_check', torque_title='$torque_title', graph_check='$graph_check', graph_title='$graph_title',
@@ -874,14 +882,14 @@ function runQuery($sql, $msg){
             runQuery($sql, 'Sections Selection Updated!');
 
         //if(isset($_POST['device_status'])){
-            $a1 = $_POST['a1'];
-            $a2 = $_POST['a2'];
-            $a3 = $_POST['a3'];
-            $a4 = $_POST['a4'];
-            $a5 = $_POST['a5'];
-            $a6 = $_POST['a6'];
-            $a7 = $_POST['a7'];
-            $a8 = $_POST['a8'];
+            $a1 = isset($_POST['a1']) ? $_POST['a1'] : "";
+            $a2 = isset($_POST['a2']) ? $_POST['a2'] : "";
+            $a3 = isset($_POST['a3']) ? $_POST['a3'] : "";
+            $a4 = isset($_POST['a4']) ? $_POST['a4'] : "";
+            $a5 = isset($_POST['a5']) ? $_POST['a5'] : "";
+            $a6 = isset($_POST['a6']) ? $_POST['a6'] : "";
+            $a7 = isset($_POST['a7']) ? $_POST['a7'] : "";
+            $a8 = isset($_POST['a8']) ? $_POST['a8'] : "";
 
             $sql = "UPDATE custom_devicestatus SET a1='$a1', a2='$a2',
             a3='$a3', a4='$a4', a5='$a5', a6='$a6',
@@ -922,27 +930,27 @@ function runQuery($sql, $msg){
             runQuery($sql, 'Graph Settings updated');
 
         //if(isset($_POST["installation_info"])){
-            $drive_model_check = $_POST["drive_model_check"];
+            $drive_model_check = isset($_POST["drive_model_check"]) ? $_POST["drive_model_check"] : "";
             $drive_model_title = $_POST["drive_model_title"];
-            $drive_rating_check = $_POST["drive_rating_check"];
+            $drive_rating_check = isset($_POST["drive_rating_check"]) ? $_POST["drive_rating_check"] : "";
             $drive_rating_title = $_POST["drive_rating_title"];
-            $drive_speed_check = $_POST["drive_speed_check"];
+            $drive_speed_check = isset($_POST["drive_speed_check"]) ? $_POST["drive_speed_check"] : "";
             $drive_speed_title = $_POST["drive_speed_title"];
-            $drive_motor_check = $_POST["drive_motor_check"];
+            $drive_motor_check = isset($_POST["drive_motor_check"]) ? $_POST["drive_motor_check"] : "";
             $drive_motor_title = $_POST["drive_motor_title"];
-            $drive_lift_check = $_POST["drive_lift_check"];
+            $drive_lift_check = isset($_POST["drive_lift_check"]) ? $_POST["drive_lift_check"] : "";
             $drive_lift_title = $_POST["drive_lift_title"];
-            $drive_service_check = $_POST["drive_service_check"];
+            $drive_service_check = isset($_POST["drive_service_check"]) ? $_POST["drive_service_check"] : "";
             $drive_service_title = $_POST["drive_service_title"];
-            $driver_sn_check = $_POST["driver_sn_check"];
+            $driver_sn_check = isset($_POST["driver_sn_check"]) ? $_POST["driver_sn_check"] : "";
             $driver_sn_title = $_POST["driver_sn_title"];
-            $driver_user_check = $_POST["driver_user_check"];
+            $driver_user_check = isset($_POST["driver_user_check"]) ? $_POST["driver_user_check"] : "";
             $driver_user_title = $_POST["driver_user_title"];
-            $driver_installation_check = $_POST["driver_installation_check"];
+            $driver_installation_check = isset($_POST["driver_installation_check"]) ? $_POST["driver_installation_check"] : "";
             $driver_installation_title = $_POST["driver_installation_title"];
-            $driver_process_check = $_POST["driver_process_check"];
+            $driver_process_check = isset($_POST["driver_process_check"]) ? $_POST["driver_process_check"] : "";
             $driver_process_title = $_POST["driver_process_title"];
-            $driver_size_check = $_POST["driver_size_check"];
+            $driver_size_check = isset($_POST["driver_size_check"]) ? $_POST["driver_size_check"] : "";
             $driver_size_title = $_POST["driver_size_title"];
 
             $sql = "UPDATE custom_installation_info SET drive_model_check='$drive_model_check', drive_model_title='$drive_model_title',
@@ -957,7 +965,7 @@ function runQuery($sql, $msg){
 
 
         //if(isset($_POST["alerts_settings"])){
-            $today_check = $_POST["today_check"];
+            $today_check = isset($_POST["today_check"]) ? $_POST["today_check"] : "";
             $today_title = $_POST["today_title"];
             $last_7_check = $_POST["last_7_check"];
             $last_7_title = $_POST["last_7_title"];
@@ -1001,7 +1009,7 @@ function runQuery($sql, $msg){
             WHERE device_id=$device_id";
 
             if(runQuery($sql, 'Maintenance Settings Updated!')){
-                js_redirect("customize-dashboard.php?msg=New Dashboard Added");
+//                js_redirect("customize-dashboard.php?msg=New Dashboard Added");
             }
 
 
