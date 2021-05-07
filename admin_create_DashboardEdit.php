@@ -2,6 +2,9 @@
 require 'app/main.php';
 session_start();
 $_SESSION['currentPath'] = "./";
+
+$device_id = isset($_GET["id"]) ? $_GET["id"] : null;
+
 function runQuery($sql, $msg){
     require 'app/db.php';
 //            $actual_link = $_SERVER['REQUEST_URI'];
@@ -33,7 +36,8 @@ function runQuery($sql, $msg){
 
 <body>
 <!-- Navigation -->
-<?php require 'app/nav.include.php'; ?>
+<?php require 'app/db.php'; require 'app/nav.include.php'; ?>
+
 
 <!-- Page Content -->
 <div class="container">
@@ -58,12 +62,20 @@ function runQuery($sql, $msg){
                             <select class="form-control" id="sel1" name="device_id">
                                 <option>-- Select device to link --</option>
                                 <?php
-                                require 'app/db.php';
+                                $sql = "SELECT * FROM custom_dashboards WHERE device_id = $device_id";
+                                $res = mysqli_query($con, $sql);
+                                $row1 = mysqli_fetch_array($res);
+
+
                                 $sql = "SELECT * FROM user_and_devices";
                                 $res = mysqli_query($con, $sql);
                                 while($row = mysqli_fetch_array($res)){
+                                    $selected = "";
+                                    if($row["id"] == $row1["device_id"]){
+                                        $selected = "selected";
+                                    }
                                     ?>
-                                    <option value="<?php echo $row["id"]; ?>"><?php echo $row["device_name"].' ('.$row["mac"].')'; ?></option>
+                                    <option value="<?php echo $row["id"]; ?>" <?php echo $selected; ?>><?php echo $row["device_name"].' ('.$row["mac"].')'; ?></option>
                                     <?php
                                 }
                                 ?>
@@ -78,8 +90,12 @@ function runQuery($sql, $msg){
                                 $sql = "SELECT * FROM users WHERE is_admin=0";
                                 $res = mysqli_query($con, $sql);
                                 while($row = mysqli_fetch_array($res)){
+                                    $selected = "";
+                                    if($row["id"] == $row1["user_id"]){
+                                        $selected = "selected";
+                                    }
                                     ?>
-                                    <option value="<?php echo $row["id"]; ?>"><?php echo $row["username"].' ('.$row["email"].')'; ?></option>
+                                    <option value="<?php echo $row["id"]; ?>" <?php echo $selected; ?>><?php echo $row["username"].' ('.$row["email"].')'; ?></option>
                                     <?php
                                 }
                                 ?>
@@ -87,72 +103,77 @@ function runQuery($sql, $msg){
                         </div>
                         <div class="form-group">
                             <label>Dashboard Name</label>
-                            <input type="text" class="form-control" placeholder="New Dashboard" name="dashboardName">
+                            <input type="text" class="form-control" value="<?php echo $row1["dashboardName"]; ?>" placeholder="New Dashboard" name="dashboardName">
                         </div>
                         <div class="form-group">
                             <label>Site Operator's Email Address</label>
-                            <input type="email" class="form-control" placeholder="User Email" name="userEmail">
+                            <input type="email" class="form-control" value="<?php echo $row1["email"]; ?>" placeholder="User Email" name="userEmail">
                         </div>
                     </div>
 
                     <!--Dashboard Units Tab-->
                     <div class="tab-pane fade bg-white shadow p-3" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                        <?php
+                            $sql1 = "SELECT * FROM dashboard_units WHERE device_id= $device_id";
+                            $res1 = mysqli_query($con, $sql1);
+                            $row1 = mysqli_fetch_array($res1)
+                        ?>
                         <div class="form-group row text-dark">
-                            <label for="inputEmail3" class="col-form-label col-3 font-weight-bold">Temperature</label>
+                            <label for="inputEmail3" class="col-form-label col-3 mx-3 font-weight-bold">Temperature</label>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="temperature_unit" value="f" checked>
+                                <input class="form-check-input" type="radio" name="temperature_unit" value="f" <?php if($row1["temp"]=="f") echo "checked"; ?>>
                                 <label class="form-check-label" >°F</label>
                             </div>
                             <div class="form-check form-check-inline ml-3">
-                                <input class="form-check-input" type="radio" name="temperature_unit" value="c">
+                                <input class="form-check-input" type="radio" name="temperature_unit" value="c" <?php if($row1["temp"]=="c") echo "checked"; ?>>
                                 <label class="form-check-label" >°C</label>
                             </div>
                         </div>
                         <div class="form-group row text-dark">
-                            <label for="inputEmail3" class="col-form-label col-3  font-weight-bold">Torque</label>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="torque_unit" value="ft-lbs" checked>
+                            <label for="inputEmail3" class="col-form-label col-3 mx-3 font-weight-bold">Torque</label>
+                            <div class="form-check form-check-inline ml-3">
+                                <input class="form-check-input" type="radio" name="torque_unit" value="ft-lbs" <?php if($row1["torque"]=="ft-lbs") echo "checked"; ?>>
                                 <label class="form-check-label" >ft-lbs</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="torque_unit" value="nm">
+                                <input class="form-check-input" type="radio" name="torque_unit" value="nm" <?php if($row1["torque"]=="nm") echo "checked"; ?>>
                                 <label class="form-check-label" >Nm</label>
                             </div>
                         </div>
                         <div class="form-group row text-dark">
-                            <label for="inputEmail3" class="col-form-label col-3  font-weight-bold">Pressure</label>
+                            <label for="inputEmail3" class="col-form-label col-3 mx-3 font-weight-bold">Pressure</label>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="pressure_unit" value="bar">
+                                <input class="form-check-input" type="radio" name="pressure_unit" value="bar" <?php if($row1["pressure"]=="bar") echo "checked"; ?>>
                                 <label class="form-check-label" >Bar</label>
                             </div>
                             <div class="form-check form-check-inline ml-3">
-                                <input class="form-check-input" type="radio" name="pressure_unit" value="psi" checked>
+                                <input class="form-check-input" type="radio" name="pressure_unit" value="psi" <?php if($row1["pressure"]=="psi") echo "checked"; ?>>
                                 <label class="form-check-label">psi</label>
                             </div>
                             <div class="form-check form-check-inline ml-3">
-                                <input class="form-check-input" type="radio" name="pressure_unit" value="pa">
+                                <input class="form-check-input" type="radio" name="pressure_unit" value="pa" <?php if($row1["pressure"]=="pa") echo "checked"; ?>>
                                 <label class="form-check-label">Pa</label>
                             </div>
                         </div>
                         <div class="form-group row text-dark">
-                            <label for="inputEmail3" class="col-form-label col-3  font-weight-bold">Distance</label>
+                            <label for="inputEmail3" class="col-form-label col-3 mx-3 font-weight-bold">Distance</label>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="distance_unit"  value="mm">
+                                <input class="form-check-input" type="radio" name="distance_unit"  value="mm" <?php if($row1["distance"]=="mm") echo "checked"; ?>>
                                 <label class="form-check-label">mm</label>
                             </div>
                             <div class="form-check form-check-inline ml-3">
-                                <input class="form-check-input" type="radio" name="distance_unit"  value="in" checked>
+                                <input class="form-check-input" type="radio" name="distance_unit"  value="in" <?php if($row1["distance"]=="in") echo "checked"; ?>>
                                 <label class="form-check-label">in</label>
                             </div>
                         </div>
                         <div class="form-group row text-dark">
-                            <label for="inputEmail3" class="col-form-label col-3  font-weight-bold">Time</label>
+                            <label for="inputEmail3" class="col-form-label col-3 mx-3 font-weight-bold">Time</label>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="time_format"  value="12" checked>
+                                <input class="form-check-input" type="radio" name="time_format"  value="12" <?php if($row1["time_format"]=="12") echo "checked"; ?>>
                                 <label class="form-check-label">12 Hours</label>
                             </div>
                             <div class="form-check form-check-inline ml-3">
-                                <input class="form-check-input" type="radio" name="time_format" value="24">
+                                <input class="form-check-input" type="radio" name="time_format" value="24" <?php if($row1["time_format"]=="24") echo "checked"; ?>>
                                 <label class="form-check-label">24 Hours</label>
                             </div>
                         </div>
