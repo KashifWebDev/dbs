@@ -659,7 +659,7 @@ function runQuery($sql, $msg){
                                         </a>
                                     </div>
                                     <?php
-                                    $sql = "SELECT * FROM custom_alerts WHERE id=$defaultSettingsId";
+                                    $sql = "SELECT * FROM custom_alerts WHERE device_id=$defaultSettingsId";
                                     $res = mysqli_query($con, $sql);
                                     $mainRow = mysqli_fetch_array($res);
                                     ?>
@@ -715,7 +715,7 @@ function runQuery($sql, $msg){
                                         </a>
                                     </div>
                                     <?php
-                                    $sql = "SELECT * FROM custom_maintenance WHERE id=$defaultSettingsId";
+                                    $sql = "SELECT * FROM custom_maintenance WHERE device_id=$defaultSettingsId";
                                     $res = mysqli_query($con, $sql);
                                     $mainRow = mysqli_fetch_array($res);
                                     ?>
@@ -967,11 +967,11 @@ function runQuery($sql, $msg){
         //if(isset($_POST["alerts_settings"])){
             $today_check = isset($_POST["today_check"]) ? $_POST["today_check"] : "";
             $today_title = $_POST["today_title"];
-            $last_7_check = $_POST["last_7_check"];
+            $last_7_check = isset($_POST["last_7_check"]) ? $_POST["last_7_check"] : "";
             $last_7_title = $_POST["last_7_title"];
-            $last_mnth_check = $_POST["last_mnth_check"];
+            $last_mnth_check = isset($_POST["last_mnth_check"]) ? $_POST["last_mnth_check"] : "";
             $last_mnth_title = $_POST["last_mnth_title"];
-            $last_6mnth_check = $_POST["last_6mnth_check"];
+            $last_6mnth_check = isset($_POST["last_6mnth_check"]) ? $_POST["last_6mnth_check"] : "";
             $last_6mnth_title = $_POST["last_6mnth_title"];
 
             $sql = "UPDATE custom_alerts SET today_check='$today_check', today_title='$today_title',last_7_check='$last_7_check',
@@ -981,21 +981,21 @@ function runQuery($sql, $msg){
             runQuery($sql, 'Alerts settings Updated!');
 
         //if(isset($_POST["maintenance_update"])){
-            $last_oil_change_main_check = $_POST["last_oil_change_main_check"];
+            $last_oil_change_main_check = isset($_POST["last_oil_change_main_check"]) ? $_POST["last_oil_change_main_check"] : "";
             $last_oil_change_main_title = $_POST["last_oil_change_main_title"];
-            $next_oil_change_main_check = $_POST["next_oil_change_main_check"];
+            $next_oil_change_main_check = isset($_POST["next_oil_change_main_check"]) ? $_POST["next_oil_change_main_check"] : "";
             $next_oil_change_main_title = $_POST["next_oil_change_main_title"];
-            $last_oil_lift_check = $_POST["last_oil_lift_check"];
+            $last_oil_lift_check = isset($_POST["last_oil_lift_check"]) ? $_POST["last_oil_lift_check"] : "";
             $last_oil_lift_title = $_POST["last_oil_lift_title"];
-            $next_oil_lift_check = $_POST["next_oil_lift_check"];
+            $next_oil_lift_check = isset($_POST["next_oil_lift_check"]) ? $_POST["next_oil_lift_check"] : "";
             $next_oil_lift_title = $_POST["next_oil_lift_title"];
-            $next_service_check = $_POST["next_service_check"];
+            $next_service_check = isset($_POST["next_service_check"]) ? $_POST["next_service_check"] : "";
             $next_service_title = $_POST["next_service_title"];
-            $dbs_warranty_check = $_POST["dbs_warranty_check"];
+            $dbs_warranty_check = isset($_POST["dbs_warranty_check"]) ? $_POST["dbs_warranty_check"] : "";
             $dbs_warranty_title = $_POST["dbs_warranty_title"];
-            $last_repair_check = $_POST["last_repair_check"];
+            $last_repair_check = isset($_POST["last_repair_check"]) ? $_POST["last_repair_check"] : "";
             $last_repair_title = $_POST["last_repair_title"];
-            $parts_repaired_check = $_POST["parts_repaired_check"];
+            $parts_repaired_check = isset($_POST["parts_repaired_check"]) ? $_POST["parts_repaired_check"] : "";
             $parts_repaired_title = $_POST["parts_repaired_title"];
 
             $sql = "UPDATE custom_maintenance SET last_oil_change_main_check='$last_oil_change_main_check', last_oil_change_main_title='$last_oil_change_main_title',
