@@ -206,15 +206,13 @@
               <div class="col-md-3">
                   <div class="custom_card w-100 d-block">
                       <div class="col-md-12 d-flex justify-content-center w-100 h-100">
-                          <canvas
-                                  id="gauge-id"
-                          ></canvas>
+                          <canvas id="gauge-id"></canvas>
                       </div>
 
                       <script type="text/javascript" src="https://canvas-gauges.com/download/latest/radial/gauge.min.js"></script>
                       <script>
                           <?php
-                          $sql = "SELECT * FROM custom_sections WHERE id=$device_id";
+                          $sql = "SELECT * FROM custom_sections WHERE device_id=$device_id";
                           $res = mysqli_query($con, $sql);
                           $row = mysqli_fetch_array($res);
                           $torque_title = $row["torque_title"];
@@ -301,12 +299,12 @@
                                   fontColor: "<?php echo $_SESSION['darkTheme']==0 ? 'black' : '#d2d2c9'; ?>",
                                   fontSize: 24
                               },
-                              //legend:{
-                              //    cursor: "pointer",
-                              //    fontSize: 16,
-                              //    itemclick: toggleDataSeries,
-                              //    fontColor: "<?php //echo $_SESSION['darkTheme']==0 ? 'black' : '#d2d2c9'; ?>//"
-                              //},
+                              legend:{
+                                  cursor: "pointer",
+                                  fontSize: 16,
+                                  itemclick: toggleDataSeries,
+                                  fontColor: "<?php echo $_SESSION['darkTheme']==0 ? 'black' : '#d2d2c9'; ?>"
+                              },
                               axisX:{
                                   labelFontColor: "<?php echo $_SESSION['darkTheme']==0 ? 'black' : '#d2d2c9'; ?>",
                                   labelAngle: -90/90,
@@ -327,13 +325,58 @@
                                       showInLegend: true,
                                       dataPoints: [{}]
                                   }
-                                  // ,{
-                                  //     name: "Temp",
-                                  //     type: "spline",
-                                  //     color: "#dc3545",
-                                  //     showInLegend: true,
-                                  //     dataPoints: [{}]
-                                  // }
+                                  <?php  //Alarm
+                                  if($row["legends1"]){
+                                      ?>
+                                          ,{  visible: false,
+                                              name: "Alarm",
+                                              type: "spline",
+                                              showInLegend: true,
+                                              dataPoints: [{}]
+                                          }
+                                    <?php
+                                  }  //CutOff
+                                  if($row["legends2"]){
+                                      ?>
+                                          ,{  visible: false,
+                                              name: "CutOff",
+                                              type: "spline",
+                                              showInLegend: true,
+                                              dataPoints: [{}]
+                                          }
+                                    <?php
+                                  }  //Lift Lower
+                                  if($row["legends3"]){
+                                      ?>
+                                          ,{  visible: false,
+                                              name: "Lift Lower",
+                                              type: "spline",
+                                              showInLegend: true,
+                                              dataPoints: [{}]
+                                          }
+                                    <?php
+                                  }  //Lift Lower
+                                  if($row["legends4"]){
+                                      ?>
+                                          ,{  visible: false,
+                                              name: "Lift Raise",
+                                              type: "spline",
+                                              showInLegend: true,
+                                              dataPoints: [{}]
+                                          }
+                                    <?php
+                                  }  //Lift Lower
+                                  if($row["legends5"]){
+                                      ?>
+                                          ,{  visible: false,
+                                              name: "Loss Motion",
+                                              type: "spline",
+                                              showInLegend: true,
+                                              dataPoints: [{}]
+                                          }
+                                    <?php
+                                  }
+                                  ?>
                               ]
                           });
                           chart.render();
@@ -382,6 +425,7 @@
                       $sql = "SELECT * FROM installation_info WHERE mac='$mac'";
                       $res = mysqli_query($con, $sql);
                       $installationInfo = mysqli_fetch_array($res);
+                      if(mysqli_num_rows($res)){
                       ?>
                       <table class="text-dark-grey bar_font_size auto_color_txt">
                           <?php
@@ -473,6 +517,7 @@
                               <?php }
                           ?>
                       </table>
+                      <?php } ?>
                   </div>
               </div>
               <?php
@@ -945,6 +990,11 @@
     function updateGraph(graphData){
         console.log(graphData);
         chart.options.data[0].dataPoints = [];
+        chart.options.data[1].dataPoints = [];
+        chart.options.data[2].dataPoints = [];
+        chart.options.data[3].dataPoints = [];
+        chart.options.data[4].dataPoints = [];
+        chart.options.data[5].dataPoints = [];
         // chart.options.data[1].dataPoints = [];
         $.each((graphData), function(key, value){
             chart.options.data[0].dataPoints.push(
@@ -953,12 +1003,36 @@
                     y: parseInt(value.torque)
                 }
             );
-            // chart.options.data[1].dataPoints.push(
-            //     {
-            //         label: value.timeStamp,
-            //         y: parseInt(value.torque)
-            //     }
-            // );
+            chart.options.data[1].dataPoints.push(
+                {
+                    label: value.timeStamp,
+                    y: parseInt(value.alarm)
+                }
+            );
+            chart.options.data[2].dataPoints.push(
+                {
+                    label: value.timeStamp,
+                    y: parseInt(value.cutoff)
+                }
+            );
+            chart.options.data[3].dataPoints.push(
+                {
+                    label: value.timeStamp,
+                    y: parseInt(value.liftLower)
+                }
+            );
+            chart.options.data[4].dataPoints.push(
+                {
+                    label: value.timeStamp,
+                    y: parseInt(value.liftActive)
+                }
+            );
+            chart.options.data[5].dataPoints.push(
+                {
+                    label: value.timeStamp,
+                    y: parseInt(value.lossMotion)
+                }
+            );
         });
         // console.log(graphData.timeStamp)
         chart.render();

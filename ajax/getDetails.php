@@ -74,7 +74,12 @@ if (mysqli_num_rows($res1)) {
         $element = array(
             "timeStamp" => $date_time,
             "temp1" => $row["temp1"],
-            "torque" => $row["Torque"]
+            "torque" => $row["Torque"],
+            "alarm" => $row["alarm_cirlcleVal"],
+            "cutoff" => $row["cutOff_cirlcleVal"],
+            "liftLower" => $row["lowOil_cirlcleVal"],
+            "liftActive" => $row["liftActive_cirlcleVal"],
+            "lossMotion" => $row["lossMotion_cirlcleVal"],
         );
         array_push($obj['graph'],$element);
     }

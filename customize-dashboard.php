@@ -12,7 +12,7 @@ verify_is_admin();
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"></link>
 <?php
-if ($_SESSION["darkTheme"] == 1){
+if (isset($_SESSION["darkTheme"]) && $_SESSION["darkTheme"] == 1){
     ?>
     <style>
         table.dataTable tbody tr {
@@ -58,6 +58,16 @@ if(isset($_GET["blockUser"])){
 
 <!-- Page Content -->
 <div class="container mt-4">
+    <?php
+    if(isset($_GET["msg"])){
+        ?>
+        <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Success!</strong> Dashboard Settings Updated!
+        </div>
+    <?php
+    }
+    ?>
     <a href="admin_create_Dashboard.php" class="btn btn-primary float-right mb-2">
         Create New Dashboard
     </a>

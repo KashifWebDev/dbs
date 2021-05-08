@@ -185,7 +185,6 @@ function runQuery($sql, $msg){
                             $sql = "SELECT * FROM custom_graph WHERE device_id = $device_id";
                             $res = mysqli_query($con, $sql);
                             $row = mysqli_fetch_array($res);
-                            print_r($row);
                         ?>
                             <div id="row1" class="form-group row">
                                 <label for="inputPassword" class="mx-2 ml-3 col-form-label">Line Name</label>
@@ -260,10 +259,18 @@ function runQuery($sql, $msg){
                         </div>
 
                             <script type="text/javascript">
-                                $("#legendsCheck").hide();
+                                if($('input#showLegendsDiv').is(':checked')){
+                                    $("#legendsCheck").show();
+                                }else{
+                                    $("#legendsCheck").hide();
+                                }
                                 $("#addRow").hide();
                                 $("#showLegendsDiv").click(function(){
-                                    $("#legendsCheck").toggle();
+                                    if($('input#showLegendsDiv').is(':checked')){
+                                        $("#legendsCheck").show();
+                                    }else{
+                                        $("#legendsCheck").hide();
+                                    }
                                 });
                                 $("#delRow1").click(function(){
                                     $("#row1").hide();
@@ -383,7 +390,7 @@ function runQuery($sql, $msg){
                                         </a>
                                     </div>
                                     <?php
-                                    $sql = "SELECT * FROM custom_devicestatus WHERE id=$defaultSettingsId";
+                                    $sql = "SELECT * FROM custom_devicestatus WHERE device_id=$defaultSettingsId";
                                     $res = mysqli_query($con, $sql);
                                     $mainRow = mysqli_fetch_array($res);
                                     ?>
@@ -454,6 +461,11 @@ function runQuery($sql, $msg){
                                 <br>
                                 <!--Torque Gauge Customization Card-->
                                 <div class="card">
+                                    <?php
+                                    $sql = "SELECT * FROM user_and_devices WHERE id=$defaultSettingsId";
+                                    $res = mysqli_query($con, $sql);
+                                    $mainRow = mysqli_fetch_array($res);
+                                    ?>
                                     <div class="card-header">
                                         <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
                                             <i class="fa" aria-hidden="true"></i>  Torque Gauge Configurations
@@ -463,7 +475,7 @@ function runQuery($sql, $msg){
                                         <div class="card-body">
                                                 <div class="form-group">
                                                     <label for="email1" class="text-dark">Enter Meter values <mark><i>in given format</i></mark></label>
-                                                    <input name="ranges" type="text" class="form-control" id="email1" placeholder="0,2500,5000,7500,10000,12500,15000,175000,20000,22500,25000,27500,30000">
+                                                    <input name="ranges" type="text" class="form-control" id="email1" value="<?php echo $mainRow["meter_ranges"]; ?>" placeholder="0,2500,5000,7500,10000,12500,15000,175000,20000,22500,25000,27500,30000">
                                                 </div>
                                                 <p>Set Color Levels</p>
                                                 <div class="row">
@@ -472,8 +484,8 @@ function runQuery($sql, $msg){
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text" id="">0 - </span>
                                                             </div>
-                                                            <input onkeyup="func1()" id="box111" type="text" class="form-control" placeholder="Range" name="rng1">
-                                                            <input type="text" class="form-control" placeholder="Color" name="clr1">
+                                                            <input onkeyup="func1()" value="<?php echo $mainRow["meter_range_1"]; ?>" id="box111" type="text" class="form-control" placeholder="Range" name="rng1">
+                                                            <input type="text" class="form-control" value="<?php echo $mainRow["meter_color_1"]; ?>" placeholder="Color" name="clr1">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
@@ -481,8 +493,8 @@ function runQuery($sql, $msg){
                                                             <div class="input-group-prepend">
                                                                 <p class="input-group-text" id="ffff"><span id="r2">0</span> - </p>
                                                             </div>
-                                                            <input onkeyup="func2()" id="box2222" type="text" class="form-control" placeholder="Range" name="rng2"">
-                                                            <input type="text" class="form-control" placeholder="Color" name="clr2">
+                                                            <input onkeyup="func2()" value="<?php echo $mainRow["meter_range_2"]; ?>" id="box2222" type="text" class="form-control" placeholder="Range" name="rng2"">
+                                                            <input type="text" value="<?php echo $mainRow["meter_color_2"]; ?>" class="form-control" placeholder="Color" name="clr2">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
@@ -490,8 +502,8 @@ function runQuery($sql, $msg){
                                                             <div class="input-group-prepend">
                                                                 <p class="input-group-text" id="eeee"><span id="r3">0</span> - </p>
                                                             </div>
-                                                            <input id="box3" type="text" class="form-control" placeholder="Range" name="rng3">
-                                                            <input type="text" class="form-control" placeholder="Color" name="clr3">
+                                                            <input id="box3" value="<?php echo $mainRow["meter_range_3"]; ?>" type="text" class="form-control" placeholder="Range" name="rng3">
+                                                            <input type="text" value="<?php echo $mainRow["meter_color_3"]; ?>" class="form-control" placeholder="Color" name="clr3">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -507,7 +519,7 @@ function runQuery($sql, $msg){
                                         </a>
                                     </div>
                                     <?php
-                                    $sql = "SELECT * FROM custom_graph WHERE id=$defaultSettingsId";
+                                    $sql = "SELECT * FROM custom_graph WHERE device_id=$defaultSettingsId";
                                     $res = mysqli_query($con, $sql);
                                     $mainRow = mysqli_fetch_array($res);
                                     ?>
@@ -547,7 +559,7 @@ function runQuery($sql, $msg){
                                         </a>
                                     </div>
                                     <?php
-                                    $sql = "SELECT * FROM custom_installation_info WHERE id=$defaultSettingsId";
+                                    $sql = "SELECT * FROM custom_installation_info WHERE device_id=$defaultSettingsId";
                                     $res = mysqli_query($con, $sql);
                                     $mainRow = mysqli_fetch_array($res);
                                     ?>
@@ -839,6 +851,26 @@ function runQuery($sql, $msg){
         $user_id = $_POST["user_id"];
         $dashboardName = $_POST["dashboardName"];
         $userEmail = $_POST["userEmail"];
+        //UPDATING data into custom_dashboards Row
+
+        $sql = "UPDATE custom_dashboards SET user_id=$user_id, dashboardName='$dashboardName', email='$userEmail' WHERE device_id=$device_id";
+
+        if(!mysqli_query($con, $sql)){
+            echo "Error while inserting in custom_dashboards ! <br> SQL: $sql <br> ".mysqli_error($con);
+        }
+
+        //UNITS
+        $temperature_unit = $_POST["temperature_unit"];
+        $torque_unit = $_POST["torque_unit"];
+        $pressure_unit = $_POST["pressure_unit"];
+        $distance_unit = $_POST["distance_unit"];
+        $time_format = $_POST["time_format"];
+
+
+        $sql = "UPDATE dashboard_units SET temp='$temperature_unit', torque='$torque_unit', pressure='$pressure_unit', distance='$distance_unit',
+                time_format='$time_format' WHERE device_id=$device_id";
+        mysqli_query($con, $sql);
+
 
         //Third Box Values
         $graphLineName1 = $_POST["graphLineName1"];
@@ -852,13 +884,11 @@ function runQuery($sql, $msg){
         $legend4 = isset($_POST["legend4"]) ? $_POST["legend4"] : '';
         $legend5 = isset($_POST["legend5"]) ? $_POST["legend5"] : '';
 
-        //Inserting data into custom_dashboards Row
+        $sql = "UPDATE custom_graph SET line1='$graphValue1', line1_value='$graphValue1', line2='$graphLineName2', line2_value='$graphValue2',
+                 show_legends='$allLegendsCheck', legends1='$legend1', legends2='$legend2', legends3='$legend3', legends4='$legend4',
+                 legends5='$legend5' WHERE device_id = $device_id";
+        mysqli_query($con, $sql);
 
-        $sql = "INSERT INTO custom_dashboards (device_id, user_id, dashboardName, email) VALUES 
-                ($device_id, $user_id,'$dashboardName','$userEmail')";
-        if(!mysqli_query($con, $sql)){
-            echo "Error while inserting in custom_dashboards ! <br> SQL: $sql <br> ".mysqli_error($con);
-        }
 
 
        // if(isset($_POST['custom_sections'])){
@@ -1009,7 +1039,8 @@ function runQuery($sql, $msg){
             WHERE device_id=$device_id";
 
             if(runQuery($sql, 'Maintenance Settings Updated!')){
-//                js_redirect("customize-dashboard.php?msg=New Dashboard Added");
+                js_redirect("customize-dashboard.php?msg=New Dashboard Added");
+//                echo "Dashboard Done! ";
             }
 
 
