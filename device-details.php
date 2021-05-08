@@ -325,58 +325,36 @@
                                       showInLegend: true,
                                       dataPoints: [{}]
                                   }
-                                  <?php  //Alarm
-                                  if($row["legends1"]){
-                                      ?>
-                                          ,{  visible: false,
+                                  ,{  visible: false,
                                               name: "Alarm",
                                               type: "spline",
-                                              showInLegend: true,
+                                              showInLegend: <?php if($row["legends1"] && $row["show_legends"]){ echo "true"; }else{echo "false"; } ?>,
                                               dataPoints: [{}]
                                           }
-                                    <?php
-                                  }  //CutOff
-                                  if($row["legends2"]){
-                                      ?>
-                                          ,{  visible: false,
+                                    ,{  visible: false,
                                               name: "CutOff",
                                               type: "spline",
-                                              showInLegend: true,
+                                              showInLegend: <?php if($row["legends2"] && $row["show_legends"]){ echo "true"; }else{echo "false"; } ?>,
                                               dataPoints: [{}]
                                           }
-                                    <?php
-                                  }  //Lift Lower
-                                  if($row["legends3"]){
-                                      ?>
-                                          ,{  visible: false,
+                                    ,{  visible: false,
                                               name: "Lift Lower",
                                               type: "spline",
-                                              showInLegend: true,
+                                              showInLegend: <?php if($row["legends3"] && $row["show_legends"]){ echo "true"; }else{echo "false"; } ?>,
                                               dataPoints: [{}]
                                           }
-                                    <?php
-                                  }  //Lift Lower
-                                  if($row["legends4"]){
-                                      ?>
-                                          ,{  visible: false,
+                                    ,{  visible: false,
                                               name: "Lift Raise",
                                               type: "spline",
-                                              showInLegend: true,
+                                              showInLegend: <?php if($row["legends4"] && $row["show_legends"]){ echo "true"; }else{echo "false"; } ?>,
                                               dataPoints: [{}]
                                           }
-                                    <?php
-                                  }  //Lift Lower
-                                  if($row["legends5"]){
-                                      ?>
-                                          ,{  visible: false,
+                                    ,{  visible: false,
                                               name: "Loss Motion",
                                               type: "spline",
-                                              showInLegend: true,
+                                              showInLegend: <?php if($row["legends5"] && $row["show_legends"]){ echo "true"; }else{echo "false"; } ?>,
                                               dataPoints: [{}]
                                           }
-                                    <?php
-                                  }
-                                  ?>
                               ]
                           });
                           chart.render();

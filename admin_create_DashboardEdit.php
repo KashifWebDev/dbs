@@ -40,7 +40,8 @@ function runQuery($sql, $msg){
 
 <!-- Page Content -->
 <div class="container">
-    <h3 class="font-roboto my-3">Create New Dashboard</h3>
+    <h3 class="font-roboto my-3 "><i class="fas fa-cogs"></i> Customize Dashboard</h3>
+    <hr>
     <div class="row">
         <div class="col-md-3">
             <div class="nav flex-column nav-pills pillsCustomBorder shadow bg-white" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -48,7 +49,8 @@ function runQuery($sql, $msg){
                 <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">2. Units</a>
                 <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">3. Graphs</a>
                 <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">4. UI Components</a>
-                <a class="nav-link" id="v-pills-final-tab" data-toggle="pill" href="#v-pills-final" role="tab" aria-controls="v-pills-final" aria-selected="false">5. Finalization</a>
+                <a class="nav-link" id="v-pills-conditioning-tab" data-toggle="pill" href="#v-pills-conditioning" role="tab" aria-controls="v-pills-conditioning" aria-selected="false">5. Data Conditioning</a>
+                <a class="nav-link" id="v-pills-final-tab" data-toggle="pill" href="#v-pills-final" role="tab" aria-controls="v-pills-final" aria-selected="false">6. Finalization</a>
             </div>
         </div>
         <div class="col-md-9">
@@ -455,6 +457,9 @@ function runQuery($sql, $msg){
                                                         </div>
                                                     </div>
                                                 </div>
+                                            <h3 class="font-roboto">Lift Position</h3>
+                                            <hr>
+
                                         </div>
                                     </div>
                                 </div>
@@ -810,10 +815,129 @@ function runQuery($sql, $msg){
                         </div>
                     </div>
 
+                    <!--Conditioning Tab-->
+                    <div class="tab-pane fade bg-white shadow p-3" id="v-pills-conditioning" role="tabpanel" aria-labelledby="v-pills-conditioning-tab">
+                        <?php
+                        $sql = "SELECT * FROM custom_conditions WHERE device_id=$device_id";
+                        $res = mysqli_query($con, $sql);
+                        $row = mysqli_fetch_array($res);
+                        ?>
+                        <div class="row ml-3">
+                            <div class="conditionHeading"><h3>Temperature: </h3></div>
+                            <div class="col-sm-12 col-md-4">
+                                <div class="input-group mb-3">
+                                    <label for="" class="mt-1 mr-3"><span class="text-success font-weight-bold">ON</span> Condition</label>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text font-weight-bold" id="basic-addon1">&#8805;</span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="1" name="tempGreater" value="<?php echo $row["tempGreater"]; ?>">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-4">
+                                <div class="input-group mb-3">
+                                    <label for="" class="mt-1 mr-3"><span class="text-danger font-weight-bold">OFF</span> Condition</label>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text font-weight-bold" id="basic-addon1">&#8804;</span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="0" name="tempLoss" value="<?php echo $row["tempLoss"]; ?>">
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row ml-3">
+                            <div class="conditionHeading"><h3>Alarm: </h3></div>
+                            <div class="col-sm-12 col-md-4">
+                                <div class="input-group mb-3">
+                                    <label for="" class="mt-1 mr-3"><span class="text-success font-weight-bold">ON</span> Condition</label>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text font-weight-bold" id="basic-addon1">&#8805;</span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="1" name="alarmGreater" value="<?php echo $row["alarmGreater"]; ?>">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-4">
+                                <div class="input-group mb-3">
+                                    <label for="" class="mt-1 mr-3"><span class="text-danger font-weight-bold">OFF</span> Condition</label>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text font-weight-bold" id="basic-addon1">&#8804;</span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="0" name="alarmLess" value="<?php echo $row["alarmLess"]; ?>">
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row ml-3">
+                            <div class="conditionHeading"><h3>Water in Oil: </h3></div>
+                            <div class="col-sm-12 col-md-4">
+                                <div class="input-group mb-3">
+                                    <label for="" class="mt-1 mr-3"><span class="text-success font-weight-bold">ON</span> Condition</label>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text font-weight-bold" id="basic-addon1">&#8805;</span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="1" name="waterInOilGreater" value="<?php echo $row["waterInOilGreater"]; ?>">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-4">
+                                <div class="input-group mb-3">
+                                    <label for="" class="mt-1 mr-3"><span class="text-danger font-weight-bold">OFF</span> Condition</label>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text font-weight-bold" id="basic-addon1">&#8804;</span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="0" name="waterInOilLess" value="<?php echo $row["waterInOilLess"]; ?>">
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row ml-3">
+                            <div class="conditionHeading"><h3>Loss Motion: </h3></div>
+                            <div class="col-sm-12 col-md-4">
+                                <div class="input-group mb-3">
+                                    <label for="" class="mt-1 mr-3"><span class="text-success font-weight-bold">ON</span> Condition</label>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text font-weight-bold" id="basic-addon1">&#8805;</span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="1" name="lossMotionGreater" value="<?php echo $row["lossMotionGreater"]; ?>">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-4">
+                                <div class="input-group mb-3">
+                                    <label for="" class="mt-1 mr-3"><span class="text-danger font-weight-bold">OFF</span> Condition</label>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text font-weight-bold" id="basic-addon1">&#8804;</span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="0" name="lossMotionLess" value="<?php echo $row["lossMotionLess"]; ?>">
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row ml-3">
+                            <div class="conditionHeading"><h3>Lift Position: </h3></div>
+                            <div class="col-sm-12 col-md-4">
+                                <div class="input-group mb-3">
+                                    <label for="" class="mt-1 mr-3"><span class="text-success font-weight-bold">ON</span> Condition</label>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text font-weight-bold" id="basic-addon1">&#8805;</span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="1" name="liftPositionGreater" value="<?php echo $row["liftPositionGreater"]; ?>">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-4">
+                                <div class="input-group mb-3">
+                                    <label for="" class="mt-1 mr-3"><span class="text-danger font-weight-bold">OFF</span> Condition</label>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text font-weight-bold" id="basic-addon1">&#8804;</span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="0" name="liftPositionLower" value="<?php echo $row["liftPositionLower"]; ?>">
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+
                     <!--Finalization-->
                     <div class="tab-pane fade bg-white shadow p-3" id="v-pills-final" role="tabpanel" aria-labelledby="v-pills-final-tab">
                         <p class="font-italic mt-2">
-                            You just configured a new dashboard,  you can move back to any step and edit configurations.
+                            Dashboard configured! You can move back to any step and edit configurations.
                         </p>
                         <div class="row">
                             <button type="submit" class="btn btn-primary col-6 mx-auto w-100 mt-4" name="newDashboard" id="createBtn">
@@ -821,7 +945,7 @@ function runQuery($sql, $msg){
                                     <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
                                 </span>
                                 <span id="btn2">
-                                    <i class="fas fa-save"></i> Save Dashboard
+                                    <i class="fas fa-save"></i> Save Changes
                                 </span>
                             </button>
                         </div>
@@ -854,6 +978,9 @@ function runQuery($sql, $msg){
         //UPDATING data into custom_dashboards Row
 
         $sql = "UPDATE custom_dashboards SET user_id=$user_id, dashboardName='$dashboardName', email='$userEmail' WHERE device_id=$device_id";
+        $sql1 = "UPDATE user_and_devices  SET user_id=$user_id WHERE id=$device_id";
+
+        mysqli_query($con, $sql1);
 
         if(!mysqli_query($con, $sql)){
             echo "Error while inserting in custom_dashboards ! <br> SQL: $sql <br> ".mysqli_error($con);
@@ -871,6 +998,24 @@ function runQuery($sql, $msg){
                 time_format='$time_format' WHERE device_id=$device_id";
         mysqli_query($con, $sql);
 
+        // Custom Conditions
+        $tempGreater = $_POST["tempGreater"];
+        $tempLoss = $_POST["tempLoss"];
+        $alarmGreater = $_POST["alarmGreater"];
+        $alarmLess = $_POST["alarmLess"];
+        $waterInOilGreater = $_POST["waterInOilGreater"];
+        $waterInOilLess = $_POST["waterInOilLess"];
+        $lossMotionGreater = $_POST["lossMotionGreater"];
+        $lossMotionLess = $_POST["lossMotionLess"];
+        $liftPositionGreater = $_POST["liftPositionGreater"];
+        $liftPositionLower = $_POST["liftPositionLower"];
+
+        $sql = "UPDATE custom_conditions SET tempGreater=$tempGreater , tempLoss=$tempLoss, alarmGreater=$alarmGreater, alarmLess=$alarmLess,
+                waterInOilGreater=$waterInOilGreater, waterInOilLess=$waterInOilLess, lossMotionGreater=$lossMotionGreater, lossMotionLess= $lossMotionLess,
+                liftPositionGreater=$liftPositionGreater, liftPositionLower=$liftPositionLower
+                WHERE device_id = $device_id";
+
+        mysqli_query($con, $sql);
 
         //Third Box Values
         $graphLineName1 = $_POST["graphLineName1"];

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2021 at 10:19 PM
+-- Generation Time: May 08, 2021 at 11:39 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -53,6 +53,34 @@ INSERT INTO `custom_alerts` (`id`, `device_id`, `today_check`, `today_title`, `l
 (14, 44, 'on', 'Today', 'on', 'Last 7 Days', 'on', 'Last Month', 'on', 'Last Six Months'),
 (15, 45, 'on', 'Today', 'on', 'Last 7 Days', 'on', 'Last Month', 'on', 'Last Six Months'),
 (16, 46, 'on', 'Today', 'on', 'Last 7 Days', 'on', 'Last Month', 'on', 'Last Six Months');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `custom_conditions`
+--
+
+CREATE TABLE `custom_conditions` (
+  `id` int(11) NOT NULL,
+  `device_id` int(10) NOT NULL,
+  `tempGreater` int(10) NOT NULL DEFAULT 1,
+  `tempLoss` int(10) NOT NULL DEFAULT 0,
+  `alarmGreater` int(10) NOT NULL DEFAULT 1,
+  `alarmLess` int(10) NOT NULL DEFAULT 0,
+  `waterInOilGreater` int(10) NOT NULL DEFAULT 1,
+  `waterInOilLess` int(10) NOT NULL DEFAULT 0,
+  `lossMotionGreater` int(10) NOT NULL DEFAULT 1,
+  `lossMotionLess` int(10) NOT NULL DEFAULT 0,
+  `liftPositionGreater` int(10) NOT NULL DEFAULT 1,
+  `liftPositionLower` int(10) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `custom_conditions`
+--
+
+INSERT INTO `custom_conditions` (`id`, `device_id`, `tempGreater`, `tempLoss`, `alarmGreater`, `alarmLess`, `waterInOilGreater`, `waterInOilLess`, `lossMotionGreater`, `lossMotionLess`, `liftPositionGreater`, `liftPositionLower`) VALUES
+(1, 46, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0);
 
 -- --------------------------------------------------------
 
@@ -147,7 +175,7 @@ INSERT INTO `custom_graph` (`id`, `device_id`, `graph_title`, `line_color`, `lin
 (13, 43, 'Graph', 'red', 'name', 'UNIT', '', 0, '', 0, '', '', '', '', '', ''),
 (14, 44, 'Graph', '#009cde', 'Torque', 'FT-LBS', '2', 2, '3', 4, '', 'on', '', 'on', '', 'on'),
 (15, 45, 'Graph', '#009cde', 'Torque', 'FT-LBS', '22', 22, '33', 44, 'on', 'on', '', 'on', '', 'on'),
-(16, 46, 'Graph', '#009cde', 'Torque', 'FT-LBS', '0', 0, 'second line', 1, 'on', 'on', 'on', 'on', 'on', 'on');
+(16, 46, 'Graph', '#009cde', 'Torque', 'FT-LBS', '0', 0, 'second line', 1, '', '', 'on', '', 'on', 'on');
 
 -- --------------------------------------------------------
 
@@ -297,7 +325,7 @@ INSERT INTO `dashboard_units` (`id`, `device_id`, `temp`, `torque`, `pressure`, 
 (5, 43, 'f', 'ft-lbs', 'bar', 'mm', 12),
 (6, 44, 'c', 'nm', 'psi', 'in', 24),
 (7, 45, 'c', 'nm', 'pa', 'in', 24),
-(8, 46, 'f', 'ft-lbs', 'bar', 'mm', 12);
+(8, 46, 'f', 'nm', 'bar', 'in', 12);
 
 -- --------------------------------------------------------
 
@@ -5806,7 +5834,7 @@ CREATE TABLE `user_and_devices` (
 --
 
 INSERT INTO `user_and_devices` (`id`, `user_id`, `mac`, `device_name`, `meter_ranges`, `meter_range_1`, `meter_range_2`, `meter_range_3`, `meter_color_1`, `meter_color_2`, `meter_color_3`, `manual`) VALUES
-(46, 0, 'testing:mac', 'Testing Device', '0,2500,5000,7500,10000,12500,15000,175000,20000,22500,25000,27500,40000', 10000, 20000, 30000, 'yellow', 'pink', 'brown', 'IMG_20201129_180227.jpg');
+(46, 2, 'testing:mac', 'Testing Device', '0,2500,5000,7500,10000,12500,15000,175000,20000,22500,25000,27500,40000', 10000, 20000, 30000, 'yellow', 'pink', 'brown', 'IMG_20201129_180227.jpg');
 
 --
 -- Indexes for dumped tables
@@ -5816,6 +5844,12 @@ INSERT INTO `user_and_devices` (`id`, `user_id`, `mac`, `device_name`, `meter_ra
 -- Indexes for table `custom_alerts`
 --
 ALTER TABLE `custom_alerts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `custom_conditions`
+--
+ALTER TABLE `custom_conditions`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -5902,6 +5936,12 @@ ALTER TABLE `user_and_devices`
 --
 ALTER TABLE `custom_alerts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `custom_conditions`
+--
+ALTER TABLE `custom_conditions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `custom_dashboards`

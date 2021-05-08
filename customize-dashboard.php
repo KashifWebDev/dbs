@@ -68,9 +68,6 @@ if(isset($_GET["blockUser"])){
     <?php
     }
     ?>
-    <a href="admin_create_Dashboard.php" class="btn btn-primary float-right mb-2">
-        Create New Dashboard
-    </a>
 
     <table id="example" class="table table-striped table-bordered bg-white shadow autoColorTable_theme" style="width:100%">
         <thead>
