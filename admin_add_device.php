@@ -167,6 +167,7 @@ if(isset($_POST['add_device'])){
         mysqli_query($con, "INSERT INTO custom_sections (device_id) VALUES ($device_id)");
         mysqli_query($con, "INSERT INTO dashboard_units (device_id) VALUES ($device_id)");
         mysqli_query($con, "INSERT INTO custom_dashboards (device_id) VALUES ($device_id)");
+        mysqli_query($con, "INSERT INTO custom_conditions (device_id) VALUES ($device_id)");
 
         js_redirect('admin_dashboard.php');
     }else{

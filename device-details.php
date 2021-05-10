@@ -312,7 +312,31 @@
                               },
                               axisY: {
                                   labelFontColor: "<?php echo $_SESSION['darkTheme']==0 ? 'black' : '#d2d2c9'; ?>",
-                                  title: "<?php echo $row['y_unit']; ?>"
+                                  title: "<?php echo $row['y_unit']; ?>",
+                                  stripLines:[
+                                      {
+                                          <?php
+                                          if(isset($row["line1_value"]) && $row["line1_value"]!=""){
+                                          ?>
+                                              // color:"#ffff00",
+                                              value: <?php echo $row["line1_value"]; ?>,
+                                              label: "<?php echo $row["line1"]; ?>"
+                                          <?php
+                                          }
+                                          ?>
+                                      },
+                                      {
+                                          <?php
+                                          if(isset($row["line2_value"]) && $row["line2_value"]!=""){
+                                          ?>
+                                             // color:"#ffff00",
+                                              value: <?php echo $row["line2_value"]; ?>,
+                                              label: "<?php echo $row["line2"]; ?>"
+                                          <?php
+                                          }
+                                          ?>
+                                      }
+                                  ]
                               },
                               toolTip:{
                                   shared: true

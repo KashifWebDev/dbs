@@ -1029,7 +1029,7 @@ function runQuery($sql, $msg){
         $legend4 = isset($_POST["legend4"]) ? $_POST["legend4"] : '';
         $legend5 = isset($_POST["legend5"]) ? $_POST["legend5"] : '';
 
-        $sql = "UPDATE custom_graph SET line1='$graphValue1', line1_value='$graphValue1', line2='$graphLineName2', line2_value='$graphValue2',
+        $sql = "UPDATE custom_graph SET line1='$graphLineName1', line1_value='$graphValue1', line2='$graphLineName2', line2_value='$graphValue2',
                  show_legends='$allLegendsCheck', legends1='$legend1', legends2='$legend2', legends3='$legend3', legends4='$legend4',
                  legends5='$legend5' WHERE device_id = $device_id";
         mysqli_query($con, $sql);

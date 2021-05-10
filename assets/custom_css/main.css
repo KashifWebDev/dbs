@@ -192,8 +192,9 @@ table{
 }
 .conditionHeading h3{
     font-family: 'Roboto', sans-serif;
-    margin-top: 5px;
+    /*margin-top: 5px;*/
     font-size: x-large;
+    width: 150px;
 }
 
 
