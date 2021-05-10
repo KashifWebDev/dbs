@@ -68,6 +68,8 @@ if ($_SESSION["darkTheme"] == 1){
         <table id="example" class="table table-striped table-bordered bg-white shadow autoColorTable_theme" style="width:100%">
             <thead>
             <tr>
+                <th>#</th>
+                <th>Picture</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Type</th>
@@ -94,24 +96,17 @@ if ($_SESSION["darkTheme"] == 1){
                 }
                 ?>
                 <tr>
+                    <td><?php echo $row["id"]; ?></td>
+                    <td><img id="userTablePic" src="assets/imgs/user.jpg" alt="User Pic"></td>
                     <td><?php echo $row["username"]; ?></td>
                     <td><?php echo $row["email"]; ?></td>
                     <td><span class="p-2 text-white border-radius-10px   <?php echo $typeClass; ?>"><?php echo $userType; ?></span></td>
                     <td>
-                        <a href="users.php?changeUser=<?php echo $row['is_admin']==1 ? 0 : 1; ?>&userID=<?php echo $row['id']; ?>" class="btn btn-success">
-                            <?php
-                                if(!$row["is_admin"]){
-                                    echo 'Make Admin';
-                                }else{
-                                    echo 'Make User';
-                                }
-                            ?>
-                        </a>
                         <a href="users.php?delUser=<?php echo $row['id']; ?>" class="btn btn-danger">
-                            <i class="fas fa-trash"></i> Delete
+                            <i class="fas fa-trash"></i>
                         </a>
                         <a href="users.php?delUser=<?php echo $row['id']; ?>" class="btn btn-primary" data-toggle="modal" data-target="#update_<?php echo $rand; ?>">
-                            <i class="fas fa-edit"></i> Update
+                            <i class="fas fa-edit"></i>
                         </a>
                         <a href="users.php?blockUser=<?php echo $row['id']; ?>&action=<?php echo $action; ?>" class="btn btn-info">
                             <i class="fas fa-shield-alt text-white mr-2"></i>
@@ -121,6 +116,15 @@ if ($_SESSION["darkTheme"] == 1){
                             }else{
                                 echo 'Block';
                             }
+                            ?>
+                        </a>
+                        <a href="users.php?changeUser=<?php echo $row['is_admin']==1 ? 0 : 1; ?>&userID=<?php echo $row['id']; ?>" class="btn btn-success">
+                            <?php
+                                if(!$row["is_admin"]){
+                                    echo 'Make Admin';
+                                }else{
+                                    echo 'Make User';
+                                }
                             ?>
                         </a>
                     </td>
@@ -187,6 +191,8 @@ if ($_SESSION["darkTheme"] == 1){
             </tbody>
             <tfoot>
             <tr>
+                <th>#</th>
+                <th>Picture</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Type</th>
