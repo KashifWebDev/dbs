@@ -457,8 +457,34 @@ function runQuery($sql, $msg){
                                                         </div>
                                                     </div>
                                                 </div>
+                                            <br>
                                             <h3 class="font-roboto">Lift Position</h3>
+                                            <?php
+                                            $sql = "SELECT * FROM custom_vertical_bar WHERE  device_id = $device_id";
+                                            $res = mysqli_query($con, $sql);
+                                            $row = mysqli_fetch_array($res);
+                                            ?>
                                             <hr>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label>Bar Label</label>
+                                                        <input name="vBarName" type="text" class="form-control" value="<?php echo $row["name"]; ?>">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label>Maximum Range</label>
+                                                        <input name="vBarRange" type="number" class="form-control" value="<?php echo $row["maxRange"]; ?>">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label>Bar Unit</label>
+                                                        <input name="vBarUnit" type="text" class="form-control" value="<?php echo $row["unit"]; ?>">
+                                                    </div>
+                                                </div>
+                                            </div>
 
                                         </div>
                                     </div>
@@ -985,6 +1011,15 @@ function runQuery($sql, $msg){
         if(!mysqli_query($con, $sql)){
             echo "Error while inserting in custom_dashboards ! <br> SQL: $sql <br> ".mysqli_error($con);
         }
+
+        //Vertical Bar Configurations
+        $vBarName = $_POST["vBarName"];
+        $vBarRange = $_POST["vBarRange"];
+        $vBarUnit = $_POST["vBarUnit"];
+
+        $sql = "UPDATE custom_vertical_bar SET name='$vBarName', maxRange='$vBarRange', unit='$vBarUnit' WHERE device_id=$device_id";
+        mysqli_query($con, $sql);
+
 
         //UNITS
         $temperature_unit = $_POST["temperature_unit"];

@@ -1045,7 +1045,11 @@
 <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
 <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
 <script type="text/javascript">
-
+<?php
+$sql = "SELECT * FROM custom_vertical_bar WHERE  device_id = $device_id";
+$res = mysqli_query($con, $sql);
+$row = mysqli_fetch_array($res);
+?>
 
     FusionCharts.ready(function() {
         var CSIGauge = new FusionCharts({
@@ -1059,13 +1063,13 @@
                 "chart": {
                     "bgColor": "#dddee0",
                     "theme": "fusion",
-                    "caption": "Lift Position",
+                    "caption": "<?php echo $row["name"]; ?>",
                     "captionFontColor": "#000000",
                     "lowerLimit": "0",
-                    "upperLimit": "100",
+                    "upperLimit": "<?php echo $row["maxRange"]; ?>",
                     "lowerLimitDisplay": "0",
-                    "upperLimitDisplay": "100%",
-                    "numberSuffix": "%",
+                    "upperLimitDisplay": "<?php echo $row["maxRange"].$row["unit"]; ?>",
+                    "numberSuffix": "<?php echo $row["unit"]; ?>",
                     "valueFontSize": "12",
                     "showhovereffect": "1",
                     "origW": "400",
