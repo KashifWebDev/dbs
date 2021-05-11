@@ -3,11 +3,13 @@ require 'app/main.php';
 session_start();
 check_session();
 
-$sql = "SELECT * FROM user_and_devices WHERE user_id = ".$_SESSION["id"];
+$sql = "SELECT user_and_devices.user_id, devices.id as dID
+        FROM user_and_devices,devices
+        WHERE user_id = ".$_SESSION["id"];
 $res = mysqli_query($con, $sql);
 if(mysqli_num_rows($res)==1){
     $row = mysqli_fetch_array($res);
-    header('Location: device-details.php?id='.$row['id']);
+    header('Location: device-details.php?id='.$row['dID']);
 
 }
 
@@ -27,7 +29,9 @@ $_SESSION['currentPath'] = "./";
         <div class="row">
             <?php
                 $uid = $_SESSION["id"];
-                $sql = "SELECT devices.id as deviceID, devices.device_name, devices.mac as mac FROM devices, users WHERE user_and_devices = $uid GROUP BY mac";
+                $sql = "SELECT devices.id as deviceID, devices.device_name, devices.mac as mac, user_and_devices.user_id
+                        FROM devices, user_and_devices
+                        WHERE user_id = $uid GROUP BY mac";
                 $res = mysqli_query($con, $sql);
                 if(mysqli_num_rows($res)){
                     while($row = mysqli_fetch_array($res)){

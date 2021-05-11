@@ -105,10 +105,10 @@ if (isset($_SESSION["darkTheme"]) && $_SESSION["darkTheme"] == 1){
                         <a href="users.php?delUser=<?php echo $row['id']; ?>" class="btn btn-danger">
                             <i class="fas fa-trash"></i>
                         </a>
-                        <a href="users.php?delUser=<?php echo $row['id']; ?>" class="btn btn-primary" data-toggle="modal" data-target="#update_<?php echo $rand; ?>">
+                        <a class="btn btn-primary" data-toggle="modal" data-target="#update_<?php echo $rand; ?>">
                             <i class="fas fa-edit"></i>
                         </a>
-                        <a href="users.php?delUser=<?php echo $row['id']; ?>" class="btn btn-secondary" data-toggle="modal" data-target="#assign_<?php echo $rand; ?>">
+                        <a  class="btn btn-secondary" data-toggle="modal" data-target="#assign_<?php echo $rand; ?>">
                             <i class="fas fa-plus-circle"></i>
                         </a>
                         <a href="users.php?blockUser=<?php echo $row['id']; ?>&action=<?php echo $action; ?>" class="btn btn-info">
@@ -192,27 +192,61 @@ if (isset($_SESSION["darkTheme"]) && $_SESSION["darkTheme"] == 1){
                                 <form action="" method="post">
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">Select device to link</label>
-                                        <select class="form-control" id="exampleFormControlSelect1">
+                                        <select class="form-control" id="exampleFormControlSelect1" name="deviceID">
                                             <option>-- Select --</option>
                                             <?php
                                             $uid = $row['id'];
-                                            $sql1 = "SELECT * FROM user_and_devices WHERE user_id=$uid";
+                                            $sql1 = "SELECT * FROM devices";
                                             $res1 = mysqli_query($con, $sql1);
                                             while($row1 = mysqli_fetch_array($res1)){
                                                 ?>
-                                                <option value=""><?php echo $row1["device_name"].' ('.$row1["mac"].')'; ?></option>
+                                                <option value="<?php echo $row1["id"]; ?>"><?php echo $row1["device_name"].' ('.$row1["mac"].')'; ?></option>
                                             <?php
                                             }
                                             ?>
                                         </select>
+                                        <input type="hidden" value="<?php echo $row['id']; ?>" name="user_id">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10 mx-auto">
+                                            <button class="btn btn-primary w-100" type="submit" name="link">Link Device</button>
+                                        </div>
                                     </div>
                                     <input type="hidden" value="<?php echo $row['id']; ?>" name="user_id">
                                 </form>
+                                <?php
+                                $uid = $row['id'];
+                                $sql1 = "SELECT user_and_devices.id as deviceID, devices.device_name as name
+                                        FROM user_and_devices, devices 
+                                        WHERE user_id=$uid";
+                                $res1 = mysqli_query($con, $sql1);
+                                if(mysqli_num_rows($res1)){
+                                    ?>
+                                    <h4 class="font-roboto mt-5">Linked Devices</h4>
+                                    <hr>
+                                    <div class="d-flex">
+                                        <?php
+                                        while ($row2 = mysqli_fetch_array($res1)){
+                                            ?>
+                                            <h5 class="mr-2">
+                                             <span class="badge badge-primary">
+                                                 <span><?php echo $row2["name"]; ?></span>
+                                                <span><a href="users.php?unlinkDevice=<?php echo $row2["deviceID"]; ?>" class="text-white-50 ml-3">X</a></span>
+                                             </span>
+                                            </h5>
+                                        <?php
+                                        }
+                                        ?>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
                             </div>
 
                         </div>
                     </div>
                 </div>
+
                 <?php
             }
             if(isset($_POST["update_user"])){
@@ -243,6 +277,35 @@ if (isset($_SESSION["darkTheme"]) && $_SESSION["darkTheme"] == 1){
             </tfoot>
         </table>
     </div>
+
+<?php
+if(isset($_POST["link"])){
+    print_r($_POST);
+    $dID = $_POST["deviceID"];
+    $uID =  $_POST["user_id"];
+    $sql = "INSERT INTO user_and_devices (user_id, device_id) VALUES ($uID, $dID)";
+//    echo $sql; exit(); die();
+    if(mysqli_query($con, $sql)){
+        echo '<script>window.location.replace("users.php");</script>';
+        header('Location: users.php');
+    }else{
+        echo mysqli_error($con); die(); exit();
+    }
+}
+if(isset($_GET["unlinkDevice"])){
+    $id = $_GET["unlinkDevice"];
+//    $sql ="DELETE FROM user_and_devices WHERE id=$id";
+    $sql ="DELETE FROM `user_and_devices` WHERE `user_and_devices`.`id` = $id";
+//    echo $sql; exit(); die();
+    if(mysqli_query($con, $sql)){
+//    echo "done"; exit(); die();
+        echo '<script>window.location.replace("users.php");</script>';
+        header('Location: users.php');
+    }else{
+        echo mysqli_error($con); die(); exit();
+    }
+}
+?>
 
 <!-- Bootstrap core JavaScript -->
 <?php require 'app/footer.include.php'; ?>
@@ -305,8 +368,8 @@ if (isset($_SESSION["darkTheme"]) && $_SESSION["darkTheme"] == 1){
         $type = (int) $_POST["type"];
         $sql = "INSERT INTO users (username, email, password, is_admin) VALUES ('$name', '$email', '$pass', $type)";
         if(mysqli_query($con, $sql)){
-            echo '<script>windows.location.replace("users.php")</script>';
-            header('Location: users.php');
+            echo '<script>window.location.replace("users.php");</script>';
+//            header('Location: users.php');
         }else{
             echo '<script>alert("'.mysqli_error($con).'")</script>';
         }

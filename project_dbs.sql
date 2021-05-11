@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2021 at 09:09 AM
+-- Generation Time: May 11, 2021 at 02:21 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -5870,9 +5870,8 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `is_admin`, `blocked
 (1, 'Administrator', 'admin@admin.com', 'admin@123', 1, 0, NULL),
 (2, 'User', 'user@user.com', 'user@123', 0, 0, '323232444'),
 (19, 'Test User', 'kashifkhan@loketa.com', 'Test User', 0, 0, NULL),
-(20, 'abc', 'abc@def.com', 'abc@def.com', 0, 0, NULL),
-(22, 'aaa', 'adf@adf.root', 'adf@adf.root', 0, 0, NULL),
-(27, 'abc', 'abc@aaaa.2q', 'abc@aaaa.2q', 0, 0, '3232324');
+(29, 'admin', 'kashifkhan@loketa.comadsf', 'adsf', 0, 0, NULL),
+(31, '232', 'sdsdas33d@doc-mail.net', 'asdfadf', 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -5891,7 +5890,10 @@ CREATE TABLE `user_and_devices` (
 --
 
 INSERT INTO `user_and_devices` (`id`, `user_id`, `device_id`) VALUES
-(48, 2, 48);
+(54, 27, 27),
+(55, 22, 22),
+(56, 20, 20),
+(59, 2, 48);
 
 --
 -- Indexes for dumped tables
@@ -6088,13 +6090,13 @@ ALTER TABLE `recorded_values`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `user_and_devices`
 --
 ALTER TABLE `user_and_devices`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
