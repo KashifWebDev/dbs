@@ -9,7 +9,7 @@ if (isset($_SESSION["darkTheme"]) && $_SESSION["darkTheme"] == 1){
     $themeLinkText = "Dark Theme";
 }
 
-$sql = "SELECT * FROM user_and_devices WHERE id=$device_id";
+$sql = "SELECT * FROM devices WHERE id=$device_id";
 $res = mysqli_query($con, $sql);
 $row = mysqli_fetch_array($res);
 $file = $row["manual"];
@@ -85,7 +85,7 @@ $file = $row["manual"];
             </div>
             <div class="modal-body">
                 <?php
-                $sql1 = "SELECT * FROM user_and_devices WHERE id= $device_id";
+                $sql1 = "SELECT * FROM user_and_devices WHERE device_id= $device_id";
                 $res1 = mysqli_query($con, $sql1);
                 $row1 = mysqli_fetch_array($res1);
                 $uid= $row1["user_id"];

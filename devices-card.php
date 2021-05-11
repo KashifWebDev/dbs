@@ -11,7 +11,7 @@
 
         <div class="<?php echo $boxClass; ?> shadow-black px-3 py-2 border-radius-10px">
             <div class="d-flex">
-                <a href="device-details.php?id=<?php echo $row['id']; ?>" style="width: 95%;text-decoration: none;" class="d-flex auto_color_txt">
+                <a href="device-details.php?id=<?php echo $row['deviceID']; ?>" style="width: 95%;text-decoration: none;" class="d-flex auto_color_txt">
                     <div class="w-15">
                         <i class="fas fa-desktop <?php echo $fontColor; ?> fa-2x mt-3"></i>
                     </div>
@@ -39,7 +39,7 @@
                 </a>
                 <div class="w-5 d-flex align-items-end">
                     <div>
-                        <button onclick="del_device_function(<?php echo $row["id"]; ?>)" class="btn btn-circle text-danger"
+                        <button onclick="del_device_function(<?php echo $row["deviceID"]; ?>)" class="btn btn-circle text-danger"
                                 data-toggle="modal" data-target="#deleteDevice">
                             <i class="fas fa-trash-alt fa-2x"></i>
                         </button>

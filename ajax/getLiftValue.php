@@ -9,7 +9,7 @@ header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,
 require '../app/db.php';
 
 $id = $_GET["id"];
-$sql = "SELECT * FROM user_and_devices WHERE id=$id";
+$sql = "SELECT * FROM devices WHERE id=$id";
 $res = mysqli_query($con, $sql);
 $row = mysqli_fetch_array($res);
 //print_r($row);

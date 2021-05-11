@@ -10,7 +10,7 @@ require '../app/db.php';
 session_start();
 
 $id = $_GET["device_id"];
-$sql = "SELECT * FROM user_and_devices WHERE id=$id";
+$sql = "SELECT * FROM devices WHERE id=$id";
 $res = mysqli_query($con, $sql);
 $row = mysqli_fetch_array($res);
 //print_r($row);

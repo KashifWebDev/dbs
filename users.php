@@ -13,7 +13,7 @@ verify_is_admin();
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"></link>
 
 <?php
-if ($_SESSION["darkTheme"] == 1){
+if (isset($_SESSION["darkTheme"]) && $_SESSION["darkTheme"] == 1){
    ?>
     <style>
         table.dataTable tbody tr {
@@ -108,6 +108,9 @@ if ($_SESSION["darkTheme"] == 1){
                         <a href="users.php?delUser=<?php echo $row['id']; ?>" class="btn btn-primary" data-toggle="modal" data-target="#update_<?php echo $rand; ?>">
                             <i class="fas fa-edit"></i>
                         </a>
+                        <a href="users.php?delUser=<?php echo $row['id']; ?>" class="btn btn-secondary" data-toggle="modal" data-target="#assign_<?php echo $rand; ?>">
+                            <i class="fas fa-plus-circle"></i>
+                        </a>
                         <a href="users.php?blockUser=<?php echo $row['id']; ?>&action=<?php echo $action; ?>" class="btn btn-info">
                             <i class="fas fa-shield-alt text-white mr-2"></i>
                             <?php
@@ -164,6 +167,45 @@ if ($_SESSION["darkTheme"] == 1){
                                     </div>
                                     <button type="submit" class="btn btn-primary" name="update_user">Update</button>
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                    <input type="hidden" value="<?php echo $row['id']; ?>" name="user_id">
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Assign User -->
+                <div class="modal" id="assign_<?php echo $rand; ?>">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title" style="color: black;">Link Device</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <form action="" method="post">
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Select device to link</label>
+                                        <select class="form-control" id="exampleFormControlSelect1">
+                                            <option>-- Select --</option>
+                                            <?php
+                                            $uid = $row['id'];
+                                            $sql1 = "SELECT * FROM user_and_devices WHERE user_id=$uid";
+                                            $res1 = mysqli_query($con, $sql1);
+                                            while($row1 = mysqli_fetch_array($res1)){
+                                                ?>
+                                                <option value=""><?php echo $row1["device_name"].' ('.$row1["mac"].')'; ?></option>
+                                            <?php
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
                                     <input type="hidden" value="<?php echo $row['id']; ?>" name="user_id">
                                 </form>
                             </div>

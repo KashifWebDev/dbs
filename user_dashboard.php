@@ -26,7 +26,8 @@ $_SESSION['currentPath'] = "./";
     <div class="container">
         <div class="row">
             <?php
-                $sql = "SELECT * FROM user_and_devices WHERE user_id = ".$_SESSION["id"];
+                $uid = $_SESSION["id"];
+                $sql = "SELECT devices.id as deviceID, devices.device_name, devices.mac as mac FROM devices, users WHERE user_and_devices = $uid GROUP BY mac";
                 $res = mysqli_query($con, $sql);
                 if(mysqli_num_rows($res)){
                     while($row = mysqli_fetch_array($res)){

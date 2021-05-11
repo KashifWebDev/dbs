@@ -151,7 +151,7 @@ if(isset($_POST['add_device'])){
 
 
 
-    $row = "INSERT INTO user_and_devices
+    $row = "INSERT INTO devices
             (mac, device_name, manual) VALUES
             ('$mac', '$name', '$fileName')";
 

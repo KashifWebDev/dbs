@@ -57,50 +57,12 @@ function runQuery($sql, $msg){
             <form action="" method="POST">
                 <div class="tab-content" id="v-pills-tabContent">
                     <!--Dashboard Information Tab-->
+                    <?php
+                    $sql = "SELECT * FROM custom_dashboards WHERE device_id = $device_id";
+                    $res = mysqli_query($con, $sql);
+                    $row1 = mysqli_fetch_array($res);
+                    ?>
                     <div class="tab-pane fade show active bg-white shadow p-3" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                        <div class="form-group">
-                            <label>Select Device</label>
-                            <select class="form-control" id="sel1" name="device_id">
-                                <option>-- Select device to link --</option>
-                                <?php
-                                $sql = "SELECT * FROM custom_dashboards WHERE device_id = $device_id";
-                                $res = mysqli_query($con, $sql);
-                                $row1 = mysqli_fetch_array($res);
-
-                                $sql = "SELECT * FROM user_and_devices";
-                                $res = mysqli_query($con, $sql);
-                                while($row = mysqli_fetch_array($res)){
-                                    $selected = "";
-                                    if($row["id"] == $row1["device_id"]){
-                                        $selected = "selected";
-                                    }
-                                    ?>
-                                    <option value="<?php echo $row["id"]; ?>" <?php echo $selected; ?>><?php echo $row["device_name"].' ('.$row["mac"].')'; ?></option>
-                                    <?php
-                                }
-                                ?>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Select User</label>
-                            <select class="form-control" id="sel1" name="user_id">
-                                <option>-- Select user to link --</option>
-                                <?php
-                                require 'app/db.php';
-                                $sql = "SELECT * FROM users WHERE is_admin=0";
-                                $res = mysqli_query($con, $sql);
-                                while($row = mysqli_fetch_array($res)){
-                                    $selected = "";
-                                    if($row["id"] == $row1["user_id"]){
-                                        $selected = "selected";
-                                    }
-                                    ?>
-                                    <option value="<?php echo $row["id"]; ?>" <?php echo $selected; ?>><?php echo $row["username"].' ('.$row["email"].')'; ?></option>
-                                    <?php
-                                }
-                                ?>
-                            </select>
-                        </div>
                         <div class="form-group">
                             <label>Dashboard Name</label>
                             <input type="text" class="form-control" value="<?php echo $row1["dashboardName"]; ?>" placeholder="New Dashboard" name="dashboardName">
@@ -131,7 +93,7 @@ function runQuery($sql, $msg){
                         </div>
                         <div class="form-group row text-dark">
                             <label for="inputEmail3" class="col-form-label col-3 mx-3 font-weight-bold">Torque</label>
-                            <div class="form-check form-check-inline ml-3">
+                            <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="torque_unit" value="ft-lbs" <?php if($row1["torque"]=="ft-lbs") echo "checked"; ?>>
                                 <label class="form-check-label" >ft-lbs</label>
                             </div>
@@ -493,7 +455,7 @@ function runQuery($sql, $msg){
                                 <!--Torque Gauge Customization Card-->
                                 <div class="card">
                                     <?php
-                                    $sql = "SELECT * FROM user_and_devices WHERE id=$defaultSettingsId";
+                                    $sql = "SELECT * FROM devices WHERE id=$defaultSettingsId";
                                     $res = mysqli_query($con, $sql);
                                     $mainRow = mysqli_fetch_array($res);
                                     ?>
@@ -516,7 +478,7 @@ function runQuery($sql, $msg){
                                                                 <span class="input-group-text" id="">0 - </span>
                                                             </div>
                                                             <input onkeyup="func1()" value="<?php echo $mainRow["meter_range_1"]; ?>" id="box111" type="text" class="form-control" placeholder="Range" name="rng1">
-                                                            <input type="text" class="form-control" value="<?php echo $mainRow["meter_color_1"]; ?>" placeholder="Color" name="clr1">
+                                                            <input type="color" class="form-control form-control-color" value="<?php echo $mainRow["meter_color_1"]; ?>" placeholder="Color" name="clr1">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
@@ -525,7 +487,7 @@ function runQuery($sql, $msg){
                                                                 <p class="input-group-text" id="ffff"><span id="r2">0</span> - </p>
                                                             </div>
                                                             <input onkeyup="func2()" value="<?php echo $mainRow["meter_range_2"]; ?>" id="box2222" type="text" class="form-control" placeholder="Range" name="rng2"">
-                                                            <input type="text" value="<?php echo $mainRow["meter_color_2"]; ?>" class="form-control" placeholder="Color" name="clr2">
+                                                            <input type="color" class="form-control form-control-color"  value="<?php echo $mainRow["meter_color_2"]; ?>" placeholder="Color" name="clr2">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
@@ -534,7 +496,7 @@ function runQuery($sql, $msg){
                                                                 <p class="input-group-text" id="eeee"><span id="r3">0</span> - </p>
                                                             </div>
                                                             <input id="box3" value="<?php echo $mainRow["meter_range_3"]; ?>" type="text" class="form-control" placeholder="Range" name="rng3">
-                                                            <input type="text" value="<?php echo $mainRow["meter_color_3"]; ?>" class="form-control" placeholder="Color" name="clr3">
+                                                            <input type="color" class="form-control form-control-color" value="<?php echo $mainRow["meter_color_3"]; ?>" placeholder="Color" name="clr3">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -997,16 +959,14 @@ function runQuery($sql, $msg){
     <?php
     if(isset($_POST["newDashboard"])){
         //First Box Values
-        $device_id = $_POST["device_id"];
-        $user_id = $_POST["user_id"];
         $dashboardName = $_POST["dashboardName"];
         $userEmail = $_POST["userEmail"];
         //UPDATING data into custom_dashboards Row
 
-        $sql = "UPDATE custom_dashboards SET user_id=$user_id, dashboardName='$dashboardName', email='$userEmail' WHERE device_id=$device_id";
-        $sql1 = "UPDATE user_and_devices  SET user_id=$user_id WHERE id=$device_id";
+        $sql = "UPDATE custom_dashboards SET dashboardName='$dashboardName', email='$userEmail' WHERE device_id=$device_id";
 
-        mysqli_query($con, $sql1);
+//        $sql1 = "UPDATE user_and_devices  SET user_id=$user_id WHERE device_id=$device_id";
+//        mysqli_query($con, $sql1);
 
         if(!mysqli_query($con, $sql)){
             echo "Error while inserting in custom_dashboards ! <br> SQL: $sql <br> ".mysqli_error($con);
@@ -1117,7 +1077,7 @@ function runQuery($sql, $msg){
             $rng3 = $_POST["rng3"];
             $clr3 = $_POST["clr3"];
 
-            $sql = "UPDATE user_and_devices SET
+            $sql = "UPDATE devices SET
             meter_ranges='$ranges', meter_range_1='$rng1', meter_range_2='$rng2', meter_range_3='$rng3', 
              meter_color_1='$clr1', meter_color_2='$clr2', meter_color_3='$clr3' WHERE id= $device_id";
 
@@ -1219,8 +1179,8 @@ function runQuery($sql, $msg){
             WHERE device_id=$device_id";
 
             if(runQuery($sql, 'Maintenance Settings Updated!')){
-                js_redirect("customize-dashboard.php?msg=New Dashboard Added");
-//                echo "Dashboard Done! ";
+//                js_redirect("customize-dashboard.php?msg=New Dashboard Added");
+                echo "Dashboard Done! ";
             }
 
 

@@ -78,7 +78,7 @@ if(isset($_GET["blockUser"])){
         </thead>
         <tbody>
         <?php
-        $sql = "SELECT * FROM user_and_devices";
+        $sql = "SELECT * FROM devices";
         $res = mysqli_query($con, $sql);
         while($row = mysqli_fetch_array($res)){
             ?>

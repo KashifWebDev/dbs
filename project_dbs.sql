@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2021 at 07:03 PM
+-- Generation Time: May 11, 2021 at 09:09 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -311,7 +311,7 @@ INSERT INTO `custom_sections` (`id`, `device_id`, `device_settings_check`, `torq
 (16, 45, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
 (17, 46, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
 (18, 47, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
-(19, 48, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge');
+(19, 48, 'on', 'on', '', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge');
 
 -- --------------------------------------------------------
 
@@ -364,7 +364,34 @@ INSERT INTO `dashboard_units` (`id`, `device_id`, `temp`, `torque`, `pressure`, 
 (7, 45, 'c', 'nm', 'pa', 'in', 24),
 (8, 46, 'f', 'nm', 'bar', 'in', 12),
 (9, 47, 'c', 'nm', 'psi', 'in', 24),
-(10, 48, 'c', 'ft-lbs', 'psi', 'in', 24);
+(10, 48, 'c', 'ft-lbs', 'bar', 'mm', 12);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `devices`
+--
+
+CREATE TABLE `devices` (
+  `id` int(11) NOT NULL,
+  `mac` varchar(20) NOT NULL,
+  `device_name` varchar(30) NOT NULL,
+  `meter_ranges` varchar(100) NOT NULL,
+  `meter_range_1` int(11) NOT NULL,
+  `meter_range_2` int(11) NOT NULL,
+  `meter_range_3` int(11) NOT NULL,
+  `meter_color_1` varchar(20) NOT NULL,
+  `meter_color_2` varchar(20) NOT NULL,
+  `meter_color_3` varchar(20) NOT NULL,
+  `manual` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `devices`
+--
+
+INSERT INTO `devices` (`id`, `mac`, `device_name`, `meter_ranges`, `meter_range_1`, `meter_range_2`, `meter_range_3`, `meter_color_1`, `meter_color_2`, `meter_color_3`, `manual`) VALUES
+(48, 'testing:mac', 'Testing Device', '0,2500,5000,7500,10000,12500,15000,175000,20000,22500,25000,27500,40000', 10000, 20000, 30000, '#a38aff', '#85ff75', '#ffa3a3', 'Spring 2021_CS201_1.docx');
 
 -- --------------------------------------------------------
 
@@ -5856,24 +5883,15 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `is_admin`, `blocked
 CREATE TABLE `user_and_devices` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `mac` varchar(20) NOT NULL,
-  `device_name` varchar(30) NOT NULL,
-  `meter_ranges` varchar(100) NOT NULL,
-  `meter_range_1` int(11) NOT NULL,
-  `meter_range_2` int(11) NOT NULL,
-  `meter_range_3` int(11) NOT NULL,
-  `meter_color_1` varchar(20) NOT NULL,
-  `meter_color_2` varchar(20) NOT NULL,
-  `meter_color_3` varchar(20) NOT NULL,
-  `manual` varchar(100) NOT NULL
+  `device_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user_and_devices`
 --
 
-INSERT INTO `user_and_devices` (`id`, `user_id`, `mac`, `device_name`, `meter_ranges`, `meter_range_1`, `meter_range_2`, `meter_range_3`, `meter_color_1`, `meter_color_2`, `meter_color_3`, `manual`) VALUES
-(48, 2, 'testing:mac', 'Testing Device', '0,2500,5000,7500,10000,12500,15000,175000,20000,22500,25000,27500,40000', 10000, 20000, 30000, 'blue', 'green', 'red', 'Spring 2021_CS201_1.docx');
+INSERT INTO `user_and_devices` (`id`, `user_id`, `device_id`) VALUES
+(48, 2, 48);
 
 --
 -- Indexes for dumped tables
@@ -5937,6 +5955,12 @@ ALTER TABLE `custom_vertical_bar`
 -- Indexes for table `dashboard_units`
 --
 ALTER TABLE `dashboard_units`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `devices`
+--
+ALTER TABLE `devices`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -6035,6 +6059,12 @@ ALTER TABLE `custom_vertical_bar`
 --
 ALTER TABLE `dashboard_units`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `devices`
+--
+ALTER TABLE `devices`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `installation_info`

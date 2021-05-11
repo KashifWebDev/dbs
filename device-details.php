@@ -217,7 +217,7 @@
                           $row = mysqli_fetch_array($res);
                           $torque_title = $row["torque_title"];
 
-                          $sql = "SELECT * FROM user_and_devices WHERE id=$device_id";
+                          $sql = "SELECT * FROM devices WHERE id=$device_id";
                           $res = mysqli_query($con, $sql);
                           $row = mysqli_fetch_array($res);
                           $rng1 = $row["meter_range_1"];
@@ -420,7 +420,7 @@
                   <div class="custom_card w-100 d-flex flex-column bar_font_size">
                       <p class="text-center font-weight-bolder font-size-larger m-0">INSTALLATION INFORMATION</p>
                       <?php
-                      $sql = "SELECT * FROM user_and_devices WHERE id=$device_id";
+                      $sql = "SELECT * FROM devices WHERE id=$device_id";
                       $res = mysqli_query($con, $sql);
                       $row = mysqli_fetch_array($res);
                       $mac = $row["mac"];
@@ -898,7 +898,7 @@
       $inService = $_POST["inService"];
 
 
-      $sql = "SELECT * FROM user_and_devices WHERE id=$device_id";
+      $sql = "SELECT * FROM devices WHERE id=$device_id";
       $res = mysqli_query($con, $sql);
       $row = mysqli_fetch_array($res);
       $mac = $row["mac"];
