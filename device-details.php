@@ -510,7 +510,7 @@
                                   if($_SESSION['is_admin']){
                                       ?>
                                       <td>
-                                          <button class="btn btn-info" data-toggle="modal" data-target="#addNewDevice">Edit</button>
+                                          <button class="btn btn-info font-weight-bold" data-toggle="modal" data-target="#addNewDevice" style="background-color: #009cde">Edit</button>
                                       </td>
                                       <?php
                                   }
@@ -673,7 +673,7 @@
                           }
                           ?>
                       </table>
-                      <div class="mt-2 d-flex justify-content-end">
+                      <div class="mt-2 d-flex justify-content-end align-items-end h-100">
                           <button class="btn text-white font-weight-bold border-0" style="background-color: #009cde"
                                   data-toggle="modal" data-target="#addRecord">Edit</button>
                           <button class="btn text-white font-weight-bold border-0 mx-3" style="background-color: #009cde"

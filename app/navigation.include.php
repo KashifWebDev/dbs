@@ -44,11 +44,11 @@ $file = $row["manual"];
                 </ul>
             </div>
             <div class="col-3 d-flex justify-content-center top_btn_margin">
-                <a class="btn text-white font-weight-bold border-0" href="<?php if($file) echo 'assets/manuals/'.$file; ?>"
+                <button class="btn text-white font-weight-bold border-0" type="button" data-toggle="modal" data-target="#runReport"
                    style="background-color: #009cde; padding-top: 8px; height: fit-content;">
                     Download Report
-                </a> &nbsp;&nbsp;
-                <a class="btn text-white font-weight-bold border-0"
+                </button> &nbsp;&nbsp;
+                <a class="btn text-white font-weight-bold border-0" href="<?php if($file) echo 'assets/manuals/'.$file; ?>"
                    style="background-color: #009cde; padding-top: 8px; height: fit-content;">
                     Download Manual
                 </a>&nbsp;&nbsp;
@@ -71,6 +71,63 @@ $file = $row["manual"];
         </div>
     </div>
 </div>
+
+    <!-- Run Report Modal -->
+    <div class="modal" id="runReport">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="report.php" method="post">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Create Report</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>From Date</label>
+                            <input type="date" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>To</label>
+                            <input type="date" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" name="1">Installation Information
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" name="2">Maintenance History
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" name="3" disabled>Alerts
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" name="3" disabled>Torque Values History
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger" name="run">Run Report</button>
+                    <a href="report1.php" class="btn btn-primary" name="run">Download PDF</a>
+                </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
 
 
 <!-- Modal user_settings_modal -->

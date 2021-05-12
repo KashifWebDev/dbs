@@ -501,6 +501,24 @@ function runQuery($sql, $msg){
                                                     </div>
                                                 </div>
                                         </div>
+                                        <script>
+                                            function func1(){
+                                                var name = document.getElementById("box111").value;
+                                                var span = document.getElementById("ffff");
+                                                name = name + ' - ';
+                                                span.textContent = name;
+                                                span.innerHTML = name;
+                                                console.log(name);
+                                            }
+                                            function func2(){
+                                                var name = document.getElementById("box2222").value;
+                                                var span = document.getElementById("eeee");
+                                                name = name + ' - ';
+                                                span.textContent = name;
+                                                span.innerHTML = name;
+                                                console.log(name);
+                                            }
+                                        </script>
                                     </div>
                                 </div>
                                 <br>
@@ -1179,8 +1197,8 @@ function runQuery($sql, $msg){
             WHERE device_id=$device_id";
 
             if(runQuery($sql, 'Maintenance Settings Updated!')){
-//                js_redirect("customize-dashboard.php?msg=New Dashboard Added");
-                echo "Dashboard Done! ";
+                js_redirect("customize-dashboard.php?msg=New Dashboard Added");
+//                echo "Dashboard Done! ";
             }
 
 
