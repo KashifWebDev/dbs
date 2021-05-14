@@ -129,7 +129,7 @@ function runQuery($sql, $msg){
                             </div>
                         </div>
                         <div class="form-group row text-dark">
-                            <label for="inputEmail3" class="col-form-label col-3 mx-3 font-weight-bold">Time</label>
+                            <label for="inputEmail3" class="col-form-label col-3 mx-3 font-weight-bold">Time Format</label>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="time_format"  value="12" <?php if($row1["time_format"]=="12") echo "checked"; ?>>
                                 <label class="form-check-label">12 Hours</label>
@@ -137,6 +137,21 @@ function runQuery($sql, $msg){
                             <div class="form-check form-check-inline ml-3">
                                 <input class="form-check-input" type="radio" name="time_format" value="24" <?php if($row1["time_format"]=="24") echo "checked"; ?>>
                                 <label class="form-check-label">24 Hours</label>
+                            </div>
+                        </div>
+                        <div class="form-group row text-dark">
+                            <label for="inputEmail3" class="col-form-label col-3 ml-3 font-weight-bold">Time Zone</label>
+                            <div class="form-group col-md-4">
+                                <select name="timezone" class="form-control" id="exampleFormControlSelect1">
+                                    <?php
+                                        require 'app/timezonesList.php';
+                                        foreach($timezones as $key => $val) {
+                                            ?>
+                                            <option value="<?php echo $key; ?>" <?php if($row1["time_zone"]==$key) echo "Selected"; ?>><?php echo $val; ?></option>
+                                    <?php
+                                        }
+                                    ?>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -1005,10 +1020,11 @@ function runQuery($sql, $msg){
         $pressure_unit = $_POST["pressure_unit"];
         $distance_unit = $_POST["distance_unit"];
         $time_format = $_POST["time_format"];
+        $timezone = $_POST["timezone"];
 
 
         $sql = "UPDATE dashboard_units SET temp='$temperature_unit', torque='$torque_unit', pressure='$pressure_unit', distance='$distance_unit',
-                time_format='$time_format' WHERE device_id=$device_id";
+                time_format='$time_format', time_zone='$timezone' WHERE device_id=$device_id";
         mysqli_query($con, $sql);
 
         // Custom Conditions

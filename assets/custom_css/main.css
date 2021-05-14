@@ -199,6 +199,16 @@ table{
 #userTablePic{
     height: 42px;
 }
+.customMeter{
+    background-color: #babab2;
+    border: 6px solid #666666;
+    border-radius: 9px;
+    color: #444444;
+    font-weight: bold;
+    font-size: revert;
+    text-align: center;
+}
+
 
 
 

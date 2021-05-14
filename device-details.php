@@ -24,7 +24,7 @@
     }
     #tempValue{
         font-family: tempFont;
-        font-size: xxx-large;
+        font-size: xx-large;
     }
 </style>
 <script src="assets/line_chart/canvasjs.min.js"></script>
@@ -172,19 +172,22 @@
                                       ?>
                                       <div id="flagbox" class="col-12 d-flex flex-column align-items-center justify-content-center">
                                           <p class="mr-3 tempText m-0">Oil Temperature :</p>
-                                          <p class="text-danger">
-                                              <span id="tempValue" class="tempValueFormAPI">--</span>
-                                              <span id="tempValue" class="ml-2">
-                                              <?php
-                                              if(isset($_SESSION["Celcius"]) && $_SESSION["Celcius"]===true){
-                                                  echo "°C";
-                                              }else{
-                                                  echo "°F";
-                                              }
-                                              ?>
-                                              </span>
-                                          </p>
-                                          </p>
+                                          <div class="w-100 row">
+                                              <div class="col-md-8 mx-auto">
+                                                  <div class="customMeter">
+                                                      <span id="tempValue" class="tempValueFormAPI">--</span>
+                                                      <span id="tempValue" class="ml-2">
+                                                      <?php
+                                                      if(isset($_SESSION["Celcius"]) && $_SESSION["Celcius"]===true){
+                                                          echo "°C";
+                                                      }else{
+                                                          echo "°F";
+                                                      }
+                                                      ?>
+                                                      </span>
+                                                  </div>
+                                              </div>
+                                          </div>
                                       </div>
                                       <?php
                                   }
@@ -933,7 +936,7 @@
         // console.log("update function here");
         setInterval(function() {
             $.getJSON("ajax/getDetails.php", {device_id: "<?php echo $_SESSION['device_details_id']; ?>"}, function(data) {
-                console.log(data);
+                // console.log(data);
                 updateFields(
                     data[0][0][0],
                     data[0][0][1],
@@ -947,7 +950,7 @@
                 updateGraph(data['graph']);
 
                 // torqueChart.updateSeries(updateCircleChart(parseInt(data['torque'])));
-                console.log('gauge Value: ' + parseInt(data['torque']));
+                // console.log('gauge Value: ' + parseInt(data['torque']));
                 gauge.value = parseInt(data['torque']);
                 setGaugeHeight();
 
@@ -960,14 +963,14 @@
         var width = 0;
         var w = window.innerWidth;
         var h = window.innerHeight;
-        console.log('CURRENT: '+w+'  '+h);
-        if(h<=1235 && w<=2600) {console.log('800 800'); height = 800; width = 800;}
+        // console.log('CURRENT: '+w+'  '+h);
+        if(h<=1235 && w<=2600) {height = 800; width = 800;}
         // if(h<=1235) {console.log('540 540'); height = 540; width = 540;}
-        if(h<=940 && w<=1930) {console.log('600 600'); height = 600; width = 600;}
-        if(h<=760) {console.log('440 440'); height = 440; width = 440;}
-        if(h<=760 && w<=1710) {console.log('400 400'); height = 400; width = 400;}
-        if(h<=875 && w<=1480) {console.log('300 300'); height = 300; width = 300;}
-        if(w<=1490) {console.log('400 400'); height = 400; width = 400;}
+        if(h<=940 && w<=1930) {height = 600; width = 600;}
+        if(h<=760) {height = 440; width = 440;}
+        if(h<=760 && w<=1710) {height = 400; width = 400;}
+        if(h<=875 && w<=1480) {height = 300; width = 300;}
+        if(w<=1490) {height = 400; width = 400;}
         gauge.width = width;
         gauge.height = height;
     }
@@ -990,15 +993,19 @@
     }
 
     function updateGraph(graphData){
-        console.log(graphData);
+        // console.log(graphData);
         chart.options.data[0].dataPoints = [];
         chart.options.data[1].dataPoints = [];
         chart.options.data[2].dataPoints = [];
         chart.options.data[3].dataPoints = [];
         chart.options.data[4].dataPoints = [];
         chart.options.data[5].dataPoints = [];
-        // chart.options.data[1].dataPoints = [];
+        // chart.options.data[1].dataPoints = []toggle;
         $.each((graphData), function(key, value){
+            // console.log("|||||||||||||||||||||||||||||||||");
+            // console.log(value);
+            // console.log("label: "+value.timeStamp+ " | y: "+value.torque);
+            // console.log("|||||||||||||||||||||||||||||||||");
             chart.options.data[0].dataPoints.push(
                 {
                     label: value.timeStamp,
@@ -1105,19 +1112,19 @@ $row = mysqli_fetch_array($res);
                 "colorRange": {
                     "color": [{
                         "minValue": "0",
-                        "maxValue": "45",
+                        "maxValue": "<?php echo $row["maxRange"]; ?>",
                         "code": "#62B58F"
-                    },
-                        {
-                            "minValue": "45",
-                            "maxValue": "75",
-                            "code": "#f8bd19"
-                        },
-                        {
-                            "minValue": "75",
-                            "maxValue": "100",
-                            "code": "#F2726F"
-                        }
+                    }
+                        // ,{
+                        //     "minValue": "45",
+                        //     "maxValue": "75",
+                        //     "code": "#f8bd19"
+                        // },
+                        // {
+                        //     "minValue": "75",
+                        //     "maxValue": "100",
+                        //     "code": "#F2726F"
+                        // }
                     ]
                 },
                 "value": "92"

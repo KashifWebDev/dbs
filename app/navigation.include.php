@@ -43,7 +43,11 @@ $file = $row["manual"];
                     </li>
                 </ul>
             </div>
-            <div class="col-3 d-flex justify-content-center top_btn_margin">
+            <div class="col d-flex justify-content-center top_btn_margin">
+                <button class="btn text-white font-weight-bold border-0" type="button" data-toggle="modal" data-target="#history"
+                        style="background-color: #009cde; padding-top: 8px; height: fit-content;">
+                    Data History
+                </button> &nbsp;&nbsp;
                 <button class="btn text-white font-weight-bold border-0" type="button" data-toggle="modal" data-target="#runReport"
                    style="background-color: #009cde; padding-top: 8px; height: fit-content;">
                     Download Report
@@ -88,31 +92,31 @@ $file = $row["manual"];
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>From Date</label>
-                            <input type="date" class="form-control">
+                            <input type="date" name="startDate" class="form-control">
                         </div>
                         <div class="form-group col-md-6">
                             <label>To</label>
-                            <input type="date" class="form-control">
+                            <input type="date" name="endDate" class="form-control">
                         </div>
                     </div>
                     <div class="form-check">
                         <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" name="1">Installation Information
+                            <input type="checkbox" class="form-check-input" name="1" checked>Installation Information
                         </label>
                     </div>
                     <div class="form-check">
                         <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" name="2">Maintenance History
+                            <input type="checkbox" class="form-check-input" name="2" checked>Maintenance History
                         </label>
                     </div>
                     <div class="form-check">
                         <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" name="3" disabled>Alerts
+                            <input type="checkbox" class="form-check-input" name="3" checked>Alerts
                         </label>
                     </div>
                     <div class="form-check">
                         <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" name="3" disabled>Torque Values History
+                            <input type="checkbox" class="form-check-input" name="4" checked>Torque & Temperature History
                         </label>
                     </div>
                 </div>
@@ -121,9 +125,248 @@ $file = $row["manual"];
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-danger" name="run">Run Report</button>
-                    <a href="report1.php" class="btn btn-primary" name="run">Download PDF</a>
                 </div>
                 </form>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- History Chart -->
+    <div class="modal" id="history">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Data History</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="form-row align-items-end">
+                        <div class="form-group col-md-5">
+                            <label>From Date</label>
+                            <input type="date" id="startDate" class="form-control">
+                        </div>
+                        <div class="form-group col-md-5">
+                            <label>To</label>
+                            <input type="date" id="endDate" class="form-control">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <button type="button" class="btn btn-primary" id="SrchBtn">
+                                <span id="btn2">
+                                    <i class="fas fa-search"></i> Search
+                                </span>
+                                <span id="btn1">
+                                    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="searchChart"></div>
+                </div>
+                <script>
+
+
+                        var searchChart = new CanvasJS.Chart("searchChart", {
+                            animationEnabled: true,
+                            backgroundColor: "<?php echo $_SESSION['darkTheme']==0 ? '#dedede' : '#2d353c'; ?>",
+                            title:{
+                                text: "History",
+                                fontFamily:'Helvetica Neue, Helvetica, Arial, sans-serif',
+                                fontWeight: "bold",
+                                fontColor: "<?php echo $_SESSION['darkTheme']==0 ? 'black' : '#d2d2c9'; ?>",
+                                fontSize: 24
+                            },
+                            legend:{
+                                cursor: "pointer",
+                                fontSize: 16,
+                                itemclick: toggleDataSeriesSearch,
+                                fontColor: "<?php echo $_SESSION['darkTheme']==0 ? 'black' : '#d2d2c9'; ?>"
+                            },
+                            axisX:{
+                                labelFontColor: "<?php echo $_SESSION['darkTheme']==0 ? 'black' : '#d2d2c9'; ?>",
+                                labelAngle: -90/90,
+                                labelMaxWidth: 80
+                            },
+                            axisY: {
+                                labelFontColor: "<?php echo $_SESSION['darkTheme']==0 ? 'black' : '#d2d2c9'; ?>",
+                                //title: "<?php //echo $row['y_unit']; ?>//"
+                            },
+                            toolTip:{
+                                shared: true
+                            },
+                            data: [
+                                {
+                                    name: "Torque",
+                                    type: "spline",
+                                    color: "#009cde",
+                                    showInLegend: true,
+                                    dataPoints: [{}]
+                                }
+                                ,{  visible: false,
+                                    name: "Alarm",
+                                    type: "spline",
+                                    showInLegend: true,
+                                    dataPoints: [{}]
+                                }
+                                ,{  visible: false,
+                                    name: "CutOff",
+                                    type: "spline",
+                                    showInLegend: true,
+                                    dataPoints: [{}]
+                                }
+                                ,{  visible: false,
+                                    name: "Lift Lower",
+                                    type: "spline",
+                                    showInLegend: true,
+                                    dataPoints: [{}]
+                                }
+                                ,{  visible: false,
+                                    name: "Lift Raise",
+                                    type: "spline",
+                                    showInLegend: true,
+                                    dataPoints: [{}]
+                                }
+                                ,{  visible: false,
+                                    name: "Loss Motion",
+                                    type: "spline",
+                                    showInLegend: true,
+                                    dataPoints: [{}]
+                                }
+                                ,{  visible: false,
+                                    name: "Temperature 1",
+                                    type: "spline",
+                                    showInLegend: true,
+                                    dataPoints: [{}]
+                                }
+                                ,{  visible: false,
+                                    name: "Temperature 2",
+                                    type: "spline",
+                                    showInLegend: true,
+                                    dataPoints: [{}]
+                                }
+                                ,{  visible: false,
+                                    name: "Temperature 3",
+                                    type: "spline",
+                                    showInLegend: true,
+                                    dataPoints: [{}]
+                                }
+                            ]
+                        });
+
+                    function toggleDataSeriesSearch(e){
+                        console.log("clicked");
+                        if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                            e.dataSeries.visible = false;
+                        }
+                        else{
+                            e.dataSeries.visible = true;
+                        }
+                        searchChart.render();
+                    }
+                    $("#btn1").hide();
+                    $("#SrchBtn").click(function(){
+                        // Get Data from DB
+                        $.getJSON("ajax/getHistoryData.php", {
+                            device_id: "<?php echo $_SESSION['device_details_id']; ?>",
+                            start: $("#startDate").val(),
+                            end: $("#endDate").val()
+                        }, function(data) {
+                            console.log(data);
+
+                            searchChart.options.data[0].dataPoints = [];
+                            searchChart.options.data[1].dataPoints = [];
+                            searchChart.options.data[2].dataPoints = [];
+                            searchChart.options.data[3].dataPoints = [];
+                            searchChart.options.data[4].dataPoints = [];
+                            searchChart.options.data[5].dataPoints = [];
+                            searchChart.options.data[6].dataPoints = [];
+                            searchChart.options.data[7].dataPoints = [];
+                            searchChart.options.data[8].dataPoints = [];
+
+                            $.each(data, function(key, value) {
+                                searchChart.options.data[0].dataPoints.push(
+                                    {
+                                        label: value[0],
+                                        y: parseInt(value[1])
+                                    }
+                                );
+                                searchChart.options.data[1].dataPoints.push(
+                                    {
+                                        label: value[0],
+                                        y: parseInt(value[2])
+                                    }
+                                );
+                                searchChart.options.data[2].dataPoints.push(
+                                    {
+                                        label: value[0],
+                                        y: parseInt(value[3])
+                                    }
+                                );
+                                searchChart.options.data[3].dataPoints.push(
+                                    {
+                                        label: value[0],
+                                        y: parseInt(value[4])
+                                    }
+                                );
+                                searchChart.options.data[4].dataPoints.push(
+                                    {
+                                        label: value[0],
+                                        y: parseInt(value[5])
+                                    }
+                                );
+                                searchChart.options.data[5].dataPoints.push(
+                                    {
+                                        label: value[0],
+                                        y: parseInt(value[6])
+                                    }
+                                );
+                                searchChart.options.data[6].dataPoints.push(
+                                    {
+                                        label: value[0],
+                                        y: parseInt(value[7])
+                                    }
+                                );
+                                searchChart.options.data[7].dataPoints.push(
+                                    {
+                                        label: value[0],
+                                        y: parseInt(value[8])
+                                    }
+                                );
+                                searchChart.options.data[8].dataPoints.push(
+                                    {
+                                        label: value[0],
+                                        y: parseInt(value[9])
+                                    }
+                                );
+
+                            });
+
+                            searchChart.render();
+                            $("#searchChart").css({'height': "400px" });
+
+                            $("#btn1").show();
+                            $("#btn2").hide();
+                        });
+
+
+                    });
+
+                    function showHistoryGraph(){
+                    }
+
+
+                    function updateHistoryGraph(graphData){
+
+                    }
+                </script>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
 
             </div>
         </div>
@@ -271,6 +514,21 @@ if(isset($_POST["update_userr"])){
                             <label class="form-check-label">24 Hours</label>
                         </div>
                     </div>
+                    <div class="form-group row text-dark">
+                        <label for="inputEmail3" class="col-form-label col-3 ml-3 font-weight-bold">Time Zone</label>
+                        <div class="form-group col-md-6">
+                            <select name="timezone" class="form-control" id="exampleFormControlSelect1">
+                                <?php
+                                require 'app/timezonesList.php';
+                                foreach($timezones as $key => $val) {
+                                    ?>
+                                    <option value="<?php echo $key; ?>" <?php if($row1["time_zone"]==$key) echo "Selected"; ?>><?php echo $val; ?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
                     <div class="form-group row">
                         <div class="col-5 mx-auto">
                             <button type="submit" class="btn btn-primary w-100" name="update_units">Update</button>
@@ -292,6 +550,7 @@ if(isset($_POST["update_units"])){
     $pressure_unit = $_POST["pressure_unit"];
     $distance_unit = $_POST["distance_unit"];
     $time = $_POST["time_format"];
+    $timezone = $_POST["timezone"];
 
     session_start();
     //FOr temp
@@ -305,7 +564,8 @@ if(isset($_POST["update_units"])){
     if($torque_unit=="nm"){ $_SESSION["torque-FtLbs"] = false; }
 
     $sql = "UPDATE dashboard_units SET temp='$temperature_unit', torque='$torque_unit', pressure='$pressure_unit',
-            distance='$distance_unit', time_format=$time WHERE id=$device_id";
+            distance='$distance_unit', time_format=$time, time_zone='$timezone' WHERE device_id=$device_id";
+
 
     if(mysqli_query($con, $sql)){
 //                    header('Location: users.php');

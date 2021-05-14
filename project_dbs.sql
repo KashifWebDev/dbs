@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2021 at 11:31 AM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
+-- Generation Time: May 14, 2021 at 08:20 PM
+-- Server version: 10.1.13-MariaDB
+-- PHP Version: 5.5.37
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -66,16 +65,16 @@ INSERT INTO `custom_alerts` (`id`, `device_id`, `today_check`, `today_title`, `l
 CREATE TABLE `custom_conditions` (
   `id` int(11) NOT NULL,
   `device_id` int(10) NOT NULL,
-  `tempGreater` int(10) NOT NULL DEFAULT 1,
-  `tempLoss` int(10) NOT NULL DEFAULT 0,
-  `alarmGreater` int(10) NOT NULL DEFAULT 1,
-  `alarmLess` int(10) NOT NULL DEFAULT 0,
-  `waterInOilGreater` int(10) NOT NULL DEFAULT 1,
-  `waterInOilLess` int(10) NOT NULL DEFAULT 0,
-  `lossMotionGreater` int(10) NOT NULL DEFAULT 1,
-  `lossMotionLess` int(10) NOT NULL DEFAULT 0,
-  `liftPositionGreater` int(10) NOT NULL DEFAULT 1,
-  `liftPositionLower` int(10) NOT NULL DEFAULT 0
+  `tempGreater` int(10) NOT NULL DEFAULT '1',
+  `tempLoss` int(10) NOT NULL DEFAULT '0',
+  `alarmGreater` int(10) NOT NULL DEFAULT '1',
+  `alarmLess` int(10) NOT NULL DEFAULT '0',
+  `waterInOilGreater` int(10) NOT NULL DEFAULT '1',
+  `waterInOilLess` int(10) NOT NULL DEFAULT '0',
+  `lossMotionGreater` int(10) NOT NULL DEFAULT '1',
+  `lossMotionLess` int(10) NOT NULL DEFAULT '0',
+  `liftPositionGreater` int(10) NOT NULL DEFAULT '1',
+  `liftPositionLower` int(10) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -331,7 +330,7 @@ CREATE TABLE `custom_vertical_bar` (
   `id` int(11) NOT NULL,
   `device_id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL DEFAULT 'Lift Position',
-  `maxRange` int(20) NOT NULL DEFAULT 100,
+  `maxRange` int(20) NOT NULL DEFAULT '100',
   `unit` varchar(10) NOT NULL DEFAULT '%'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -355,25 +354,26 @@ CREATE TABLE `dashboard_units` (
   `torque` varchar(50) NOT NULL DEFAULT 'ft-lbs',
   `pressure` varchar(50) NOT NULL DEFAULT 'bar',
   `distance` varchar(50) NOT NULL DEFAULT 'mm',
-  `time_format` int(2) NOT NULL DEFAULT 12
+  `time_format` int(2) NOT NULL DEFAULT '12',
+  `time_zone` varchar(100) NOT NULL DEFAULT 'Asia/Karachi'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `dashboard_units`
 --
 
-INSERT INTO `dashboard_units` (`id`, `device_id`, `temp`, `torque`, `pressure`, `distance`, `time_format`) VALUES
-(1, 0, 'c', 'ft-lbs', 'bar', 'in', 24),
-(2, 40, 'f', 'ft-lbs', 'bar', 'mm', 12),
-(3, 41, 'f', 'ft-lbs', 'bar', 'mm', 12),
-(4, 42, 'f', 'ft-lbs', 'bar', 'mm', 12),
-(5, 43, 'f', 'ft-lbs', 'bar', 'mm', 12),
-(6, 44, 'c', 'nm', 'psi', 'in', 24),
-(7, 45, 'c', 'nm', 'pa', 'in', 24),
-(8, 46, 'f', 'nm', 'bar', 'in', 12),
-(9, 47, 'c', 'nm', 'psi', 'in', 24),
-(10, 48, 'c', 'ft-lbs', 'bar', 'mm', 12),
-(11, 49, 'f', 'ft-lbs', 'bar', 'mm', 12);
+INSERT INTO `dashboard_units` (`id`, `device_id`, `temp`, `torque`, `pressure`, `distance`, `time_format`, `time_zone`) VALUES
+(1, 0, 'c', 'ft-lbs', 'bar', 'in', 24, 'Asia/Karachi'),
+(2, 40, 'f', 'ft-lbs', 'bar', 'mm', 12, 'Asia/Karachi'),
+(3, 41, 'f', 'ft-lbs', 'bar', 'mm', 12, 'Asia/Karachi'),
+(4, 42, 'f', 'ft-lbs', 'bar', 'mm', 12, 'Asia/Karachi'),
+(5, 43, 'f', 'ft-lbs', 'bar', 'mm', 12, 'Asia/Karachi'),
+(6, 44, 'c', 'nm', 'psi', 'in', 24, 'Asia/Karachi'),
+(7, 45, 'c', 'nm', 'pa', 'in', 24, 'Asia/Karachi'),
+(8, 46, 'f', 'nm', 'bar', 'in', 12, 'Asia/Karachi'),
+(9, 47, 'c', 'nm', 'psi', 'in', 24, 'Asia/Karachi'),
+(10, 48, 'c', 'ft-lbs', 'bar', 'mm', 12, 'Greenland'),
+(11, 49, 'f', 'ft-lbs', 'bar', 'mm', 12, 'Asia/Karachi');
 
 -- --------------------------------------------------------
 
@@ -400,8 +400,7 @@ CREATE TABLE `devices` (
 --
 
 INSERT INTO `devices` (`id`, `mac`, `device_name`, `meter_ranges`, `meter_range_1`, `meter_range_2`, `meter_range_3`, `meter_color_1`, `meter_color_2`, `meter_color_3`, `manual`) VALUES
-(48, 'testing:mac', 'Testing Device', '0,2500,5000,7500,10000,12500,15000,175000,20000,22500,25000,27500,40000', 10000, 20000, 30000, '#a38aff', '#85ff75', '#ffa3a3', 'Spring 2021_CS201_1.docx'),
-(49, '11', '11', '', 0, 0, 0, '', '', '', 'Spring 2021_CS201_1 (1).docx');
+(48, 'testing:mac', 'Testing Device', '0,2500,5000,7500,10000,12500,15000,175000,20000,22500,25000,27500,40000', 10000, 20000, 30000, '#a38aff', '#85ff75', '#ffa3a3', 'Spring 2021_CS201_1.docx');
 
 -- --------------------------------------------------------
 
@@ -492,7 +491,7 @@ CREATE TABLE `recorded_values` (
   `temp2` float NOT NULL,
   `temp3` float NOT NULL,
   `Torque` int(11) NOT NULL,
-  `date_time` datetime NOT NULL DEFAULT current_timestamp()
+  `date_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -5867,8 +5866,8 @@ CREATE TABLE `users` (
   `username` varchar(20) NOT NULL,
   `email` varchar(30) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `is_admin` tinyint(1) NOT NULL DEFAULT 0,
-  `blocked` tinyint(1) NOT NULL DEFAULT 0,
+  `is_admin` tinyint(1) NOT NULL DEFAULT '0',
+  `blocked` tinyint(1) NOT NULL DEFAULT '0',
   `contact` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -6018,98 +6017,81 @@ ALTER TABLE `user_and_devices`
 --
 ALTER TABLE `custom_alerts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
 --
 -- AUTO_INCREMENT for table `custom_conditions`
 --
 ALTER TABLE `custom_conditions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT for table `custom_dashboards`
 --
 ALTER TABLE `custom_dashboards`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
-
 --
 -- AUTO_INCREMENT for table `custom_devicestatus`
 --
 ALTER TABLE `custom_devicestatus`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
 --
 -- AUTO_INCREMENT for table `custom_graph`
 --
 ALTER TABLE `custom_graph`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
 --
 -- AUTO_INCREMENT for table `custom_installation_info`
 --
 ALTER TABLE `custom_installation_info`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
 --
 -- AUTO_INCREMENT for table `custom_maintenance`
 --
 ALTER TABLE `custom_maintenance`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
 --
 -- AUTO_INCREMENT for table `custom_sections`
 --
 ALTER TABLE `custom_sections`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
 --
 -- AUTO_INCREMENT for table `custom_vertical_bar`
 --
 ALTER TABLE `custom_vertical_bar`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `dashboard_units`
 --
 ALTER TABLE `dashboard_units`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
 --
 -- AUTO_INCREMENT for table `devices`
 --
 ALTER TABLE `devices`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
-
 --
 -- AUTO_INCREMENT for table `installation_info`
 --
 ALTER TABLE `installation_info`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
 --
 -- AUTO_INCREMENT for table `maintenance_record`
 --
 ALTER TABLE `maintenance_record`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
 --
 -- AUTO_INCREMENT for table `recorded_values`
 --
 ALTER TABLE `recorded_values`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5348;
-
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
-
 --
 -- AUTO_INCREMENT for table `user_and_devices`
 --
 ALTER TABLE `user_and_devices`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
-COMMIT;
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
