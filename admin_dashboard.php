@@ -43,7 +43,7 @@ $_SESSION['currentPath'] = "./";
 <?php
 if(isset($_GET['del_device_id'])){
     $id = (int) $_GET['del_device_id'];
-    $row = "DELETE FROM user_and_devices WHERE id=$id";
+    $row = "DELETE FROM devices WHERE id=$id";
 //        echo '<script>alert('.$id.');</script>';
     if(mysqli_query($con, $row)){
         js_redirect('admin_dashboard.php');
