@@ -12,7 +12,7 @@ require 'app/main.php';
 <!-- Navigation -->
 <?php //require 'app/navigation.include.php'; ?>
 
-<div class="container d-flex mt-5">
+<div class="container d-flex" style="height: 100vh;">
     <div class="row align-self-center w-100">
         <div class="col-sm-10 col-md-6 col-lg-6 mx-auto">
             <div class="mycard">
