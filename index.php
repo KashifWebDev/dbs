@@ -7,6 +7,7 @@ require 'app/main.php';
 <html lang="en">
 
 <?php require 'app/head.include.php'; ?>
+<script src="assets/custom_js/show_pass.js"></script>
 
 <body>
 <!-- Navigation -->
@@ -21,9 +22,8 @@ require 'app/main.php';
                         <div class="text-center">
                             <img class="img-thumbnail" src="assets/imgs/dbs.png" style="height: 70px;">
                         </div>
-                        <hr style="background-color: #a7a7a7" class="w-75">
                     </div>
-                    <p class="display-4 text-dark text-center font-size-35px auto_color_txt">DBS IoT Dashboard</p>
+                    <p class="text-dark text-center auto_color_txt font-size-xLarger">DBS IoT Dashboard</p>
                     <?php
                     if(isset($_GET["err"])){
                         switch ($_GET["err"]){
@@ -83,20 +83,25 @@ require 'app/main.php';
                             </span>
                             <input type="email" name="email" class="form-control " placeholder="Email Address" required>
                         </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text text-secondary">
-                                <i class="fas fa-lock"></i>
+
+                        <!--<input type="password" name="pass" class="form-control " placeholder="Password" required>-->
+                        <div class="input-group mb-3" id="show_hide_password">
+                            <span class="input-group-text text-secondary input-group-addon">
+                                <a id="show_pass_a"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
                             </span>
                             <input type="password" name="pass" class="form-control " placeholder="Password" required>
                         </div>
 
-                        <button name="login-btn" type="submit" class="btn btn-block btn-danger" id="login-animation" style="max-height: 38px;">
-                            Sign In
+                        <button name="login-btn" type="submit" class="btn btn-block appBtnColor" id="login-animation" style="max-height: 38px;">
+                            Sign in
                         </button>
                     </form>
                 </div>
-                <div class="mycard-footer mt-4 pb-2">
-                    <a class="float-right text-white auto_color_txt" href="signup.php">Create New Account?</a>
+                <hr>
+                <div class="mycard-footer mt-4 pb-2 d-flex justify-content-center">
+                    <a class="text-white auto_color_txt" href="reset_pass.php">Forgot Password</a>
+                    <p class="mx-3">|</p>
+                    <a class="text-white auto_color_txt" href="signup.php">Create New Account</a>
                 </div>
             </div>
         </div>

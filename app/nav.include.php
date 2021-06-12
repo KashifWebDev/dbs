@@ -17,7 +17,7 @@ if (isset($_SESSION["darkTheme"]) && $_SESSION["darkTheme"] == 1){
             </a>
         </li>
         <li class="nav-item ml-3">
-            <a class="nav-link <?php echo $txtColor; ?>" href="admin_dashboard.php">Dashboard</a>
+            <a class="nav-link <?php echo $txtColor; ?>" href="admin_dashboard.php">Homepage</a>
         </li>
         <?php
         if($_SESSION['id']!=1){

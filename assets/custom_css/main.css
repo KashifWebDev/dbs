@@ -208,8 +208,16 @@ table{
     font-size: revert;
     text-align: center;
 }
-
-
+.appBtnColor{
+    background-color: #009cde;
+    color: white;
+}
+.appBtnColor:hover{
+    color: white;
+}
+a#show_pass_a, a#show_pass_a:hover{
+    color:#333
+}
 
 
 
