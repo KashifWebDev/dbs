@@ -218,7 +218,10 @@ table{
 a#show_pass_a, a#show_pass_a:hover{
     color:#333
 }
-
+.showLogo{
+    max-height: 300px;
+    max-width: 300px;
+}
 
 
 

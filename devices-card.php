@@ -18,8 +18,7 @@
                     <div class="w-80">
                         <span class="font-size-larger"><?php echo $row["device_name"]; ?></span>
                         <p class="d-flex m-0 mt-1">
-                            <span>MAC</span>
-                            <span class="ml-2 <?php echo $fontColor; ?>"><?php echo $row["mac"]; ?></span>
+                            <span class="ml-2 <?php echo $fontColor; ?>"><?php echo !empty($row["second_name"]) ? $row["second_name"] : '---'; ?></span>
                         </p>
                         <div class="d-flex justify-content-between">
                             <div class="mt-2 d-flex">
