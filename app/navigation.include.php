@@ -11,14 +11,14 @@ if (isset($_SESSION["darkTheme"]) && $_SESSION["darkTheme"] == 1){
 
 $sql = "SELECT * FROM devices WHERE id=$device_id";
 $res = mysqli_query($con, $sql);
-$row = mysqli_fetch_array($res);
+$row = $device_row = mysqli_fetch_array($res);
 $file = $row["manual"];
 ?>
 <div class="py-3 <?php echo $navClass; ?> font-roboto">
     <div class="containerr">
         <div class="row">
             <div class="col d-flex justify-content-left ml-4">
-                <img style="height: 40px;" src="assets/imgs/dbs.png">
+                <img style="height: 40px;" src="assets/logo/<?php echo $device_row["primary_logo"]; ?>">
                 <ul class="navbar-nav" style="flex-direction: row;">
                     <li class="nav-item ml-3">
                         <a class="nav-link navbar-link-color <?php echo $txtColor; ?>" href="admin_dashboard.php">Homepage</a>
@@ -43,7 +43,7 @@ $file = $row["manual"];
                     </li>
                 </ul>
             </div>
-            <div class="col d-flex justify-content-center top_btn_margin">
+            <div class="col d-flex justify-content-end top_btn_margin">
                 <button class="btn text-white font-weight-bold border-0" type="button" data-toggle="modal" data-target="#history"
                         style="background-color: #009cde; padding-top: 8px; height: fit-content;">
                     Data History
@@ -56,6 +56,13 @@ $file = $row["manual"];
                    style="background-color: #009cde; padding-top: 8px; height: fit-content;">
                     Download Manual
                 </a>&nbsp;&nbsp;
+                <?php
+                if(!empty($device_row["secondary_logo"]) and $device_row["use_secondary_logo"]=="on"){
+                    ?>
+                    <img style="height: 40px;" src="assets/logo/<?php echo $device_row["secondary_logo"]; ?>">
+                        <?php
+                }
+                ?>
                 <?php
                     if(isset($device_details_page) && $device_details_page){
                 ?>

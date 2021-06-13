@@ -167,7 +167,7 @@ if(isset($_POST['add_device'])){
 
     //Upload s_logo
     $currentDirectory = '';
-    $uploadDirectory = "assets/manuals/";
+    $uploadDirectory = "assets/logo/";
     $errors = []; // Store errors here
     $s_logo = $_FILES['s_logo']['name'];
     $fileSize = $_FILES['s_logo']['size'];
