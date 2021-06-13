@@ -21,7 +21,7 @@ $file = $row["manual"];
                 <img style="height: 40px;" src="assets/imgs/dbs.png">
                 <ul class="navbar-nav" style="flex-direction: row;">
                     <li class="nav-item ml-3">
-                        <a class="nav-link navbar-link-color <?php echo $txtColor; ?>" href="admin_dashboard.php">Dashboard</a>
+                        <a class="nav-link navbar-link-color <?php echo $txtColor; ?>" href="admin_dashboard.php">Homepage</a>
                     </li>
                     <li class="nav-item ml-3">
                         <a class="nav-link navbar-link-color <?php echo $txtColor; ?>" href="app/changeTheme.php"><?php echo $themeLinkText; ?></a>

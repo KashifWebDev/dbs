@@ -18,13 +18,12 @@
                     <div class="w-80">
                         <span class="font-size-larger"><?php echo $row["device_name"]; ?></span>
                         <p class="d-flex m-0 mt-1">
-                            <span>MAC</span>
-                            <span class="ml-2 <?php echo $fontColor; ?>"><?php echo $row["mac"]; ?></span>
+                            <span class="ml-2 <?php echo $fontColor; ?>"><?php echo !empty($row["second_name"]) ? $row["second_name"] : '---'; ?></span>
                         </p>
                         <div class="d-flex justify-content-between">
                             <div class="mt-2 d-flex">
-                                <span style="height: 15px; width: 15px; border-radius: 20px; display: block;" class="bg-success mt-1 mr-1"></span>
-                                <span>No Alerts</span>
+                                <span style="height: 15px; width: 15px; border-radius: 20px; display: block;" class="bg-danger mt-1 mr-1"></span>
+                                <span>Offline</span>
                                 <span style="height: 15px; width: 15px; border-radius: 20px; display: block;" class="bg-success mt-1 ml-2 mr-1"></span>
                                 <span>No Alarms</span>
                             </div>

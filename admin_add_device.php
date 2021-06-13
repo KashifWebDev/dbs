@@ -29,7 +29,7 @@ $_SESSION['currentPath'] = "./";
 <div class="container font-roboto">
     <div class="card">
         <div class="card-header text-dark font-roboto">
-            Add New Dashboard
+            Add new device
         </div>
         <div class="card-body">
             <form method="post" action="" enctype="multipart/form-data">
@@ -44,22 +44,46 @@ $_SESSION['currentPath'] = "./";
                             <div id="collapseOne" class="collapse show">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-4">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="email1" class="text-dark">Device Name</label>
                                                 <input name="name" type="text" class="form-control" id="email1" placeholder="Device Name" required>
                                             </div>
                                         </div>
-                                        <div class="col-4">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="password1" class="text-dark">Device Secondary Name</label>
+                                                <input name="second_name" type="text" class="form-control" id="password1" placeholder="Second Name" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="password1" class="text-dark">Device MAC</label>
                                                 <input name="mac" type="text" class="form-control" id="password1" placeholder="11:22:33:44:55" required>
                                             </div>
                                         </div>
-                                        <div class="col-4">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="exampleFormControlFile1" class="text-dark">Upload Device Manual</label>
                                                 <input type="file" class="form-control-file" id="exampleFormControlFile1" name="the_file" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleFormControlFile1" class="text-dark">Primary Logo</label>
+                                                <input type="file" class="form-control-file" id="exampleFormControlFile1" name="p_logo">
+                                                <img src="assets/imgs/dbs.png" alt="Primary Logo" class="showLogo">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleFormControlFile1" class="text-dark">Secondary Logo</label>
+                                                <input type="file" class="form-control-file" id="exampleFormControlFile1" name="s_logo" required>
+                                            </div>
+                                            <div class="form-check-inline">
+                                                <label class="form-check-label">
+                                                    <input id="showLegendsDiv" type="checkbox" class="form-check-input" name="useSecondary">Use secondary logo
+                                                </label>
                                             </div>
                                         </div>
                                     </div>
@@ -106,39 +130,86 @@ $_SESSION['currentPath'] = "./";
 if(isset($_POST['add_device'])){
     $name = $_POST['name'];
     $mac = $_POST['mac'];
+    $second_name = $_POST['second_name'];
 
+    $p_logo = "dbs.png";
+    $s_logo = "none";
+    $useSecondary = isset($_POST['useSecondary']) ? $_POST['useSecondary'] : '';
 
+    //Upload p_logo
+    if (isset( $_FILES["p_logo"] ) && !empty( $_FILES["p_logo"]["name"])){
+        $currentDirectory = '';
+        $uploadDirectory = "assets/logo/";
+        $errors = []; // Store errors here
+        $p_logo = $_FILES['p_logo']['name'];
+        $fileSize = $_FILES['p_logo']['size'];
+        $fileTmpName  = $_FILES['p_logo']['tmp_name'];
+        $fileType = $_FILES['p_logo']['type'];
+        $uploadPath = $currentDirectory . $uploadDirectory . basename($p_logo);
+        if ($fileSize > 4000000) {
+            $errors[] = "File exceeds maximum size (4MB)";
+        }
+        if (empty($errors)) {
+            $didUpload = move_uploaded_file($fileTmpName, $uploadPath);
+            if ($didUpload) {
+//                echo "The file " . basename($fileName) . " has been uploaded";
+            } else {
+                echo "An error occurred while uploading p_logo. Please contact the administrator.";
+            }
+        } else {
+            echo "ERROR in uploading file";
+            foreach ($errors as $error) {
+                echo $error . "These are the errors" . "\n";
+            }
+            exit(); die();
+        }
+    }
 
-
-
+    //Upload s_logo
     $currentDirectory = '';
     $uploadDirectory = "assets/manuals/";
-
     $errors = []; // Store errors here
+    $s_logo = $_FILES['s_logo']['name'];
+    $fileSize = $_FILES['s_logo']['size'];
+    $fileTmpName  = $_FILES['s_logo']['tmp_name'];
+    $fileType = $_FILES['s_logo']['type'];
+    $uploadPath = $currentDirectory . $uploadDirectory . basename($s_logo);
+    if ($fileSize > 4000000) {
+        $errors[] = "File exceeds maximum size (4MB)";
+    }
+    if (empty($errors)) {
+        $didUpload = move_uploaded_file($fileTmpName, $uploadPath);
+        if ($didUpload) {
+//                echo "The file " . basename($fileName) . " has been uploaded";
+        } else {
+            echo "An error occurred while uploading s_logo. Please contact the administrator.";
+        }
+    } else {
+        echo "ERROR in uploading file";
+        foreach ($errors as $error) {
+            echo $error . "These are the errors" . "\n";
+        }
+        exit(); die();
+    }
 
-
+    //Upload the_file
+    $currentDirectory = '';
+    $uploadDirectory = "assets/manuals/";
+    $errors = []; // Store errors here
     $fileName = $_FILES['the_file']['name'];
     $fileSize = $_FILES['the_file']['size'];
     $fileTmpName  = $_FILES['the_file']['tmp_name'];
     $fileType = $_FILES['the_file']['type'];
-
-
     $uploadPath = $currentDirectory . $uploadDirectory . basename($fileName);
-
-
-
-
     if ($fileSize > 4000000) {
         $errors[] = "File exceeds maximum size (4MB)";
     }
-
     if (empty($errors)) {
         $didUpload = move_uploaded_file($fileTmpName, $uploadPath);
-
         if ($didUpload) {
 //                echo "The file " . basename($fileName) . " has been uploaded";
         } else {
-            echo "An error occurred. Please contact the administrator.";
+            echo "An error occurred while uploading the_file. Please contact the administrator.";
         }
     } else {
         echo "ERROR in uploading file";
@@ -149,11 +220,9 @@ if(isset($_POST['add_device'])){
     }
 
 
-
-
     $row = "INSERT INTO devices
-            (mac, device_name, manual) VALUES
-            ('$mac', '$name', '$fileName')";
+            (mac, device_name, second_name, manual, primary_logo, secondary_logo, use_secondary_logo) VALUES
+            ('$mac', '$name', '$second_name', '$fileName', '$p_logo', '$s_logo', '$useSecondary')";
 
 
     if(mysqli_query($con, $row)){
