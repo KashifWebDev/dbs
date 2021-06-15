@@ -167,11 +167,11 @@ function runQuery($sql, $msg){
                         ?>
                             <div id="row1" class="form-group row">
                                 <label for="inputPassword" class="mx-2 ml-3 col-form-label">Line Name</label>
-                                <div>
+                                <div class="col-xl-3">
                                     <input type="text" class="form-control" id="graphinput1" placeholder="Alarm" name="graphLineName1" value="<?php echo $row["line1"]; ?>">
                                 </div>
                                 <label for="inputPassword" class="mx-2 col-form-label">Line Value:</label>
-                                <div>
+                                <div class="col-xl-3">
                                     <div class="input-group mb-3">
                                         <input type="number" class="form-control" id="graphinput2" placeholder="27000" name="graphValue1" value="<?php echo $row["line1_value"]; ?>">
                                         <div class="input-group-append">
@@ -179,15 +179,19 @@ function runQuery($sql, $msg){
                                         </div>
                                     </div>
                                 </div>
+                                <div class="" style="width: 80px;">
+                                    <input type="color" class="form-control form-control-color" name="graph_line_color_1" value="<?php echo $row["line1_clr"]; ?>">
+                                </div>
+
                                 <i class="fas fa-trash-alt text-danger font-size-xLarger ml-4 mt-2" id="delRow1"></i>
                             </div>
                             <div id="row2" class="form-group row">
                                 <label for="inputPassword" class="mx-2 ml-3 col-form-label">Line Name</label>
-                                <div>
+                                <div class="col-xl-3">
                                     <input type="text" class="form-control" id="graphinput3" placeholder="Cutoff" name="graphLineName2" value="<?php echo $row["line2"]; ?>">
                                 </div>
                                 <label for="inputPassword" class="mx-2 col-form-label">Line Value:</label>
-                                <div>
+                                <div class="col-xl-3">
                                     <div class="input-group mb-3">
                                         <input type="number" class="form-control" id="graphinput4" placeholder="35000" name="graphValue2" value="<?php echo $row["line2_value"]; ?>">
                                         <div class="input-group-append">
@@ -195,85 +199,93 @@ function runQuery($sql, $msg){
                                         </div>
                                     </div>
                                 </div>
+                                <div class="" style="width: 80px;">
+                                    <input type="color" class="form-control form-control-color" name="graph_line_color_2" value="<?php echo $row["line2_clr"]; ?>">
+                                </div>
+
                                 <i class="fas fa-trash-alt text-danger font-size-xLarger ml-4 mt-2" id="delRow2"></i>
+                            </div>
+                            <div id="row3" class="form-group row">
+                                <label for="inputPassword" class="mx-2 ml-3 col-form-label">Line Name</label>
+                                <div class="col-xl-3">
+                                    <input type="text" class="form-control" id="graphinput5" placeholder="Alarm" name="graphLineName3" value="<?php echo $row["line3"]; ?>">
+                                </div>
+                                <label for="inputPassword" class="mx-2 col-form-label">Line Value:</label>
+                                <div class="col-xl-3">
+                                    <div class="input-group mb-3">
+                                        <input type="number" class="form-control" id="graphinput6" placeholder="27000" name="graphValue3" value="<?php echo $row["line3_value"]; ?>">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" id="basic-addon2">ft-lbs</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="" style="width: 80px;">
+                                    <input type="color" class="form-control form-control-color" name="graph_line_color_3" value="<?php echo $row["line3_clr"]; ?>">
+                                </div>
+
+                                <i class="fas fa-trash-alt text-danger font-size-xLarger ml-4 mt-2" id="delRow3"></i>
+                            </div>
+                            <div id="row4" class="form-group row">
+                                <label for="inputPassword" class="mx-2 ml-3 col-form-label">Line Name</label>
+                                <div class="col-xl-3">
+                                    <input type="text" class="form-control" id="graphinput7" placeholder="Cutoff" name="graphLineName4" value="<?php echo $row["line4"]; ?>">
+                                </div>
+                                <label for="inputPassword" class="mx-2 col-form-label">Line Value:</label>
+                                <div class="col-xl-3">
+                                    <div class="input-group mb-3">
+                                        <input type="number" class="form-control" id="graphinput8" placeholder="35000" name="graphValue4" value="<?php echo $row["line4_value"]; ?>">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" id="basic-addon2">ft-lbs</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="" style="width: 80px;">
+                                    <input type="color" class="form-control form-control-color" name="graph_line_color_4" value="<?php echo $row["line4_clr"]; ?>">
+                                </div>
+
+                                <i class="fas fa-trash-alt text-danger font-size-xLarger ml-4 mt-2" id="delRow4"></i>
                             </div>
 
                             <button class="btn btn-primary ml-1" type="button" id="addRow">
                                 <i class="fas fa-plus"></i>
                             </button>
-
-                        <h2 id="navHeading" class="font-roboto">Plot Settings</h2>
-                        <hr>
-                        <div class="form-check-inline">
-                            <label class="form-check-label">
-                                <input id="showLegendsDiv" type="checkbox" class="form-check-input" name="allLegendsCheck" <?php if($row["show_legends"]=="on"){echo "checked";} ?>>Plot Legends and Markers
-                            </label>
-                        </div>
-                        <div id="legendsCheck" class="mt-3">
-                            <div class="form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" name="legend1" <?php if($row["legends1"]=="on"){echo "checked";} ?>>Alarm
-                                </label>
-                            </div>
-                            <div class="form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" name="legend2" <?php if($row["legends2"]=="on"){echo "checked";} ?>>CutOff
-                                </label>
-                            </div>
-                            <div class="form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" name="legend3" <?php if($row["legends3"]=="on"){echo "checked";} ?>>Lift Lower
-                                </label>
-                            </div>
-                            <div class="form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" name="legend4" <?php if($row["legends4"]=="on"){echo "checked";} ?>>Lift Raise
-                                </label>
-                            </div>
-                            <div class="form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" name="legend5" <?php if($row["legends5"]=="on"){echo "checked";} ?>>Loss Motion
-                                </label>
-                            </div>
-                        </div>
-
-                            <script type="text/javascript">
-                                if($('input#showLegendsDiv').is(':checked')){
-                                    $("#legendsCheck").show();
-                                }else{
-                                    $("#legendsCheck").hide();
+                        <script>
+                            $("#addRow").hide();
+                            $("#delRow1").click(function(){
+                                $("#row1").hide();
+                                $("#addRow").show();
+                                $("#graphinput1").val("");
+                                $("#graphinput2").val("");
+                            });
+                            $("#delRow2").click(function(){
+                                $("#row2").hide();
+                                $("#addRow").show();
+                                $("#graphinput3").val("");
+                                $("#graphinput4").val("");
+                            });
+                            $("#delRow3").click(function(){
+                                $("#row3").hide();
+                                $("#addRow").show();
+                                $("#graphinput5").val("");
+                                $("#graphinput6").val("");
+                            });
+                            $("#delRow4").click(function(){
+                                $("#row4").hide();
+                                $("#addRow").show();
+                                $("#graphinput7").val("");
+                                $("#graphinput8").val("");
+                            });
+                            $("#addRow").click(function(){
+                                if($("#row1").is(":visible")){
+                                    $("#row2").show();
+                                } else{
+                                    $("#row1").show();
                                 }
-                                $("#addRow").hide();
-                                $("#showLegendsDiv").click(function(){
-                                    if($('input#showLegendsDiv').is(':checked')){
-                                        $("#legendsCheck").show();
-                                    }else{
-                                        $("#legendsCheck").hide();
-                                    }
-                                });
-                                $("#delRow1").click(function(){
-                                    $("#row1").hide();
-                                    $("#addRow").show();
-                                    $("#graphinput1").val("");
-                                    $("#graphinput2").val("");
-                                });
-                                $("#delRow2").click(function(){
-                                    $("#row2").hide();
-                                    $("#addRow").show();
-                                    $("#graphinput3").val("");
-                                    $("#graphinput4").val("");
-                                });
-                                $("#addRow").click(function(){
-                                    if($("#row1").is(":visible")){
-                                        $("#row2").show();
-                                    } else{
-                                        $("#row1").show();
-                                    }
-                                    if($("#delRow2").is(":visible") && $("#addRow").is(":visible")){
-                                        $("#addRow").hide();
-                                    }
-                                });
-                            </script>
+                                if($("#delRow2").is(":visible") && $("#addRow").is(":visible")){
+                                    $("#addRow").hide();
+                                }
+                            });
+                        </script>
                     </div>
 
                     <!--Ui Components Tab-->
@@ -381,7 +393,7 @@ function runQuery($sql, $msg){
                                                             <input class="form-check-input" type="checkbox"
                                                                    name="a1" <?php if($mainRow["a1"]=="on") echo "checked"; ?>>
                                                             <label class="form-check-label" for="defaultCheck1">
-                                                                Position Lift Bar
+                                                                Indicator Bar
                                                             </label>
                                                         </div><div class="form-check">
                                                             <input class="form-check-input" type="checkbox"
@@ -435,7 +447,7 @@ function runQuery($sql, $msg){
                                                     </div>
                                                 </div>
                                             <br>
-                                            <h3 class="font-roboto">Lift Position</h3>
+<!--                                            <h3 class="font-roboto">Lift Position</h3>-->
                                             <?php
                                             $sql = "SELECT * FROM custom_vertical_bar WHERE  device_id = $device_id";
                                             $res = mysqli_query($con, $sql);
@@ -573,6 +585,56 @@ function runQuery($sql, $msg){
                                                         </div>
                                                     </div>
                                                 </div>
+                                            <div>
+                                                <h2 id="navHeading" class="font-roboto">Plot Settings</h2>
+                                                <hr>
+                                                <div class="form-check-inline">
+                                                    <label class="form-check-label">
+                                                        <input id="showLegendsDiv" type="checkbox" class="form-check-input" name="allLegendsCheck" <?php if($row["show_legends"]=="on"){echo "checked";} ?>>Plot Legends and Markers
+                                                    </label>
+                                                </div>
+                                                <div id="legendsCheck" class="mt-3">
+                                                    <div class="form-check-inline">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" name="legend1" <?php if($row["legends1"]=="on"){echo "checked";} ?>>Alarm
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check-inline">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" name="legend2" <?php if($row["legends2"]=="on"){echo "checked";} ?>>CutOff
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check-inline">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" name="legend3" <?php if($row["legends3"]=="on"){echo "checked";} ?>>Lift Lower
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check-inline">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" name="legend4" <?php if($row["legends4"]=="on"){echo "checked";} ?>>Lift Raise
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check-inline">
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" name="legend5" <?php if($row["legends5"]=="on"){echo "checked";} ?>>Loss Motion
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <script type="text/javascript">
+                                                    if($('input#showLegendsDiv').is(':checked')){
+                                                        $("#legendsCheck").show();
+                                                    }else{
+                                                        $("#legendsCheck").hide();
+                                                    }
+                                                    $("#showLegendsDiv").click(function(){
+                                                        if($('input#showLegendsDiv').is(':checked')){
+                                                            $("#legendsCheck").show();
+                                                        }else{
+                                                            $("#legendsCheck").hide();
+                                                        }
+                                                    });
+                                                </script>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -953,6 +1015,11 @@ function runQuery($sql, $msg){
                             </div>
                         </div>
                         <hr>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" value="">Allow user to subscribe/Unsubscribe to alerts
+                            </label>
+                        </div>
                     </div>
 
                     <!--Finalization-->
@@ -1051,6 +1118,14 @@ function runQuery($sql, $msg){
         $graphValue1 = $_POST["graphValue1"];
         $graphLineName2 = $_POST["graphLineName2"];
         $graphValue2 = $_POST["graphValue2"];
+        $graphLineName3 = $_POST["graphLineName3"];
+        $graphValue3 = $_POST["graphValue3"];
+        $graphLineName4 = $_POST["graphLineName4"];
+        $graphValue4 = $_POST["graphValue4"];
+        $graphLineClr1 = $_POST["graph_line_color_1"];
+        $graphLineClr2 = $_POST["graph_line_color_2"];
+        $graphLineClr3 = $_POST["graph_line_color_3"];
+        $graphLineClr4 = $_POST["graph_line_color_4"];
         $allLegendsCheck = isset($_POST["allLegendsCheck"]) ? $_POST["allLegendsCheck"] : '';
         $legend1 = isset($_POST["legend1"]) ? $_POST["legend1"] : '';
         $legend2 = isset($_POST["legend2"]) ? $_POST["legend2"] : '';
@@ -1059,6 +1134,8 @@ function runQuery($sql, $msg){
         $legend5 = isset($_POST["legend5"]) ? $_POST["legend5"] : '';
 
         $sql = "UPDATE custom_graph SET line1='$graphLineName1', line1_value='$graphValue1', line2='$graphLineName2', line2_value='$graphValue2',
+                line3='$graphLineName3', line3_value='$graphValue3', line4='$graphLineName4', line4_value='$graphValue4',
+                line1_clr='$graphLineClr1', line2_clr='$graphLineClr2', line3_clr='$graphLineClr3', line4_clr='$graphLineClr4',
                  show_legends='$allLegendsCheck', legends1='$legend1', legends2='$legend2', legends3='$legend3', legends4='$legend4',
                  legends5='$legend5' WHERE device_id = $device_id";
         mysqli_query($con, $sql);

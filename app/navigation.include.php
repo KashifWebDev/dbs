@@ -29,7 +29,7 @@ $file = $row["manual"];
                     <li class="nav-item ml-3">
                         <a class="nav-link navbar-link-color <?php echo $txtColor; ?> btn"
                            type="button" data-toggle="modal" data-target="#user_settings_modal">
-                            User Settings
+                            Account Information
                         </a>
                     </li>
                     <li class="nav-item ml-3">
@@ -464,61 +464,60 @@ if(isset($_POST["update_userr"])){
                 <form method="POST" action="">
                     <div class="form-group row text-dark">
                         <label for="inputEmail3" class="col-form-label col-3 mx-3 font-weight-bold">Temperature</label>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="temperature_unit" value="f" <?php if($row1["temp"]=="f") echo "checked"; ?>>
-                            <label class="form-check-label" >°F</label>
-                        </div>
-                        <div class="form-check form-check-inline ml-3">
-                            <input class="form-check-input" type="radio" name="temperature_unit" value="c" <?php if($row1["temp"]=="c") echo "checked"; ?>>
-                            <label class="form-check-label" >°C</label>
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-primary">
+                                <input type="radio"  name="temperature_unit" value="f" <?php if($row1["temp"]=="f") echo "checked"; ?>> °F
+                            </label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="temperature_unit" value="c" <?php if($row1["temp"]=="c") echo "checked"; ?>> °C
+                            </label>
                         </div>
                     </div>
                     <div class="form-group row text-dark">
                         <label for="inputEmail3" class="col-form-label col-3 mx-3 font-weight-bold">Torque</label>
-                        <div class="form-check form-check-inline ml-3">
-                            <input class="form-check-input" type="radio" name="torque_unit" value="ft-lbs" <?php if($row1["torque"]=="ft-lbs") echo "checked"; ?>>
-                            <label class="form-check-label" >ft-lbs</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="torque_unit" value="nm" <?php if($row1["torque"]=="nm") echo "checked"; ?>>
-                            <label class="form-check-label" >Nm</label>
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-primary">
+                                <input type="radio" name="torque_unit" value="ft-lbs" <?php if($row1["torque"]=="ft-lbs") echo "checked"; ?>> ft-lbs
+                            </label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="torque_unit" value="nm" <?php if($row1["torque"]=="nm") echo "checked"; ?>> Nm
+                            </label>
                         </div>
                     </div>
                     <div class="form-group row text-dark">
                         <label for="inputEmail3" class="col-form-label col-3 mx-3 font-weight-bold">Pressure</label>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="pressure_unit" value="bar" <?php if($row1["pressure"]=="bar") echo "checked"; ?>>
-                            <label class="form-check-label" >Bar</label>
-                        </div>
-                        <div class="form-check form-check-inline ml-3">
-                            <input class="form-check-input" type="radio" name="pressure_unit" value="psi" <?php if($row1["pressure"]=="psi") echo "checked"; ?>>
-                            <label class="form-check-label">psi</label>
-                        </div>
-                        <div class="form-check form-check-inline ml-3">
-                            <input class="form-check-input" type="radio" name="pressure_unit" value="pa" <?php if($row1["pressure"]=="pa") echo "checked"; ?>>
-                            <label class="form-check-label">Pa</label>
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-primary">
+                                <input type="radio" name="pressure_unit" value="bar" <?php if($row1["pressure"]=="bar") echo "checked"; ?>> Bar
+                            </label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="pressure_unit" value="psi" <?php if($row1["pressure"]=="psi") echo "checked"; ?>> psi
+                            </label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="pressure_unit" value="pa" <?php if($row1["pressure"]=="pa") echo "checked"; ?>> Pa
+                            </label>
                         </div>
                     </div>
                     <div class="form-group row text-dark">
                         <label for="inputEmail3" class="col-form-label col-3 mx-3 font-weight-bold">Distance</label>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="distance_unit"  value="mm" <?php if($row1["distance"]=="mm") echo "checked"; ?>>
-                            <label class="form-check-label">mm</label>
-                        </div>
-                        <div class="form-check form-check-inline ml-3">
-                            <input class="form-check-input" type="radio" name="distance_unit"  value="in" <?php if($row1["distance"]=="in") echo "checked"; ?>>
-                            <label class="form-check-label">in</label>
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-primary">
+                                <input type="radio" name="distance_unit"  value="mm" <?php if($row1["distance"]=="mm") echo "checked"; ?>> mm
+                            </label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="distance_unit"  value="in" <?php if($row1["distance"]=="in") echo "checked"; ?>> in
+                            </label>
                         </div>
                     </div>
                     <div class="form-group row text-dark">
                         <label for="inputEmail3" class="col-form-label col-3 mx-3 font-weight-bold">Time</label>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="time_format"  value="12" <?php if($row1["time_format"]=="12") echo "checked"; ?>>
-                            <label class="form-check-label">12 Hours</label>
-                        </div>
-                        <div class="form-check form-check-inline ml-3">
-                            <input class="form-check-input" type="radio" name="time_format" value="24" <?php if($row1["time_format"]=="24") echo "checked"; ?>>
-                            <label class="form-check-label">24 Hours</label>
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-primary">
+                                <input type="radio" name="time_format"  value="12" <?php if($row1["time_format"]=="12") echo "checked"; ?>> 12 Hours
+                            </label>
+                            <label class="btn btn-primary">
+                                <input type="radio" name="time_format" value="24" <?php if($row1["time_format"]=="24") echo "checked"; ?>> 24 Hours
+                            </label>
                         </div>
                     </div>
                     <div class="form-group row text-dark">

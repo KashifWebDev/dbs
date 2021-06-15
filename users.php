@@ -68,8 +68,6 @@ if (isset($_SESSION["darkTheme"]) && $_SESSION["darkTheme"] == 1){
         <table id="example" class="table table-striped table-bordered bg-white shadow autoColorTable_theme" style="width:100%">
             <thead>
             <tr>
-                <th>#</th>
-                <th>Picture</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Type</th>
@@ -96,8 +94,8 @@ if (isset($_SESSION["darkTheme"]) && $_SESSION["darkTheme"] == 1){
                 }
                 ?>
                 <tr>
-                    <td><?php echo $row["id"]; ?></td>
-                    <td><img id="userTablePic" src="assets/imgs/user.jpg" alt="User Pic"></td>
+<!--                    <td>--><?php //echo $row["id"]; ?><!--</td>-->
+<!--                    <td><img id="userTablePic" src="assets/imgs/user.jpg" alt="User Pic"></td>-->
                     <td><?php echo $row["username"]; ?></td>
                     <td><?php echo $row["email"]; ?></td>
                     <td><span class="p-2 text-white border-radius-10px   <?php echo $typeClass; ?>"><?php echo $userType; ?></span></td>
@@ -216,9 +214,7 @@ if (isset($_SESSION["darkTheme"]) && $_SESSION["darkTheme"] == 1){
                                 </form>
                                 <?php
                                 $uid = $row['id'];
-                                $sql1 = "SELECT user_and_devices.id as deviceID, devices.device_name as name
-                                        FROM user_and_devices, devices 
-                                        WHERE user_id=$uid";
+                                $sql1 = "SELECT * FROM user_and_devices WHERE user_id=$uid ";
                                 $res1 = mysqli_query($con, $sql1);
                                 if(mysqli_num_rows($res1)){
                                     ?>
@@ -227,11 +223,15 @@ if (isset($_SESSION["darkTheme"]) && $_SESSION["darkTheme"] == 1){
                                     <div class="d-flex">
                                         <?php
                                         while ($row2 = mysqli_fetch_array($res1)){
+                                            $did = $row2["device_id"];
+                                            $s = "SELECT * FROM devices WHERE id = $did";
+                                            $r = mysqli_query($con, $s);
+                                            $r = mysqli_fetch_array($r);
                                             ?>
                                             <h5 class="mr-2">
                                              <span class="badge badge-primary">
-                                                 <span><?php echo $row2["name"]; ?></span>
-                                                <span><a href="users.php?unlinkDevice=<?php echo $row2["deviceID"]; ?>" class="text-white-50 ml-3">X</a></span>
+                                                 <span><?php echo $r["device_name"]; ?></span>
+                                                <span><a href="users.php?unlinkDevice=<?php echo $row2["id"]; ?>" class="text-white-50 ml-3">X</a></span>
                                              </span>
                                             </h5>
                                         <?php
@@ -267,8 +267,6 @@ if (isset($_SESSION["darkTheme"]) && $_SESSION["darkTheme"] == 1){
             </tbody>
             <tfoot>
             <tr>
-                <th>#</th>
-                <th>Picture</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Type</th>
@@ -295,7 +293,7 @@ if(isset($_POST["link"])){
 if(isset($_GET["unlinkDevice"])){
     $id = $_GET["unlinkDevice"];
 //    $sql ="DELETE FROM user_and_devices WHERE id=$id";
-    $sql ="DELETE FROM `user_and_devices` WHERE `user_and_devices`.`id` = $id";
+    $sql ="DELETE FROM user_and_devices WHERE id = $id";
 //    echo $sql; exit(); die();
     if(mysqli_query($con, $sql)){
 //    echo "done"; exit(); die();

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2021 at 09:04 PM
+-- Generation Time: Jun 15, 2021 at 08:12 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.5.37
 
@@ -186,6 +186,14 @@ CREATE TABLE `custom_graph` (
   `line1_value` int(50) NOT NULL,
   `line2` varchar(50) NOT NULL,
   `line2_value` int(50) NOT NULL,
+  `line3` varchar(500) NOT NULL,
+  `line3_value` int(50) NOT NULL,
+  `line4` varchar(500) NOT NULL,
+  `line4_value` int(50) NOT NULL,
+  `line1_clr` varchar(50) NOT NULL DEFAULT '#FF0000',
+  `line2_clr` varchar(50) NOT NULL DEFAULT '#FF0000',
+  `line3_clr` varchar(50) NOT NULL DEFAULT '#FF0000',
+  `line4_clr` varchar(50) NOT NULL DEFAULT '#FF0000',
   `show_legends` varchar(10) NOT NULL,
   `legends1` varchar(10) NOT NULL,
   `legends2` varchar(10) NOT NULL,
@@ -198,23 +206,23 @@ CREATE TABLE `custom_graph` (
 -- Dumping data for table `custom_graph`
 --
 
-INSERT INTO `custom_graph` (`id`, `device_id`, `graph_title`, `line_color`, `line_name`, `y_unit`, `line1`, `line1_value`, `line2`, `line2_value`, `show_legends`, `legends1`, `legends2`, `legends3`, `legends4`, `legends5`) VALUES
-(1, 0, 'Graph112', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', '', '', '', '', ''),
-(10, 40, 'Graphs', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', '', '', '', '', ''),
-(11, 41, 'Graph', 'red', 'name', 'UNIT', '', 0, '', 0, '', '', '', '', '', ''),
-(12, 42, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', '', '', '', '', ''),
-(13, 43, 'Graph', 'red', 'name', 'UNIT', '', 0, '', 0, '', '', '', '', '', ''),
-(14, 44, 'Graph', '#009cde', 'Torque', 'FT-LBS', '2', 2, '3', 4, '', 'on', '', 'on', '', 'on'),
-(15, 45, 'Graph', '#009cde', 'Torque', 'FT-LBS', '22', 22, '33', 44, 'on', 'on', '', 'on', '', 'on'),
-(16, 46, 'Graph', '#009cde', 'Torque', 'FT-LBS', 'first Line', 3000, '', 0, '', '', 'on', '', 'on', 'on'),
-(17, 47, 'Graph', '#009cde', 'Torque', 'FT-LBS', 'first Line', 1000, '', 0, 'on', 'on', '', '', 'on', ''),
-(18, 48, 'Graph', '#009cde', 'Torque', 'FT-LBS', 'Marker1', 4000, 'Marker 2', 6000, 'on', 'on', 'on', 'on', 'on', 'on'),
-(19, 49, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', '', '', '', '', ''),
-(20, 50, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', '', '', '', '', ''),
-(21, 51, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', '', '', '', '', ''),
-(22, 52, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', '', '', '', '', ''),
-(23, 53, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', '', '', '', '', ''),
-(24, 54, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', '', '', '', '', '');
+INSERT INTO `custom_graph` (`id`, `device_id`, `graph_title`, `line_color`, `line_name`, `y_unit`, `line1`, `line1_value`, `line2`, `line2_value`, `line3`, `line3_value`, `line4`, `line4_value`, `line1_clr`, `line2_clr`, `line3_clr`, `line4_clr`, `show_legends`, `legends1`, `legends2`, `legends3`, `legends4`, `legends5`) VALUES
+(1, 0, 'Graph112', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', 0, '', 0, '#FF0000', '#FF0000', '#FF0000', '#FF0000', '', '', '', '', '', ''),
+(10, 40, 'Graphs', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', 0, '', 0, '#FF0000', '#FF0000', '#FF0000', '#FF0000', '', '', '', '', '', ''),
+(11, 41, 'Graph', 'red', 'name', 'UNIT', '', 0, '', 0, '', 0, '', 0, '#FF0000', '#FF0000', '#FF0000', '#FF0000', '', '', '', '', '', ''),
+(12, 42, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', 0, '', 0, '#FF0000', '#FF0000', '#FF0000', '#FF0000', '', '', '', '', '', ''),
+(13, 43, 'Graph', 'red', 'name', 'UNIT', '', 0, '', 0, '', 0, '', 0, '#FF0000', '#FF0000', '#FF0000', '#FF0000', '', '', '', '', '', ''),
+(14, 44, 'Graph', '#009cde', 'Torque', 'FT-LBS', '2', 2, '3', 4, '', 0, '', 0, '#FF0000', '#FF0000', '#FF0000', '#FF0000', '', 'on', '', 'on', '', 'on'),
+(15, 45, 'Graph', '#009cde', 'Torque', 'FT-LBS', '22', 22, '33', 44, '', 0, '', 0, '#FF0000', '#FF0000', '#FF0000', '#FF0000', 'on', 'on', '', 'on', '', 'on'),
+(16, 46, 'Graph', '#009cde', 'Torque', 'FT-LBS', 'first Line', 3000, '', 0, '', 0, '', 0, '#FF0000', '#FF0000', '#FF0000', '#FF0000', '', '', 'on', '', 'on', 'on'),
+(17, 47, 'Graph', '#009cde', 'Torque', 'FT-LBS', 'first Line', 1000, '', 0, '', 0, '', 0, '#FF0000', '#FF0000', '#FF0000', '#FF0000', 'on', 'on', '', '', 'on', ''),
+(18, 48, 'Graph', '#009cde', 'Torque', 'FT-LBS', 'Marker1', 1000, 'Marker2', 2000, 'Marker3', 3000, 'Marker4', 4000, '#aa9292', '#859d94', '#6246c8', '#ffcf24', '', '', '', '', '', ''),
+(19, 49, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', 0, '', 0, '#FF0000', '#FF0000', '#FF0000', '#FF0000', '', '', '', '', '', ''),
+(20, 50, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', 0, '', 0, '#FF0000', '#FF0000', '#FF0000', '#FF0000', '', '', '', '', '', ''),
+(21, 51, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', 0, '', 0, '#FF0000', '#FF0000', '#FF0000', '#FF0000', '', '', '', '', '', ''),
+(22, 52, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', 0, '', 0, '#FF0000', '#FF0000', '#FF0000', '#FF0000', '', '', '', '', '', ''),
+(23, 53, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', 0, '', 0, '#FF0000', '#FF0000', '#FF0000', '#FF0000', '', '', '', '', '', ''),
+(24, 54, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', 0, '', 0, '#FF0000', '#FF0000', '#FF0000', '#FF0000', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -412,7 +420,7 @@ INSERT INTO `dashboard_units` (`id`, `device_id`, `temp`, `torque`, `pressure`, 
 (7, 45, 'c', 'nm', 'pa', 'in', 24, 'Asia/Karachi'),
 (8, 46, 'f', 'nm', 'bar', 'in', 12, 'Asia/Karachi'),
 (9, 47, 'c', 'nm', 'psi', 'in', 24, 'Asia/Karachi'),
-(10, 48, 'c', 'ft-lbs', 'bar', 'mm', 12, 'Greenland'),
+(10, 48, 'c', 'ft-lbs', 'bar', 'mm', 24, 'Greenland'),
 (11, 49, 'f', 'ft-lbs', 'bar', 'mm', 12, 'Asia/Karachi'),
 (12, 50, 'f', 'ft-lbs', 'bar', 'mm', 12, 'Asia/Karachi'),
 (13, 51, 'f', 'ft-lbs', 'bar', 'mm', 12, 'Asia/Karachi'),
@@ -5986,11 +5994,10 @@ CREATE TABLE `user_and_devices` (
 --
 
 INSERT INTO `user_and_devices` (`id`, `user_id`, `device_id`) VALUES
-(54, 27, 27),
 (55, 22, 22),
 (56, 20, 20),
 (59, 2, 48),
-(62, 29, 49);
+(80, 33, 48);
 
 --
 -- Indexes for dumped tables
@@ -6189,7 +6196,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_and_devices`
 --
 ALTER TABLE `user_and_devices`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

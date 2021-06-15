@@ -73,6 +73,7 @@ if(isset($_GET["blockUser"])){
         <thead>
         <tr>
             <th>Device Name</th>
+            <th>Second Name</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -84,6 +85,7 @@ if(isset($_GET["blockUser"])){
             ?>
             <tr>
                 <td><?php echo $row["device_name"]; ?></td>
+                <td><?php echo $row["second_name"]; ?></td>
                 <td>
                     <a href="admin_create_DashboardEdit.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">
                         <i class="fas fa-edit"></i>
@@ -148,6 +150,7 @@ if(isset($_GET["blockUser"])){
         <tfoot>
         <tr>
             <th>Device Name</th>
+            <th>Second Name</th>
             <th>Actions</th>
         </tr>
         </tfoot>
