@@ -27,8 +27,7 @@ $file = $row["manual"];
                         <a class="nav-link navbar-link-color <?php echo $txtColor; ?>" href="app/changeTheme.php"><?php echo $themeLinkText; ?></a>
                     </li>
                     <li class="nav-item ml-3">
-                        <a class="nav-link navbar-link-color <?php echo $txtColor; ?> btn"
-                           type="button" data-toggle="modal" data-target="#user_settings_modal">
+                        <a class="nav-link navbar-link-color <?php echo $txtColor; ?> btn" href="user_settings.php?id=<?php echo $_SESSION['id']; ?>">
                             Account Information
                         </a>
                     </li>
@@ -450,7 +449,7 @@ if(isset($_POST["update_userr"])){
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Dashboard Settings</h5>
+                <h5 class="modal-title darkColorInDarkTheme" id="exampleModalLabel">Dashboard Settings</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -463,7 +462,7 @@ if(isset($_POST["update_userr"])){
                 ?>
                 <form method="POST" action="">
                     <div class="form-group row text-dark">
-                        <label for="inputEmail3" class="col-form-label col-3 mx-3 font-weight-bold">Temperature</label>
+                        <label for="inputEmail3" class="col-form-label col-3 mx-3 font-weight-bold darkColorInDarkTheme">Temperature</label>
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                             <label class="btn btn-primary">
                                 <input type="radio"  name="temperature_unit" value="f" <?php if($row1["temp"]=="f") echo "checked"; ?>> °F
@@ -474,7 +473,7 @@ if(isset($_POST["update_userr"])){
                         </div>
                     </div>
                     <div class="form-group row text-dark">
-                        <label for="inputEmail3" class="col-form-label col-3 mx-3 font-weight-bold">Torque</label>
+                        <label for="inputEmail3" class="col-form-label col-3 mx-3 font-weight-bold darkColorInDarkTheme">Torque</label>
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                             <label class="btn btn-primary">
                                 <input type="radio" name="torque_unit" value="ft-lbs" <?php if($row1["torque"]=="ft-lbs") echo "checked"; ?>> ft-lbs
@@ -485,7 +484,7 @@ if(isset($_POST["update_userr"])){
                         </div>
                     </div>
                     <div class="form-group row text-dark">
-                        <label for="inputEmail3" class="col-form-label col-3 mx-3 font-weight-bold">Pressure</label>
+                        <label for="inputEmail3" class="col-form-label col-3 mx-3 font-weight-bold darkColorInDarkTheme">Pressure</label>
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                             <label class="btn btn-primary">
                                 <input type="radio" name="pressure_unit" value="bar" <?php if($row1["pressure"]=="bar") echo "checked"; ?>> Bar
@@ -499,7 +498,7 @@ if(isset($_POST["update_userr"])){
                         </div>
                     </div>
                     <div class="form-group row text-dark">
-                        <label for="inputEmail3" class="col-form-label col-3 mx-3 font-weight-bold">Distance</label>
+                        <label for="inputEmail3" class="col-form-label col-3 mx-3 font-weight-bold darkColorInDarkTheme">Distance</label>
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                             <label class="btn btn-primary">
                                 <input type="radio" name="distance_unit"  value="mm" <?php if($row1["distance"]=="mm") echo "checked"; ?>> mm
@@ -510,7 +509,7 @@ if(isset($_POST["update_userr"])){
                         </div>
                     </div>
                     <div class="form-group row text-dark">
-                        <label for="inputEmail3" class="col-form-label col-3 mx-3 font-weight-bold">Time</label>
+                        <label for="inputEmail3" class="col-form-label col-3 mx-3 font-weight-bold darkColorInDarkTheme">Time</label>
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                             <label class="btn btn-primary">
                                 <input type="radio" name="time_format"  value="12" <?php if($row1["time_format"]=="12") echo "checked"; ?>> 12 Hours
@@ -521,7 +520,7 @@ if(isset($_POST["update_userr"])){
                         </div>
                     </div>
                     <div class="form-group row text-dark">
-                        <label for="inputEmail3" class="col-form-label col-3 ml-3 font-weight-bold">Time Zone</label>
+                        <label for="inputEmail3" class="col-form-label col-3 ml-3 font-weight-bold darkColorInDarkTheme">Time Zone</label>
                         <div class="form-group col-md-6">
                             <select name="timezone" class="form-control" id="exampleFormControlSelect1">
                                 <?php

@@ -44,7 +44,7 @@ function runQuery($sql, $msg){
     <hr>
     <div class="row">
         <div class="col-md-3">
-            <div class="nav flex-column nav-pills pillsCustomBorder shadow bg-white" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <div class="nav flex-column nav-pills pillsCustomBorder shadow bg-white autoColorTable_theme" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">1. Dashboard Setup Info</a>
                 <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">2. Units</a>
                 <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">3. Graphs</a>
@@ -62,7 +62,7 @@ function runQuery($sql, $msg){
                     $res = mysqli_query($con, $sql);
                     $row1 = mysqli_fetch_array($res);
                     ?>
-                    <div class="tab-pane fade show active bg-white shadow p-3" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                    <div class="tab-pane fade show active bg-white shadow p-3 autoColorTable_theme" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                         <div class="form-group">
                             <label>Dashboard Name</label>
                             <input type="text" class="form-control" value="<?php echo $row1["dashboardName"]; ?>" placeholder="New Dashboard" name="dashboardName">
@@ -74,7 +74,7 @@ function runQuery($sql, $msg){
                     </div>
 
                     <!--Dashboard Units Tab-->
-                    <div class="tab-pane fade bg-white shadow p-3" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                    <div class="tab-pane fade bg-white shadow p-3 autoColorTable_theme" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                         <?php
                             $sql1 = "SELECT * FROM dashboard_units WHERE device_id= $device_id";
                             $res1 = mysqli_query($con, $sql1);
@@ -157,7 +157,7 @@ function runQuery($sql, $msg){
                     </div>
 
                     <!--Graph Legends Tab-->
-                    <div class="tab-pane fade bg-white shadow p-3" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                    <div class="tab-pane fade bg-white shadow p-3 autoColorTable_theme" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                         <h2 id="navHeading" class="font-roboto">Horizontal Lines</h2>
                         <hr>
                         <?php
@@ -289,7 +289,7 @@ function runQuery($sql, $msg){
                     </div>
 
                     <!--Ui Components Tab-->
-                    <div class="tab-pane fade bg-white shadow p-3" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                    <div class="tab-pane fade bg-white shadow p-3 autoColorTable_theme" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                         <div class="font-roboto">
                             <div id="accordion">
                                 <!--Select Sections Card-->
@@ -457,19 +457,19 @@ function runQuery($sql, $msg){
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <label>Bar Label</label>
+                                                        <label class="darkColorInDarkTheme">Bar Label</label>
                                                         <input name="vBarName" type="text" class="form-control" value="<?php echo $row["name"]; ?>">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <label>Maximum Range</label>
+                                                        <label class="darkColorInDarkTheme">Maximum Range</label>
                                                         <input name="vBarRange" type="number" class="form-control" value="<?php echo $row["maxRange"]; ?>">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <label>Bar Unit</label>
+                                                        <label class="darkColorInDarkTheme">Bar Unit</label>
                                                         <input name="vBarUnit" type="text" class="form-control" value="<?php echo $row["unit"]; ?>">
                                                     </div>
                                                 </div>
@@ -497,7 +497,7 @@ function runQuery($sql, $msg){
                                                     <label for="email1" class="text-dark">Enter Meter values <mark><i>in given format</i></mark></label>
                                                     <input name="ranges" type="text" class="form-control" id="email1" value="<?php echo $mainRow["meter_ranges"]; ?>" placeholder="0,2500,5000,7500,10000,12500,15000,175000,20000,22500,25000,27500,30000">
                                                 </div>
-                                                <p>Set Color Levels</p>
+                                                <p class="darkColorInDarkTheme">Set Color Levels</p>
                                                 <div class="row">
                                                     <div class="col-md-4">
                                                         <div class="input-group">
@@ -566,27 +566,27 @@ function runQuery($sql, $msg){
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="exampleInputEmail1">Graph Title</label>
+                                                            <label for="exampleInputEmail1"  class="darkColorInDarkTheme">Graph Title</label>
                                                             <input type="text" value="<?php echo $graphTitle ?>" class="form-control" name="graph_title">
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="exampleInputPassword1">Graph Line Name</label>
+                                                            <label for="exampleInputPassword1"  class="darkColorInDarkTheme">Graph Line Name</label>
                                                             <input type="text" value="<?php echo $mainRow["line_name"]; ?>" class="form-control" name="line_name">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="exampleInputEmail1">Line Color</label>
+                                                            <label for="exampleInputEmail1" class="darkColorInDarkTheme">Line Color</label>
                                                             <input type="text" class="form-control" name="line_color" value="<?php echo $mainRow["line_color"]; ?>">
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="exampleInputPassword1">Y axis Unit</label>
+                                                            <label for="exampleInputPassword1" class="darkColorInDarkTheme">Y axis Unit</label>
                                                             <input type="text" class="form-control" name="y_unit" value="<?php echo $mainRow["y_unit"]; ?>">
                                                         </div>
                                                     </div>
                                                 </div>
                                             <div>
-                                                <h2 id="navHeading" class="font-roboto">Plot Settings</h2>
+                                                <h2 id="navHeading" class="font-roboto darkColorInDarkTheme">Plot Settings</h2>
                                                 <hr>
                                                 <div class="form-check-inline">
                                                     <label class="form-check-label">
@@ -899,7 +899,7 @@ function runQuery($sql, $msg){
                     </div>
 
                     <!--Conditioning Tab-->
-                    <div class="tab-pane fade bg-white shadow p-3" id="v-pills-conditioning" role="tabpanel" aria-labelledby="v-pills-conditioning-tab">
+                    <div class="tab-pane fade bg-white shadow p-3 autoColorTable_theme" id="v-pills-conditioning" role="tabpanel" aria-labelledby="v-pills-conditioning-tab">
                         <?php
                         $sql = "SELECT * FROM custom_conditions WHERE device_id=$device_id";
                         $res = mysqli_query($con, $sql);
@@ -1017,13 +1017,13 @@ function runQuery($sql, $msg){
                         <hr>
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input" value="">Allow user to subscribe/Unsubscribe to alerts
+                                <input type="checkbox" class="form-check-input auto_color_txt" value="">Allow user to subscribe/Unsubscribe to alerts
                             </label>
                         </div>
                     </div>
 
                     <!--Finalization-->
-                    <div class="tab-pane fade bg-white shadow p-3" id="v-pills-final" role="tabpanel" aria-labelledby="v-pills-final-tab">
+                    <div class="tab-pane fade bg-white shadow p-3 autoColorTable_theme" id="v-pills-final" role="tabpanel" aria-labelledby="v-pills-final-tab">
                         <p class="font-italic mt-2">
                             Dashboard configured! You can move back to any step and edit configurations.
                         </p>

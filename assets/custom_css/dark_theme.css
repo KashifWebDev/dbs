@@ -32,3 +32,12 @@ body{
     background-color: #51575d !important;
     box-shadow: 0px 0px 17px 0px white !important;
 }
+#v-pills-tab a{
+    color: white !important;
+}
+label{
+    color: white !important;
+}
+label.form-check-label, .darkColorInDarkTheme{
+    color: black !important;
+}

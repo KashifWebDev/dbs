@@ -36,12 +36,22 @@ $_SESSION['currentPath'] = "./";
                             <input type="text" class="form-control" name="company_name" placeholder="Company Name" id="email" value="<?php echo $row1['company_name']; ?>">
                         </div>
                         <div class="form-group">
-                            <label for="email" style="color: black;">Company Name:</label>
+                            <label for="email" style="color: black;">Job Position:</label>
                             <input type="text" class="form-control" name="job_position" placeholder="Job Position" id="email" value="<?php echo $row1['job_position']; ?>">
                         </div>
                         <div class="form-group">
                             <label for="email" style="color: black;">Email address:</label>
                             <input type="email" class="form-control" name="email" placeholder="Enter email" id="email" value="<?php echo $row1['email']; ?>">
+                        </div>
+                        <script src="assets/custom_js/show_pass.js"></script>
+                        <div class="input-group mb-3 d-flex flex-column" id="show_hide_password">
+                            <label for="email" class="mb-0" style="color: black;">Password:</label>
+                            <div class="d-flex">
+                                <span class="input-group-text text-secondary input-group-addon">
+                                <a id="show_pass_a"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                            </span>
+                                <input type="password" name="pass" class="form-control " placeholder="Password"  value="<?php echo $row1['password']; ?>">
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -50,7 +60,7 @@ $_SESSION['currentPath'] = "./";
                             <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
                             <label for="exampleFormControlSelect1">Example select</label>
                             <select class="form-control selectpicker select2"
-                                    data-live-search="true" data-flag="false" name="step1[country]" id="country1" required>
+                                    data-live-search="true" data-flag="false" name="step1[country]" id="country1">
                                 <option value="">Country</option><option value="AF"  data-phone-prefix="+93">
                                     Afghanistan
                                 </option><option value="AX"  data-phone-prefix="+358">
@@ -587,7 +597,7 @@ $_SESSION['currentPath'] = "./";
                 if(isset($_POST["update_userr"])){
                     $name = $_POST["username"];
                     $email = $_POST["email"];
-                    $password = $_POST["password"];
+                    $password = $_POST["pass"];
                     $contact = $_POST["contact"];
                     $contact_2 = $_POST["phone_2"];
                     $company_name = $_POST["company_name"];

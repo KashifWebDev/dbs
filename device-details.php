@@ -321,7 +321,7 @@
                                           <?php
                                           if(isset($row["line1_value"]) && $row["line1_value"]!=""){
                                           ?>
-                                              // color:"#ffff00",
+                                              color:"<?php echo $row["line1_clr"]; ?>",
                                               value: <?php echo $row["line1_value"]; ?>,
                                               label: "<?php echo $row["line1"]; ?>"
                                           <?php
@@ -332,9 +332,31 @@
                                           <?php
                                           if(isset($row["line2_value"]) && $row["line2_value"]!=""){
                                           ?>
-                                             // color:"#ffff00",
+                                          color:"<?php echo $row["line2_clr"]; ?>",
                                               value: <?php echo $row["line2_value"]; ?>,
                                               label: "<?php echo $row["line2"]; ?>"
+                                          <?php
+                                          }
+                                          ?>
+                                      },
+                                      {
+                                          <?php
+                                          if(isset($row["line3_value"]) && $row["line3_value"]!=""){
+                                          ?>
+                                          color:"<?php echo $row["line3_clr"]; ?>",
+                                              value: <?php echo $row["line3_value"]; ?>,
+                                              label: "<?php echo $row["line3"]; ?>"
+                                          <?php
+                                          }
+                                          ?>
+                                      },
+                                      {
+                                          <?php
+                                          if(isset($row["line4_value"]) && $row["line4_value"]!=""){
+                                          ?>
+                                          color:"<?php echo $row["line4_clr"]; ?>",
+                                              value: <?php echo $row["line4_value"]; ?>,
+                                              label: "<?php echo $row["line4"]; ?>"
                                           <?php
                                           }
                                           ?>
