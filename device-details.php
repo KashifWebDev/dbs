@@ -571,7 +571,7 @@
                           if($row["today_check"]=="on"){
                               ?>
                               <tr><td><i><?php echo $row["today_title"]; ?> :</i></td></tr>
-                              <tr class="alert_info_bg_red">
+                              <tr class="alert_info_bg_redddd">
                                   <td class="font-weight-bold">Oil Change Overdue (48 Days)</td>
                                   <td class="text-left">Main Gear</td>
                               </tr>
@@ -641,7 +641,7 @@
                           <?php
                           if($row1["last_oil_change_main_check"]=="on"){
                               ?>
-                              <tr class="alert_info_bg_red">
+                              <tr class="alert_info_bg_reddddd">
                                   <td class="font-weight-bold"><?php echo $row1["last_oil_change_main_title"]; ?> :</td>
                                   <td class="text-left"><?php echo $last_oil_main_gear; ?></td>
                               </tr>
@@ -742,27 +742,27 @@
               <!-- Modal body -->
               <div class="modal-body">
                       <div class="form-group">
-                          <label for="email" class="text-dark">Last Oil Change (Lift PDU)</label>
+                          <label for="email" class="text-dark darkColorInDarkTheme">Last Oil Change (Lift PDU)</label>
                           <input type="date" class="form-control" name="last_oil_pdf">
                       </div>
                       <div class="form-group">
-                          <label for="email" class="text-dark">Last Oil Change (main gear)</label>
+                          <label for="email" class="text-dark darkColorInDarkTheme">Last Oil Change (main gear)</label>
                           <input type="date" class="form-control" name="last_oil_main_gear">
                       </div>
                       <div class="form-group" class="text-dark">
-                          <label for="pwd">Next Oil Change (Lift PU)</label>
+                          <label for="pwd" class="darkColorInDarkTheme">Next Oil Change (Lift PU)</label>
                           <input type="date" class="form-control" name="nxt_oil_lift_pdu">
                       </div>
                       <div class="form-group" class="text-dark">
-                          <label for="pwd">Next Schedule Service</label>
+                          <label for="pwd" class="darkColorInDarkTheme">Next Schedule Service</label>
                           <input type="date" class="form-control" name="nxt_sch_service">
                       </div>
                       <div class="form-group" class="text-dark">
-                          <label for="pwd">Last Repair (INC #)</label>
+                          <label for="pwd" class="darkColorInDarkTheme">Last Repair (INC #)</label>
                           <input type="text" class="form-control" value="N/A" name="last_repair">
                       </div>
                       <div class="form-group" class="text-dark">
-                          <label for="pwd">Parts Repaired</label>
+                          <label for="pwd" class="darkColorInDarkTheme">Parts Repaired</label>
                           <input type="text" class="form-control" value="N/A" name="parts_prepaired">
                       </div>
               </div>
@@ -870,38 +870,49 @@
                       <div class="row">
                           <div class="col-6">
                               <div class="form-group">
+                                  <label class="darkColorInDarkTheme">Driver Model</label>
                                   <input name="driver_model" type="text" class="form-control" id="email1" value="<?php echo $installationInfo['driver_model']; ?>">
                               </div>
                               <div class="form-group">
+                                  <label class="darkColorInDarkTheme">Driver Rating</label>
                                   <input name="driver_rating" type="text" class="form-control" id="email1" value="<?php echo $installationInfo['driver_rating']; ?>">
                               </div>
                               <div class="form-group">
+                                  <label class="darkColorInDarkTheme">Speed</label>
                                   <input name="output_speed" type="text" class="form-control" id="email1" value="<?php echo $installationInfo['speed']; ?>">
                               </div>
                               <div class="form-group">
+                                  <label class="darkColorInDarkTheme">Electric Rate</label>
                                   <input name="electric_rake" type="text" class="form-control" id="email1" value="<?php echo $installationInfo['electric_rate']; ?>">
                               </div>
                               <div class="form-group">
+                                  <label class="darkColorInDarkTheme">Driver Lift</label>
                                   <input name="electric_lift" type="text" class="form-control" id="email1" value="<?php echo $installationInfo['electric_lift']; ?>">
                               </div>
                               <div class="form-group">
+                                  <label class="darkColorInDarkTheme">Driver SN</label>
                                   <input name="driver_sn" type="text" class="form-control" id="email1" value="<?php echo $installationInfo['driver_sn']; ?>">
                               </div>
                           </div>
                           <div class="col-6">
                               <div class="form-group">
+                                  <label class="darkColorInDarkTheme">End User</label>
                                   <input name="end_user" type="text" class="form-control" id="email1" value="<?php echo $installationInfo['end_user']; ?>">
                               </div>
                               <div class="form-group">
+                                  <label class="darkColorInDarkTheme">Installation</label>
                                   <input name="Installation" type="text" class="form-control" id="email1" value="<?php echo $installationInfo['installation']; ?>">
                               </div>
                               <div class="form-group">
+                                  <label class="darkColorInDarkTheme">Proccess</label>
                                   <input name="Process" type="text" class="form-control" id="email1" value="<?php echo $installationInfo['process']; ?>">
                               </div>
                               <div class="form-group">
+                                  <label class="darkColorInDarkTheme">Basin Size</label>
                                   <input name="size" type="text" class="form-control" id="email1" value="<?php echo $installationInfo['basin_size']; ?>">
                               </div>
                               <div class="form-group">
+                                  <label class="darkColorInDarkTheme">Service Since</label>
                                   <input name="inService" type="text" class="form-control" id="email1" value="<?php echo $installationInfo['service_since']; ?>">
                               </div></div>
                       </div>

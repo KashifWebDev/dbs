@@ -54,13 +54,17 @@ function runQuery($sql, $msg){
             </div>
         </div>
         <div class="col-md-9">
-            <form action="" method="POST">
+            <form action="" method="POST" enctype="multipart/form-data">
                 <div class="tab-content" id="v-pills-tabContent">
                     <!--Dashboard Information Tab-->
                     <?php
                     $sql = "SELECT * FROM custom_dashboards WHERE device_id = $device_id";
                     $res = mysqli_query($con, $sql);
                     $row1 = mysqli_fetch_array($res);
+
+                    $s = "SELECT * FROM devices WHERE id=$device_id";
+                    $re = mysqli_query($con, $s);
+                    $ro = mysqli_fetch_array($re);
                     ?>
                     <div class="tab-pane fade show active bg-white shadow p-3 autoColorTable_theme" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                         <div class="form-group">
@@ -68,8 +72,29 @@ function runQuery($sql, $msg){
                             <input type="text" class="form-control" value="<?php echo $row1["dashboardName"]; ?>" placeholder="New Dashboard" name="dashboardName">
                         </div>
                         <div class="form-group">
+                            <label >Device MAC</label>
+                            <input name="deviceMac" type="text" class="form-control" id="password1" value="<?php echo $ro["mac"]; ?>">
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" name="manual_filename" value="<?php echo $ro["manual"]; ?>">
+                            <label>Update Device Manual</label>
+                            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="the_file">
+                        </div>
+                        <div class="form-group">
                             <label>Site Operator's Email Address</label>
-                            <input type="email" class="form-control" value="<?php echo $row1["email"]; ?>" placeholder="User Email" name="userEmail">
+                            <input type="text" class="form-control" value="<?php echo $row1["email"]; ?>" placeholder="User Email" name="userEmail">
+                        </div>
+                        <div class="form-group">
+                            <label>Site Operator's Email Address (optional)</label>
+                            <input type="text" class="form-control" value="<?php echo $row1["email1"]; ?>" placeholder="User Email" name="userEmail1">
+                        </div>
+                        <div class="form-group">
+                            <label>Site Operator's Email Address (optional)</label>
+                            <input type="text" class="form-control" value="<?php echo $row1["email2"]; ?>" placeholder="User Email" name="userEmail2">
+                        </div>
+                        <div class="form-group">
+                            <label>Site Operator's Email Address (optional)</label>
+                            <input type="text" class="form-control" value="<?php echo $row1["email3"]; ?>" placeholder="User Email" name="userEmail3">
                         </div>
                     </div>
 
@@ -894,6 +919,129 @@ function runQuery($sql, $msg){
                                         </div>
                                     </div>
                                 </div>
+                                <!--ADD more sections-->
+                                <div class="card mt-4">
+                                    <div class="card-header">
+                                        <a class="collapsed card-link" data-toggle="collapse" href="#collapseEight">
+                                            <i class="fa" aria-hidden="true"></i>  Manage Sections
+                                        </a>
+                                    </div>
+                                    <?php
+                                    $sql = "SELECT * FROM custom_add_sections WHERE device_id=$defaultSettingsId";
+                                    $res = mysqli_query($con, $sql);
+                                    $row = mysqli_fetch_array($res);
+                                    ?>
+                                    <div id="collapseEight" class="collapse">
+                                        <div class="card-body">
+                                            <div id="row1_1" class="form-group row">
+                                                <label for="inputPassword" class="mx-2 ml-3 col-form-label">Section Name</label>
+                                                <div class="col-xl-3">
+                                                    <input type="text" class="form-control" id="graphinput1"  name="addSecName_1" value="<?php echo $row["sec1"]; ?>">
+                                                </div>
+                                                <label for="inputPassword" class="mx-2 col-form-label">Section Type:</label>
+                                                <div class="col-xl-3">
+                                                    <div class="form-group">
+                                                        <select class="form-control" name="addSecType_1">
+                                                            <option value="Light" <?php if($row["sec1_type"]=="Light") echo "selected"; ?>>Light</option>
+                                                            <option value="Bar" <?php if($row["sec1_type"]=="Bar") echo "selected"; ?>>Bar</option>
+                                                            <option value="Meter" <?php if($row["sec1_type"]=="Meter") echo "selected"; ?>>Meter</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <i class="fas fa-trash-alt text-danger font-size-xLarger ml-4 mt-2" id="delRow1_1"></i>
+                                            </div>
+                                            <div id="row1_2" class="form-group row">
+                                                <label for="inputPassword" class="mx-2 ml-3 col-form-label">Section Name</label>
+                                                <div class="col-xl-3">
+                                                    <input type="text" class="form-control" id="graphinput1"name="addSecName_2" value="<?php echo $row["sec2"]; ?>">
+                                                </div>
+                                                <label for="inputPassword" class="mx-2 col-form-label">Section Type:</label>
+                                                <div class="col-xl-3">
+                                                    <div class="form-group">
+                                                        <select class="form-control" name="addSecType_2">
+                                                            <option value="Light" <?php if($row["sec2_type"]=="Light") echo "selected"; ?>>Light</option>
+                                                            <option value="Bar" <?php if($row["sec2_type"]=="Bar") echo "selected"; ?>>Bar</option>
+                                                            <option value="Meter" <?php if($row["sec2_type"]=="Meter") echo "selected"; ?>>Meter</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <i class="fas fa-trash-alt text-danger font-size-xLarger ml-4 mt-2" id="delRow2_1"></i>
+                                            </div>
+                                            <div id="row1_3" class="form-group row">
+                                                <label for="inputPassword" class="mx-2 ml-3 col-form-label">Section Name</label>
+                                                <div class="col-xl-3">
+                                                    <input type="text" class="form-control" id="graphinput1" name="addSecName_3" value="<?php echo $row["sec3"]; ?>">
+                                                </div>
+                                                <label for="inputPassword" class="mx-2 col-form-label">Section Type:</label>
+                                                <div class="col-xl-3">
+                                                    <div class="form-group">
+                                                        <select class="form-control" name="addSecType_3">
+                                                            <option value="Light" <?php if($row["sec3_type"]=="Light") echo "selected"; ?>>Light</option>
+                                                            <option value="Bar" <?php if($row["sec3_type"]=="Bar") echo "selected"; ?>>Bar</option>
+                                                            <option value="Meter" <?php if($row["sec3_type"]=="Meter") echo "selected"; ?>>Meter</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <i class="fas fa-trash-alt text-danger font-size-xLarger ml-4 mt-2" id="delRow3_1"></i>
+                                            </div>
+                                            <div id="row1_4" class="form-group row">
+                                                <label for="inputPassword" class="mx-2 ml-3 col-form-label">Section Name</label>
+                                                <div class="col-xl-3">
+                                                    <input type="text" class="form-control" id="graphinput1" name="addSecName_4" value="<?php echo $row["sec4"]; ?>">
+                                                </div>
+                                                <label for="inputPassword" class="mx-2 col-form-label">Section Type:</label>
+                                                <div class="col-xl-3">
+                                                    <div class="form-group">
+                                                        <select class="form-control" name="addSecType_4">
+                                                            <option value="Light" <?php if($row["sec4_type"]=="Light") echo "selected"; ?>>Light</option>
+                                                            <option value="Bar" <?php if($row["sec4_type"]=="Bar") echo "selected"; ?>>Bar</option>
+                                                            <option value="Meter" <?php if($row["sec4_type"]=="Meter") echo "selected"; ?>>Meter</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <i class="fas fa-trash-alt text-danger font-size-xLarger ml-4 mt-2" id="delRow4_1"></i>
+                                            </div>
+
+                                            <button class="btn btn-primary ml-1" type="button" id="addRow_1">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                            <script>
+                                                $("#addRow1_1").hide();
+                                                $("#delRow1_1").click(function(){
+                                                    $("#row1_1").hide();
+                                                    $("#addRow_1").show();
+                                                });
+                                                $("#delRow2_1").click(function(){
+                                                    $("#row1_2").hide();
+                                                    $("#addRow_1").show();
+                                                });
+                                                $("#delRow3_1").click(function(){
+                                                    $("#row1_3").hide();
+                                                    $("#addRow_1").show();
+                                                });
+                                                $("#delRow4_1").click(function(){
+                                                    $("#row1_4").hide();
+                                                    $("#addRow_1").show();
+                                                });
+                                                $("#addRow_1").click(function(){
+                                                    if($("#row1_1").is(":visible")){
+                                                        $("#row1_2").show();
+                                                    } else{
+                                                        $("#row1_1").show();
+                                                    }
+                                                    if($("#delRow2_1").is(":visible") && $("#addRow").is(":visible")){
+                                                        $("#addRow_1").hide();
+                                                    }
+                                                });
+
+                                                if($("#delRow4_1").is(":visible") && $("#addRow").is(":visible")){
+                                                    $("#addRow_1").hide();
+                                                }
+                                            </script>
+                                        </div>
+                                    </div>
+                                </div><!-- END of last collapse -->
+
                             </div> <!-- END of accordian -->
                         </div>
                     </div>
@@ -1052,6 +1200,8 @@ function runQuery($sql, $msg){
                             });
                         </script>
                     </div>
+
+
                 </div>
             </form>
     </div>
@@ -1061,16 +1211,52 @@ function runQuery($sql, $msg){
         //First Box Values
         $dashboardName = $_POST["dashboardName"];
         $userEmail = $_POST["userEmail"];
+        $userEmail1 = $_POST["userEmail1"];
+        $userEmail2 = $_POST["userEmail2"];
+        $userEmail3 = $_POST["userEmail3"];
+        $manual_File = $_POST["manual_filename"];
+        $deviceMac = $_POST["deviceMac"];
         //UPDATING data into custom_dashboards Row
 
-        $sql = "UPDATE custom_dashboards SET dashboardName='$dashboardName', email='$userEmail' WHERE device_id=$device_id";
-
-//        $sql1 = "UPDATE user_and_devices  SET user_id=$user_id WHERE device_id=$device_id";
-//        mysqli_query($con, $sql1);
-
+        $sql = "UPDATE custom_dashboards SET dashboardName='$dashboardName', email='$userEmail', email1='$userEmail1', email2='$userEmail2', email3='$userEmail3'
+                WHERE device_id=$device_id";
         if(!mysqli_query($con, $sql)){
             echo "Error while inserting in custom_dashboards ! <br> SQL: $sql <br> ".mysqli_error($con);
         }
+//Update manual
+        //Upload p_logo
+        if (isset( $_FILES["the_file"] ) && !empty( $_FILES["the_file"]["name"])){
+            $currentDirectory = '';
+            $uploadDirectory = "assets/manuals/";
+            $errors = []; // Store errors here
+            $p_logo = $manual_File = $_FILES['the_file']['name'];
+            $fileSize = $_FILES['the_file']['size'];
+            $fileTmpName  = $_FILES['the_file']['tmp_name'];
+            $fileType = $_FILES['the_file']['type'];
+            $uploadPath = $currentDirectory . $uploadDirectory . basename($p_logo);
+            if ($fileSize > 4000000) {
+                $errors[] = "File exceeds maximum size (4MB)";
+            }
+            if (empty($errors)) {
+                $didUpload = move_uploaded_file($fileTmpName, $uploadPath);
+                if ($didUpload) {
+//                echo "The file " . basename($fileName) . " has been uploaded";
+                } else {
+                    echo "An error occurred while uploading p_logo. Please contact the administrator.";
+                }
+            } else {
+                echo "ERROR in uploading file";
+                foreach ($errors as $error) {
+                    echo $error . "These are the errors" . "\n";
+                }
+                exit(); die();
+            }
+        }
+        $sql = "UPDATE devices SET manual='$manual_File', mac='$deviceMac' WHERE id=$device_id";
+        if(!mysqli_query($con, $sql)){
+            echo "Error while inserting in custom_dashboards ! <br> SQL: $sql <br> ".mysqli_error($con);
+        }
+
 
         //Vertical Bar Configurations
         $vBarName = $_POST["vBarName"];
@@ -1176,6 +1362,21 @@ function runQuery($sql, $msg){
             a3='$a3', a4='$a4', a5='$a5', a6='$a6',
             a7='$a7', a8='$a8' WHERE device_id=$device_id";
             runQuery($sql, 'Device Status Updated!');
+
+            //Manage Sections
+        $sec1 = $_POST["addSecName_1"];
+        $sec1_type = $_POST["addSecType_1"];
+        $sec2 = $_POST["addSecName_2"];
+        $sec2_type = $_POST["addSecType_2"];
+        $sec3 = $_POST["addSecName_3"];
+        $sec3_type = $_POST["addSecType_3"];
+        $sec4 = $_POST["addSecName_4"];
+        $sec4_type = $_POST["addSecType_4"];
+
+        $sql = "UPDATE custom_add_sections  SET sec1='$sec1', sec1_type='$sec2',
+            sec2='$sec2', sec2_type='$sec2_type', sec3='$sec3', sec3_type='$sec3_type',
+            sec4='$sec4', sec4_type='$sec4_type' WHERE device_id=$device_id";
+        runQuery($sql, 'Add Manage sections updated');
 
 
         //if(isset($_POST["torque_gauge"])){

@@ -89,7 +89,7 @@ $file = $row["manual"];
                 <form action="report.php" method="post">
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">Create Report</h4>
+                    <h4 class="modal-title darkColorInDarkTheme">Create Report</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
@@ -97,11 +97,11 @@ $file = $row["manual"];
                 <div class="modal-body">
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label>From Date</label>
+                            <label class="darkColorInDarkTheme">From Date</label>
                             <input type="date" name="startDate" class="form-control">
                         </div>
                         <div class="form-group col-md-6">
-                            <label>To</label>
+                            <label class="darkColorInDarkTheme">To</label>
                             <input type="date" name="endDate" class="form-control">
                         </div>
                     </div>
