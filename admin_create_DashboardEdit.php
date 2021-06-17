@@ -590,33 +590,33 @@ function runQuery($sql, $msg){
                                                 <hr>
                                                 <div class="form-check-inline">
                                                     <label class="form-check-label">
-                                                        <input id="showLegendsDiv" type="checkbox" class="form-check-input" name="allLegendsCheck" <?php if($row["show_legends"]=="on"){echo "checked";} ?>>Plot Legends and Markers
+                                                        <input id="showLegendsDiv" type="checkbox" class="form-check-input" name="allLegendsCheck" <?php if($mainRow["show_legends"]=="on"){echo "checked";} ?>>Plot Legends and Markers
                                                     </label>
                                                 </div>
                                                 <div id="legendsCheck" class="mt-3">
                                                     <div class="form-check-inline">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" name="legend1" <?php if($row["legends1"]=="on"){echo "checked";} ?>>Alarm
+                                                            <input type="checkbox" class="form-check-input" name="legend1" <?php if($mainRow["legends1"]=="on"){echo "checked";} ?>>Alarm
                                                         </label>
                                                     </div>
                                                     <div class="form-check-inline">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" name="legend2" <?php if($row["legends2"]=="on"){echo "checked";} ?>>CutOff
+                                                            <input type="checkbox" class="form-check-input" name="legend2" <?php if($mainRow["legends2"]=="on"){echo "checked";} ?>>CutOff
                                                         </label>
                                                     </div>
                                                     <div class="form-check-inline">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" name="legend3" <?php if($row["legends3"]=="on"){echo "checked";} ?>>Lift Lower
+                                                            <input type="checkbox" class="form-check-input" name="legend3" <?php if($mainRow["legends3"]=="on"){echo "checked";} ?>>Lift Lower
                                                         </label>
                                                     </div>
                                                     <div class="form-check-inline">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" name="legend4" <?php if($row["legends4"]=="on"){echo "checked";} ?>>Lift Raise
+                                                            <input type="checkbox" class="form-check-input" name="legend4" <?php if($mainRow["legends4"]=="on"){echo "checked";} ?>>Lift Raise
                                                         </label>
                                                     </div>
                                                     <div class="form-check-inline">
                                                         <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" name="legend5" <?php if($row["legends5"]=="on"){echo "checked";} ?>>Loss Motion
+                                                            <input type="checkbox" class="form-check-input" name="legend5" <?php if($mainRow["legends5"]=="on"){echo "checked";} ?>>Loss Motion
                                                         </label>
                                                     </div>
                                                 </div>

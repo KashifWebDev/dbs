@@ -309,11 +309,14 @@
                                   fontColor: "<?php echo $_SESSION['darkTheme']==0 ? 'black' : '#d2d2c9'; ?>"
                               },
                               axisX:{
+                                  labelFontSize: 13,
                                   labelFontColor: "<?php echo $_SESSION['darkTheme']==0 ? 'black' : '#d2d2c9'; ?>",
                                   labelAngle: -90/90,
                                   labelMaxWidth: 80
                               },
                               axisY: {
+                                  labelFontSize: 13,
+                                  gridThickness: 0,
                                   labelFontColor: "<?php echo $_SESSION['darkTheme']==0 ? 'black' : '#d2d2c9'; ?>",
                                   title: "<?php echo $row['y_unit']; ?>",
                                   stripLines:[
@@ -321,6 +324,7 @@
                                           <?php
                                           if(isset($row["line1_value"]) && $row["line1_value"]!=""){
                                           ?>
+                                              labelFontColor:"<?php echo $row["line1_clr"]; ?>",
                                               color:"<?php echo $row["line1_clr"]; ?>",
                                               value: <?php echo $row["line1_value"]; ?>,
                                               label: "<?php echo $row["line1"]; ?>"
@@ -332,6 +336,7 @@
                                           <?php
                                           if(isset($row["line2_value"]) && $row["line2_value"]!=""){
                                           ?>
+                                          labelFontColor:"<?php echo $row["line2_clr"]; ?>",
                                           color:"<?php echo $row["line2_clr"]; ?>",
                                               value: <?php echo $row["line2_value"]; ?>,
                                               label: "<?php echo $row["line2"]; ?>"
@@ -343,6 +348,7 @@
                                           <?php
                                           if(isset($row["line3_value"]) && $row["line3_value"]!=""){
                                           ?>
+                                          labelFontColor:"<?php echo $row["line3_clr"]; ?>",
                                           color:"<?php echo $row["line3_clr"]; ?>",
                                               value: <?php echo $row["line3_value"]; ?>,
                                               label: "<?php echo $row["line3"]; ?>"
@@ -354,6 +360,7 @@
                                           <?php
                                           if(isset($row["line4_value"]) && $row["line4_value"]!=""){
                                           ?>
+                                          labelFontColor:"<?php echo $row["line4_clr"]; ?>",
                                           color:"<?php echo $row["line4_clr"]; ?>",
                                               value: <?php echo $row["line4_value"]; ?>,
                                               label: "<?php echo $row["line4"]; ?>"
@@ -1090,10 +1097,12 @@ $row = mysqli_fetch_array($res);
             dataFormat: 'json',
             dataSource: {
                 "chart": {
-                    "bgColor": "#dddee0",
+                    "valueFontColor": "<?php if($_SESSION["darkTheme"]){echo "#FFFFFF";} else{echo "#000000";} ?>",
+                    "baseFontColor": "<?php if($_SESSION["darkTheme"]){echo "#FFFFFF";} else{echo "#000000";} ?>",
+                    "bgColor": "<?php if($_SESSION["darkTheme"]){echo "#2d353c";} else{echo "#dddee0";} ?>",
                     "theme": "fusion",
                     "caption": "<?php echo $row["name"]; ?>",
-                    "captionFontColor": "#000000",
+                    "captionFontColor": "<?php if($_SESSION["darkTheme"]){echo "#FFFFFF";} else{echo "#000000";} ?>",
                     "lowerLimit": "0",
                     "upperLimit": "<?php echo $row["maxRange"]; ?>",
                     "lowerLimitDisplay": "0",
@@ -1114,20 +1123,20 @@ $row = mysqli_fetch_array($res);
                     "groups": [{
                         //Each group needs a unique ID
                         "id": "indicator",
-                        "items": [
-                            {
-                                "id": "bgRectAngle",
-                                //Polygon item
-                                "type": "rectangle",
-                                "alpha": "90",
-                                "radius": "1",
-                                "fillColor": "#dddee0",
-                                "x": "$gaugeCenterX - 20",
-                                "tox": "$gaugeCenterX + 20",
-                                "y": "$gaugeEndY + 25",
-                                "toy": "$gaugeEndY + 55"
-                            }
-                        ]
+                        // "items": [
+                        //     {
+                        //         "id": "bgRectAngle",
+                        //         //Polygon item
+                        //         "type": "rectangle",
+                        //         "alpha": "90",
+                        //         "radius": "1",
+                        //         "fillColor": "#dddee0",
+                        //         "x": "$gaugeCenterX - 30",
+                        //         "tox": "$gaugeCenterX + 20",
+                        //         "y": "$gaugeEndY + 25",
+                        //         "toy": "$gaugeEndY + 55"
+                        //     }
+                        // ]
                     }]
 
                 },

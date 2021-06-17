@@ -84,14 +84,14 @@ padding: 5px 10px;
     Alerts Circles Background
 */
 .alert-green{
-    background-color: #28a745;
+    background-color: #ff0000;
     /*border: 2px solid lime !important;*/
     color: white;
 }
 .alert-red{
-    background-color: #dc3545;
+    background-color: #a8a8a8;
     color: white;
-    border: 2px solid red !important;
+    border: 2px solid #767676 !important;
 }
 .alert_info_bg_red{
     color: #721c24;

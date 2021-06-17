@@ -379,51 +379,7 @@ $file = $row["manual"];
     </div>
 
 
-<!-- Modal user_settings_modal -->
-<div class="modal fade" id="user_settings_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Users Settings</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <?php
-                $sql1 = "SELECT * FROM user_and_devices WHERE device_id= $device_id";
-                $res1 = mysqli_query($con, $sql1);
-                $row1 = mysqli_fetch_array($res1);
-                $uid= $row1["user_id"];
-                $sql1 = "SELECT * FROM users WHERE id= $uid";
-                $res1 = mysqli_query($con, $sql1);
-                $row1 = mysqli_fetch_array($res1);
-                ?>
-                <form action="" method="post">
-                    <div class="form-group">
-                        <label for="email" style="color: black;">Full Name:</label>
-                        <input type="text" class="form-control" name="username" placeholder="Enter Username" id="email" value="<?php echo $row1['username']; ?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="email" style="color: black;">Email address:</label>
-                        <input type="email" class="form-control" name="email" placeholder="Enter email" id="email" value="<?php echo $row1['email']; ?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="pwd" style="color: black;">Password:</label>
-                        <input type="password" class="form-control" name="password" placeholder="Enter password" id="pwd" value="<?php echo $row1['password']; ?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="email" style="color: black;">Contact Number:</label>
-                        <input type="text" class="form-control" name="contact" placeholder="+1 584 458 485" id="email" value="<?php echo $row1['contact']; ?>">
-                    </div>
-                    <input type="hidden" value="<?php echo $row1['id']; ?>" name="user_id">
-                    <button type="submit" class="btn btn-primary" name="update_userr">Update</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+
 <?php
 if(isset($_POST["update_userr"])){
     $name = $_POST["username"];

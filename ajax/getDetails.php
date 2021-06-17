@@ -50,11 +50,13 @@ if (mysqli_num_rows($res1)) {
             $tempValue
         );
 
-    $torqueValue = $row['Torque'];
-    if(isset($_SESSION["torque-FtLbs"]) && $_SESSION["torque-FtLbs"]===false){
-        $torqueValue = $torqueValue / 0.73756; // in C
-    }
 
+    $torqueValue = $row['Torque'];
+    if(isset($_SESSION["torque-FtLbs"]) && !$_SESSION["torque-FtLbs"]){
+        $torqueValue = (int) $torqueValue / 0.73756; // in C
+    }
+    $torqueValue = (int) $torqueValue;
+    $torqueValue = (string) $torqueValue;
         array_push($obj[0], $data);
         array_push($obj['torque'], $torqueValue);
 
@@ -71,10 +73,11 @@ if (mysqli_num_rows($res1)) {
 //        $time = $row["time_now"];
 //        $date = $row["date_now"];
         $date_time = $date.' ('.$time.')';
+        $date_time = $time;
         $element = array(
             "timeStamp" => $date_time,
             "temp1" => $row["temp1"],
-            "torque" => $row["Torque"],
+            "torque" => get_torque($row["Torque"]),
             "alarm" => $row["alarm_cirlcleVal"],
             "cutoff" => $row["cutOff_cirlcleVal"],
             "liftLower" => $row["lowOil_cirlcleVal"],
@@ -93,11 +96,19 @@ function get_date($timestamp){
 function get_time($timestamp){
     $new_time = explode(" ",$timestamp);
     if(isset($_SESSION["time-24"]) && $_SESSION["time-24"]===true){
-        $time = date("H:i", strtotime($new_time[1]));
-//        $time = date("g:i a", strtotime($new_time[1]));
+//        $time = date("H:i", strtotime($new_time[1]));
+        $time = date("g:i a", strtotime($new_time[1]));
     }else{
         $time = date("g:i a", strtotime($new_time[1]));
     }
     return $time;
+}
+function get_torque($torqueValue){
+    if(isset($_SESSION["torque-FtLbs"]) && !$_SESSION["torque-FtLbs"]){
+        $torqueValue = (int) $torqueValue / 0.73756; // Nm
+    }
+    $torqueValue = (int) $torqueValue;
+    $torqueValue = (string) $torqueValue;
+    return $torqueValue;
 }
 ?>

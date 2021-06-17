@@ -90,6 +90,9 @@ if(isset($_GET["blockUser"])){
                     <a href="admin_create_DashboardEdit.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">
                         <i class="fas fa-edit"></i>
                     </a>
+                    <a href="customize-dashboard.php?del_device_id=<?php echo $row['id']; ?>" class="btn btn-danger">
+                        <i class="fas fa-trash"></i>
+                    </a>
                 </td>
             </tr>
 
@@ -143,6 +146,18 @@ if(isset($_GET["blockUser"])){
                 echo '
                         <script>window.location.replace("users.php");</script>
                     ';
+            }
+        }
+        ?>
+        <?php
+        if(isset($_GET['del_device_id'])){
+            $id = (int) $_GET['del_device_id'];
+            $row = "DELETE FROM devices WHERE id=$id";
+//        echo '<script>alert('.$id.');</script>';
+            if(mysqli_query($con, $row)){
+                js_redirect('customize-dashboard.php');
+            }else{
+                echo '<script>alert('.mysqli_error($con).');</script>';
             }
         }
         ?>
