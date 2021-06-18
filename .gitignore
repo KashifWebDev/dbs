@@ -1,2 +1,2 @@
-./app/db.php
-./.idea/*
+app/db.php
+.idea
