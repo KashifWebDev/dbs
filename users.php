@@ -61,9 +61,9 @@ if (isset($_SESSION["darkTheme"]) && $_SESSION["darkTheme"] == 1){
 
 <!-- Page Content -->
     <div class="container mt-4">
-        <button type="button" class="btn btn-primary float-right mb-2" data-toggle="modal" data-target="#myModal">
+        <a href="create_user.php" class="btn btn-primary float-right mb-2">
             Create New User
-        </button>
+        </a>
 
         <table id="example" class="table table-striped table-bordered bg-white shadow autoColorTable_theme" style="width:100%">
             <thead>
