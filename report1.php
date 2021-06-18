@@ -21,7 +21,7 @@ $obj_pdf->SetFont('helvetica', '', 12);
 $obj_pdf->AddPage();
 
 
-$content = file_get_contents("http://localhost/dbs/reportPDF.php?session=".json_encode($_SESSION));
+$content = file_get_contents("http://embeddediiot.com/dbs/reportPDF.php?session=".json_encode($_SESSION));
 
 //echo $content;
 //
