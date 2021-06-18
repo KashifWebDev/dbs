@@ -36,7 +36,7 @@ $device_id = 48;
 
 <div class="container mt-4">
     <div class="d-flex justify-content-center">
-        <img src="assets/imgs/dbs.png" alt="">
+        <img style="width: 350px !important;" src="assets/imgs/dbs.png" alt="">
     </div>
     <div class="d-flex justify-content-between align-items-end font-roboto mt-3">
         <p>
