@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 5.1.0
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2021 at 08:12 PM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 5.5.37
+-- Generation Time: Jun 17, 2021 at 07:42 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,6 +20,34 @@ SET time_zone = "+00:00";
 --
 -- Database: `project_dbs`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `custom_add_sections`
+--
+
+CREATE TABLE `custom_add_sections` (
+  `id` int(11) NOT NULL,
+  `device_id` int(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `type` varchar(100) NOT NULL,
+  `sec1` varchar(200) NOT NULL,
+  `sec1_type` varchar(200) NOT NULL,
+  `sec2` varchar(200) NOT NULL,
+  `sec2_type` varchar(200) NOT NULL,
+  `sec3` varchar(200) NOT NULL,
+  `sec3_type` varchar(200) NOT NULL,
+  `sec4` varchar(200) NOT NULL,
+  `sec4_type` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `custom_add_sections`
+--
+
+INSERT INTO `custom_add_sections` (`id`, `device_id`, `name`, `type`, `sec1`, `sec1_type`, `sec2`, `sec2_type`, `sec3`, `sec3_type`, `sec4`, `sec4_type`) VALUES
+(1, 56, '', '', '11', '22', '22', 'Bar', '33', 'Meter', '44', 'Light');
 
 -- --------------------------------------------------------
 
@@ -59,7 +88,9 @@ INSERT INTO `custom_alerts` (`id`, `device_id`, `today_check`, `today_title`, `l
 (21, 51, 'on', 'Today', 'on', 'Last 7 Days', 'on', 'Last Month', 'on', 'Last Six Months'),
 (22, 52, 'on', 'Today', 'on', 'Last 7 Days', 'on', 'Last Month', 'on', 'Last Six Months'),
 (23, 53, 'on', 'Today', 'on', 'Last 7 Days', 'on', 'Last Month', 'on', 'Last Six Months'),
-(24, 54, 'on', 'Today', 'on', 'Last 7 Days', 'on', 'Last Month', 'on', 'Last Six Months');
+(24, 54, 'on', 'Today', 'on', 'Last 7 Days', 'on', 'Last Month', 'on', 'Last Six Months'),
+(25, 55, 'on', 'Today', 'on', 'Last 7 Days', 'on', 'Last Month', 'on', 'Last Six Months'),
+(26, 56, 'on', 'Today', 'on', 'Last 7 Days', 'on', 'Last Month', 'on', 'Last Six Months');
 
 -- --------------------------------------------------------
 
@@ -70,16 +101,16 @@ INSERT INTO `custom_alerts` (`id`, `device_id`, `today_check`, `today_title`, `l
 CREATE TABLE `custom_conditions` (
   `id` int(11) NOT NULL,
   `device_id` int(10) NOT NULL,
-  `tempGreater` int(10) NOT NULL DEFAULT '1',
-  `tempLoss` int(10) NOT NULL DEFAULT '0',
-  `alarmGreater` int(10) NOT NULL DEFAULT '1',
-  `alarmLess` int(10) NOT NULL DEFAULT '0',
-  `waterInOilGreater` int(10) NOT NULL DEFAULT '1',
-  `waterInOilLess` int(10) NOT NULL DEFAULT '0',
-  `lossMotionGreater` int(10) NOT NULL DEFAULT '1',
-  `lossMotionLess` int(10) NOT NULL DEFAULT '0',
-  `liftPositionGreater` int(10) NOT NULL DEFAULT '1',
-  `liftPositionLower` int(10) NOT NULL DEFAULT '0'
+  `tempGreater` int(10) NOT NULL DEFAULT 1,
+  `tempLoss` int(10) NOT NULL DEFAULT 0,
+  `alarmGreater` int(10) NOT NULL DEFAULT 1,
+  `alarmLess` int(10) NOT NULL DEFAULT 0,
+  `waterInOilGreater` int(10) NOT NULL DEFAULT 1,
+  `waterInOilLess` int(10) NOT NULL DEFAULT 0,
+  `lossMotionGreater` int(10) NOT NULL DEFAULT 1,
+  `lossMotionLess` int(10) NOT NULL DEFAULT 0,
+  `liftPositionGreater` int(10) NOT NULL DEFAULT 1,
+  `liftPositionLower` int(10) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -95,7 +126,9 @@ INSERT INTO `custom_conditions` (`id`, `device_id`, `tempGreater`, `tempLoss`, `
 (6, 51, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0),
 (7, 52, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0),
 (8, 53, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0),
-(9, 54, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0);
+(9, 54, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0),
+(10, 55, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0),
+(11, 56, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -108,25 +141,30 @@ CREATE TABLE `custom_dashboards` (
   `device_id` int(50) NOT NULL,
   `user_id` int(50) NOT NULL,
   `dashboardName` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL
+  `email` varchar(50) NOT NULL,
+  `email1` varchar(200) NOT NULL,
+  `email2` varchar(200) NOT NULL,
+  `email3` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `custom_dashboards`
 --
 
-INSERT INTO `custom_dashboards` (`id`, `device_id`, `user_id`, `dashboardName`, `email`) VALUES
-(20, 44, 2, 'dashboard Name Here', 'kashifkhan@loketa.com'),
-(21, 45, 0, '', ''),
-(22, 46, 2, 'dashboard Name Here', 'kashifkhan@loketa.com'),
-(23, 47, 2, 'dashboard Name Here', 'kashifkhan@loketa.com'),
-(24, 48, 2, 'dashboard Name Here', 'kashifkhan@loketa.com'),
-(25, 49, 0, '', ''),
-(26, 50, 0, '', ''),
-(27, 51, 0, '', ''),
-(28, 52, 0, '', ''),
-(29, 53, 0, '', ''),
-(30, 54, 0, '', '');
+INSERT INTO `custom_dashboards` (`id`, `device_id`, `user_id`, `dashboardName`, `email`, `email1`, `email2`, `email3`) VALUES
+(20, 44, 2, 'dashboard Name Here', 'kashifkhan@loketa.com', '', '', ''),
+(21, 45, 0, '', '', '', '', ''),
+(22, 46, 2, 'dashboard Name Here', 'kashifkhan@loketa.com', '', '', ''),
+(23, 47, 2, 'dashboard Name Here', 'kashifkhan@loketa.com', '', '', ''),
+(24, 48, 2, 'dashboard Name Here', 'kashifkhan@loketa.com', '', '', ''),
+(25, 49, 0, '', '', '', '', ''),
+(26, 50, 0, '', '', '', '', ''),
+(27, 51, 0, '', '', '', '', ''),
+(28, 52, 0, '', '', '', '', ''),
+(29, 53, 0, '', '', '', '', ''),
+(30, 54, 0, '', '1', '2', '3', '4'),
+(31, 55, 0, '', '', '', '', ''),
+(32, 56, 0, 'sadfsadfasdfasd', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -167,7 +205,9 @@ INSERT INTO `custom_devicestatus` (`id`, `device_id`, `a1`, `a2`, `a3`, `a4`, `a
 (21, 51, 'on', 'on', 'on', 'on', 'on', 'on', 'on', 'on'),
 (22, 52, 'on', 'on', 'on', 'on', 'on', 'on', 'on', 'on'),
 (23, 53, 'on', 'on', 'on', 'on', 'on', 'on', 'on', 'on'),
-(24, 54, 'on', 'on', 'on', 'on', 'on', 'on', 'on', 'on');
+(24, 54, 'on', 'on', 'on', 'on', 'on', 'on', 'on', 'on'),
+(25, 55, 'on', 'on', 'on', 'on', 'on', 'on', 'on', 'on'),
+(26, 56, 'on', 'on', 'on', 'on', 'on', 'on', 'on', 'on');
 
 -- --------------------------------------------------------
 
@@ -216,13 +256,15 @@ INSERT INTO `custom_graph` (`id`, `device_id`, `graph_title`, `line_color`, `lin
 (15, 45, 'Graph', '#009cde', 'Torque', 'FT-LBS', '22', 22, '33', 44, '', 0, '', 0, '#FF0000', '#FF0000', '#FF0000', '#FF0000', 'on', 'on', '', 'on', '', 'on'),
 (16, 46, 'Graph', '#009cde', 'Torque', 'FT-LBS', 'first Line', 3000, '', 0, '', 0, '', 0, '#FF0000', '#FF0000', '#FF0000', '#FF0000', '', '', 'on', '', 'on', 'on'),
 (17, 47, 'Graph', '#009cde', 'Torque', 'FT-LBS', 'first Line', 1000, '', 0, '', 0, '', 0, '#FF0000', '#FF0000', '#FF0000', '#FF0000', 'on', 'on', '', '', 'on', ''),
-(18, 48, 'Graph', '#009cde', 'Torque', 'FT-LBS', 'Marker1', 1000, 'Marker2', 2000, 'Marker3', 3000, 'Marker4', 4000, '#aa9292', '#859d94', '#6246c8', '#ffcf24', '', '', '', '', '', ''),
+(18, 48, 'Graph', '#009cde', 'Torque', 'FT-LBS', 'Marker1', 1000, 'Marker2', 2000, 'Marker3', 3000, 'Marker4', 4000, '#aa9292', '#859d94', '#6246c8', '#ffcf24', '', 'on', '', '', '', ''),
 (19, 49, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', 0, '', 0, '#FF0000', '#FF0000', '#FF0000', '#FF0000', '', '', '', '', '', ''),
 (20, 50, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', 0, '', 0, '#FF0000', '#FF0000', '#FF0000', '#FF0000', '', '', '', '', '', ''),
 (21, 51, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', 0, '', 0, '#FF0000', '#FF0000', '#FF0000', '#FF0000', '', '', '', '', '', ''),
 (22, 52, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', 0, '', 0, '#FF0000', '#FF0000', '#FF0000', '#FF0000', '', '', '', '', '', ''),
 (23, 53, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', 0, '', 0, '#FF0000', '#FF0000', '#FF0000', '#FF0000', '', '', '', '', '', ''),
-(24, 54, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', 0, '', 0, '#FF0000', '#FF0000', '#FF0000', '#FF0000', '', '', '', '', '', '');
+(24, 54, 'Graph', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', 0, '', 0, '#ff0000', '#ff0000', '#ff0000', '#ff0000', '', '', '', '', '', ''),
+(25, 55, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', 0, '', 0, '#FF0000', '#FF0000', '#FF0000', '#FF0000', '', '', '', '', '', ''),
+(26, 56, 'Graph', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', 0, '', 0, '#ff0000', '#ff0000', '#ff0000', '#ff0000', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -272,7 +314,9 @@ INSERT INTO `custom_installation_info` (`id`, `device_id`, `drive_model_check`, 
 (21, 51, 'on', 'Drive Model', 'on', 'Driver Continuous Rating', 'on', 'Output Speed', 'on', 'Electric Motor Rake', 'on', 'Electric Motor Lift', 'on', 'In Service Since', 'on', 'Driver SN', 'on', 'End User', 'on', 'Installation', 'on', 'Process', 'on', 'Basin Size (diameter)'),
 (22, 52, 'on', 'Drive Model', 'on', 'Driver Continuous Rating', 'on', 'Output Speed', 'on', 'Electric Motor Rake', 'on', 'Electric Motor Lift', 'on', 'In Service Since', 'on', 'Driver SN', 'on', 'End User', 'on', 'Installation', 'on', 'Process', 'on', 'Basin Size (diameter)'),
 (23, 53, 'on', 'Drive Model', 'on', 'Driver Continuous Rating', 'on', 'Output Speed', 'on', 'Electric Motor Rake', 'on', 'Electric Motor Lift', 'on', 'In Service Since', 'on', 'Driver SN', 'on', 'End User', 'on', 'Installation', 'on', 'Process', 'on', 'Basin Size (diameter)'),
-(24, 54, 'on', 'Drive Model', 'on', 'Driver Continuous Rating', 'on', 'Output Speed', 'on', 'Electric Motor Rake', 'on', 'Electric Motor Lift', 'on', 'In Service Since', 'on', 'Driver SN', 'on', 'End User', 'on', 'Installation', 'on', 'Process', 'on', 'Basin Size (diameter)');
+(24, 54, 'on', 'Drive Model', 'on', 'Driver Continuous Rating', 'on', 'Output Speed', 'on', 'Electric Motor Rake', 'on', 'Electric Motor Lift', 'on', 'In Service Since', 'on', 'Driver SN', 'on', 'End User', 'on', 'Installation', 'on', 'Process', 'on', 'Basin Size (diameter)'),
+(25, 55, 'on', 'Drive Model', 'on', 'Driver Continuous Rating', 'on', 'Output Speed', 'on', 'Electric Motor Rake', 'on', 'Electric Motor Lift', 'on', 'In Service Since', 'on', 'Driver SN', 'on', 'End User', 'on', 'Installation', 'on', 'Process', 'on', 'Basin Size (diameter)'),
+(26, 56, 'on', 'Drive Model', 'on', 'Driver Continuous Rating', 'on', 'Output Speed', 'on', 'Electric Motor Rake', 'on', 'Electric Motor Lift', 'on', 'In Service Since', 'on', 'Driver SN', 'on', 'End User', 'on', 'Installation', 'on', 'Process', 'on', 'Basin Size (diameter)');
 
 -- --------------------------------------------------------
 
@@ -321,7 +365,9 @@ INSERT INTO `custom_maintenance` (`id`, `device_id`, `last_oil_change_main_check
 (21, 51, 'on', ' Last Oil Change (main gear)', 'on', 'Next Oil Change (main gear)', 'on', 'Last Oil Change (lift PU)', 'on', 'Next Oil Change (lift PU)', 'on', 'Next Schedule Service', 'on', 'DBS Warranty', 'on', 'Last Repair(INC #)', 'on', 'Parts Repaired'),
 (22, 52, 'on', ' Last Oil Change (main gear)', 'on', 'Next Oil Change (main gear)', 'on', 'Last Oil Change (lift PU)', 'on', 'Next Oil Change (lift PU)', 'on', 'Next Schedule Service', 'on', 'DBS Warranty', 'on', 'Last Repair(INC #)', 'on', 'Parts Repaired'),
 (23, 53, 'on', ' Last Oil Change (main gear)', 'on', 'Next Oil Change (main gear)', 'on', 'Last Oil Change (lift PU)', 'on', 'Next Oil Change (lift PU)', 'on', 'Next Schedule Service', 'on', 'DBS Warranty', 'on', 'Last Repair(INC #)', 'on', 'Parts Repaired'),
-(24, 54, 'on', ' Last Oil Change (main gear)', 'on', 'Next Oil Change (main gear)', 'on', 'Last Oil Change (lift PU)', 'on', 'Next Oil Change (lift PU)', 'on', 'Next Schedule Service', 'on', 'DBS Warranty', 'on', 'Last Repair(INC #)', 'on', 'Parts Repaired');
+(24, 54, 'on', ' Last Oil Change (main gear)', 'on', 'Next Oil Change (main gear)', 'on', 'Last Oil Change (lift PU)', 'on', 'Next Oil Change (lift PU)', 'on', 'Next Schedule Service', 'on', 'DBS Warranty', 'on', 'Last Repair(INC #)', 'on', 'Parts Repaired'),
+(25, 55, 'on', ' Last Oil Change (main gear)', 'on', 'Next Oil Change (main gear)', 'on', 'Last Oil Change (lift PU)', 'on', 'Next Oil Change (lift PU)', 'on', 'Next Schedule Service', 'on', 'DBS Warranty', 'on', 'Last Repair(INC #)', 'on', 'Parts Repaired'),
+(26, 56, 'on', ' Last Oil Change (main gear)', 'on', 'Next Oil Change (main gear)', 'on', 'Last Oil Change (lift PU)', 'on', 'Next Oil Change (lift PU)', 'on', 'Next Schedule Service', 'on', 'DBS Warranty', 'on', 'Last Repair(INC #)', 'on', 'Parts Repaired');
 
 -- --------------------------------------------------------
 
@@ -366,7 +412,9 @@ INSERT INTO `custom_sections` (`id`, `device_id`, `device_settings_check`, `torq
 (22, 51, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
 (23, 52, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
 (24, 53, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
-(25, 54, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge');
+(25, 54, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
+(26, 55, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
+(27, 56, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge');
 
 -- --------------------------------------------------------
 
@@ -378,7 +426,7 @@ CREATE TABLE `custom_vertical_bar` (
   `id` int(11) NOT NULL,
   `device_id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL DEFAULT 'Lift Position',
-  `maxRange` int(20) NOT NULL DEFAULT '100',
+  `maxRange` int(20) NOT NULL DEFAULT 100,
   `unit` varchar(10) NOT NULL DEFAULT '%'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -402,7 +450,7 @@ CREATE TABLE `dashboard_units` (
   `torque` varchar(50) NOT NULL DEFAULT 'ft-lbs',
   `pressure` varchar(50) NOT NULL DEFAULT 'bar',
   `distance` varchar(50) NOT NULL DEFAULT 'mm',
-  `time_format` int(2) NOT NULL DEFAULT '12',
+  `time_format` int(2) NOT NULL DEFAULT 12,
   `time_zone` varchar(100) NOT NULL DEFAULT 'Asia/Karachi'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -426,7 +474,9 @@ INSERT INTO `dashboard_units` (`id`, `device_id`, `temp`, `torque`, `pressure`, 
 (13, 51, 'f', 'ft-lbs', 'bar', 'mm', 12, 'Asia/Karachi'),
 (14, 52, 'f', 'ft-lbs', 'bar', 'mm', 12, 'Asia/Karachi'),
 (15, 53, 'f', 'ft-lbs', 'bar', 'mm', 12, 'Asia/Karachi'),
-(16, 54, 'f', 'ft-lbs', 'bar', 'mm', 12, 'Asia/Karachi');
+(16, 54, 'f', 'ft-lbs', 'bar', 'mm', 12, 'Asia/Karachi'),
+(17, 55, 'f', 'ft-lbs', 'bar', 'mm', 12, 'Asia/Karachi'),
+(18, 56, 'f', 'ft-lbs', 'bar', 'mm', 12, 'Asia/Karachi');
 
 -- --------------------------------------------------------
 
@@ -458,7 +508,7 @@ CREATE TABLE `devices` (
 
 INSERT INTO `devices` (`id`, `mac`, `device_name`, `second_name`, `meter_ranges`, `meter_range_1`, `meter_range_2`, `meter_range_3`, `meter_color_1`, `meter_color_2`, `meter_color_3`, `manual`, `primary_logo`, `secondary_logo`, `use_secondary_logo`) VALUES
 (48, 'testing:mac', 'Testing Device', 'testing second name', '0,2500,5000,7500,10000,12500,15000,175000,20000,22500,25000,27500,40000', 10000, 20000, 30000, '#a38aff', '#85ff75', '#ffa3a3', 'Spring 2021_CS201_1.docx', 'dbs.png', '', ''),
-(54, '433434', 'asdfadf', 'adfasfd', '', 0, 0, 0, '', '', '', 'Capture.JPG', 'Capture.JPG', 'Capture.JPG', '');
+(56, 'sfdfdddd', 'aaadsfa', 'dfasdfasdf', '', 0, 0, 0, '#000000', '#000000', '#000000', 'Dashboard - 4-16-21.pptx', 'dbs.png', 'Dashboard - 4-16-21.pptx', 'on');
 
 -- --------------------------------------------------------
 
@@ -549,7 +599,7 @@ CREATE TABLE `recorded_values` (
   `temp2` float NOT NULL,
   `temp3` float NOT NULL,
   `Torque` int(11) NOT NULL,
-  `date_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date_time` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -1878,7 +1928,7 @@ INSERT INTO `recorded_values` (`id`, `mac`, `alarm_cirlcleVal`, `cutOff_cirlcleV
 (1318, 'testing:mac', 1, 1, 1, 1, 1, 1, 88, 99, 0, 0, 0, 0, '2021-03-03 16:45:03'),
 (1319, 'testing:mac', 1, 1, 1, 1, 1, 1, 88, 99, 0, 0, 0, 0, '2021-03-03 16:55:07'),
 (1320, 'testing:mac', 1, 1, 1, 1, 1, 1, 88, 99, 0, 0, 0, 0, '2021-03-03 17:05:11'),
-(1321, 'testing:mac', 1, 1, 1, 1, 1, 1, 88, 99, 34, 10, 0, 7000, '2021-03-03 17:15:16'),
+(1321, 'testing:mac', 1, 1, 1, 0, 1, 1, 88, 99, 34, 10, 0, 7000, '2021-03-03 17:15:16'),
 (1322, '0', 1, 1, 1, 1, 1, 1, 88, 99, 0, 0, 0, 0, '2021-03-03 17:25:20'),
 (1323, '3:4:5', 1, 0, 0, 0, 1, 0, 11, 33, 24, 0, 0, 0, '2021-03-03 17:37:57'),
 (1324, '0', 1, 1, 1, 1, 1, 1, 88, 99, 0, 0, 0, 0, '2021-03-03 17:45:29'),
@@ -5911,7 +5961,7 @@ INSERT INTO `recorded_values` (`id`, `mac`, `alarm_cirlcleVal`, `cutOff_cirlcleV
 (5344, '0', 1, 1, 1, 1, 1, 1, 88, 99, 88, 99, 0, 5, '2021-05-03 22:54:10'),
 (5345, '0', 1, 1, 1, 1, 1, 1, 88, 99, 88, 99, 0, 5, '2021-05-03 23:04:40'),
 (5346, '0', 1, 1, 1, 1, 1, 1, 88, 99, 88, 99, 0, 5, '2021-05-03 23:15:12'),
-(5347, '0', 1, 1, 1, 1, 1, 1, 88, 99, 88, 99, 0, 5, '2021-05-03 23:25:46');
+(5347, '0', 1, 1, 1, 0, 1, 1, 88, 99, 88, 99, 0, 5, '2021-05-03 23:25:46');
 
 -- --------------------------------------------------------
 
@@ -5923,7 +5973,7 @@ CREATE TABLE `reset_pass` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `code` varchar(11) NOT NULL,
-  `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date_time` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -5947,8 +5997,8 @@ CREATE TABLE `users` (
   `username` varchar(20) NOT NULL,
   `email` varchar(30) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `is_admin` tinyint(1) NOT NULL DEFAULT '0',
-  `blocked` tinyint(1) NOT NULL DEFAULT '0',
+  `is_admin` tinyint(1) NOT NULL DEFAULT 0,
+  `blocked` tinyint(1) NOT NULL DEFAULT 0,
   `contact` varchar(50) DEFAULT NULL,
   `company_name` varchar(100) NOT NULL,
   `job_position` varchar(100) NOT NULL,
@@ -6002,6 +6052,12 @@ INSERT INTO `user_and_devices` (`id`, `user_id`, `device_id`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `custom_add_sections`
+--
+ALTER TABLE `custom_add_sections`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `custom_alerts`
@@ -6113,90 +6169,114 @@ ALTER TABLE `user_and_devices`
 --
 
 --
+-- AUTO_INCREMENT for table `custom_add_sections`
+--
+ALTER TABLE `custom_add_sections`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `custom_alerts`
 --
 ALTER TABLE `custom_alerts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
 --
 -- AUTO_INCREMENT for table `custom_conditions`
 --
 ALTER TABLE `custom_conditions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
 -- AUTO_INCREMENT for table `custom_dashboards`
 --
 ALTER TABLE `custom_dashboards`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
 --
 -- AUTO_INCREMENT for table `custom_devicestatus`
 --
 ALTER TABLE `custom_devicestatus`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
 --
 -- AUTO_INCREMENT for table `custom_graph`
 --
 ALTER TABLE `custom_graph`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
 --
 -- AUTO_INCREMENT for table `custom_installation_info`
 --
 ALTER TABLE `custom_installation_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
 --
 -- AUTO_INCREMENT for table `custom_maintenance`
 --
 ALTER TABLE `custom_maintenance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
 --
 -- AUTO_INCREMENT for table `custom_sections`
 --
 ALTER TABLE `custom_sections`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
 --
 -- AUTO_INCREMENT for table `custom_vertical_bar`
 --
 ALTER TABLE `custom_vertical_bar`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `dashboard_units`
 --
 ALTER TABLE `dashboard_units`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
 --
 -- AUTO_INCREMENT for table `devices`
 --
 ALTER TABLE `devices`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+
 --
 -- AUTO_INCREMENT for table `installation_info`
 --
 ALTER TABLE `installation_info`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT for table `maintenance_record`
 --
 ALTER TABLE `maintenance_record`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
 -- AUTO_INCREMENT for table `recorded_values`
 --
 ALTER TABLE `recorded_values`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5348;
+
 --
 -- AUTO_INCREMENT for table `reset_pass`
 --
 ALTER TABLE `reset_pass`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+
 --
 -- AUTO_INCREMENT for table `user_and_devices`
 --
 ALTER TABLE `user_and_devices`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
