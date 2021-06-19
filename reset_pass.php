@@ -93,8 +93,8 @@ if(isset($_POST["reset-btn"])){
         $headers .= "From: no-reply@dbsServer.com" . "\r\n".
             'X-Mailer: PHP/' . phpversion();
 
-        mail($to,$subject,$txt,$headers);
-        if(mysqli_query($con, $sql)){
+
+        if(mysqli_query($con, $sql) && mail($to,$subject,$txt,$headers)){
             js_redirect('reset_pass.php?success=sent');
         }else{
 //            js_redirect('reset_pass.php?err=err');
