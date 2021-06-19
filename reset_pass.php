@@ -83,6 +83,17 @@ if(isset($_POST["reset-btn"])){
         $uID = $row["id"];
         $code = generateRandomString();
         $sql = "INSERT INTO reset_pass (user_id, code) VALUES ($uID, '$code')";
+
+        $to = "somebody@example.com";
+        $subject = "My subject";
+        $txt = "Please <a href='https://embeddediiot.com/dbs/update_pass.php?id=$code'>CLICK HERE</a> to reset your password";
+
+        $headers  = 'MIME-Version: 1.0' . "\r\n";
+        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+        $headers .= "From: no-reply@dbsServer.com" . "\r\n".
+            'X-Mailer: PHP/' . phpversion();
+
+        mail($to,$subject,$txt,$headers);
         if(mysqli_query($con, $sql)){
             js_redirect('reset_pass.php?success=sent');
         }else{

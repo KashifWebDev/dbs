@@ -63,6 +63,14 @@ require 'app/main.php';
                                                 </div>
                                             ';
                                 break;
+                            case 'passReset':
+                                echo '
+                                                <div class="alert alert-info">
+                                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                                    <strong>Info: </strong> Password updated successfully!
+                                                </div>
+                                            ';
+                                break;
                             case 'signUpTrue':
                                 echo '
                                                 <div class="alert alert-info">
