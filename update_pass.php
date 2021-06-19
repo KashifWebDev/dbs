@@ -38,7 +38,7 @@ if(isset($_GET["id"])){
                     <form action="" method="post">
                         <input type="hidden" value="<?php echo $uid; ?>" name="uid">
                         <div class="input-group mb-2">
-                            <input type="email" name="pass" class="form-control " placeholder="Enter Password" required>
+                            <input type="password" name="pass" class="form-control " placeholder="Enter Password" required>
                         </div>
                         <button name="reset-btn" type="submit" class="btn btn-block appBtnColor" id="login-animation" style="max-height: 38px;">
                             Update password
@@ -71,7 +71,7 @@ if(isset($_POST["reset-btn"])){
     if(mysqli_query($con, $sql)){
         js_redirect("index.php?success=passReset");
     }else{
-        js_alert("Error while updating pass");
+        js_alert("Error while updating pass: "+mysqli_error($con));
     }
 
 }
