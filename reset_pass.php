@@ -84,8 +84,8 @@ if(isset($_POST["reset-btn"])){
         $code = generateRandomString();
         $sql = "INSERT INTO reset_pass (user_id, code) VALUES ($uID, '$code')";
 
-        $to = "somebody@example.com";
-        $subject = "My subject";
+        $to = $row["email"];
+        $subject = "DBS Password Reset";
         $txt = "Please <a href='https://embeddediiot.com/dbs/update_pass.php?id=$code'>CLICK HERE</a> to reset your password";
 
         $headers  = 'MIME-Version: 1.0' . "\r\n";
