@@ -7,10 +7,10 @@ if(isset($_GET["id"])){
     $sql = "SELECT * FROM reset_pass WHERE code='$id'";
     $query = mysqli_query($con, $sql);
     if(mysqli_num_rows($query)==0){
-        $row = mysqli_fetch_array($query);
-        $uid = $row["user_id"];
         js_redirect("index.php");
     }
+    $row = mysqli_fetch_array($query);
+    $uid = $row["user_id"];
 }
 ?>
 <!DOCTYPE html>
