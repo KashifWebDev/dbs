@@ -90,8 +90,8 @@ if(isset($_POST["reset-btn"])){
 
         $headers  = 'MIME-Version: 1.0' . "\r\n";
         $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-        $headers .= "From: no-reply@dbsServer.com" . "\r\n".
-            'X-Mailer: PHP/' . phpversion();
+        $headers .= 'X-Mailer: PHP/' . phpversion();
+
 
 
         if(mysqli_query($con, $sql) && mail($to,$subject,$txt,$headers)){
