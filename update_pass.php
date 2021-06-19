@@ -67,6 +67,7 @@ if(isset($_POST["reset-btn"])){
     $pass = $_POST["pass"];
     $uid = $_POST["uid"];
     $sql = "UPDATE users SET password='$pass' WHERE id=$uid";
+    js_alert("$sql");
 
     if(mysqli_query($con, $sql)){
         js_redirect("index.php?success=passReset");
