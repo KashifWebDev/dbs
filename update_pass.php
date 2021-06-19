@@ -32,13 +32,13 @@ if(isset($_GET["id"])){
                             <img class="img-thumbnail" src="assets/imgs/dbs.png" style="height: 70px;">
                         </div>
                     </div>
-                    <p class="text-dark text-center auto_color_txt font-size-xLarger">Change Password</p>
+                    <p class="text-dark text-center auto_color_txt font-size-xLarger">Update Password</p>
                 </div>
                 <div class="mycard-body col-md-11 mx-auto">
                     <form action="" method="post">
                         <input type="hidden" value="<?php echo $uid; ?>" name="uid">
                         <div class="input-group mb-2">
-                            <input type="password" name="pass" class="form-control " placeholder="Enter Password" required>
+                            <input type="password" name="pass" class="form-control " placeholder="Enter new password" required>
                         </div>
                         <button name="reset-btn" type="submit" class="btn btn-block appBtnColor" id="login-animation" style="max-height: 38px;">
                             Update password
@@ -67,7 +67,6 @@ if(isset($_POST["reset-btn"])){
     $pass = $_POST["pass"];
     $uid = $_POST["uid"];
     $sql = "UPDATE users SET password='$pass' WHERE id=$uid";
-    js_alert("$sql");
 
     if(mysqli_query($con, $sql)){
         js_redirect("index.php?success=passReset");
