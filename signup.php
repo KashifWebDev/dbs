@@ -89,7 +89,7 @@ if(isset($_POST["login-btn"])){
     $user_email = $_POST["email"];
     $user_password = $_POST["pass"];
     $user_password1 = $_POST["pass1"];
-    echo $user_password.'  --  '.$user_password1;
+//    echo $user_password.'  --  '.$user_password1;
     if($user_password != $user_password1){
         js_redirect("signup.php?err=notMatch");
     }
@@ -97,6 +97,8 @@ if(isset($_POST["login-btn"])){
     $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$user_email', '$user_password')";
     if(mysqli_query($con, $sql)){
         js_redirect('index.php?success=signUpTrue');
+    }else{
+        echo  mysqli_error($con);
     }
 
 }
