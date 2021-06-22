@@ -33,6 +33,14 @@ require 'app/main.php';
                         </div>
                         ';
                     }
+                    if(isset($_GET["err1"])){
+                        echo '
+                        <div class="alert alert-danger">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <strong>Error! </strong> Email already Exists!
+                        </div>
+                        ';
+                    }
                     ?>
                 </div>
                 <div class="mycard-body col-md-11 mx-auto">
@@ -89,6 +97,12 @@ if(isset($_POST["login-btn"])){
     $user_email = $_POST["email"];
     $user_password = $_POST["pass"];
     $user_password1 = $_POST["pass1"];
+
+    $select = mysqli_query($con, "SELECT * FROM users WHERE email = '$user_email'");
+    if(mysqli_num_rows($select)) {
+        js_redirect("signup.php?err1=EmailExist");
+    }
+
 //    echo $user_password.'  --  '.$user_password1;
     if($user_password != $user_password1){
         js_redirect("signup.php?err=notMatch");
