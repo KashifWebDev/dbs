@@ -26,7 +26,7 @@ $_SESSION['currentPath'] = "./";
 
 <!-- Page Content -->
     <div class="container">
-        <div class="row">
+        <div class="row w-100">
             <?php
                 $uid = $_SESSION["id"];
                 $sql = "SELECT devices.id as deviceID, devices.device_name, devices.mac as mac, user_and_devices.user_id
@@ -40,7 +40,9 @@ $_SESSION['currentPath'] = "./";
                 }
                 else{
                     ?>
-                    <p class="display-4 text-center">No Devices Found!</p>
+                    <div class="alert alert-danger w-100 mt-3 " role="alert">
+                        No device linked with your account!
+                    </div>
                     <?php
                 }
             ?>

@@ -16,7 +16,7 @@ $_SESSION['currentPath'] = "./";
 
 <!-- Page Content -->
 <div class="container">
-    <div class="row">
+    <div class="row w-100">
         <?php
         $sql = "SELECT devices.id as deviceID, devices.device_name, devices.mac as mac, devices.second_name FROM devices, users GROUP BY mac";
         $res = mysqli_query($con, $sql);
@@ -27,7 +27,9 @@ $_SESSION['currentPath'] = "./";
         }
         else{
             ?>
-            <p class="display-4 text-center">No Devices Found!</p>
+            <div class="alert alert-danger w-100 mt-3 " role="alert">
+                No devices found!
+            </div>
             <?php
         }
         ?>

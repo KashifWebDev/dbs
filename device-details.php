@@ -1169,7 +1169,7 @@ $row = mysqli_fetch_array($res);
                         // }
                     ]
                 },
-                "value": "92"
+                "value": "0"
             },
             "events": {
                 "rendered": function(evtObj, argObj) {

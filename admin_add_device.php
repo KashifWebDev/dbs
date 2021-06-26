@@ -238,6 +238,7 @@ if(isset($_POST['add_device'])){
         mysqli_query($con, "INSERT INTO custom_dashboards (device_id) VALUES ($device_id)");
         mysqli_query($con, "INSERT INTO custom_conditions (device_id) VALUES ($device_id)");
         mysqli_query($con, "INSERT INTO custom_add_sections (device_id) VALUES ($device_id)");
+        mysqli_query($con, "INSERT INTO custom_vertical_bar (device_id, name, maxRange, unit) VALUES ($device_id, 'Lift Bar', 100, '%'");
 
         js_redirect('admin_dashboard.php');
     }else{

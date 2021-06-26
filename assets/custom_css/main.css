@@ -107,6 +107,9 @@ table{
 .font-size-larger{
     font-size: large;
 }
+.font-sizeLarge{
+    font-size: large !important;
+}
 .w-15{
     width: 15% !important;
 }

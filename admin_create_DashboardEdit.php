@@ -610,7 +610,6 @@ function runQuery($sql, $msg){
                                                     </div>
                                                 </div>
                                             <div>
-                                                <h2 id="navHeading" class="font-roboto darkColorInDarkTheme">Plot Settings</h2>
                                                 <hr>
                                                 <div class="form-check-inline">
                                                     <label class="form-check-label">
@@ -618,30 +617,299 @@ function runQuery($sql, $msg){
                                                     </label>
                                                 </div>
                                                 <div id="legendsCheck" class="mt-3">
-                                                    <div class="form-check-inline">
-                                                        <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" name="legend1" <?php if($mainRow["legends1"]=="on"){echo "checked";} ?>>Alarm
-                                                        </label>
+                                                    <hr>
+                                                    <!-- Digital Channels D1-D6-->
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <h2 id="navHeading" class="font-roboto darkColorInDarkTheme font-sizeLarge">
+                                                                Digital Channels (D1-D6):
+                                                            </h2>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-prepend">
+                                                                        <div class="input-group-text">
+                                                                            <input type="checkbox"  name="legend1"
+                                                                                <?php if($mainRow["legends1"]=="on") echo "checked"; ?>>
+                                                                        </div>
+                                                                    </div>
+                                                                    <select class="custom-select" name="legend_type_1">
+                                                                        <option selected>Channel</option>
+                                                                        <option value="legends1" <?php if($mainRow["legends1_type"]=="legends1") echo "selected"; ?>>Digital 1</option>
+                                                                        <option value="legends2" <?php if($mainRow["legends1_type"]=="legends2") echo "selected"; ?>>Digital 2</option>
+                                                                        <option value="legends3" <?php if($mainRow["legends1_type"]=="legends3") echo "selected"; ?>>Digital 3</option>
+                                                                        <option value="legends4" <?php if($mainRow["legends1_type"]=="legends4") echo "selected"; ?>>Digital 4</option>
+                                                                        <option value="legends5" <?php if($mainRow["legends1_type"]=="legends5") echo "selected"; ?>>Digital 5</option>
+                                                                        <option value="legends6" <?php if($mainRow["legends1_type"]=="legends6" ) echo "selected"; ?>>Digital 6</option>
+                                                                    </select>
+                                                                </div>
+                                                                <input type="text" class="form-control" placeholder="Label"
+                                                                    value="<?php echo $mainRow["legends1_txt"]; ?>" name="legends1_txt">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-prepend">
+                                                                        <div class="input-group-text">
+                                                                            <input type="checkbox"  name="legend2"
+                                                                                <?php if($mainRow["legends2"]=="on") echo "checked"; ?>>
+                                                                        </div>
+                                                                    </div>
+                                                                    <select class="custom-select" name="legend_type_2">
+                                                                        <option selected>Channel</option>
+                                                                        <option value="legends1" <?php if($mainRow["legends2_type"]=="legends1") echo "selected"; ?>>Digital 1</option>
+                                                                        <option value="legends2" <?php if($mainRow["legends2_type"]=="legends2") echo "selected"; ?>>Digital 2</option>
+                                                                        <option value="legends3" <?php if($mainRow["legends2_type"]=="legends3") echo "selected"; ?>>Digital 3</option>
+                                                                        <option value="legends4" <?php if($mainRow["legends2_type"]=="legends4") echo "selected"; ?>>Digital 4</option>
+                                                                        <option value="legends5" <?php if($mainRow["legends2_type"]=="legends5") echo "selected"; ?>>Digital 5</option>
+                                                                        <option value="legends6" <?php if($mainRow["legends2_type"]=="legends6") echo "selected"; ?>>Digital 6</option>
+                                                                    </select>
+                                                                </div>
+                                                                <input type="text" class="form-control" placeholder="Label"
+                                                                       value="<?php echo $mainRow["legends2_txt"]; ?>" name="legends2_txt">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-prepend">
+                                                                        <div class="input-group-text">
+                                                                            <input type="checkbox"  name="legend3"
+                                                                                <?php if($mainRow["legends3"]=="on") echo "checked"; ?>>
+                                                                        </div>
+                                                                    </div>
+                                                                    <select class="custom-select" name="legend_type_3">
+                                                                        <option selected>Channel</option>
+                                                                        <option value="legends1" <?php if($mainRow["legends3_type"]=="legends1") echo "selected"; ?>>Digital 1</option>
+                                                                        <option value="legends2" <?php if($mainRow["legends3_type"]=="legends2") echo "selected"; ?>>Digital 2</option>
+                                                                        <option value="legends3" <?php if($mainRow["legends3_type"]=="legends3") echo "selected"; ?>>Digital 3</option>
+                                                                        <option value="legends4" <?php if($mainRow["legends3_type"]=="legends4") echo "selected"; ?>>Digital 4</option>
+                                                                        <option value="legends5" <?php if($mainRow["legends3_type"]=="legends5") echo "selected"; ?>>Digital 5</option>
+                                                                        <option value="legends6" <?php if($mainRow["legends3_type"]=="legends6") echo "selected"; ?>>Digital 6</option>
+                                                                    </select>
+                                                                </div>
+                                                                <input type="text" class="form-control" placeholder="Label"
+                                                                       value="<?php echo $mainRow["legends3_txt"]; ?>" name="legends3_txt">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-prepend">
+                                                                        <div class="input-group-text">
+                                                                            <input type="checkbox"  name="legend4"
+                                                                                <?php if($mainRow["legends4"]=="on") echo "checked"; ?>>
+                                                                        </div>
+                                                                    </div>
+                                                                    <select class="custom-select" name="legend_type_4">
+                                                                        <option selected>Channel</option>
+                                                                        <option value="legends1" <?php if($mainRow["legends4_type"]=="legends1") echo "selected"; ?>>Digital 1</option>
+                                                                        <option value="legends2" <?php if($mainRow["legends4_type"]=="legends2") echo "selected"; ?>>Digital 2</option>
+                                                                        <option value="legends3" <?php if($mainRow["legends4_type"]=="legends3") echo "selected"; ?>>Digital 3</option>
+                                                                        <option value="legends4" <?php if($mainRow["legends4_type"]=="legends4") echo "selected"; ?>>Digital 4</option>
+                                                                        <option value="legends5" <?php if($mainRow["legends4_type"]=="legends5") echo "selected"; ?>>Digital 5</option>
+                                                                        <option value="legends6" <?php if($mainRow["legends4_type"]=="legends6") echo "selected"; ?>>Digital 6</option>
+                                                                    </select>
+                                                                </div>
+                                                                <input type="text" class="form-control" placeholder="Label"
+                                                                    value="<?php echo $mainRow["legends4_txt"]; ?>" name="legends4_txt">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-prepend">
+                                                                        <div class="input-group-text">
+                                                                            <input type="checkbox"  name="legend5"
+                                                                                <?php if($mainRow["legends5"]=="on") echo "checked"; ?>>
+                                                                        </div>
+                                                                    </div>
+                                                                    <select class="custom-select" name="legend_type_5">
+                                                                        <option selected>Channel</option>
+                                                                        <option value="legends1" <?php if($mainRow["legends5_type"]=="legends1") echo "selected"; ?>>Digital 1</option>
+                                                                        <option value="legends2" <?php if($mainRow["legends5_type"]=="legends2") echo "selected"; ?>>Digital 2</option>
+                                                                        <option value="legends3" <?php if($mainRow["legends5_type"]=="legends3") echo "selected"; ?>>Digital 3</option>
+                                                                        <option value="legends4" <?php if($mainRow["legends5_type"]=="legends4") echo "selected"; ?>>Digital 4</option>
+                                                                        <option value="legends5" <?php if($mainRow["legends5_type"]=="legends5") echo "selected"; ?>>Digital 5</option>
+                                                                        <option value="legends6" <?php if($mainRow["legends5_type"]=="legends6") echo "selected"; ?>>Digital 6</option>
+                                                                    </select>
+                                                                </div>
+                                                                <input type="text" class="form-control" placeholder="Label"
+                                                                       value="<?php echo $mainRow["legends5_txt"]; ?>" name="legends5_txt">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-prepend">
+                                                                        <div class="input-group-text">
+                                                                            <input type="checkbox"  name="legend6"
+                                                                                <?php if($mainRow["legends6"]=="on") echo "checked"; ?>>
+                                                                        </div>
+                                                                    </div>
+                                                                    <select class="custom-select" name="legend_type_6">
+                                                                        <option selected>Channel</option>
+                                                                        <option value="legends1" <?php if($mainRow["legends6_type"]=="legends1") echo "selected"; ?>>Digital 1</option>
+                                                                        <option value="legends2" <?php if($mainRow["legends6_type"]=="legends2") echo "selected"; ?>>Digital 2</option>
+                                                                        <option value="legends3" <?php if($mainRow["legends6_type"]=="legends3") echo "selected"; ?>>Digital 3</option>
+                                                                        <option value="legends4" <?php if($mainRow["legends6_type"]=="legends4") echo "selected"; ?>>Digital 4</option>
+                                                                        <option value="legends5" <?php if($mainRow["legends6_type"]=="legends5") echo "selected"; ?>>Digital 5</option>
+                                                                        <option value="legends6" <?php if($mainRow["legends6_type"]=="legends6") echo "selected"; ?>>Digital 6</option>
+                                                                    </select>
+                                                                </div>
+                                                                <input type="text" class="form-control" placeholder="Label"
+                                                                       value="<?php echo $mainRow["legends6_txt"]; ?>" name="legends6_txt">
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="form-check-inline">
-                                                        <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" name="legend2" <?php if($mainRow["legends2"]=="on"){echo "checked";} ?>>CutOff
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check-inline">
-                                                        <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" name="legend3" <?php if($mainRow["legends3"]=="on"){echo "checked";} ?>>Lift Lower
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check-inline">
-                                                        <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" name="legend4" <?php if($mainRow["legends4"]=="on"){echo "checked";} ?>>Lift Raise
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check-inline">
-                                                        <label class="form-check-label">
-                                                            <input type="checkbox" class="form-check-input" name="legend5" <?php if($mainRow["legends5"]=="on"){echo "checked";} ?>>Loss Motion
-                                                        </label>
+                                                    <hr>
+                                                    <!-- Digital Channels D1-D6-->
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <h2 id="navHeading" class="font-roboto darkColorInDarkTheme font-sizeLarge">
+                                                                Analogue Channels (A1-A6):
+                                                            </h2>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-prepend">
+                                                                        <div class="input-group-text">
+                                                                            <input type="checkbox"  name="analogue1"
+                                                                                <?php if($mainRow["analogue1"]=="on") echo "checked"; ?>>
+                                                                        </div>
+                                                                    </div>
+                                                                    <select class="custom-select" name="analogue1_type_1">
+                                                                        <option selected>Channel</option>
+                                                                        <option value="analogue1" <?php if($mainRow["analogue1_type"]=="analogue1") echo "selected"; ?>>Analogue 1</option>
+                                                                        <option value="analogue2" <?php if($mainRow["analogue1_type"]=="analogue2") echo "selected"; ?>>Analogue 2</option>
+                                                                        <option value="analogue3" <?php if($mainRow["analogue1_type"]=="analogue3") echo "selected"; ?>>Analogue 3</option>
+                                                                        <option value="analogue4" <?php if($mainRow["analogue1_type"]=="analogue4") echo "selected"; ?>>Analogue 4</option>
+                                                                        <option value="analogue5" <?php if($mainRow["analogue1_type"]=="analogue5") echo "selected"; ?>>Analogue 5</option>
+                                                                        <option value="analogue6" <?php if($mainRow["analogue1_type"]=="analogue6" ) echo "selected"; ?>>Analogue 6</option>
+                                                                    </select>
+                                                                </div>
+                                                                <input type="text" class="form-control" placeholder="Label"
+                                                                    value="<?php echo $mainRow["analogue1_txt"]; ?>" name="analogue1_txt">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-prepend">
+                                                                        <div class="input-group-text">
+                                                                            <input type="checkbox"  name="analogue2"
+                                                                                <?php if($mainRow["analogue2"]=="on") echo "checked"; ?>>
+                                                                        </div>
+                                                                    </div>
+                                                                    <select class="custom-select" name="analogue1_type_2">
+                                                                        <option selected>Channel</option>
+                                                                        <option value="analogue1" <?php if($mainRow["analogue2_type"]=="analogue1") echo "selected"; ?>>Analogue 1</option>
+                                                                        <option value="analogue2" <?php if($mainRow["analogue2_type"]=="analogue2") echo "selected"; ?>>Analogue 2</option>
+                                                                        <option value="analogue3" <?php if($mainRow["analogue2_type"]=="analogue3") echo "selected"; ?>>Analogue 3</option>
+                                                                        <option value="analogue4" <?php if($mainRow["analogue2_type"]=="analogue4") echo "selected"; ?>>Analogue 4</option>
+                                                                        <option value="analogue5" <?php if($mainRow["analogue2_type"]=="analogue5") echo "selected"; ?>>Analogue 5</option>
+                                                                        <option value="analogue6" <?php if($mainRow["analogue2_type"]=="analogue6" ) echo "selected"; ?>>Analogue 6</option>
+                                                                    </select>
+                                                                </div>
+                                                                <input type="text" class="form-control" placeholder="Label"
+                                                                    value="<?php echo $mainRow["analogue2_txt"]; ?>" name="analogue2_txt">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-prepend">
+                                                                        <div class="input-group-text">
+                                                                            <input type="checkbox"  name="analogue3"
+                                                                                <?php if($mainRow["analogue3"]=="on") echo "checked"; ?>>
+                                                                        </div>
+                                                                    </div>
+                                                                    <select class="custom-select" name="analogue1_type_3">
+                                                                        <option selected>Channel</option>
+                                                                        <option value="analogue1" <?php if($mainRow["analogue3_type"]=="analogue1") echo "selected"; ?>>Analogue 1</option>
+                                                                        <option value="analogue2" <?php if($mainRow["analogue3_type"]=="analogue2") echo "selected"; ?>>Analogue 2</option>
+                                                                        <option value="analogue3" <?php if($mainRow["analogue3_type"]=="analogue3") echo "selected"; ?>>Analogue 3</option>
+                                                                        <option value="analogue4" <?php if($mainRow["analogue3_type"]=="analogue4") echo "selected"; ?>>Analogue 4</option>
+                                                                        <option value="analogue5" <?php if($mainRow["analogue3_type"]=="analogue5") echo "selected"; ?>>Analogue 5</option>
+                                                                        <option value="analogue6" <?php if($mainRow["analogue3_type"]=="analogue6" ) echo "selected"; ?>>Analogue 6</option>
+                                                                    </select>
+                                                                </div>
+                                                                <input type="text" class="form-control" placeholder="Label"
+                                                                    value="<?php echo $mainRow["analogue3_txt"]; ?>" name="analogue3_txt">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-prepend">
+                                                                        <div class="input-group-text">
+                                                                            <input type="checkbox"  name="analogue4"
+                                                                                <?php if($mainRow["analogue4"]=="on") echo "checked"; ?>>
+                                                                        </div>
+                                                                    </div>
+                                                                    <select class="custom-select" name="analogue1_type_4">
+                                                                        <option selected>Channel</option>
+                                                                        <option value="analogue1" <?php if($mainRow["analogue4_type"]=="analogue1") echo "selected"; ?>>Analogue 1</option>
+                                                                        <option value="analogue2" <?php if($mainRow["analogue4_type"]=="analogue2") echo "selected"; ?>>Analogue 2</option>
+                                                                        <option value="analogue3" <?php if($mainRow["analogue4_type"]=="analogue3") echo "selected"; ?>>Analogue 3</option>
+                                                                        <option value="analogue4" <?php if($mainRow["analogue4_type"]=="analogue4") echo "selected"; ?>>Analogue 4</option>
+                                                                        <option value="analogue5" <?php if($mainRow["analogue4_type"]=="analogue5") echo "selected"; ?>>Analogue 5</option>
+                                                                        <option value="analogue6" <?php if($mainRow["analogue4_type"]=="analogue6" ) echo "selected"; ?>>Analogue 6</option>
+                                                                    </select>
+                                                                </div>
+                                                                <input type="text" class="form-control" placeholder="Label"
+                                                                    value="<?php echo $mainRow["analogue4_txt"]; ?>" name="analogue4_txt">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-prepend">
+                                                                        <div class="input-group-text">
+                                                                            <input type="checkbox"  name="analogue5"
+                                                                                <?php if($mainRow["analogue5"]=="on") echo "checked"; ?>>
+                                                                        </div>
+                                                                    </div>
+                                                                    <select class="custom-select" name="analogue1_type_5">
+                                                                        <option selected>Channel</option>
+                                                                        <option value="analogue1" <?php if($mainRow["analogue5_type"]=="analogue1") echo "selected"; ?>>Analogue 1</option>
+                                                                        <option value="analogue2" <?php if($mainRow["analogue5_type"]=="analogue2") echo "selected"; ?>>Analogue 2</option>
+                                                                        <option value="analogue3" <?php if($mainRow["analogue5_type"]=="analogue3") echo "selected"; ?>>Analogue 3</option>
+                                                                        <option value="analogue4" <?php if($mainRow["analogue5_type"]=="analogue4") echo "selected"; ?>>Analogue 4</option>
+                                                                        <option value="analogue5" <?php if($mainRow["analogue5_type"]=="analogue5") echo "selected"; ?>>Analogue 5</option>
+                                                                        <option value="analogue6" <?php if($mainRow["analogue5_type"]=="analogue6" ) echo "selected"; ?>>Analogue 6</option>
+                                                                    </select>
+                                                                </div>
+                                                                <input type="text" class="form-control" placeholder="Label"
+                                                                    value="<?php echo $mainRow["analogue5_txt"]; ?>" name="analogue5_txt">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-prepend">
+                                                                        <div class="input-group-text">
+                                                                            <input type="checkbox"  name="analogue6"
+                                                                                <?php if($mainRow["analogue6"]=="on") echo "checked"; ?>>
+                                                                        </div>
+                                                                    </div>
+                                                                    <select class="custom-select" name="analogue1_type_6">
+                                                                        <option selected>Channel</option>
+                                                                        <option value="analogue1" <?php if($mainRow["analogue6_type"]=="analogue1") echo "selected"; ?>>Analogue 1</option>
+                                                                        <option value="analogue2" <?php if($mainRow["analogue6_type"]=="analogue2") echo "selected"; ?>>Analogue 2</option>
+                                                                        <option value="analogue3" <?php if($mainRow["analogue6_type"]=="analogue3") echo "selected"; ?>>Analogue 3</option>
+                                                                        <option value="analogue4" <?php if($mainRow["analogue6_type"]=="analogue4") echo "selected"; ?>>Analogue 4</option>
+                                                                        <option value="analogue5" <?php if($mainRow["analogue6_type"]=="analogue5") echo "selected"; ?>>Analogue 5</option>
+                                                                        <option value="analogue6" <?php if($mainRow["analogue6_type"]=="analogue6" ) echo "selected"; ?>>Analogue 6</option>
+                                                                    </select>
+                                                                </div>
+                                                                <input type="text" class="form-control" placeholder="Label"
+                                                                    value="<?php echo $mainRow["analogue6_txt"]; ?>" name="analogue6_txt">
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <script type="text/javascript">
@@ -1312,17 +1580,60 @@ function runQuery($sql, $msg){
         $graphLineClr3 = $_POST["graph_line_color_3"];
         $graphLineClr4 = $_POST["graph_line_color_4"];
         $allLegendsCheck = isset($_POST["allLegendsCheck"]) ? $_POST["allLegendsCheck"] : '';
+        // For D1-D6 as legend1-legend6
         $legend1 = isset($_POST["legend1"]) ? $_POST["legend1"] : '';
         $legend2 = isset($_POST["legend2"]) ? $_POST["legend2"] : '';
         $legend3 = isset($_POST["legend3"]) ? $_POST["legend3"] : '';
         $legend4 = isset($_POST["legend4"]) ? $_POST["legend4"] : '';
         $legend5 = isset($_POST["legend5"]) ? $_POST["legend5"] : '';
+        $legend6 = isset($_POST["legend6"]) ? $_POST["legend6"] : '';
+        $legends1_txt = $_POST["legends1_txt"];
+        $legends2_txt = $_POST["legends2_txt"];
+        $legends3_txt = $_POST["legends3_txt"];
+        $legends4_txt = $_POST["legends4_txt"];
+        $legends5_txt = $_POST["legends5_txt"];
+        $legends6_txt = $_POST["legends6_txt"];
+        $legends1_type = $_POST["legend_type_1"];
+        $legends2_type = $_POST["legend_type_2"];
+        $legends3_type = $_POST["legend_type_3"];
+        $legends4_type = $_POST["legend_type_4"];
+        $legends5_type = $_POST["legend_type_5"];
+        $legends6_type = $_POST["legend_type_6"];
 
         $sql = "UPDATE custom_graph SET line1='$graphLineName1', line1_value='$graphValue1', line2='$graphLineName2', line2_value='$graphValue2',
                 line3='$graphLineName3', line3_value='$graphValue3', line4='$graphLineName4', line4_value='$graphValue4',
                 line1_clr='$graphLineClr1', line2_clr='$graphLineClr2', line3_clr='$graphLineClr3', line4_clr='$graphLineClr4',
                  show_legends='$allLegendsCheck', legends1='$legend1', legends2='$legend2', legends3='$legend3', legends4='$legend4',
-                 legends5='$legend5' WHERE device_id = $device_id";
+                 legends5='$legend5' , legends6='$legend6' , legends1_txt='$legends1_txt', legends2_txt='$legends2_txt', legends3_txt='$legends3_txt', legends4_txt='$legends4_txt', legends5_txt='$legends5_txt', legends6_txt='$legends6_txt',
+                legends1_type='$legends1_type', legends2_type='$legends2_type', legends3_type='$legends3_type',  legends4_type='$legends4_type', legends5_type='$legends5_type', legends6_type='$legends6_type' 
+                WHERE device_id = $device_id";
+        mysqli_query($con, $sql);
+
+        // For A1-A6 as legend1-legend6
+        $legend1 = isset($_POST["analogue1"]) ? $_POST["analogue1"] : '';
+        $legend2 = isset($_POST["analogue2"]) ? $_POST["analogue2"] : '';
+        $legend3 = isset($_POST["analogue3"]) ? $_POST["analogue3"] : '';
+        $legend4 = isset($_POST["analogue4"]) ? $_POST["analogue4"] : '';
+        $legend5 = isset($_POST["analogue5"]) ? $_POST["analogue5"] : '';
+        $legend6 = isset($_POST["analogue6"]) ? $_POST["analogue6"] : '';
+        $legends1_txt = $_POST["analogue1_txt"];
+        $legends2_txt = $_POST["analogue2_txt"];
+        $legends3_txt = $_POST["analogue3_txt"];
+        $legends4_txt = $_POST["analogue4_txt"];
+        $legends5_txt = $_POST["analogue5_txt"];
+        $legends6_txt = $_POST["analogue6_txt"];
+        $legends1_type = $_POST["analogue1_type_1"];
+        $legends2_type = $_POST["analogue1_type_2"];
+        $legends3_type = $_POST["analogue1_type_3"];
+        $legends4_type = $_POST["analogue1_type_4"];
+        $legends5_type = $_POST["analogue1_type_5"];
+        $legends6_type = $_POST["analogue1_type_6"];
+
+        $sql = "UPDATE custom_graph SET analogue1='$legend1', analogue2='$legend2', analogue3='$legend3', analogue4='$legend4',
+                 analogue5='$legend5' , analogue6='$legend6' , analogue1_txt='$legends1_txt', analogue2_txt='$legends2_txt', analogue3_txt='$legends3_txt', analogue4_txt='$legends4_txt', analogue5_txt='$legends5_txt', analogue6_txt='$legends6_txt',
+                analogue1_type='$legends1_type', analogue2_type='$legends2_type', analogue3_type='$legends3_type',  analogue4_type='$legends4_type', analogue5_type='$legends5_type', analogue6_type='$legends6_type' 
+                WHERE device_id = $device_id";
+        echo $sql; exit(); die();
         mysqli_query($con, $sql);
 
 
