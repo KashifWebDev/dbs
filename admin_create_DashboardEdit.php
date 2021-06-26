@@ -1633,7 +1633,7 @@ function runQuery($sql, $msg){
                  analogue5='$legend5' , analogue6='$legend6' , analogue1_txt='$legends1_txt', analogue2_txt='$legends2_txt', analogue3_txt='$legends3_txt', analogue4_txt='$legends4_txt', analogue5_txt='$legends5_txt', analogue6_txt='$legends6_txt',
                 analogue1_type='$legends1_type', analogue2_type='$legends2_type', analogue3_type='$legends3_type',  analogue4_type='$legends4_type', analogue5_type='$legends5_type', analogue6_type='$legends6_type' 
                 WHERE device_id = $device_id";
-        echo $sql; exit(); die();
+//        echo $sql; exit(); die();
         mysqli_query($con, $sql);
 
 
