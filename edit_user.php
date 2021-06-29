@@ -3,6 +3,11 @@ require 'app/main.php';
 session_start();
 check_session();
 
+$id = $_GET["id"];
+$s = "SELECT * FROM users WHERE id=$id";
+$qry = mysqli_query($con, $s);
+$row = mysqli_fetch_array($qry);
+
 $_SESSION['currentPath'] = "./";
 ?>
 <!DOCTYPE html>
@@ -21,19 +26,19 @@ $_SESSION['currentPath'] = "./";
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="email" style="color: black;">Full Name:</label>
-                    <input type="text" class="form-control" name="username" placeholder="Enter Username" id="email">
+                    <input type="text" class="form-control" name="username" placeholder="Enter Username" id="email" value="<?php echo $row["username"]; ?>">
                 </div>
                 <div class="form-group">
                     <label for="email" style="color: black;">Company Name:</label>
-                    <input type="text" class="form-control" name="company_name" placeholder="Company Name" id="email" >
+                    <input type="text" class="form-control" name="company_name" placeholder="Company Name" id="email" value="<?php echo $row["company_name"]; ?>">
                 </div>
                 <div class="form-group">
                     <label for="email" style="color: black;">Job Position:</label>
-                    <input type="text" class="form-control" name="job_position" placeholder="Job Position" id="email">
+                    <input type="text" class="form-control" name="job_position" placeholder="Job Position" id="email" value="<?php echo $row["job_position"]; ?>">
                 </div>
                 <div class="form-group">
                     <label for="email" style="color: black;">Email Address:</label>
-                    <input type="email" class="form-control" name="email" placeholder="Enter email" id="email">
+                    <input type="email" class="form-control" name="email" placeholder="Enter email" id="email" value="<?php echo $row["email"]; ?>">
                 </div>
                 <script src="assets/custom_js/show_pass.js"></script>
                 <div class="input-group mb-3 d-flex flex-column" id="show_hide_password">
@@ -42,7 +47,7 @@ $_SESSION['currentPath'] = "./";
                                 <span class="input-group-text text-secondary input-group-addon">
                                 <a id="show_pass_a"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
                             </span>
-                        <input type="password" name="pass" class="form-control " placeholder="Password">
+                        <input type="password" name="pass" class="form-control " placeholder="Password" value="<?php echo $row["password"]; ?>">
                     </div>
                 </div>
             </div>
@@ -566,12 +571,12 @@ $_SESSION['currentPath'] = "./";
                     <label for="email" style="color: black;">Primary Contact Number:</label>
                     <div class="row no-gutters">
                         <div class="col">
-                            <input type="text" class="form-control" name="contact" placeholder="+1 584 458 485" id="phone1">
+                            <input type="text" class="form-control" name="contact" placeholder="+1 584 458 485" id="phone1" value="<?php echo $row["contact"]; ?>">
                         </div>
                         <div class="col d-flex justify-content-center align-items-center">
                             <div class="form-group form-check">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" name="alert1"> Send text alert notifications
+                                    <input class="form-check-input" type="checkbox" name="alert1" <?php if($row["alert1"]=="on") echo "checked"; ?>> Send text alert notifications
                                 </label>
                             </div>
                         </div>
@@ -581,12 +586,12 @@ $_SESSION['currentPath'] = "./";
                     <label for="email" style="color: black;">Secondary Contact Number:</label>
                     <div class="row no-gutters">
                         <div class="col">
-                            <input type="text" class="form-control" name="phone_2" placeholder="+1 584 458 485" id="phone2">
+                            <input type="text" class="form-control" name="phone_2" placeholder="+1 584 458 485" id="phone2" value="<?php echo $row["phone_2"]; ?>">
                         </div>
                         <div class="col d-flex justify-content-center align-items-center">
                             <div class="form-group form-check">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" name="alert2"> Send text alert notifications
+                                    <input class="form-check-input" type="checkbox" name="alert2" <?php if($row["alert2"]=="on") echo "checked"; ?>> Send text alert notifications
                                 </label>
                             </div>
                         </div>
@@ -594,18 +599,19 @@ $_SESSION['currentPath'] = "./";
                 </div>
                 <div class="form-group">
                     <label for="email" style="color: black;">Security Question:</label>
-                    <input type="text" class="form-control" name="secrete" placeholder="Security question" id="email">
+                    <input type="text" class="form-control" name="secrete" placeholder="Security question" id="email" value="<?php echo $row["secrete"]; ?>">
                 </div>
                 <div class="form-group">
                     <label for="email" style="color: black;">Security Answer:</label>
-                    <input type="text" class="form-control" name="answer" placeholder="Answer to Security Question" id="email">
+                    <input type="text" class="form-control" name="answer" placeholder="Answer to Security Question" id="email" value="<?php echo $row["answer"]; ?>">
                 </div>
             </div>
             <hr>
             <div class="w-75 mx-auto">
-                <button type="submit" class="btn appBtnColor w-100" name="update_userr">Add User</button>
+                <button type="submit" class="btn appBtnColor w-100" name="update_userr">Update User</button>
             </div>
         </div>
+        <input type="hidden" name="id" value="<?php echo $id; ?>">
     </form>
     <?php
     if(isset($_POST["update_userr"])){
@@ -620,10 +626,12 @@ $_SESSION['currentPath'] = "./";
         $answer = $_POST["answer"];
         $alert1 = isset($_POST["alert1"]) ? $_POST["alert1"] : "";
         $alert2 = isset($_POST["alert2"]) ? $_POST["alert2"] : "";
+        $id = $_POST["id"];
 
+        $sql = "UPDATE users SET username='$name', email='$email', contact='$contact', phone_2='$contact_2', company_name='$company_name',
+                job_position='$job_position', secrete='$secrete', answer='$answer', alert1='$alert1', alert2='$alert2'
+                WHERE id=$id";
 
-        $sql = "INSERT INTO users (username, email, password, contact, phone_2, company_name, job_position, secrete, answer, alert1, alert2) VALUES 
-                ('$name', '$email', '$password', '$contact', '$contact_2', '$company_name', '$job_position', '$secrete', '$answer', '$alert1', '$alert2')";
         if(mysqli_query($con, $sql)){
             js_redirect("users.php");
         }else{

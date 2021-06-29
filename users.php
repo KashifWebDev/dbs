@@ -103,7 +103,7 @@ if (isset($_SESSION["darkTheme"]) && $_SESSION["darkTheme"] == 1){
                         <a href="users.php?delUser=<?php echo $row['id']; ?>" class="btn btn-danger">
                             <i class="fas fa-trash"></i>
                         </a>
-                        <a class="btn btn-primary" data-toggle="modal" data-target="#update_<?php echo $rand; ?>">
+                        <a class="btn btn-primary" href="edit_user.php?id=<?php echo $row["id"]; ?>">
                             <i class="fas fa-edit"></i>
                         </a>
                         <a  class="btn btn-secondary" data-toggle="modal" data-target="#assign_<?php echo $rand; ?>">
@@ -225,8 +225,9 @@ if (isset($_SESSION["darkTheme"]) && $_SESSION["darkTheme"] == 1){
                                         while ($row2 = mysqli_fetch_array($res1)){
                                             $did = $row2["device_id"];
                                             $s = "SELECT * FROM devices WHERE id = $did";
-                                            $r = mysqli_query($con, $s);
-                                            $r = mysqli_fetch_array($r);
+                                            $rr = mysqli_query($con, $s);
+                                            if(mysqli_num_rows($rr)){
+                                            $r = mysqli_fetch_array($rr);
                                             ?>
                                             <h5 class="mr-2">
                                              <span class="badge badge-primary">
@@ -235,6 +236,7 @@ if (isset($_SESSION["darkTheme"]) && $_SESSION["darkTheme"] == 1){
                                              </span>
                                             </h5>
                                         <?php
+                                            }
                                         }
                                         ?>
                                     </div>
@@ -278,7 +280,6 @@ if (isset($_SESSION["darkTheme"]) && $_SESSION["darkTheme"] == 1){
 
 <?php
 if(isset($_POST["link"])){
-    print_r($_POST);
     $dID = $_POST["deviceID"];
     $uID =  $_POST["user_id"];
     $sql = "INSERT INTO user_and_devices (user_id, device_id) VALUES ($uID, $dID)";

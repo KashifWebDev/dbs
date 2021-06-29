@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 26, 2021 at 07:33 PM
+-- Generation Time: Jun 29, 2021 at 10:56 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -200,7 +200,7 @@ INSERT INTO `custom_dashboards` (`id`, `device_id`, `user_id`, `dashboardName`, 
 (38, 62, 0, '', '', '', '', ''),
 (39, 63, 0, '', '', '', '', ''),
 (40, 64, 0, '', '', '', '', ''),
-(41, 65, 0, '', '', '', '', '');
+(41, 65, 0, 'Testing Device', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -331,7 +331,7 @@ INSERT INTO `custom_graph` (`id`, `device_id`, `graph_title`, `line_color`, `lin
 (32, 62, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', 0, '', 0, '#FF0000', '#FF0000', '#FF0000', '#FF0000', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 (33, 63, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', 0, '', 0, '#FF0000', '#FF0000', '#FF0000', '#FF0000', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 (34, 64, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', 0, '', 0, '#FF0000', '#FF0000', '#FF0000', '#FF0000', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(35, 65, 'Graph', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', 0, '', 0, '#ff0000', '#ff0000', '#ff0000', '#ff0000', 'on', 'on', 'on', 'on', 'on', 'on', 'on', '1', '2', '3', '4', '5', '6', 'legends1', 'legends2', 'legends3', 'legends4', 'legends5', 'legends6', 'on', 'on', 'on', 'on', 'on', 'on', '11', '22', '33', '44', '55', '66', 'analogue1', 'analogue2', 'analogue3', 'analogue4', 'analogue5', 'analogue6');
+(35, 65, 'Graph', '#009cde', 'Torque', 'FT-LBS', 'marker1', 1000, 'marker2', 2000, 'marker3', 3000, 'marker4', 4000, '#ff0000', '#00ff08', '#1100ff', '#ff00f7', 'on', 'on', 'on', 'on', 'on', 'on', 'on', '1', '2', '3', '4', '5', '6', 'legends1', 'legends2', 'legends3', 'legends4', 'legends5', 'legends6', 'on', 'on', 'on', 'on', 'on', 'on', '11', '22', '33', '44', '55', '66', 'analogue1', 'analogue2', 'analogue3', 'analogue4', 'analogue5', 'analogue6');
 
 -- --------------------------------------------------------
 
@@ -532,7 +532,7 @@ INSERT INTO `custom_vertical_bar` (`id`, `device_id`, `name`, `maxRange`, `unit`
 (1, 48, 'Lift Position', 24, 'nm'),
 (2, 63, 'Lift Bar', 100, '%'),
 (3, 64, 'Lift Bar', 100, '%'),
-(4, 65, 'Lift Bar', 100, '%');
+(4, 65, 'Lift Bar', 24, '%');
 
 -- --------------------------------------------------------
 
@@ -613,7 +613,7 @@ CREATE TABLE `devices` (
 --
 
 INSERT INTO `devices` (`id`, `mac`, `device_name`, `second_name`, `meter_ranges`, `meter_range_1`, `meter_range_2`, `meter_range_3`, `meter_color_1`, `meter_color_2`, `meter_color_3`, `manual`, `primary_logo`, `secondary_logo`, `use_secondary_logo`) VALUES
-(65, 'testing:mac', 'Testing Device', 'second name', '', 0, 0, 0, '#000000', '#000000', '#000000', 'add_student.png', 'dbs.png', 'add_student.png', '');
+(65, 'testing:mac', 'Testing Device', 'second name', '0, 2500, 5000, 7500, 10000, 12500, 15000, 17500, 20000', 6000, 12000, 18000, '#85ff89', '#7075ff', '#ff7575', 'add_student.png', 'dbs.png', 'add_student.png', '');
 
 -- --------------------------------------------------------
 
@@ -6109,28 +6109,22 @@ CREATE TABLE `users` (
   `job_position` varchar(100) NOT NULL,
   `phone_2` varchar(100) NOT NULL,
   `secrete` varchar(1000) NOT NULL,
-  `answer` varchar(500) NOT NULL
+  `answer` varchar(500) NOT NULL,
+  `alert1` varchar(10) NOT NULL,
+  `alert2` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `password`, `is_admin`, `blocked`, `contact`, `company_name`, `job_position`, `phone_2`, `secrete`, `answer`) VALUES
-(1, 'Administrator', 'admin@admin.com', 'admin@123', 1, 0, '+12345679', '', '', '+321654978', 'Hometown', 'Pakistan'),
-(2, 'User', 'user@user.com', 'user@123', 0, 0, '323232444', '', '', '', '', ''),
-(19, 'Test User', 'kashifkhan@loketa.com', 'Test User', 0, 0, NULL, '', '', '', '', ''),
-(29, 'admin', 'kashifkhan@loketa.comadsf', 'kashifkhan@loketa.comadsf', 0, 0, '', '', '', '', '', ''),
-(31, '232', 'sdsdas33d@doc-mail.net', 'asdfadf', 0, 0, NULL, '', '', '', '', ''),
-(32, 'asfd', 'admin@admin.comzdfga', '23232323', 0, 0, NULL, '', '', '', '', ''),
-(33, 'asfd', 'admin@admin.com232', 'asdfasfads', 0, 0, NULL, '', '', '', '', ''),
-(34, 'asfd', 'admin@admin.com444', 'admin@admin.com444', 0, 0, NULL, '', '', '', '', ''),
-(35, 'asfd', 'admin@admin.com223', '2323', 0, 0, NULL, '', '', '', '', ''),
-(37, 'asfd', 'admin@admin.com42424', '22222', 0, 0, NULL, '', '', '', '', ''),
-(38, 'asdf', 'admin@admin.com223232', '2222', 0, 0, NULL, '', '', '', '', ''),
-(39, 'asfd', 'admin@admin.comzdfg', '2222', 0, 0, NULL, '', '', '', '', ''),
-(40, 'asfd', 'admin@admin.comzdfg433', 'SSSS', 0, 0, NULL, '', '', '', '', ''),
-(41, 'asfd', 'admin@admin.comzdfg3434', 'ASDFASD', 0, 0, NULL, '', '', '', '', '');
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `is_admin`, `blocked`, `contact`, `company_name`, `job_position`, `phone_2`, `secrete`, `answer`, `alert1`, `alert2`) VALUES
+(1, 'Administrator', 'admin@admin.com', 'admin@123', 1, 0, '+12345679', '', '', '+321654978', 'Hometown', 'Pakistan', '', ''),
+(2, 'User', 'user@user.com', 'user@123', 0, 0, '323232444', '', '', '', '', '', '', ''),
+(19, 'Test User', 'kashifkhan@loketa.com', 'Test User', 0, 0, NULL, '', '', '', '', '', '', ''),
+(29, 'admin', 'kashifkhan@loketa.comadsf', 'kashifkhan@loketa.comadsf', 0, 0, '', '', '', '', '', '', '', ''),
+(31, '232', 'sdsdas33d@doc-mail.net', 'asdfadf', 0, 0, NULL, '', '', '', '', '', '', ''),
+(43, '1', '4@fg.sfg', '555', 0, 0, '6', '2', '3', '7', '8', '9', '', 'on');
 
 -- --------------------------------------------------------
 
@@ -6149,10 +6143,7 @@ CREATE TABLE `user_and_devices` (
 --
 
 INSERT INTO `user_and_devices` (`id`, `user_id`, `device_id`) VALUES
-(55, 22, 22),
-(56, 20, 20),
-(59, 2, 48),
-(80, 33, 48);
+(83, 2, 65);
 
 --
 -- Indexes for dumped tables
@@ -6373,13 +6364,13 @@ ALTER TABLE `reset_pass`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `user_and_devices`
 --
 ALTER TABLE `user_and_devices`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -13,7 +13,7 @@ if (isset($_SESSION["darkTheme"]) && $_SESSION["darkTheme"] == 1){
     <ul class="navbar-nav d-flex align-items-center">
         <li class3="nav-item active">
             <a class="nav-link" href="#">
-                <img style="height: 40px;" src="assets/imgs/dbs.png">
+                <img style="height: 23px;" src="assets/imgs/dbs.png">
             </a>
         </li>
         <li class="nav-item ml-3">
@@ -27,7 +27,7 @@ if (isset($_SESSION["darkTheme"]) && $_SESSION["darkTheme"] == 1){
         if($_SESSION["is_admin"]){
             ?>
 
-            <li class="nav-item ml-3">
+            <li class="nav-item">
 <!--                <button class="a_modal_button nav-link --><?php //echo $txtColor; ?><!--" type="button" data-toggle="modal" data-target="#addNewDevice">-->
 <!--                    Add Device-->
 <!--                </button>-->
@@ -35,20 +35,20 @@ if (isset($_SESSION["darkTheme"]) && $_SESSION["darkTheme"] == 1){
                     Add Device
                 </a>
             </li>
-            <li class="nav-item ml-3">
+            <li class="nav-item">
                 <a class="nav-link <?php echo $txtColor; ?>" href="./users.php">Users Management</a>
             </li>
-            <li class="nav-item ml-3">
+            <li class="nav-item">
                 <a class="nav-link <?php echo $txtColor; ?>" href="./customize-dashboard.php">Dashboards Management</a>
             </li>
         <?php
         }
         ?>
 
-        <li class="nav-item ml-3">
+        <li class="nav-item">
             <a class="nav-link <?php echo $txtColor; ?>" href="app/changeTheme.php"><?php echo $themeLinkText; ?></a>
         </li>
-        <li class="nav-item ml-3">
+        <li class="nav-item">
             <a class="nav-link <?php echo $txtColor; ?>" href="user_settings.php?id=<?php echo $_SESSION['id']; ?>">Account Information</a>
         </li>
         <li class="nav-item">

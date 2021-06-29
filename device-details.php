@@ -373,44 +373,99 @@
                               toolTip:{
                                   shared: true
                               },
-                              data: [
+                              data: [ // For Digital Channels
                                   {
                                       name: "<?php echo $row['line_name']; ?>",
                                       type: "spline",
                                       color: "<?php echo $row['line_color']; ?>",
                                       showInLegend: true,
                                       dataPoints: [{}]
-                                  }
-                                  ,{  visible: false,
-                                              name: "Alarm",
-                                              type: "spline",
-                                              showInLegend: <?php if($row["legends1"] && $row["show_legends"]){ echo "true"; }else{echo "false"; } ?>,
-                                              dataPoints: [{}]
-                                          }
-                                    ,{  visible: false,
-                                              name: "CutOff",
-                                              type: "spline",
-                                              showInLegend: <?php if($row["legends2"] && $row["show_legends"]){ echo "true"; }else{echo "false"; } ?>,
-                                              dataPoints: [{}]
-                                          }
-                                    ,{  visible: false,
-                                              name: "Lift Lower",
-                                              type: "spline",
-                                              showInLegend: <?php if($row["legends3"] && $row["show_legends"]){ echo "true"; }else{echo "false"; } ?>,
-                                              dataPoints: [{}]
-                                          }
-                                    ,{  visible: false,
-                                              name: "Lift Raise",
-                                              type: "spline",
-                                              showInLegend: <?php if($row["legends4"] && $row["show_legends"]){ echo "true"; }else{echo "false"; } ?>,
-                                              dataPoints: [{}]
-                                          }
-                                    ,{  visible: false,
-                                              name: "Loss Motion",
-                                              type: "spline",
-                                              showInLegend: <?php if($row["legends5"] && $row["show_legends"]){ echo "true"; }else{echo "false"; } ?>,
-                                              dataPoints: [{}]
-                                          }
+                                  },
+                                  {
+                                      visible: false,
+                                      name: "<?php echo $row['legends1_txt']; ?>",
+                                      type: "spline",
+                                      showInLegend: <?php if($row["legends1"] && $row["show_legends"]){ echo "true"; }else{echo "false"; } ?>,
+                                      dataPoints: [{}]
+                                  },
+                                  {
+                                      visible: false,
+                                      name: "<?php echo $row['legends2_txt']; ?>",
+                                      type: "spline",
+                                      showInLegend: <?php if($row["legends2"] && $row["show_legends"]){ echo "true"; }else{echo "false"; } ?>,
+                                      dataPoints: [{}]
+                                  },
+                                  {
+                                      visible: false,
+                                      name: "<?php echo $row['legends3_txt']; ?>",
+                                      type: "spline",
+                                      showInLegend: <?php if($row["legends3"] && $row["show_legends"]){ echo "true"; }else{echo "false"; } ?>,
+                                      dataPoints: [{}]
+                                  },
+                                  {
+                                      visible: false,
+                                      name: "<?php echo $row['legends4_txt']; ?>",
+                                      type: "spline",
+                                      showInLegend: <?php if($row["legends4"] && $row["show_legends"]){ echo "true"; }else{echo "false"; } ?>,
+                                      dataPoints: [{}]
+                                  },
+                                  {
+                                      visible: false,
+                                      name: "<?php echo $row['legends5_txt']; ?>",
+                                      type: "spline",
+                                      showInLegend: <?php if($row["legends5"] && $row["show_legends"]){ echo "true"; }else{echo "false"; } ?>,
+                                      dataPoints: [{}]
+                                  },
+                                  {
+                                      visible: false,
+                                      name: "<?php echo $row['legends6_txt']; ?>",
+                                      type: "spline",
+                                      showInLegend: <?php if($row["legends6"] && $row["show_legends"]){ echo "true"; }else{echo "false"; } ?>,
+                                      dataPoints: [{}]
+                                  },
+                                  //For Analogue Channels
+                                  {
+                                      visible: false,
+                                      name: "<?php echo $row['analogue1_txt']; ?>",
+                                      type: "spline",
+                                      showInLegend: <?php if($row["analogue1"] && $row["show_legends"]){ echo "true"; }else{echo "false"; } ?>,
+                                      dataPoints: [{}]
+                                  },
+                                  {
+                                      visible: false,
+                                      name: "<?php echo $row['analogue2_txt']; ?>",
+                                      type: "spline",
+                                      showInLegend: <?php if($row["analogue2"] && $row["show_legends"]){ echo "true"; }else{echo "false"; } ?>,
+                                      dataPoints: [{}]
+                                  },
+                                  {
+                                      visible: false,
+                                      name: "<?php echo $row['analogue3_txt']; ?>",
+                                      type: "spline",
+                                      showInLegend: <?php if($row["analogue3"] && $row["show_legends"]){ echo "true"; }else{echo "false"; } ?>,
+                                      dataPoints: [{}]
+                                  },
+                                  {
+                                      visible: false,
+                                      name: "<?php echo $row['analogue4_txt']; ?>",
+                                      type: "spline",
+                                      showInLegend: <?php if($row["analogue4"] && $row["show_legends"]){ echo "true"; }else{echo "false"; } ?>,
+                                      dataPoints: [{}]
+                                  },
+                                  {
+                                      visible: false,
+                                      name: "<?php echo $row['analogue5_txt']; ?>",
+                                      type: "spline",
+                                      showInLegend: <?php if($row["analogue5"] && $row["show_legends"]){ echo "true"; }else{echo "false"; } ?>,
+                                      dataPoints: [{}]
+                                  },
+                                  {
+                                      visible: false,
+                                      name: "<?php echo $row['analogue6_txt']; ?>",
+                                      type: "spline",
+                                      showInLegend: <?php if($row["analogue6"] && $row["show_legends"]){ echo "true"; }else{echo "false"; } ?>,
+                                      dataPoints: [{}]
+                                  },
                               ]
                           });
                           chart.render();

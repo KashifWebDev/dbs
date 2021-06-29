@@ -46,25 +46,25 @@ require 'app/main.php';
                 <div class="mycard-body col-md-11 mx-auto">
                     <form action="" method="post">
                         <div class="input-group mb-2">
-                            <span class="input-group-text text-secondary">
+                            <span class="input-group-text text-secondary w-43px">
                                 <i class="fas fa-user"></i>
                             </span>
                             <input type="text" name="username" class="form-control " placeholder="Full Name" required>
                         </div>
                         <div class="input-group mb-2">
-                            <span class="input-group-text text-secondary">
+                            <span class="input-group-text text-secondary w-43px">
                                 <i class="fas fa-at"></i>
                             </span>
                             <input type="email" name="email" class="form-control " placeholder="Email Address" required>
                         </div>
                         <div class="input-group mb-2" id="show_hide_password">
-                            <span class="input-group-text input-group-addon">
+                            <span class="input-group-text input-group-addon w-43px">
                                 <a id="show_pass_a"><i class="fa fa-eye-slash text-secondary" aria-hidden="true"></i></a>
                             </span>
                             <input type="password" name="pass" class="form-control " placeholder="Password" required>
                         </div>
                         <div class="input-group mb-3">
-                            <span class="input-group-text text-secondary">
+                            <span class="input-group-text text-secondary w-43px">
                                 <i class="fas fa-lock"></i>
                             </span>
                             <input type="password" name="pass1" class="form-control " placeholder="Confirm password" required>
@@ -76,7 +76,7 @@ require 'app/main.php';
                     </form>
                 </div>
                 <div class="mycard-footer mt-4 pb-2">
-                    <a class="float-right text-white auto_color_txt" href="index.php">I already have an account</a>
+                    <a class="float-right text-white auto_color_txt" href="index.php">I Already Have an Account</a>
                 </div>
             </div>
         </div>

@@ -69,7 +69,11 @@ function runQuery($sql, $msg){
                     <div class="tab-pane fade show active bg-white shadow p-3 autoColorTable_theme" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                         <div class="form-group">
                             <label>Dashboard Name</label>
-                            <input type="text" class="form-control" value="<?php echo $row1["dashboardName"]; ?>" placeholder="New Dashboard" name="dashboardName">
+                            <input type="text" class="form-control" value="<?php echo $ro["device_name"]; ?>" placeholder="New Dashboard" name="dashboardName">
+                        </div>
+                        <div class="form-group">
+                            <label>Secondary Name</label>
+                            <input type="text" class="form-control" value="<?php echo $ro["second_name"]; ?>" placeholder="New Dashboard" name="dashboardName2">
                         </div>
                         <div class="form-group">
                             <label >Device MAC</label>
@@ -1477,6 +1481,7 @@ function runQuery($sql, $msg){
     if(isset($_POST["newDashboard"])){
         //First Box Values
         $dashboardName = $_POST["dashboardName"];
+        $secondName = $_POST["dashboardName2"];
         $userEmail = $_POST["userEmail"];
         $userEmail1 = $_POST["userEmail1"];
         $userEmail2 = $_POST["userEmail2"];
@@ -1484,6 +1489,12 @@ function runQuery($sql, $msg){
         $manual_File = $_POST["manual_filename"];
         $deviceMac = $_POST["deviceMac"];
         //UPDATING data into custom_dashboards Row
+
+        $sql = "UPDATE devices SET device_name='$dashboardName', second_name='$secondName'
+                WHERE id=$device_id";
+        if(!mysqli_query($con, $sql)){
+            echo "Error while inserting in custom_dashboards ! <br> SQL: $sql <br> ".mysqli_error($con);
+        }
 
         $sql = "UPDATE custom_dashboards SET dashboardName='$dashboardName', email='$userEmail', email1='$userEmail1', email2='$userEmail2', email3='$userEmail3'
                 WHERE device_id=$device_id";

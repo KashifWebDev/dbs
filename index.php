@@ -86,7 +86,7 @@ require 'app/main.php';
                 <div class="mycard-body col-md-11 mx-auto">
                     <form action="" method="post">
                         <div class="input-group mb-2">
-                            <span class="input-group-text text-secondary">
+                            <span class="input-group-text text-secondary w-43px">
                                 <i class="fas fa-at"></i>
                             </span>
                             <input type="email" name="email" class="form-control " placeholder="Email Address" required>
@@ -94,14 +94,14 @@ require 'app/main.php';
 
                         <!--<input type="password" name="pass" class="form-control " placeholder="Password" required>-->
                         <div class="input-group mb-3" id="show_hide_password">
-                            <span class="input-group-text text-secondary input-group-addon">
+                            <span class="input-group-text text-secondary input-group-addon w-43px">
                                 <a id="show_pass_a"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
                             </span>
                             <input type="password" name="pass" class="form-control " placeholder="Password" required>
                         </div>
 
                         <button name="login-btn" type="submit" class="btn btn-block appBtnColor" id="login-animation" style="max-height: 38px;">
-                            Sign in
+                            Sign In
                         </button>
                     </form>
                 </div>
