@@ -366,6 +366,15 @@ function runQuery($sql, $msg){
                                                             </div>
                                                             <input type="text" class="form-control" value="<?php echo $graphTitle; ?>" name="graph_title">
                                                         </div>
+                                                        <div class="input-group mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">
+                                                                    <input type="checkbox"  <?php if($mainRow["relays_check"]=="on") echo "checked" ?>
+                                                                           name="relay_check">
+                                                                </div>
+                                                            </div>
+                                                            <input type="text" class="form-control" value="<?php echo $mainRow["relays_title"]; ?>" name="relay_title">
+                                                        </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="input-group mb-3">
@@ -773,7 +782,7 @@ function runQuery($sql, $msg){
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <h2 id="navHeading" class="font-roboto darkColorInDarkTheme font-sizeLarge">
-                                                                Analogue Channels (A1-A6):
+                                                                Analog Channels (A1-A6):
                                                             </h2>
                                                         </div>
                                                         <div class="col-md-4">
@@ -787,12 +796,12 @@ function runQuery($sql, $msg){
                                                                     </div>
                                                                     <select class="custom-select" name="analogue1_type_1">
                                                                         <option selected>Channel</option>
-                                                                        <option value="analogue1" <?php if($mainRow["analogue1_type"]=="analogue1") echo "selected"; ?>>Analogue 1</option>
-                                                                        <option value="analogue2" <?php if($mainRow["analogue1_type"]=="analogue2") echo "selected"; ?>>Analogue 2</option>
-                                                                        <option value="analogue3" <?php if($mainRow["analogue1_type"]=="analogue3") echo "selected"; ?>>Analogue 3</option>
-                                                                        <option value="analogue4" <?php if($mainRow["analogue1_type"]=="analogue4") echo "selected"; ?>>Analogue 4</option>
-                                                                        <option value="analogue5" <?php if($mainRow["analogue1_type"]=="analogue5") echo "selected"; ?>>Analogue 5</option>
-                                                                        <option value="analogue6" <?php if($mainRow["analogue1_type"]=="analogue6" ) echo "selected"; ?>>Analogue 6</option>
+                                                                        <option value="analogue1" <?php if($mainRow["analogue1_type"]=="analogue1") echo "selected"; ?>>Analog 1</option>
+                                                                        <option value="analogue2" <?php if($mainRow["analogue1_type"]=="analogue2") echo "selected"; ?>>Analog 2</option>
+                                                                        <option value="analogue3" <?php if($mainRow["analogue1_type"]=="analogue3") echo "selected"; ?>>Analog 3</option>
+                                                                        <option value="analogue4" <?php if($mainRow["analogue1_type"]=="analogue4") echo "selected"; ?>>Analog 4</option>
+                                                                        <option value="analogue5" <?php if($mainRow["analogue1_type"]=="analogue5") echo "selected"; ?>>Analog 5</option>
+                                                                        <option value="analogue6" <?php if($mainRow["analogue1_type"]=="analogue6" ) echo "selected"; ?>>Analog 6</option>
                                                                     </select>
                                                                 </div>
                                                                 <input type="text" class="form-control" placeholder="Label"
@@ -810,12 +819,12 @@ function runQuery($sql, $msg){
                                                                     </div>
                                                                     <select class="custom-select" name="analogue1_type_2">
                                                                         <option selected>Channel</option>
-                                                                        <option value="analogue1" <?php if($mainRow["analogue2_type"]=="analogue1") echo "selected"; ?>>Analogue 1</option>
-                                                                        <option value="analogue2" <?php if($mainRow["analogue2_type"]=="analogue2") echo "selected"; ?>>Analogue 2</option>
-                                                                        <option value="analogue3" <?php if($mainRow["analogue2_type"]=="analogue3") echo "selected"; ?>>Analogue 3</option>
-                                                                        <option value="analogue4" <?php if($mainRow["analogue2_type"]=="analogue4") echo "selected"; ?>>Analogue 4</option>
-                                                                        <option value="analogue5" <?php if($mainRow["analogue2_type"]=="analogue5") echo "selected"; ?>>Analogue 5</option>
-                                                                        <option value="analogue6" <?php if($mainRow["analogue2_type"]=="analogue6" ) echo "selected"; ?>>Analogue 6</option>
+                                                                        <option value="analogue1" <?php if($mainRow["analogue2_type"]=="analogue1") echo "selected"; ?>>Analog 1</option>
+                                                                        <option value="analogue2" <?php if($mainRow["analogue2_type"]=="analogue2") echo "selected"; ?>>Analog 2</option>
+                                                                        <option value="analogue3" <?php if($mainRow["analogue2_type"]=="analogue3") echo "selected"; ?>>Analog 3</option>
+                                                                        <option value="analogue4" <?php if($mainRow["analogue2_type"]=="analogue4") echo "selected"; ?>>Analog 4</option>
+                                                                        <option value="analogue5" <?php if($mainRow["analogue2_type"]=="analogue5") echo "selected"; ?>>Analog 5</option>
+                                                                        <option value="analogue6" <?php if($mainRow["analogue2_type"]=="analogue6" ) echo "selected"; ?>>Analog 6</option>
                                                                     </select>
                                                                 </div>
                                                                 <input type="text" class="form-control" placeholder="Label"
@@ -833,12 +842,12 @@ function runQuery($sql, $msg){
                                                                     </div>
                                                                     <select class="custom-select" name="analogue1_type_3">
                                                                         <option selected>Channel</option>
-                                                                        <option value="analogue1" <?php if($mainRow["analogue3_type"]=="analogue1") echo "selected"; ?>>Analogue 1</option>
-                                                                        <option value="analogue2" <?php if($mainRow["analogue3_type"]=="analogue2") echo "selected"; ?>>Analogue 2</option>
-                                                                        <option value="analogue3" <?php if($mainRow["analogue3_type"]=="analogue3") echo "selected"; ?>>Analogue 3</option>
-                                                                        <option value="analogue4" <?php if($mainRow["analogue3_type"]=="analogue4") echo "selected"; ?>>Analogue 4</option>
-                                                                        <option value="analogue5" <?php if($mainRow["analogue3_type"]=="analogue5") echo "selected"; ?>>Analogue 5</option>
-                                                                        <option value="analogue6" <?php if($mainRow["analogue3_type"]=="analogue6" ) echo "selected"; ?>>Analogue 6</option>
+                                                                        <option value="analogue1" <?php if($mainRow["analogue3_type"]=="analogue1") echo "selected"; ?>>Analog 1</option>
+                                                                        <option value="analogue2" <?php if($mainRow["analogue3_type"]=="analogue2") echo "selected"; ?>>Analog 2</option>
+                                                                        <option value="analogue3" <?php if($mainRow["analogue3_type"]=="analogue3") echo "selected"; ?>>Analog 3</option>
+                                                                        <option value="analogue4" <?php if($mainRow["analogue3_type"]=="analogue4") echo "selected"; ?>>Analog 4</option>
+                                                                        <option value="analogue5" <?php if($mainRow["analogue3_type"]=="analogue5") echo "selected"; ?>>Analog 5</option>
+                                                                        <option value="analogue6" <?php if($mainRow["analogue3_type"]=="analogue6" ) echo "selected"; ?>>Analog 6</option>
                                                                     </select>
                                                                 </div>
                                                                 <input type="text" class="form-control" placeholder="Label"
@@ -856,12 +865,12 @@ function runQuery($sql, $msg){
                                                                     </div>
                                                                     <select class="custom-select" name="analogue1_type_4">
                                                                         <option selected>Channel</option>
-                                                                        <option value="analogue1" <?php if($mainRow["analogue4_type"]=="analogue1") echo "selected"; ?>>Analogue 1</option>
-                                                                        <option value="analogue2" <?php if($mainRow["analogue4_type"]=="analogue2") echo "selected"; ?>>Analogue 2</option>
-                                                                        <option value="analogue3" <?php if($mainRow["analogue4_type"]=="analogue3") echo "selected"; ?>>Analogue 3</option>
-                                                                        <option value="analogue4" <?php if($mainRow["analogue4_type"]=="analogue4") echo "selected"; ?>>Analogue 4</option>
-                                                                        <option value="analogue5" <?php if($mainRow["analogue4_type"]=="analogue5") echo "selected"; ?>>Analogue 5</option>
-                                                                        <option value="analogue6" <?php if($mainRow["analogue4_type"]=="analogue6" ) echo "selected"; ?>>Analogue 6</option>
+                                                                        <option value="analogue1" <?php if($mainRow["analogue4_type"]=="analogue1") echo "selected"; ?>>Analog 1</option>
+                                                                        <option value="analogue2" <?php if($mainRow["analogue4_type"]=="analogue2") echo "selected"; ?>>Analog 2</option>
+                                                                        <option value="analogue3" <?php if($mainRow["analogue4_type"]=="analogue3") echo "selected"; ?>>Analog 3</option>
+                                                                        <option value="analogue4" <?php if($mainRow["analogue4_type"]=="analogue4") echo "selected"; ?>>Analog 4</option>
+                                                                        <option value="analogue5" <?php if($mainRow["analogue4_type"]=="analogue5") echo "selected"; ?>>Analog 5</option>
+                                                                        <option value="analogue6" <?php if($mainRow["analogue4_type"]=="analogue6" ) echo "selected"; ?>>Analog 6</option>
                                                                     </select>
                                                                 </div>
                                                                 <input type="text" class="form-control" placeholder="Label"
@@ -879,12 +888,12 @@ function runQuery($sql, $msg){
                                                                     </div>
                                                                     <select class="custom-select" name="analogue1_type_5">
                                                                         <option selected>Channel</option>
-                                                                        <option value="analogue1" <?php if($mainRow["analogue5_type"]=="analogue1") echo "selected"; ?>>Analogue 1</option>
-                                                                        <option value="analogue2" <?php if($mainRow["analogue5_type"]=="analogue2") echo "selected"; ?>>Analogue 2</option>
-                                                                        <option value="analogue3" <?php if($mainRow["analogue5_type"]=="analogue3") echo "selected"; ?>>Analogue 3</option>
-                                                                        <option value="analogue4" <?php if($mainRow["analogue5_type"]=="analogue4") echo "selected"; ?>>Analogue 4</option>
-                                                                        <option value="analogue5" <?php if($mainRow["analogue5_type"]=="analogue5") echo "selected"; ?>>Analogue 5</option>
-                                                                        <option value="analogue6" <?php if($mainRow["analogue5_type"]=="analogue6" ) echo "selected"; ?>>Analogue 6</option>
+                                                                        <option value="analogue1" <?php if($mainRow["analogue5_type"]=="analogue1") echo "selected"; ?>>Analog 1</option>
+                                                                        <option value="analogue2" <?php if($mainRow["analogue5_type"]=="analogue2") echo "selected"; ?>>Analog 2</option>
+                                                                        <option value="analogue3" <?php if($mainRow["analogue5_type"]=="analogue3") echo "selected"; ?>>Analog 3</option>
+                                                                        <option value="analogue4" <?php if($mainRow["analogue5_type"]=="analogue4") echo "selected"; ?>>Analog 4</option>
+                                                                        <option value="analogue5" <?php if($mainRow["analogue5_type"]=="analogue5") echo "selected"; ?>>Analog 5</option>
+                                                                        <option value="analogue6" <?php if($mainRow["analogue5_type"]=="analogue6" ) echo "selected"; ?>>Analog 6</option>
                                                                     </select>
                                                                 </div>
                                                                 <input type="text" class="form-control" placeholder="Label"
@@ -902,12 +911,12 @@ function runQuery($sql, $msg){
                                                                     </div>
                                                                     <select class="custom-select" name="analogue1_type_6">
                                                                         <option selected>Channel</option>
-                                                                        <option value="analogue1" <?php if($mainRow["analogue6_type"]=="analogue1") echo "selected"; ?>>Analogue 1</option>
-                                                                        <option value="analogue2" <?php if($mainRow["analogue6_type"]=="analogue2") echo "selected"; ?>>Analogue 2</option>
-                                                                        <option value="analogue3" <?php if($mainRow["analogue6_type"]=="analogue3") echo "selected"; ?>>Analogue 3</option>
-                                                                        <option value="analogue4" <?php if($mainRow["analogue6_type"]=="analogue4") echo "selected"; ?>>Analogue 4</option>
-                                                                        <option value="analogue5" <?php if($mainRow["analogue6_type"]=="analogue5") echo "selected"; ?>>Analogue 5</option>
-                                                                        <option value="analogue6" <?php if($mainRow["analogue6_type"]=="analogue6" ) echo "selected"; ?>>Analogue 6</option>
+                                                                        <option value="analogue1" <?php if($mainRow["analogue6_type"]=="analogue1") echo "selected"; ?>>Analog 1</option>
+                                                                        <option value="analogue2" <?php if($mainRow["analogue6_type"]=="analogue2") echo "selected"; ?>>Analog 2</option>
+                                                                        <option value="analogue3" <?php if($mainRow["analogue6_type"]=="analogue3") echo "selected"; ?>>Analog 3</option>
+                                                                        <option value="analogue4" <?php if($mainRow["analogue6_type"]=="analogue4") echo "selected"; ?>>Analog 4</option>
+                                                                        <option value="analogue5" <?php if($mainRow["analogue6_type"]=="analogue5") echo "selected"; ?>>Analog 5</option>
+                                                                        <option value="analogue6" <?php if($mainRow["analogue6_type"]=="analogue6" ) echo "selected"; ?>>Analog 6</option>
                                                                     </select>
                                                                 </div>
                                                                 <input type="text" class="form-control" placeholder="Label"
@@ -1662,12 +1671,20 @@ function runQuery($sql, $msg){
             $alerts_title = $_POST['alerts_title'];
             $maintenance_check = isset($_POST['maintenance_check']) ? $_POST['maintenance_check'] : "";
             $maintenance_title = $_POST['maintenance_title'];
+            $relay_check = isset($_POST['relay_check']) ? $_POST['relay_check'] : '';
+            $relay_title = $_POST['relay_title'];
+
+
             $sql = "UPDATE custom_sections SET device_settings_check='$device_settings_check', device_settings_title='$device_settings_title',
             torque_gauge_check='$torque_gauge_check', torque_title='$torque_title', graph_check='$graph_check', graph_title='$graph_title',
             installation_info_check='$installation_info_check', installation_info_title='$installation_info_title', alerts_check='$alerts_check',
-            alerts_title='$alerts_title', maintenance_check='$maintenance_check', maintenance_title='$maintenance_title' WHERE device_id= $device_id";
+            alerts_title='$alerts_title', maintenance_check='$maintenance_check', maintenance_title='$maintenance_title', relays_title='$relay_title', relays_check='$relay_check'
+            WHERE device_id= $device_id";
 
-            runQuery($sql, 'Sections Selection Updated!');
+
+            if(!mysqli_query($con, $sql)){
+                echo 'Sections Selection Updated!';
+            }
 
         //if(isset($_POST['device_status'])){
             $a1 = isset($_POST['a1']) ? $_POST['a1'] : "";

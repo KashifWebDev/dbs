@@ -44,7 +44,7 @@
   <?php $device_details_page = true; require 'app/navigation.include.php'; ?>
 
   <!-- Page Content -->
-  <section style="height: 90vh; overflow: hidden;" class="scree-height">
+  <section style="height: 90vh; /*overflow: hidden;*/" class="scree-height">
       <div class="row <?php  if($graph_const_height) echo " graph_const_height"; if(!$showFirstRow) echo " d-flex justify-content-center"; ?>">
           <!-- First Box -->
           <?php
@@ -773,8 +773,52 @@
                   </div>
               </div>
               <?php
-          }
+          }?>
+          <!-- 7th box --><?php
+          if($sectionRow["relays_check"]=="on"){
+              $sql = "SELECT * FROM custom_maintenance WHERE device_id=$device_id";
+              $res = mysqli_query($con, $sql);
+              $row1 = mysqli_fetch_array($res);
+//              print_r($row1);
+              ?>
+              <div class="col-md-4 maintenance_record_margin_top h-45 second_row_class <?php if($graph_const_height) echo " mt-50_per_for_graphmt-50_per_for_graph";?>">
+                  <div class="custom_card w-100 d-flex flex-column bar_font_size">
 
+                      <p class="text-center font-weight-bolder font-size-larger m-0"><?php echo $sectionRow["relays_title"]; ?></p>
+                      <div class="row ">
+                          <div class="col">
+                              <div class="w-100 d-flex flex-column align-items-center">
+                                  <p>Relay 1</p>
+                                  <i class="fas fa-toggle-on fa-3x text-success"></i>
+                              </div>
+                          </div>
+                          <div class="col">
+                              <div class="w-100 d-flex flex-column align-items-center">
+                                  <p>Relay 2</p>
+                                  <i class="fas fa-toggle-off fa-3x text-danger"></i>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="row ">
+                          <div class="col">
+                              <div class="w-100 d-flex flex-column align-items-center">
+                                  <p>Relay 3</p>
+                                  <i class="fas fa-toggle-off fa-3x text-danger"></i>
+                              </div>
+                          </div>
+                          <div class="col">
+                              <div class="w-100 d-flex flex-column align-items-center">
+                                  <p>Relay 4</p>
+                                  <i class="fas fa-toggle-on fa-3x text-success"></i>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <?php
+          }?>
+
+          <?php
           if($showFirstRow){
               ?>
       </div>

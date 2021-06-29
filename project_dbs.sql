@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 29, 2021 at 10:56 AM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
+-- Generation Time: Jun 29, 2021 at 04:01 PM
+-- Server version: 10.1.13-MariaDB
+-- PHP Version: 5.5.37
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -119,16 +118,16 @@ INSERT INTO `custom_alerts` (`id`, `device_id`, `today_check`, `today_title`, `l
 CREATE TABLE `custom_conditions` (
   `id` int(11) NOT NULL,
   `device_id` int(10) NOT NULL,
-  `tempGreater` int(10) NOT NULL DEFAULT 1,
-  `tempLoss` int(10) NOT NULL DEFAULT 0,
-  `alarmGreater` int(10) NOT NULL DEFAULT 1,
-  `alarmLess` int(10) NOT NULL DEFAULT 0,
-  `waterInOilGreater` int(10) NOT NULL DEFAULT 1,
-  `waterInOilLess` int(10) NOT NULL DEFAULT 0,
-  `lossMotionGreater` int(10) NOT NULL DEFAULT 1,
-  `lossMotionLess` int(10) NOT NULL DEFAULT 0,
-  `liftPositionGreater` int(10) NOT NULL DEFAULT 1,
-  `liftPositionLower` int(10) NOT NULL DEFAULT 0
+  `tempGreater` int(10) NOT NULL DEFAULT '1',
+  `tempLoss` int(10) NOT NULL DEFAULT '0',
+  `alarmGreater` int(10) NOT NULL DEFAULT '1',
+  `alarmLess` int(10) NOT NULL DEFAULT '0',
+  `waterInOilGreater` int(10) NOT NULL DEFAULT '1',
+  `waterInOilLess` int(10) NOT NULL DEFAULT '0',
+  `lossMotionGreater` int(10) NOT NULL DEFAULT '1',
+  `lossMotionLess` int(10) NOT NULL DEFAULT '0',
+  `liftPositionGreater` int(10) NOT NULL DEFAULT '1',
+  `liftPositionLower` int(10) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -474,41 +473,43 @@ CREATE TABLE `custom_sections` (
   `maintenance_title` varchar(50) NOT NULL DEFAULT 'MAINTENANCE RECORD',
   `device_settings_title` varchar(50) NOT NULL DEFAULT 'Device Settings',
   `graph_title` varchar(50) NOT NULL DEFAULT 'Graph',
-  `torque_title` varchar(50) NOT NULL DEFAULT 'Torque Gauge'
+  `torque_title` varchar(50) NOT NULL DEFAULT 'Torque Gauge',
+  `relays_title` varchar(1000) NOT NULL DEFAULT 'Relays Status',
+  `relays_check` varchar(10) NOT NULL DEFAULT 'on'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `custom_sections`
 --
 
-INSERT INTO `custom_sections` (`id`, `device_id`, `device_settings_check`, `torque_gauge_check`, `graph_check`, `installation_info_check`, `alerts_check`, `maintenance_check`, `installation_info_title`, `alerts_title`, `maintenance_title`, `device_settings_title`, `graph_title`, `torque_title`) VALUES
-(1, 0, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFO', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
-(11, 40, 'on', 'on', '', 'on', 'on', 'on', 'INSTALLATION INFO', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
-(12, 41, '', 'on', '', '', 'on', '', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
-(13, 42, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
-(14, 43, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
-(15, 44, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
-(16, 45, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
-(17, 46, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
-(18, 47, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
-(19, 48, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
-(20, 49, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
-(21, 50, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
-(22, 51, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
-(23, 52, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
-(24, 53, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
-(25, 54, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
-(26, 55, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
-(27, 56, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
-(28, 57, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
-(29, 58, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
-(30, 59, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
-(31, 60, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
-(32, 61, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
-(33, 62, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
-(34, 63, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
-(35, 64, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge'),
-(36, 65, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge');
+INSERT INTO `custom_sections` (`id`, `device_id`, `device_settings_check`, `torque_gauge_check`, `graph_check`, `installation_info_check`, `alerts_check`, `maintenance_check`, `installation_info_title`, `alerts_title`, `maintenance_title`, `device_settings_title`, `graph_title`, `torque_title`, `relays_title`, `relays_check`) VALUES
+(1, 0, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFO', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge', 'Relays Status', 'on'),
+(11, 40, 'on', 'on', '', 'on', 'on', 'on', 'INSTALLATION INFO', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge', 'Relays Status', 'on'),
+(12, 41, '', 'on', '', '', 'on', '', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge', 'Relays Status', 'on'),
+(13, 42, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge', 'Relays Status', 'on'),
+(14, 43, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge', 'Relays Status', 'on'),
+(15, 44, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge', 'Relays Status', 'on'),
+(16, 45, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge', 'Relays Status', 'on'),
+(17, 46, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge', 'Relays Status', 'on'),
+(18, 47, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge', 'Relays Status', 'on'),
+(19, 48, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge', 'Relays Status', 'on'),
+(20, 49, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge', 'Relays Status', 'on'),
+(21, 50, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge', 'Relays Status', 'on'),
+(22, 51, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge', 'Relays Status', 'on'),
+(23, 52, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge', 'Relays Status', 'on'),
+(24, 53, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge', 'Relays Status', 'on'),
+(25, 54, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge', 'Relays Status', 'on'),
+(26, 55, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge', 'Relays Status', 'on'),
+(27, 56, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge', 'Relays Status', 'on'),
+(28, 57, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge', 'Relays Status', 'on'),
+(29, 58, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge', 'Relays Status', 'on'),
+(30, 59, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge', 'Relays Status', 'on'),
+(31, 60, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge', 'Relays Status', 'on'),
+(32, 61, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge', 'Relays Status', 'on'),
+(33, 62, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge', 'Relays Status', 'on'),
+(34, 63, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge', 'Relays Status', 'on'),
+(35, 64, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge', 'Relays Status', 'on'),
+(36, 65, 'on', 'on', 'on', 'on', 'on', 'on', 'INSTALLATION INFORMATION', 'ALERTS', 'MAINTENANCE RECORD', 'Device Settings', 'Graph', 'Torque Gauge', 'Relays Status', 'on');
 
 -- --------------------------------------------------------
 
@@ -520,7 +521,7 @@ CREATE TABLE `custom_vertical_bar` (
   `id` int(11) NOT NULL,
   `device_id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL DEFAULT 'Lift Position',
-  `maxRange` int(20) NOT NULL DEFAULT 100,
+  `maxRange` int(20) NOT NULL DEFAULT '100',
   `unit` varchar(10) NOT NULL DEFAULT '%'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -547,7 +548,7 @@ CREATE TABLE `dashboard_units` (
   `torque` varchar(50) NOT NULL DEFAULT 'ft-lbs',
   `pressure` varchar(50) NOT NULL DEFAULT 'bar',
   `distance` varchar(50) NOT NULL DEFAULT 'mm',
-  `time_format` int(2) NOT NULL DEFAULT 12,
+  `time_format` int(2) NOT NULL DEFAULT '12',
   `time_zone` varchar(100) NOT NULL DEFAULT 'Asia/Karachi'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -704,7 +705,7 @@ CREATE TABLE `recorded_values` (
   `temp2` float NOT NULL,
   `temp3` float NOT NULL,
   `Torque` int(11) NOT NULL,
-  `date_time` datetime NOT NULL DEFAULT current_timestamp()
+  `date_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -6078,7 +6079,7 @@ CREATE TABLE `reset_pass` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `code` varchar(1000) NOT NULL,
-  `date_time` timestamp NOT NULL DEFAULT current_timestamp()
+  `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -6102,8 +6103,8 @@ CREATE TABLE `users` (
   `username` varchar(20) NOT NULL,
   `email` varchar(30) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `is_admin` tinyint(1) NOT NULL DEFAULT 0,
-  `blocked` tinyint(1) NOT NULL DEFAULT 0,
+  `is_admin` tinyint(1) NOT NULL DEFAULT '0',
+  `blocked` tinyint(1) NOT NULL DEFAULT '0',
   `contact` varchar(50) DEFAULT NULL,
   `company_name` varchar(100) NOT NULL,
   `job_position` varchar(100) NOT NULL,
@@ -6269,110 +6270,91 @@ ALTER TABLE `user_and_devices`
 --
 ALTER TABLE `custom_add_sections`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
 --
 -- AUTO_INCREMENT for table `custom_alerts`
 --
 ALTER TABLE `custom_alerts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
-
 --
 -- AUTO_INCREMENT for table `custom_conditions`
 --
 ALTER TABLE `custom_conditions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
 --
 -- AUTO_INCREMENT for table `custom_dashboards`
 --
 ALTER TABLE `custom_dashboards`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
-
 --
 -- AUTO_INCREMENT for table `custom_devicestatus`
 --
 ALTER TABLE `custom_devicestatus`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
-
 --
 -- AUTO_INCREMENT for table `custom_graph`
 --
 ALTER TABLE `custom_graph`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
-
 --
 -- AUTO_INCREMENT for table `custom_installation_info`
 --
 ALTER TABLE `custom_installation_info`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
-
 --
 -- AUTO_INCREMENT for table `custom_maintenance`
 --
 ALTER TABLE `custom_maintenance`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
-
 --
 -- AUTO_INCREMENT for table `custom_sections`
 --
 ALTER TABLE `custom_sections`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
-
 --
 -- AUTO_INCREMENT for table `custom_vertical_bar`
 --
 ALTER TABLE `custom_vertical_bar`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT for table `dashboard_units`
 --
 ALTER TABLE `dashboard_units`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
-
 --
 -- AUTO_INCREMENT for table `devices`
 --
 ALTER TABLE `devices`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
-
 --
 -- AUTO_INCREMENT for table `installation_info`
 --
 ALTER TABLE `installation_info`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
 --
 -- AUTO_INCREMENT for table `maintenance_record`
 --
 ALTER TABLE `maintenance_record`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
 --
 -- AUTO_INCREMENT for table `recorded_values`
 --
 ALTER TABLE `recorded_values`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5348;
-
 --
 -- AUTO_INCREMENT for table `reset_pass`
 --
 ALTER TABLE `reset_pass`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
-
 --
 -- AUTO_INCREMENT for table `user_and_devices`
 --
 ALTER TABLE `user_and_devices`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
-COMMIT;
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
