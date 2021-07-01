@@ -5,3 +5,6 @@ app/db.php
 
 assets/manuals
 assets/logo
+
+./assets/manuals/*
+./assets/logo/*
