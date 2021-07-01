@@ -1,6 +1,10 @@
 
 app/db.php
 
+./app/db*
+./app/db.*
+./app/db.php
+
 .idea
 
 assets/manuals
