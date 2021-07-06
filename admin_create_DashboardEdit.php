@@ -635,10 +635,10 @@ function runQuery($sql, $msg){
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <h2 id="navHeading" class="font-roboto darkColorInDarkTheme font-sizeLarge">
-                                                                Digital Channels (D1-D6):
+                                                                Digital Channels:
                                                             </h2>
                                                         </div>
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-6">
                                                             <div class="input-group mb-3">
                                                                 <div class="input-group-prepend">
                                                                     <div class="input-group-prepend">
@@ -655,13 +655,25 @@ function runQuery($sql, $msg){
                                                                         <option value="legends4" <?php if($mainRow["legends1_type"]=="legends4") echo "selected"; ?>>Digital 4</option>
                                                                         <option value="legends5" <?php if($mainRow["legends1_type"]=="legends5") echo "selected"; ?>>Digital 5</option>
                                                                         <option value="legends6" <?php if($mainRow["legends1_type"]=="legends6" ) echo "selected"; ?>>Digital 6</option>
+                                                                        <option value="t1" <?php if($mainRow["legends1_type"]=="t1" ) echo "selected"; ?>>Digital Switch 1</option>
+                                                                        <option value="t2" <?php if($mainRow["legends1_type"]=="t2" ) echo "selected"; ?>>Digital Switch 2</option>
+                                                                        <option value="t3" <?php if($mainRow["legends1_type"]=="t3" ) echo "selected"; ?>>Digital Switch 3</option>
+                                                                        <option value="t4" <?php if($mainRow["legends1_type"]=="t4" ) echo "selected"; ?>>Digital Switch 4</option>
+                                                                        <option value="r1" <?php if($mainRow["legends1_type"]=="r1" ) echo "selected"; ?>>Relay Output 1</option>
+                                                                        <option value="r2" <?php if($mainRow["legends1_type"]=="r2" ) echo "selected"; ?>>Relay Output 2</option>
+                                                                        <option value="r3" <?php if($mainRow["legends1_type"]=="r3" ) echo "selected"; ?>>Relay Output 3</option>
+                                                                        <option value="r4" <?php if($mainRow["legends1_type"]=="r4" ) echo "selected"; ?>>Relay Output 4</option>
+                                                                        <option value="l1" <?php if($mainRow["legends1_type"]=="l1" ) echo "selected"; ?>>Line Detection 1</option>
+                                                                        <option value="l2" <?php if($mainRow["legends1_type"]=="l2" ) echo "selected"; ?>>Line Detection 2</option>
+                                                                        <option value="l3" <?php if($mainRow["legends1_type"]=="l3" ) echo "selected"; ?>>Line Detection 3</option>
+                                                                        <option value="l4" <?php if($mainRow["legends1_type"]=="l4" ) echo "selected"; ?>>Line Detection 4</option>
                                                                     </select>
                                                                 </div>
                                                                 <input type="text" class="form-control" placeholder="Label"
                                                                     value="<?php echo $mainRow["legends1_txt"]; ?>" name="legends1_txt">
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-6">
                                                             <div class="input-group mb-3">
                                                                 <div class="input-group-prepend">
                                                                     <div class="input-group-prepend">
@@ -678,13 +690,25 @@ function runQuery($sql, $msg){
                                                                         <option value="legends4" <?php if($mainRow["legends2_type"]=="legends4") echo "selected"; ?>>Digital 4</option>
                                                                         <option value="legends5" <?php if($mainRow["legends2_type"]=="legends5") echo "selected"; ?>>Digital 5</option>
                                                                         <option value="legends6" <?php if($mainRow["legends2_type"]=="legends6") echo "selected"; ?>>Digital 6</option>
+                                                                        <option value="t1" <?php if($mainRow["legends2_type"]=="t1" ) echo "selected"; ?>>Digital Switch 1</option>
+                                                                        <option value="t2" <?php if($mainRow["legends2_type"]=="t2" ) echo "selected"; ?>>Digital Switch 2</option>
+                                                                        <option value="t3" <?php if($mainRow["legends2_type"]=="t3" ) echo "selected"; ?>>Digital Switch 3</option>
+                                                                        <option value="t4" <?php if($mainRow["legends2_type"]=="t4" ) echo "selected"; ?>>Digital Switch 4</option>
+                                                                        <option value="r1" <?php if($mainRow["legends2_type"]=="r1" ) echo "selected"; ?>>Relay Output 1</option>
+                                                                        <option value="r2" <?php if($mainRow["legends2_type"]=="r2" ) echo "selected"; ?>>Relay Output 2</option>
+                                                                        <option value="r3" <?php if($mainRow["legends2_type"]=="r3" ) echo "selected"; ?>>Relay Output 3</option>
+                                                                        <option value="r4" <?php if($mainRow["legends2_type"]=="r4" ) echo "selected"; ?>>Relay Output 4</option>
+                                                                        <option value="l1" <?php if($mainRow["legends2_type"]=="l1" ) echo "selected"; ?>>Line Detection 1</option>
+                                                                        <option value="l2" <?php if($mainRow["legends2_type"]=="l2" ) echo "selected"; ?>>Line Detection 2</option>
+                                                                        <option value="l3" <?php if($mainRow["legends2_type"]=="l3" ) echo "selected"; ?>>Line Detection 3</option>
+                                                                        <option value="l4" <?php if($mainRow["legends2_type"]=="l4" ) echo "selected"; ?>>Line Detection 4</option>
                                                                     </select>
                                                                 </div>
                                                                 <input type="text" class="form-control" placeholder="Label"
                                                                        value="<?php echo $mainRow["legends2_txt"]; ?>" name="legends2_txt">
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-6">
                                                             <div class="input-group mb-3">
                                                                 <div class="input-group-prepend">
                                                                     <div class="input-group-prepend">
@@ -701,13 +725,25 @@ function runQuery($sql, $msg){
                                                                         <option value="legends4" <?php if($mainRow["legends3_type"]=="legends4") echo "selected"; ?>>Digital 4</option>
                                                                         <option value="legends5" <?php if($mainRow["legends3_type"]=="legends5") echo "selected"; ?>>Digital 5</option>
                                                                         <option value="legends6" <?php if($mainRow["legends3_type"]=="legends6") echo "selected"; ?>>Digital 6</option>
+                                                                        <option value="t1" <?php if($mainRow["legends3_type"]=="t1" ) echo "selected"; ?>>Digital Switch 1</option>
+                                                                        <option value="t2" <?php if($mainRow["legends3_type"]=="t2" ) echo "selected"; ?>>Digital Switch 2</option>
+                                                                        <option value="t3" <?php if($mainRow["legends3_type"]=="t3" ) echo "selected"; ?>>Digital Switch 3</option>
+                                                                        <option value="t4" <?php if($mainRow["legends3_type"]=="t4" ) echo "selected"; ?>>Digital Switch 4</option>
+                                                                        <option value="r1" <?php if($mainRow["legends3_type"]=="r1" ) echo "selected"; ?>>Relay Output 1</option>
+                                                                        <option value="r2" <?php if($mainRow["legends3_type"]=="r2" ) echo "selected"; ?>>Relay Output 2</option>
+                                                                        <option value="r3" <?php if($mainRow["legends3_type"]=="r3" ) echo "selected"; ?>>Relay Output 3</option>
+                                                                        <option value="r4" <?php if($mainRow["legends3_type"]=="r4" ) echo "selected"; ?>>Relay Output 4</option>
+                                                                        <option value="l1" <?php if($mainRow["legends3_type"]=="l1" ) echo "selected"; ?>>Line Detection 1</option>
+                                                                        <option value="l2" <?php if($mainRow["legends3_type"]=="l2" ) echo "selected"; ?>>Line Detection 2</option>
+                                                                        <option value="l3" <?php if($mainRow["legends3_type"]=="l3" ) echo "selected"; ?>>Line Detection 3</option>
+                                                                        <option value="l4" <?php if($mainRow["legends3_type"]=="l4" ) echo "selected"; ?>>Line Detection 4</option>
                                                                     </select>
                                                                 </div>
                                                                 <input type="text" class="form-control" placeholder="Label"
                                                                        value="<?php echo $mainRow["legends3_txt"]; ?>" name="legends3_txt">
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-6">
                                                             <div class="input-group mb-3">
                                                                 <div class="input-group-prepend">
                                                                     <div class="input-group-prepend">
@@ -724,13 +760,25 @@ function runQuery($sql, $msg){
                                                                         <option value="legends4" <?php if($mainRow["legends4_type"]=="legends4") echo "selected"; ?>>Digital 4</option>
                                                                         <option value="legends5" <?php if($mainRow["legends4_type"]=="legends5") echo "selected"; ?>>Digital 5</option>
                                                                         <option value="legends6" <?php if($mainRow["legends4_type"]=="legends6") echo "selected"; ?>>Digital 6</option>
+                                                                        <option value="t1" <?php if($mainRow["legends4_type"]=="t1" ) echo "selected"; ?>>Digital Switch 1</option>
+                                                                        <option value="t2" <?php if($mainRow["legends4_type"]=="t2" ) echo "selected"; ?>>Digital Switch 2</option>
+                                                                        <option value="t3" <?php if($mainRow["legends4_type"]=="t3" ) echo "selected"; ?>>Digital Switch 3</option>
+                                                                        <option value="t4" <?php if($mainRow["legends4_type"]=="t4" ) echo "selected"; ?>>Digital Switch 4</option>
+                                                                        <option value="r1" <?php if($mainRow["legends4_type"]=="r1" ) echo "selected"; ?>>Relay Output 1</option>
+                                                                        <option value="r2" <?php if($mainRow["legends4_type"]=="r2" ) echo "selected"; ?>>Relay Output 2</option>
+                                                                        <option value="r3" <?php if($mainRow["legends4_type"]=="r3" ) echo "selected"; ?>>Relay Output 3</option>
+                                                                        <option value="r4" <?php if($mainRow["legends4_type"]=="r4" ) echo "selected"; ?>>Relay Output 4</option>
+                                                                        <option value="l1" <?php if($mainRow["legends4_type"]=="l1" ) echo "selected"; ?>>Line Detection 1</option>
+                                                                        <option value="l2" <?php if($mainRow["legends4_type"]=="l2" ) echo "selected"; ?>>Line Detection 2</option>
+                                                                        <option value="l3" <?php if($mainRow["legends4_type"]=="l3" ) echo "selected"; ?>>Line Detection 3</option>
+                                                                        <option value="l4" <?php if($mainRow["legends4_type"]=="l4" ) echo "selected"; ?>>Line Detection 4</option>
                                                                     </select>
                                                                 </div>
                                                                 <input type="text" class="form-control" placeholder="Label"
                                                                     value="<?php echo $mainRow["legends4_txt"]; ?>" name="legends4_txt">
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-6">
                                                             <div class="input-group mb-3">
                                                                 <div class="input-group-prepend">
                                                                     <div class="input-group-prepend">
@@ -747,13 +795,25 @@ function runQuery($sql, $msg){
                                                                         <option value="legends4" <?php if($mainRow["legends5_type"]=="legends4") echo "selected"; ?>>Digital 4</option>
                                                                         <option value="legends5" <?php if($mainRow["legends5_type"]=="legends5") echo "selected"; ?>>Digital 5</option>
                                                                         <option value="legends6" <?php if($mainRow["legends5_type"]=="legends6") echo "selected"; ?>>Digital 6</option>
+                                                                        <option value="t1" <?php if($mainRow["legends5_type"]=="t1" ) echo "selected"; ?>>Digital Switch 1</option>
+                                                                        <option value="t2" <?php if($mainRow["legends5_type"]=="t2" ) echo "selected"; ?>>Digital Switch 2</option>
+                                                                        <option value="t3" <?php if($mainRow["legends5_type"]=="t3" ) echo "selected"; ?>>Digital Switch 3</option>
+                                                                        <option value="t4" <?php if($mainRow["legends5_type"]=="t4" ) echo "selected"; ?>>Digital Switch 4</option>
+                                                                        <option value="r1" <?php if($mainRow["legends5_type"]=="r1" ) echo "selected"; ?>>Relay Output 1</option>
+                                                                        <option value="r2" <?php if($mainRow["legends5_type"]=="r2" ) echo "selected"; ?>>Relay Output 2</option>
+                                                                        <option value="r3" <?php if($mainRow["legends5_type"]=="r3" ) echo "selected"; ?>>Relay Output 3</option>
+                                                                        <option value="r4" <?php if($mainRow["legends5_type"]=="r4" ) echo "selected"; ?>>Relay Output 4</option>
+                                                                        <option value="l1" <?php if($mainRow["legends5_type"]=="l1" ) echo "selected"; ?>>Line Detection 1</option>
+                                                                        <option value="l2" <?php if($mainRow["legends5_type"]=="l2" ) echo "selected"; ?>>Line Detection 2</option>
+                                                                        <option value="l3" <?php if($mainRow["legends5_type"]=="l3" ) echo "selected"; ?>>Line Detection 3</option>
+                                                                        <option value="l4" <?php if($mainRow["legends5_type"]=="l4" ) echo "selected"; ?>>Line Detection 4</option>
                                                                     </select>
                                                                 </div>
                                                                 <input type="text" class="form-control" placeholder="Label"
                                                                        value="<?php echo $mainRow["legends5_txt"]; ?>" name="legends5_txt">
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-6">
                                                             <div class="input-group mb-3">
                                                                 <div class="input-group-prepend">
                                                                     <div class="input-group-prepend">
@@ -770,6 +830,18 @@ function runQuery($sql, $msg){
                                                                         <option value="legends4" <?php if($mainRow["legends6_type"]=="legends4") echo "selected"; ?>>Digital 4</option>
                                                                         <option value="legends5" <?php if($mainRow["legends6_type"]=="legends5") echo "selected"; ?>>Digital 5</option>
                                                                         <option value="legends6" <?php if($mainRow["legends6_type"]=="legends6") echo "selected"; ?>>Digital 6</option>
+                                                                        <option value="t1" <?php if($mainRow["legends6_type"]=="t1" ) echo "selected"; ?>>Digital Switch 1</option>
+                                                                        <option value="t2" <?php if($mainRow["legends6_type"]=="t2" ) echo "selected"; ?>>Digital Switch 2</option>
+                                                                        <option value="t3" <?php if($mainRow["legends6_type"]=="t3" ) echo "selected"; ?>>Digital Switch 3</option>
+                                                                        <option value="t4" <?php if($mainRow["legends6_type"]=="t4" ) echo "selected"; ?>>Digital Switch 4</option>
+                                                                        <option value="r1" <?php if($mainRow["legends6_type"]=="r1" ) echo "selected"; ?>>Relay Output 1</option>
+                                                                        <option value="r2" <?php if($mainRow["legends6_type"]=="r2" ) echo "selected"; ?>>Relay Output 2</option>
+                                                                        <option value="r3" <?php if($mainRow["legends6_type"]=="r3" ) echo "selected"; ?>>Relay Output 3</option>
+                                                                        <option value="r4" <?php if($mainRow["legends6_type"]=="r4" ) echo "selected"; ?>>Relay Output 4</option>
+                                                                        <option value="l1" <?php if($mainRow["legends6_type"]=="l1" ) echo "selected"; ?>>Line Detection 1</option>
+                                                                        <option value="l2" <?php if($mainRow["legends6_type"]=="l2" ) echo "selected"; ?>>Line Detection 2</option>
+                                                                        <option value="l3" <?php if($mainRow["legends6_type"]=="l3" ) echo "selected"; ?>>Line Detection 3</option>
+                                                                        <option value="l4" <?php if($mainRow["legends6_type"]=="l4" ) echo "selected"; ?>>Line Detection 4</option>
                                                                     </select>
                                                                 </div>
                                                                 <input type="text" class="form-control" placeholder="Label"
@@ -782,10 +854,10 @@ function runQuery($sql, $msg){
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <h2 id="navHeading" class="font-roboto darkColorInDarkTheme font-sizeLarge">
-                                                                Analog Channels (A1-A6):
+                                                                Analog Channels:
                                                             </h2>
                                                         </div>
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-6">
                                                             <div class="input-group mb-3">
                                                                 <div class="input-group-prepend">
                                                                     <div class="input-group-prepend">
@@ -802,13 +874,19 @@ function runQuery($sql, $msg){
                                                                         <option value="analogue4" <?php if($mainRow["analogue1_type"]=="analogue4") echo "selected"; ?>>Analog 4</option>
                                                                         <option value="analogue5" <?php if($mainRow["analogue1_type"]=="analogue5") echo "selected"; ?>>Analog 5</option>
                                                                         <option value="analogue6" <?php if($mainRow["analogue1_type"]=="analogue6" ) echo "selected"; ?>>Analog 6</option>
+                                                                        <option value="c1" <?php if($mainRow["analogue1_type"]=="c1" ) echo "selected"; ?>>Analog Current 1</option>
+                                                                        <option value="c2" <?php if($mainRow["analogue1_type"]=="c2" ) echo "selected"; ?>>Analog Current 2</option>
+                                                                        <option value="co1" <?php if($mainRow["analogue1_type"]=="co1" ) echo "selected"; ?>>Current Output 1</option>
+                                                                        <option value="co2" <?php if($mainRow["analogue1_type"]=="co2" ) echo "selected"; ?>>Current Output 2</option>
+                                                                        <option value="tor1" <?php if($mainRow["analogue1_type"]=="tor1" ) echo "selected"; ?>>Analog Torque 1</option>
+                                                                        <option value="tor2" <?php if($mainRow["analogue1_type"]=="tor2" ) echo "selected"; ?>>Analog Torque 2</option>
                                                                     </select>
                                                                 </div>
                                                                 <input type="text" class="form-control" placeholder="Label"
                                                                     value="<?php echo $mainRow["analogue1_txt"]; ?>" name="analogue1_txt">
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-6">
                                                             <div class="input-group mb-3">
                                                                 <div class="input-group-prepend">
                                                                     <div class="input-group-prepend">
@@ -825,13 +903,19 @@ function runQuery($sql, $msg){
                                                                         <option value="analogue4" <?php if($mainRow["analogue2_type"]=="analogue4") echo "selected"; ?>>Analog 4</option>
                                                                         <option value="analogue5" <?php if($mainRow["analogue2_type"]=="analogue5") echo "selected"; ?>>Analog 5</option>
                                                                         <option value="analogue6" <?php if($mainRow["analogue2_type"]=="analogue6" ) echo "selected"; ?>>Analog 6</option>
+                                                                        <option value="c1" <?php if($mainRow["analogue2_type"]=="c1" ) echo "selected"; ?>>Analog Current 1</option>
+                                                                        <option value="c2" <?php if($mainRow["analogue2_type"]=="c2" ) echo "selected"; ?>>Analog Current 2</option>
+                                                                        <option value="co1" <?php if($mainRow["analogue2_type"]=="co1" ) echo "selected"; ?>>Current Output 1</option>
+                                                                        <option value="co2" <?php if($mainRow["analogue2_type"]=="co2" ) echo "selected"; ?>>Current Output 2</option>
+                                                                        <option value="tor1" <?php if($mainRow["analogue2_type"]=="tor1" ) echo "selected"; ?>>Analog Torque 1</option>
+                                                                        <option value="tor2" <?php if($mainRow["analogue2_type"]=="tor2" ) echo "selected"; ?>>Analog Torque 2</option>
                                                                     </select>
                                                                 </div>
                                                                 <input type="text" class="form-control" placeholder="Label"
                                                                     value="<?php echo $mainRow["analogue2_txt"]; ?>" name="analogue2_txt">
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-6">
                                                             <div class="input-group mb-3">
                                                                 <div class="input-group-prepend">
                                                                     <div class="input-group-prepend">
@@ -848,13 +932,19 @@ function runQuery($sql, $msg){
                                                                         <option value="analogue4" <?php if($mainRow["analogue3_type"]=="analogue4") echo "selected"; ?>>Analog 4</option>
                                                                         <option value="analogue5" <?php if($mainRow["analogue3_type"]=="analogue5") echo "selected"; ?>>Analog 5</option>
                                                                         <option value="analogue6" <?php if($mainRow["analogue3_type"]=="analogue6" ) echo "selected"; ?>>Analog 6</option>
+                                                                        <option value="c1" <?php if($mainRow["analogue3_type"]=="c1" ) echo "selected"; ?>>Analog Current 1</option>
+                                                                        <option value="c2" <?php if($mainRow["analogue3_type"]=="c2" ) echo "selected"; ?>>Analog Current 2</option>
+                                                                        <option value="co1" <?php if($mainRow["analogue3_type"]=="co1" ) echo "selected"; ?>>Current Output 1</option>
+                                                                        <option value="co2" <?php if($mainRow["analogue3_type"]=="co2" ) echo "selected"; ?>>Current Output 2</option>
+                                                                        <option value="tor1" <?php if($mainRow["analogue3_type"]=="tor1" ) echo "selected"; ?>>Analog Torque 1</option>
+                                                                        <option value="tor2" <?php if($mainRow["analogue3_type"]=="tor2" ) echo "selected"; ?>>Analog Torque 2</option>
                                                                     </select>
                                                                 </div>
                                                                 <input type="text" class="form-control" placeholder="Label"
                                                                     value="<?php echo $mainRow["analogue3_txt"]; ?>" name="analogue3_txt">
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-6">
                                                             <div class="input-group mb-3">
                                                                 <div class="input-group-prepend">
                                                                     <div class="input-group-prepend">
@@ -871,13 +961,19 @@ function runQuery($sql, $msg){
                                                                         <option value="analogue4" <?php if($mainRow["analogue4_type"]=="analogue4") echo "selected"; ?>>Analog 4</option>
                                                                         <option value="analogue5" <?php if($mainRow["analogue4_type"]=="analogue5") echo "selected"; ?>>Analog 5</option>
                                                                         <option value="analogue6" <?php if($mainRow["analogue4_type"]=="analogue6" ) echo "selected"; ?>>Analog 6</option>
+                                                                        <option value="c1" <?php if($mainRow["analogue4_type"]=="c1" ) echo "selected"; ?>>Analog Current 1</option>
+                                                                        <option value="c2" <?php if($mainRow["analogue4_type"]=="c2" ) echo "selected"; ?>>Analog Current 2</option>
+                                                                        <option value="co1" <?php if($mainRow["analogue4_type"]=="co1" ) echo "selected"; ?>>Current Output 1</option>
+                                                                        <option value="co2" <?php if($mainRow["analogue4_type"]=="co2" ) echo "selected"; ?>>Current Output 2</option>
+                                                                        <option value="tor1" <?php if($mainRow["analogue4_type"]=="tor1" ) echo "selected"; ?>>Analog Torque 1</option>
+                                                                        <option value="tor2" <?php if($mainRow["analogue4_type"]=="tor2" ) echo "selected"; ?>>Analog Torque 2</option>
                                                                     </select>
                                                                 </div>
                                                                 <input type="text" class="form-control" placeholder="Label"
                                                                     value="<?php echo $mainRow["analogue4_txt"]; ?>" name="analogue4_txt">
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-6">
                                                             <div class="input-group mb-3">
                                                                 <div class="input-group-prepend">
                                                                     <div class="input-group-prepend">
@@ -894,13 +990,19 @@ function runQuery($sql, $msg){
                                                                         <option value="analogue4" <?php if($mainRow["analogue5_type"]=="analogue4") echo "selected"; ?>>Analog 4</option>
                                                                         <option value="analogue5" <?php if($mainRow["analogue5_type"]=="analogue5") echo "selected"; ?>>Analog 5</option>
                                                                         <option value="analogue6" <?php if($mainRow["analogue5_type"]=="analogue6" ) echo "selected"; ?>>Analog 6</option>
+                                                                        <option value="c1" <?php if($mainRow["analogue5_type"]=="c1" ) echo "selected"; ?>>Analog Current 1</option>
+                                                                        <option value="c2" <?php if($mainRow["analogue5_type"]=="c2" ) echo "selected"; ?>>Analog Current 2</option>
+                                                                        <option value="co1" <?php if($mainRow["analogue5_type"]=="co1" ) echo "selected"; ?>>Current Output 1</option>
+                                                                        <option value="co2" <?php if($mainRow["analogue5_type"]=="co2" ) echo "selected"; ?>>Current Output 2</option>
+                                                                        <option value="tor1" <?php if($mainRow["analogue5_type"]=="tor1" ) echo "selected"; ?>>Analog Torque 1</option>
+                                                                        <option value="tor2" <?php if($mainRow["analogue5_type"]=="tor2" ) echo "selected"; ?>>Analog Torque 2</option>
                                                                     </select>
                                                                 </div>
                                                                 <input type="text" class="form-control" placeholder="Label"
                                                                     value="<?php echo $mainRow["analogue5_txt"]; ?>" name="analogue5_txt">
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-6">
                                                             <div class="input-group mb-3">
                                                                 <div class="input-group-prepend">
                                                                     <div class="input-group-prepend">
@@ -917,6 +1019,12 @@ function runQuery($sql, $msg){
                                                                         <option value="analogue4" <?php if($mainRow["analogue6_type"]=="analogue4") echo "selected"; ?>>Analog 4</option>
                                                                         <option value="analogue5" <?php if($mainRow["analogue6_type"]=="analogue5") echo "selected"; ?>>Analog 5</option>
                                                                         <option value="analogue6" <?php if($mainRow["analogue6_type"]=="analogue6" ) echo "selected"; ?>>Analog 6</option>
+                                                                        <option value="c1" <?php if($mainRow["analogue6_type"]=="c1" ) echo "selected"; ?>>Analog Current 1</option>
+                                                                        <option value="c2" <?php if($mainRow["analogue6_type"]=="c2" ) echo "selected"; ?>>Analog Current 2</option>
+                                                                        <option value="co1" <?php if($mainRow["analogue6_type"]=="co1" ) echo "selected"; ?>>Current Output 1</option>
+                                                                        <option value="co2" <?php if($mainRow["analogue6_type"]=="co2" ) echo "selected"; ?>>Current Output 2</option>
+                                                                        <option value="tor1" <?php if($mainRow["analogue6_type"]=="tor1" ) echo "selected"; ?>>Analog Torque 1</option>
+                                                                        <option value="tor2" <?php if($mainRow["analogue6_type"]=="tor2" ) echo "selected"; ?>>Analog Torque 2</option>
                                                                     </select>
                                                                 </div>
                                                                 <input type="text" class="form-control" placeholder="Label"

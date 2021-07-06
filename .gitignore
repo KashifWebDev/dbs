@@ -1,14 +1,7 @@
-
 app/db.php
-
-./app/db*
-./app/db.*
-./app/db.php
-
 .idea
-
 assets/manuals
 assets/logo
-
 ./assets/manuals/*
 ./assets/logo/*
+db.php
