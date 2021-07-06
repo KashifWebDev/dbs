@@ -1,0 +1,10 @@
+6 Channels Digital (D1 - D6)
+4 Digital Switches (T1 - T4)
+4 Digital Relay Output (R1 - R4)
+6 Channels Digital Line Detection (L1 - L6)
+
+
+2 Channels Analogue Current (C1 - C2)
+2 channels Current Output (Co1 - Co2)
+6 Channels Analogue (A1- A6)
+2 Channels Analogue Torque (Tor1 - Tor2)
