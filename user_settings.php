@@ -58,7 +58,7 @@ $_SESSION['currentPath'] = "./";
                         <div class="form-group">
                             <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
                             <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-                            <label for="exampleFormControlSelect1">Example select</label>
+                            <label for="exampleFormControlSelect1">Country</label>
                             <select class="form-control selectpicker select2"
                                     data-live-search="true" data-flag="false" name="step1[country]" id="country1">
                                 <option value="">Country</option><option value="AF"  data-phone-prefix="+93">
@@ -565,18 +565,40 @@ $_SESSION['currentPath'] = "./";
                                 $('select#country1').change(function(){
                                     var phone = $(this).find(':selected').attr('data-phone-prefix');
                                     $("#phone1").val(phone);
-                                    $("#phone2").val(phone);
+                                    // $("#phone2").val(phone);
                                 });
                                 $('.select2').select2();
                             </script>
                         </div>
                         <div class="form-group">
-                            <label for="email" style="color: black;">Primary contact number:</label>
-                            <input type="text" class="form-control" name="contact" placeholder="+1 584 458 485" id="phone1" value="<?php echo $row1['contact']; ?>">
+                            <label for="email" style="color: black;">Primary Contact Number:</label>
+                            <div class="row no-gutters">
+                                <div class="col">
+                                    <input type="text" class="form-control" name="contact" placeholder="+1 584 458 485" id="phone1" value="<?php echo $row["contact"]; ?>">
+                                </div>
+                                <div class="col d-flex justify-content-center align-items-center">
+                                    <div class="form-group form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox" name="alert1" <?php if($row["alert1"]=="on") echo "checked"; ?>> Send text alert notifications
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="email" style="color: black;">Secondary contact number:</label>
-                            <input type="text" class="form-control" name="phone_2" placeholder="+1 584 458 485" id="phone2" value="<?php echo $row1['phone_2']; ?>">
+                            <label for="email" style="color: black;">Secondary Contact Number:</label>
+                            <div class="row no-gutters">
+                                <div class="col">
+                                    <input type="text" class="form-control" name="phone_2" placeholder="+1 584 458 485" id="phone2" value="<?php echo $row["phone_2"]; ?>">
+                                </div>
+                                <div class="col d-flex justify-content-center align-items-center">
+                                    <div class="form-group form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox" name="alert2" <?php if($row["alert2"]=="on") echo "checked"; ?>> Send text alert notifications
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="email" style="color: black;">Secrete Question:</label>
