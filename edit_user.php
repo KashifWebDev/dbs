@@ -561,7 +561,7 @@ $_SESSION['currentPath'] = "./";
                     <script>
                         $('select#country1').change(function(){
                             var phone = $(this).find(':selected').attr('data-phone-prefix');
-                            // $("#phone1").val(phone);
+                            $("#phone1").val(phone);
                             // $("#phone2").val(phone);
                         });
                         $('.select2').select2();
