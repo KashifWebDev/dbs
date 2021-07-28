@@ -4,4 +4,3 @@ assets/manuals
 assets/logo
 ./assets/manuals/*
 ./assets/logo/*
-db.php

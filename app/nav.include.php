@@ -3,17 +3,19 @@ if (isset($_SESSION["darkTheme"]) && $_SESSION["darkTheme"] == 1){
     $navClass = "bg-dark navbar-dark";
     $txtColor = "text-light";
     $themeLinkText = "Light Theme";
+    $navLogo = "dark.jpg";
 }else{
     $navClass = "bg-light navbar-light shadow";
     $txtColor = "text-dark";
     $themeLinkText = "Dark Theme";
+    $navLogo = "dbs.png";
 }
 ?>
 <nav class="navbar navbar-expand-sm d-flex align-items-center <?php echo $navClass; ?> font-roboto">
     <ul class="navbar-nav d-flex align-items-center">
         <li class3="nav-item active">
             <a class="nav-link" href="#">
-                <img style="height: 23px;" src="assets/imgs/dbs.png">
+                <img style="height: 23px;" src="assets/imgs/<?php echo $navLogo ?>">
             </a>
         </li>
         <li class="nav-item ml-3">
