@@ -54,6 +54,11 @@
               $sql = "SELECT * FROM custom_devicestatus WHERE device_id=$device_id";
               $res = mysqli_query($con, $sql);
               $row = mysqli_fetch_array($res);
+
+              $sql = "SELECT * FROM custom_graph WHERE device_id=$device_id";
+              $res = mysqli_query($con, $sql);
+              $mainRow = mysqli_fetch_array($res);
+
               ?>
               <div class="col-md-4">
                   <div class="custom_card w-100">
@@ -74,14 +79,14 @@
                                   <?php $class= "col-6"; ?>
                                   <!--alarm-->
                                   <?php
-                                  if($row["a3"]=="on"){
+                                  if($mainRow["legends1"]=="on"){
                                       ?>
                                       <div id="flagBox" class="<?php echo $class; ?>">
                                           <div class="d-flex align-content-center">
                                               <div class="circle_max_height circle_alert mr-2" id="alarm">
                                               </div>
                                               <p class="d-flex align-items-center justify-content-center font-weight-bold circles_font_size">
-                                                  ALARM
+                                                  <?php echo $mainRow["legends1_txt"]; ?>
                                               </p>
                                           </div>
                                       </div>
@@ -90,14 +95,14 @@
                                   ?>
                                   <!--CUTOFF-->
                                   <?php
-                                  if($row["a5"]=="on"){
+                                  if($mainRow["legends2"]=="on"){
                                       ?>
                                       <div id="flagBox" class="<?php echo $class; ?>">
                                           <div class="d-flex align-content-center">
                                               <div class="circle_max_height circle_alert mr-2" id="cutoff">
                                               </div>
                                               <p class="d-flex align-items-center justify-content-center font-weight-bold circles_font_size">
-                                                  CUTOFF
+                                                  <?php echo $mainRow["legends2_txt"]; ?>
                                               </p>
                                           </div>
                                       </div>
@@ -106,14 +111,14 @@
                                   ?>
                                   <!--LIFT ACTIVE-->
                                   <?php
-                                  if($row["a7"]=="on"){
+                                  if($mainRow["legends3"]=="on"){
                                       ?>
                                       <div id="flagBox" class="<?php echo $class; ?>">
                                           <div class="d-flex align-content-center">
                                               <div class="circle_max_height circle_alert mr-2" id="lift_active">
                                               </div>
                                               <p class="d-flex align-items-center justify-content-center font-weight-bold circles_font_size">
-                                                  LIFT ACTIVE
+                                                  <?php echo $mainRow["legends3_txt"]; ?>
                                               </p>
                                           </div>
                                       </div>
@@ -122,14 +127,14 @@
                                   ?>
                                   <!--WATER IN OIL-->
                                   <?php
-                                  if($row["a2"]=="on"){
+                                  if($mainRow["legends4"]=="on"){
                                       ?>
                                       <div id="flagBox" class="<?php echo $class; ?>">
                                           <div class="d-flex align-content-center">
                                               <div class="circle_max_height circle_alert mr-2" id="water_in_oil">
                                               </div>
                                               <p class="d-flex align-items-center justify-content-center font-weight-bold circles_font_size">
-                                                  WATER IN OIL
+                                                  <?php echo $mainRow["legends4_txt"]; ?>
                                               </p>
                                           </div>
                                       </div>
@@ -138,14 +143,14 @@
                                   ?>
                                   <!--LOW OIL-->
                                   <?php
-                                  if($row["a4"]=="on"){
+                                  if($mainRow["legends5"]=="on"){
                                       ?>
                                       <div id="flagBox" class="<?php echo $class; ?>">
                                           <div class="d-flex align-content-center">
                                               <div class="circle_max_height circle_alert mr-2" id="low_oil">
                                               </div>
                                               <p class="d-flex align-items-center justify-content-center font-weight-bold circles_font_size">
-                                                  LOW OIL
+                                                  <?php echo $mainRow["legends5_txt"]; ?>
                                               </p>
                                           </div>
                                       </div>
@@ -153,14 +158,14 @@
                                   }
                                   ?>
                                   <!--LOSS MOTION--><?php
-                                  if($row["a6"]=="on"){
+                                  if($mainRow["legends6"]=="on"){
                                       ?>
                                       <div id="flagBox" class="<?php echo $class; ?>">
                                           <div class="d-flex align-content-center">
                                               <div class="circle_max_height circle_alert mr-2" id="loss_motion">
                                               </div>
                                               <p class="d-flex align-items-center justify-content-center font-weight-bold circles_font_size">
-                                                  LOSS MOTION
+                                                  <?php echo $mainRow["legends6_txt"]; ?>
                                               </p>
                                           </div>
                                       </div>
@@ -380,7 +385,7 @@
                                       color: "<?php echo $row['line_color']; ?>",
                                       showInLegend: true,
                                       dataPoints: [{}]
-                                  },
+                                  },/*
                                   {
                                       visible: false,
                                       name: "<?php echo $row['legends1_txt']; ?>",
@@ -424,6 +429,7 @@
                                       dataPoints: [{}]
                                   },
                                   //For Analogue Channels
+                                  */
                                   {
                                       visible: false,
                                       name: "<?php echo $row['analogue1_txt']; ?>",

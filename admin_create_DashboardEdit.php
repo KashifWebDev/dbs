@@ -417,63 +417,253 @@ function runQuery($sql, $msg){
                                             <i class="fa" aria-hidden="true"></i>  Device Status
                                         </a>
                                     </div>
-                                    <?php
-                                    $sql = "SELECT * FROM custom_devicestatus WHERE device_id=$defaultSettingsId";
-                                    $res = mysqli_query($con, $sql);
-                                    $mainRow = mysqli_fetch_array($res);
-                                    ?>
                                     <div id="collapseTwo" class="collapse">
                                         <div class="card-body">
+                                            <?php
+                                            $sql = "SELECT * FROM custom_graph WHERE device_id=$defaultSettingsId";
+                                            $res = mysqli_query($con, $sql);
+                                            $mainRow = mysqli_fetch_array($res);
+                                            ?>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <h2 id="navHeading" class="font-roboto darkColorInDarkTheme font-sizeLarge">
+                                                        Digital Channels:
+                                                    </h2>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">
+                                                                    <input type="checkbox"  name="legend1"
+                                                                        <?php if($mainRow["legends1"]=="on") echo "checked"; ?>>
+                                                                </div>
+                                                            </div>
+                                                            <select class="custom-select" name="legend_type_1">
+                                                                <option selected>Channel</option>
+                                                                <option value="legends1" <?php if($mainRow["legends1_type"]=="legends1") echo "selected"; ?>>Digital 1</option>
+                                                                <option value="legends2" <?php if($mainRow["legends1_type"]=="legends2") echo "selected"; ?>>Digital 2</option>
+                                                                <option value="legends3" <?php if($mainRow["legends1_type"]=="legends3") echo "selected"; ?>>Digital 3</option>
+                                                                <option value="legends4" <?php if($mainRow["legends1_type"]=="legends4") echo "selected"; ?>>Digital 4</option>
+                                                                <option value="legends5" <?php if($mainRow["legends1_type"]=="legends5") echo "selected"; ?>>Digital 5</option>
+                                                                <option value="legends6" <?php if($mainRow["legends1_type"]=="legends6" ) echo "selected"; ?>>Digital 6</option>
+                                                                <option value="t1" <?php if($mainRow["legends1_type"]=="t1" ) echo "selected"; ?>>Digital Switch 1</option>
+                                                                <option value="t2" <?php if($mainRow["legends1_type"]=="t2" ) echo "selected"; ?>>Digital Switch 2</option>
+                                                                <option value="t3" <?php if($mainRow["legends1_type"]=="t3" ) echo "selected"; ?>>Digital Switch 3</option>
+                                                                <option value="t4" <?php if($mainRow["legends1_type"]=="t4" ) echo "selected"; ?>>Digital Switch 4</option>
+                                                                <option value="r1" <?php if($mainRow["legends1_type"]=="r1" ) echo "selected"; ?>>Relay Output 1</option>
+                                                                <option value="r2" <?php if($mainRow["legends1_type"]=="r2" ) echo "selected"; ?>>Relay Output 2</option>
+                                                                <option value="r3" <?php if($mainRow["legends1_type"]=="r3" ) echo "selected"; ?>>Relay Output 3</option>
+                                                                <option value="r4" <?php if($mainRow["legends1_type"]=="r4" ) echo "selected"; ?>>Relay Output 4</option>
+                                                                <option value="l1" <?php if($mainRow["legends1_type"]=="l1" ) echo "selected"; ?>>Line Detection 1</option>
+                                                                <option value="l2" <?php if($mainRow["legends1_type"]=="l2" ) echo "selected"; ?>>Line Detection 2</option>
+                                                                <option value="l3" <?php if($mainRow["legends1_type"]=="l3" ) echo "selected"; ?>>Line Detection 3</option>
+                                                                <option value="l4" <?php if($mainRow["legends1_type"]=="l4" ) echo "selected"; ?>>Line Detection 4</option>
+                                                            </select>
+                                                        </div>
+                                                        <input type="text" class="form-control" placeholder="Label"
+                                                               value="<?php echo $mainRow["legends1_txt"]; ?>" name="legends1_txt">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">
+                                                                    <input type="checkbox"  name="legend2"
+                                                                        <?php if($mainRow["legends2"]=="on") echo "checked"; ?>>
+                                                                </div>
+                                                            </div>
+                                                            <select class="custom-select" name="legend_type_2">
+                                                                <option selected>Channel</option>
+                                                                <option value="legends1" <?php if($mainRow["legends2_type"]=="legends1") echo "selected"; ?>>Digital 1</option>
+                                                                <option value="legends2" <?php if($mainRow["legends2_type"]=="legends2") echo "selected"; ?>>Digital 2</option>
+                                                                <option value="legends3" <?php if($mainRow["legends2_type"]=="legends3") echo "selected"; ?>>Digital 3</option>
+                                                                <option value="legends4" <?php if($mainRow["legends2_type"]=="legends4") echo "selected"; ?>>Digital 4</option>
+                                                                <option value="legends5" <?php if($mainRow["legends2_type"]=="legends5") echo "selected"; ?>>Digital 5</option>
+                                                                <option value="legends6" <?php if($mainRow["legends2_type"]=="legends6") echo "selected"; ?>>Digital 6</option>
+                                                                <option value="t1" <?php if($mainRow["legends2_type"]=="t1" ) echo "selected"; ?>>Digital Switch 1</option>
+                                                                <option value="t2" <?php if($mainRow["legends2_type"]=="t2" ) echo "selected"; ?>>Digital Switch 2</option>
+                                                                <option value="t3" <?php if($mainRow["legends2_type"]=="t3" ) echo "selected"; ?>>Digital Switch 3</option>
+                                                                <option value="t4" <?php if($mainRow["legends2_type"]=="t4" ) echo "selected"; ?>>Digital Switch 4</option>
+                                                                <option value="r1" <?php if($mainRow["legends2_type"]=="r1" ) echo "selected"; ?>>Relay Output 1</option>
+                                                                <option value="r2" <?php if($mainRow["legends2_type"]=="r2" ) echo "selected"; ?>>Relay Output 2</option>
+                                                                <option value="r3" <?php if($mainRow["legends2_type"]=="r3" ) echo "selected"; ?>>Relay Output 3</option>
+                                                                <option value="r4" <?php if($mainRow["legends2_type"]=="r4" ) echo "selected"; ?>>Relay Output 4</option>
+                                                                <option value="l1" <?php if($mainRow["legends2_type"]=="l1" ) echo "selected"; ?>>Line Detection 1</option>
+                                                                <option value="l2" <?php if($mainRow["legends2_type"]=="l2" ) echo "selected"; ?>>Line Detection 2</option>
+                                                                <option value="l3" <?php if($mainRow["legends2_type"]=="l3" ) echo "selected"; ?>>Line Detection 3</option>
+                                                                <option value="l4" <?php if($mainRow["legends2_type"]=="l4" ) echo "selected"; ?>>Line Detection 4</option>
+                                                            </select>
+                                                        </div>
+                                                        <input type="text" class="form-control" placeholder="Label"
+                                                               value="<?php echo $mainRow["legends2_txt"]; ?>" name="legends2_txt">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">
+                                                                    <input type="checkbox"  name="legend3"
+                                                                        <?php if($mainRow["legends3"]=="on") echo "checked"; ?>>
+                                                                </div>
+                                                            </div>
+                                                            <select class="custom-select" name="legend_type_3">
+                                                                <option selected>Channel</option>
+                                                                <option value="legends1" <?php if($mainRow["legends3_type"]=="legends1") echo "selected"; ?>>Digital 1</option>
+                                                                <option value="legends2" <?php if($mainRow["legends3_type"]=="legends2") echo "selected"; ?>>Digital 2</option>
+                                                                <option value="legends3" <?php if($mainRow["legends3_type"]=="legends3") echo "selected"; ?>>Digital 3</option>
+                                                                <option value="legends4" <?php if($mainRow["legends3_type"]=="legends4") echo "selected"; ?>>Digital 4</option>
+                                                                <option value="legends5" <?php if($mainRow["legends3_type"]=="legends5") echo "selected"; ?>>Digital 5</option>
+                                                                <option value="legends6" <?php if($mainRow["legends3_type"]=="legends6") echo "selected"; ?>>Digital 6</option>
+                                                                <option value="t1" <?php if($mainRow["legends3_type"]=="t1" ) echo "selected"; ?>>Digital Switch 1</option>
+                                                                <option value="t2" <?php if($mainRow["legends3_type"]=="t2" ) echo "selected"; ?>>Digital Switch 2</option>
+                                                                <option value="t3" <?php if($mainRow["legends3_type"]=="t3" ) echo "selected"; ?>>Digital Switch 3</option>
+                                                                <option value="t4" <?php if($mainRow["legends3_type"]=="t4" ) echo "selected"; ?>>Digital Switch 4</option>
+                                                                <option value="r1" <?php if($mainRow["legends3_type"]=="r1" ) echo "selected"; ?>>Relay Output 1</option>
+                                                                <option value="r2" <?php if($mainRow["legends3_type"]=="r2" ) echo "selected"; ?>>Relay Output 2</option>
+                                                                <option value="r3" <?php if($mainRow["legends3_type"]=="r3" ) echo "selected"; ?>>Relay Output 3</option>
+                                                                <option value="r4" <?php if($mainRow["legends3_type"]=="r4" ) echo "selected"; ?>>Relay Output 4</option>
+                                                                <option value="l1" <?php if($mainRow["legends3_type"]=="l1" ) echo "selected"; ?>>Line Detection 1</option>
+                                                                <option value="l2" <?php if($mainRow["legends3_type"]=="l2" ) echo "selected"; ?>>Line Detection 2</option>
+                                                                <option value="l3" <?php if($mainRow["legends3_type"]=="l3" ) echo "selected"; ?>>Line Detection 3</option>
+                                                                <option value="l4" <?php if($mainRow["legends3_type"]=="l4" ) echo "selected"; ?>>Line Detection 4</option>
+                                                            </select>
+                                                        </div>
+                                                        <input type="text" class="form-control" placeholder="Label"
+                                                               value="<?php echo $mainRow["legends3_txt"]; ?>" name="legends3_txt">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">
+                                                                    <input type="checkbox"  name="legend4"
+                                                                        <?php if($mainRow["legends4"]=="on") echo "checked"; ?>>
+                                                                </div>
+                                                            </div>
+                                                            <select class="custom-select" name="legend_type_4">
+                                                                <option selected>Channel</option>
+                                                                <option value="legends1" <?php if($mainRow["legends4_type"]=="legends1") echo "selected"; ?>>Digital 1</option>
+                                                                <option value="legends2" <?php if($mainRow["legends4_type"]=="legends2") echo "selected"; ?>>Digital 2</option>
+                                                                <option value="legends3" <?php if($mainRow["legends4_type"]=="legends3") echo "selected"; ?>>Digital 3</option>
+                                                                <option value="legends4" <?php if($mainRow["legends4_type"]=="legends4") echo "selected"; ?>>Digital 4</option>
+                                                                <option value="legends5" <?php if($mainRow["legends4_type"]=="legends5") echo "selected"; ?>>Digital 5</option>
+                                                                <option value="legends6" <?php if($mainRow["legends4_type"]=="legends6") echo "selected"; ?>>Digital 6</option>
+                                                                <option value="t1" <?php if($mainRow["legends4_type"]=="t1" ) echo "selected"; ?>>Digital Switch 1</option>
+                                                                <option value="t2" <?php if($mainRow["legends4_type"]=="t2" ) echo "selected"; ?>>Digital Switch 2</option>
+                                                                <option value="t3" <?php if($mainRow["legends4_type"]=="t3" ) echo "selected"; ?>>Digital Switch 3</option>
+                                                                <option value="t4" <?php if($mainRow["legends4_type"]=="t4" ) echo "selected"; ?>>Digital Switch 4</option>
+                                                                <option value="r1" <?php if($mainRow["legends4_type"]=="r1" ) echo "selected"; ?>>Relay Output 1</option>
+                                                                <option value="r2" <?php if($mainRow["legends4_type"]=="r2" ) echo "selected"; ?>>Relay Output 2</option>
+                                                                <option value="r3" <?php if($mainRow["legends4_type"]=="r3" ) echo "selected"; ?>>Relay Output 3</option>
+                                                                <option value="r4" <?php if($mainRow["legends4_type"]=="r4" ) echo "selected"; ?>>Relay Output 4</option>
+                                                                <option value="l1" <?php if($mainRow["legends4_type"]=="l1" ) echo "selected"; ?>>Line Detection 1</option>
+                                                                <option value="l2" <?php if($mainRow["legends4_type"]=="l2" ) echo "selected"; ?>>Line Detection 2</option>
+                                                                <option value="l3" <?php if($mainRow["legends4_type"]=="l3" ) echo "selected"; ?>>Line Detection 3</option>
+                                                                <option value="l4" <?php if($mainRow["legends4_type"]=="l4" ) echo "selected"; ?>>Line Detection 4</option>
+                                                            </select>
+                                                        </div>
+                                                        <input type="text" class="form-control" placeholder="Label"
+                                                               value="<?php echo $mainRow["legends4_txt"]; ?>" name="legends4_txt">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">
+                                                                    <input type="checkbox"  name="legend5"
+                                                                        <?php if($mainRow["legends5"]=="on") echo "checked"; ?>>
+                                                                </div>
+                                                            </div>
+                                                            <select class="custom-select" name="legend_type_5">
+                                                                <option selected>Channel</option>
+                                                                <option value="legends1" <?php if($mainRow["legends5_type"]=="legends1") echo "selected"; ?>>Digital 1</option>
+                                                                <option value="legends2" <?php if($mainRow["legends5_type"]=="legends2") echo "selected"; ?>>Digital 2</option>
+                                                                <option value="legends3" <?php if($mainRow["legends5_type"]=="legends3") echo "selected"; ?>>Digital 3</option>
+                                                                <option value="legends4" <?php if($mainRow["legends5_type"]=="legends4") echo "selected"; ?>>Digital 4</option>
+                                                                <option value="legends5" <?php if($mainRow["legends5_type"]=="legends5") echo "selected"; ?>>Digital 5</option>
+                                                                <option value="legends6" <?php if($mainRow["legends5_type"]=="legends6") echo "selected"; ?>>Digital 6</option>
+                                                                <option value="t1" <?php if($mainRow["legends5_type"]=="t1" ) echo "selected"; ?>>Digital Switch 1</option>
+                                                                <option value="t2" <?php if($mainRow["legends5_type"]=="t2" ) echo "selected"; ?>>Digital Switch 2</option>
+                                                                <option value="t3" <?php if($mainRow["legends5_type"]=="t3" ) echo "selected"; ?>>Digital Switch 3</option>
+                                                                <option value="t4" <?php if($mainRow["legends5_type"]=="t4" ) echo "selected"; ?>>Digital Switch 4</option>
+                                                                <option value="r1" <?php if($mainRow["legends5_type"]=="r1" ) echo "selected"; ?>>Relay Output 1</option>
+                                                                <option value="r2" <?php if($mainRow["legends5_type"]=="r2" ) echo "selected"; ?>>Relay Output 2</option>
+                                                                <option value="r3" <?php if($mainRow["legends5_type"]=="r3" ) echo "selected"; ?>>Relay Output 3</option>
+                                                                <option value="r4" <?php if($mainRow["legends5_type"]=="r4" ) echo "selected"; ?>>Relay Output 4</option>
+                                                                <option value="l1" <?php if($mainRow["legends5_type"]=="l1" ) echo "selected"; ?>>Line Detection 1</option>
+                                                                <option value="l2" <?php if($mainRow["legends5_type"]=="l2" ) echo "selected"; ?>>Line Detection 2</option>
+                                                                <option value="l3" <?php if($mainRow["legends5_type"]=="l3" ) echo "selected"; ?>>Line Detection 3</option>
+                                                                <option value="l4" <?php if($mainRow["legends5_type"]=="l4" ) echo "selected"; ?>>Line Detection 4</option>
+                                                            </select>
+                                                        </div>
+                                                        <input type="text" class="form-control" placeholder="Label"
+                                                               value="<?php echo $mainRow["legends5_txt"]; ?>" name="legends5_txt">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">
+                                                                    <input type="checkbox"  name="legend6"
+                                                                        <?php if($mainRow["legends6"]=="on") echo "checked"; ?>>
+                                                                </div>
+                                                            </div>
+                                                            <select class="custom-select" name="legend_type_6">
+                                                                <option selected>Channel</option>
+                                                                <option value="legends1" <?php if($mainRow["legends6_type"]=="legends1") echo "selected"; ?>>Digital 1</option>
+                                                                <option value="legends2" <?php if($mainRow["legends6_type"]=="legends2") echo "selected"; ?>>Digital 2</option>
+                                                                <option value="legends3" <?php if($mainRow["legends6_type"]=="legends3") echo "selected"; ?>>Digital 3</option>
+                                                                <option value="legends4" <?php if($mainRow["legends6_type"]=="legends4") echo "selected"; ?>>Digital 4</option>
+                                                                <option value="legends5" <?php if($mainRow["legends6_type"]=="legends5") echo "selected"; ?>>Digital 5</option>
+                                                                <option value="legends6" <?php if($mainRow["legends6_type"]=="legends6") echo "selected"; ?>>Digital 6</option>
+                                                                <option value="t1" <?php if($mainRow["legends6_type"]=="t1" ) echo "selected"; ?>>Digital Switch 1</option>
+                                                                <option value="t2" <?php if($mainRow["legends6_type"]=="t2" ) echo "selected"; ?>>Digital Switch 2</option>
+                                                                <option value="t3" <?php if($mainRow["legends6_type"]=="t3" ) echo "selected"; ?>>Digital Switch 3</option>
+                                                                <option value="t4" <?php if($mainRow["legends6_type"]=="t4" ) echo "selected"; ?>>Digital Switch 4</option>
+                                                                <option value="r1" <?php if($mainRow["legends6_type"]=="r1" ) echo "selected"; ?>>Relay Output 1</option>
+                                                                <option value="r2" <?php if($mainRow["legends6_type"]=="r2" ) echo "selected"; ?>>Relay Output 2</option>
+                                                                <option value="r3" <?php if($mainRow["legends6_type"]=="r3" ) echo "selected"; ?>>Relay Output 3</option>
+                                                                <option value="r4" <?php if($mainRow["legends6_type"]=="r4" ) echo "selected"; ?>>Relay Output 4</option>
+                                                                <option value="l1" <?php if($mainRow["legends6_type"]=="l1" ) echo "selected"; ?>>Line Detection 1</option>
+                                                                <option value="l2" <?php if($mainRow["legends6_type"]=="l2" ) echo "selected"; ?>>Line Detection 2</option>
+                                                                <option value="l3" <?php if($mainRow["legends6_type"]=="l3" ) echo "selected"; ?>>Line Detection 3</option>
+                                                                <option value="l4" <?php if($mainRow["legends6_type"]=="l4" ) echo "selected"; ?>>Line Detection 4</option>
+                                                            </select>
+                                                        </div>
+                                                        <input type="text" class="form-control" placeholder="Label"
+                                                               value="<?php echo $mainRow["legends6_txt"]; ?>" name="legends6_txt">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <?php
+                                            $sql = "SELECT * FROM custom_devicestatus WHERE device_id=$defaultSettingsId";
+                                            $res = mysqli_query($con, $sql);
+                                            $mainRow = mysqli_fetch_array($res);
+                                            ?>
+                                            <div class="col-md-12">
+                                                <h2 id="navHeading" class="font-roboto darkColorInDarkTheme font-sizeLarge">
+                                                    Analog Channels:
+                                                </h2>
+                                            </div>
+                                            <br>
                                                 <div class="row set_font_roboto">
-                                                    <div class="col-6">
+                                                    <div class="col">
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="checkbox"
                                                                    name="a1" <?php if($mainRow["a1"]=="on") echo "checked"; ?>>
                                                             <label class="form-check-label" for="defaultCheck1">
                                                                 Indicator Bar
                                                             </label>
-                                                        </div><div class="form-check">
-                                                            <input class="form-check-input" type="checkbox"
-                                                                   name="a3" <?php if($mainRow["a3"]=="on") echo "checked"; ?>>
-                                                            <label class="form-check-label" for="defaultCheck1">
-                                                                Alarm Flag
-                                                            </label>
-                                                        </div><div class="form-check">
-                                                            <input class="form-check-input" type="checkbox"
-                                                                   name="a5" <?php if($mainRow["a5"]=="on") echo "checked"; ?>>
-                                                            <label class="form-check-label" for="defaultCheck1">
-                                                                CutOff Flag
-                                                            </label>
-                                                        </div><div class="form-check">
-                                                            <input class="form-check-input" type="checkbox"
-                                                                   name="a7" <?php if($mainRow["a7"]=="on") echo "checked"; ?>>
-                                                            <label class="form-check-label" for="defaultCheck1">
-                                                                Lift Active Flag
-                                                            </label>
                                                         </div>
                                                     </div>
-                                                    <div class="col-6">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox"
-                                                                   name="a2" <?php if($mainRow["a2"]=="on") echo "checked"; ?>>
-                                                            <label class="form-check-label" for="defaultCheck1">
-                                                                Water in Oil Flag
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox"
-                                                                   name="a4" <?php if($mainRow["a4"]=="on") echo "checked"; ?>>
-                                                            <label class="form-check-label" for="defaultCheck1">
-                                                                Low Oil Flag
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox"
-                                                                   name="a6" <?php if($mainRow["a6"]=="on") echo "checked"; ?>>
-                                                            <label class="form-check-label" for="defaultCheck1">
-                                                                LOSS MOTION
-                                                            </label>
-                                                        </div>
+                                                    <div class="col">
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="checkbox"
                                                                    name="a8" <?php if($mainRow["a8"]=="on") echo "checked"; ?>>
@@ -483,7 +673,6 @@ function runQuery($sql, $msg){
                                                         </div>
                                                     </div>
                                                 </div>
-                                            <br>
 <!--                                            <h3 class="font-roboto">Lift Position</h3>-->
                                             <?php
                                             $sql = "SELECT * FROM custom_vertical_bar WHERE  device_id = $device_id";
@@ -630,225 +819,6 @@ function runQuery($sql, $msg){
                                                     </label>
                                                 </div>
                                                 <div id="legendsCheck" class="mt-3">
-                                                    <hr>
-                                                    <!-- Digital Channels D1-D6-->
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <h2 id="navHeading" class="font-roboto darkColorInDarkTheme font-sizeLarge">
-                                                                Digital Channels:
-                                                            </h2>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="input-group mb-3">
-                                                                <div class="input-group-prepend">
-                                                                    <div class="input-group-prepend">
-                                                                        <div class="input-group-text">
-                                                                            <input type="checkbox"  name="legend1"
-                                                                                <?php if($mainRow["legends1"]=="on") echo "checked"; ?>>
-                                                                        </div>
-                                                                    </div>
-                                                                    <select class="custom-select" name="legend_type_1">
-                                                                        <option selected>Channel</option>
-                                                                        <option value="legends1" <?php if($mainRow["legends1_type"]=="legends1") echo "selected"; ?>>Digital 1</option>
-                                                                        <option value="legends2" <?php if($mainRow["legends1_type"]=="legends2") echo "selected"; ?>>Digital 2</option>
-                                                                        <option value="legends3" <?php if($mainRow["legends1_type"]=="legends3") echo "selected"; ?>>Digital 3</option>
-                                                                        <option value="legends4" <?php if($mainRow["legends1_type"]=="legends4") echo "selected"; ?>>Digital 4</option>
-                                                                        <option value="legends5" <?php if($mainRow["legends1_type"]=="legends5") echo "selected"; ?>>Digital 5</option>
-                                                                        <option value="legends6" <?php if($mainRow["legends1_type"]=="legends6" ) echo "selected"; ?>>Digital 6</option>
-                                                                        <option value="t1" <?php if($mainRow["legends1_type"]=="t1" ) echo "selected"; ?>>Digital Switch 1</option>
-                                                                        <option value="t2" <?php if($mainRow["legends1_type"]=="t2" ) echo "selected"; ?>>Digital Switch 2</option>
-                                                                        <option value="t3" <?php if($mainRow["legends1_type"]=="t3" ) echo "selected"; ?>>Digital Switch 3</option>
-                                                                        <option value="t4" <?php if($mainRow["legends1_type"]=="t4" ) echo "selected"; ?>>Digital Switch 4</option>
-                                                                        <option value="r1" <?php if($mainRow["legends1_type"]=="r1" ) echo "selected"; ?>>Relay Output 1</option>
-                                                                        <option value="r2" <?php if($mainRow["legends1_type"]=="r2" ) echo "selected"; ?>>Relay Output 2</option>
-                                                                        <option value="r3" <?php if($mainRow["legends1_type"]=="r3" ) echo "selected"; ?>>Relay Output 3</option>
-                                                                        <option value="r4" <?php if($mainRow["legends1_type"]=="r4" ) echo "selected"; ?>>Relay Output 4</option>
-                                                                        <option value="l1" <?php if($mainRow["legends1_type"]=="l1" ) echo "selected"; ?>>Line Detection 1</option>
-                                                                        <option value="l2" <?php if($mainRow["legends1_type"]=="l2" ) echo "selected"; ?>>Line Detection 2</option>
-                                                                        <option value="l3" <?php if($mainRow["legends1_type"]=="l3" ) echo "selected"; ?>>Line Detection 3</option>
-                                                                        <option value="l4" <?php if($mainRow["legends1_type"]=="l4" ) echo "selected"; ?>>Line Detection 4</option>
-                                                                    </select>
-                                                                </div>
-                                                                <input type="text" class="form-control" placeholder="Label"
-                                                                    value="<?php echo $mainRow["legends1_txt"]; ?>" name="legends1_txt">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="input-group mb-3">
-                                                                <div class="input-group-prepend">
-                                                                    <div class="input-group-prepend">
-                                                                        <div class="input-group-text">
-                                                                            <input type="checkbox"  name="legend2"
-                                                                                <?php if($mainRow["legends2"]=="on") echo "checked"; ?>>
-                                                                        </div>
-                                                                    </div>
-                                                                    <select class="custom-select" name="legend_type_2">
-                                                                        <option selected>Channel</option>
-                                                                        <option value="legends1" <?php if($mainRow["legends2_type"]=="legends1") echo "selected"; ?>>Digital 1</option>
-                                                                        <option value="legends2" <?php if($mainRow["legends2_type"]=="legends2") echo "selected"; ?>>Digital 2</option>
-                                                                        <option value="legends3" <?php if($mainRow["legends2_type"]=="legends3") echo "selected"; ?>>Digital 3</option>
-                                                                        <option value="legends4" <?php if($mainRow["legends2_type"]=="legends4") echo "selected"; ?>>Digital 4</option>
-                                                                        <option value="legends5" <?php if($mainRow["legends2_type"]=="legends5") echo "selected"; ?>>Digital 5</option>
-                                                                        <option value="legends6" <?php if($mainRow["legends2_type"]=="legends6") echo "selected"; ?>>Digital 6</option>
-                                                                        <option value="t1" <?php if($mainRow["legends2_type"]=="t1" ) echo "selected"; ?>>Digital Switch 1</option>
-                                                                        <option value="t2" <?php if($mainRow["legends2_type"]=="t2" ) echo "selected"; ?>>Digital Switch 2</option>
-                                                                        <option value="t3" <?php if($mainRow["legends2_type"]=="t3" ) echo "selected"; ?>>Digital Switch 3</option>
-                                                                        <option value="t4" <?php if($mainRow["legends2_type"]=="t4" ) echo "selected"; ?>>Digital Switch 4</option>
-                                                                        <option value="r1" <?php if($mainRow["legends2_type"]=="r1" ) echo "selected"; ?>>Relay Output 1</option>
-                                                                        <option value="r2" <?php if($mainRow["legends2_type"]=="r2" ) echo "selected"; ?>>Relay Output 2</option>
-                                                                        <option value="r3" <?php if($mainRow["legends2_type"]=="r3" ) echo "selected"; ?>>Relay Output 3</option>
-                                                                        <option value="r4" <?php if($mainRow["legends2_type"]=="r4" ) echo "selected"; ?>>Relay Output 4</option>
-                                                                        <option value="l1" <?php if($mainRow["legends2_type"]=="l1" ) echo "selected"; ?>>Line Detection 1</option>
-                                                                        <option value="l2" <?php if($mainRow["legends2_type"]=="l2" ) echo "selected"; ?>>Line Detection 2</option>
-                                                                        <option value="l3" <?php if($mainRow["legends2_type"]=="l3" ) echo "selected"; ?>>Line Detection 3</option>
-                                                                        <option value="l4" <?php if($mainRow["legends2_type"]=="l4" ) echo "selected"; ?>>Line Detection 4</option>
-                                                                    </select>
-                                                                </div>
-                                                                <input type="text" class="form-control" placeholder="Label"
-                                                                       value="<?php echo $mainRow["legends2_txt"]; ?>" name="legends2_txt">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="input-group mb-3">
-                                                                <div class="input-group-prepend">
-                                                                    <div class="input-group-prepend">
-                                                                        <div class="input-group-text">
-                                                                            <input type="checkbox"  name="legend3"
-                                                                                <?php if($mainRow["legends3"]=="on") echo "checked"; ?>>
-                                                                        </div>
-                                                                    </div>
-                                                                    <select class="custom-select" name="legend_type_3">
-                                                                        <option selected>Channel</option>
-                                                                        <option value="legends1" <?php if($mainRow["legends3_type"]=="legends1") echo "selected"; ?>>Digital 1</option>
-                                                                        <option value="legends2" <?php if($mainRow["legends3_type"]=="legends2") echo "selected"; ?>>Digital 2</option>
-                                                                        <option value="legends3" <?php if($mainRow["legends3_type"]=="legends3") echo "selected"; ?>>Digital 3</option>
-                                                                        <option value="legends4" <?php if($mainRow["legends3_type"]=="legends4") echo "selected"; ?>>Digital 4</option>
-                                                                        <option value="legends5" <?php if($mainRow["legends3_type"]=="legends5") echo "selected"; ?>>Digital 5</option>
-                                                                        <option value="legends6" <?php if($mainRow["legends3_type"]=="legends6") echo "selected"; ?>>Digital 6</option>
-                                                                        <option value="t1" <?php if($mainRow["legends3_type"]=="t1" ) echo "selected"; ?>>Digital Switch 1</option>
-                                                                        <option value="t2" <?php if($mainRow["legends3_type"]=="t2" ) echo "selected"; ?>>Digital Switch 2</option>
-                                                                        <option value="t3" <?php if($mainRow["legends3_type"]=="t3" ) echo "selected"; ?>>Digital Switch 3</option>
-                                                                        <option value="t4" <?php if($mainRow["legends3_type"]=="t4" ) echo "selected"; ?>>Digital Switch 4</option>
-                                                                        <option value="r1" <?php if($mainRow["legends3_type"]=="r1" ) echo "selected"; ?>>Relay Output 1</option>
-                                                                        <option value="r2" <?php if($mainRow["legends3_type"]=="r2" ) echo "selected"; ?>>Relay Output 2</option>
-                                                                        <option value="r3" <?php if($mainRow["legends3_type"]=="r3" ) echo "selected"; ?>>Relay Output 3</option>
-                                                                        <option value="r4" <?php if($mainRow["legends3_type"]=="r4" ) echo "selected"; ?>>Relay Output 4</option>
-                                                                        <option value="l1" <?php if($mainRow["legends3_type"]=="l1" ) echo "selected"; ?>>Line Detection 1</option>
-                                                                        <option value="l2" <?php if($mainRow["legends3_type"]=="l2" ) echo "selected"; ?>>Line Detection 2</option>
-                                                                        <option value="l3" <?php if($mainRow["legends3_type"]=="l3" ) echo "selected"; ?>>Line Detection 3</option>
-                                                                        <option value="l4" <?php if($mainRow["legends3_type"]=="l4" ) echo "selected"; ?>>Line Detection 4</option>
-                                                                    </select>
-                                                                </div>
-                                                                <input type="text" class="form-control" placeholder="Label"
-                                                                       value="<?php echo $mainRow["legends3_txt"]; ?>" name="legends3_txt">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="input-group mb-3">
-                                                                <div class="input-group-prepend">
-                                                                    <div class="input-group-prepend">
-                                                                        <div class="input-group-text">
-                                                                            <input type="checkbox"  name="legend4"
-                                                                                <?php if($mainRow["legends4"]=="on") echo "checked"; ?>>
-                                                                        </div>
-                                                                    </div>
-                                                                    <select class="custom-select" name="legend_type_4">
-                                                                        <option selected>Channel</option>
-                                                                        <option value="legends1" <?php if($mainRow["legends4_type"]=="legends1") echo "selected"; ?>>Digital 1</option>
-                                                                        <option value="legends2" <?php if($mainRow["legends4_type"]=="legends2") echo "selected"; ?>>Digital 2</option>
-                                                                        <option value="legends3" <?php if($mainRow["legends4_type"]=="legends3") echo "selected"; ?>>Digital 3</option>
-                                                                        <option value="legends4" <?php if($mainRow["legends4_type"]=="legends4") echo "selected"; ?>>Digital 4</option>
-                                                                        <option value="legends5" <?php if($mainRow["legends4_type"]=="legends5") echo "selected"; ?>>Digital 5</option>
-                                                                        <option value="legends6" <?php if($mainRow["legends4_type"]=="legends6") echo "selected"; ?>>Digital 6</option>
-                                                                        <option value="t1" <?php if($mainRow["legends4_type"]=="t1" ) echo "selected"; ?>>Digital Switch 1</option>
-                                                                        <option value="t2" <?php if($mainRow["legends4_type"]=="t2" ) echo "selected"; ?>>Digital Switch 2</option>
-                                                                        <option value="t3" <?php if($mainRow["legends4_type"]=="t3" ) echo "selected"; ?>>Digital Switch 3</option>
-                                                                        <option value="t4" <?php if($mainRow["legends4_type"]=="t4" ) echo "selected"; ?>>Digital Switch 4</option>
-                                                                        <option value="r1" <?php if($mainRow["legends4_type"]=="r1" ) echo "selected"; ?>>Relay Output 1</option>
-                                                                        <option value="r2" <?php if($mainRow["legends4_type"]=="r2" ) echo "selected"; ?>>Relay Output 2</option>
-                                                                        <option value="r3" <?php if($mainRow["legends4_type"]=="r3" ) echo "selected"; ?>>Relay Output 3</option>
-                                                                        <option value="r4" <?php if($mainRow["legends4_type"]=="r4" ) echo "selected"; ?>>Relay Output 4</option>
-                                                                        <option value="l1" <?php if($mainRow["legends4_type"]=="l1" ) echo "selected"; ?>>Line Detection 1</option>
-                                                                        <option value="l2" <?php if($mainRow["legends4_type"]=="l2" ) echo "selected"; ?>>Line Detection 2</option>
-                                                                        <option value="l3" <?php if($mainRow["legends4_type"]=="l3" ) echo "selected"; ?>>Line Detection 3</option>
-                                                                        <option value="l4" <?php if($mainRow["legends4_type"]=="l4" ) echo "selected"; ?>>Line Detection 4</option>
-                                                                    </select>
-                                                                </div>
-                                                                <input type="text" class="form-control" placeholder="Label"
-                                                                    value="<?php echo $mainRow["legends4_txt"]; ?>" name="legends4_txt">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="input-group mb-3">
-                                                                <div class="input-group-prepend">
-                                                                    <div class="input-group-prepend">
-                                                                        <div class="input-group-text">
-                                                                            <input type="checkbox"  name="legend5"
-                                                                                <?php if($mainRow["legends5"]=="on") echo "checked"; ?>>
-                                                                        </div>
-                                                                    </div>
-                                                                    <select class="custom-select" name="legend_type_5">
-                                                                        <option selected>Channel</option>
-                                                                        <option value="legends1" <?php if($mainRow["legends5_type"]=="legends1") echo "selected"; ?>>Digital 1</option>
-                                                                        <option value="legends2" <?php if($mainRow["legends5_type"]=="legends2") echo "selected"; ?>>Digital 2</option>
-                                                                        <option value="legends3" <?php if($mainRow["legends5_type"]=="legends3") echo "selected"; ?>>Digital 3</option>
-                                                                        <option value="legends4" <?php if($mainRow["legends5_type"]=="legends4") echo "selected"; ?>>Digital 4</option>
-                                                                        <option value="legends5" <?php if($mainRow["legends5_type"]=="legends5") echo "selected"; ?>>Digital 5</option>
-                                                                        <option value="legends6" <?php if($mainRow["legends5_type"]=="legends6") echo "selected"; ?>>Digital 6</option>
-                                                                        <option value="t1" <?php if($mainRow["legends5_type"]=="t1" ) echo "selected"; ?>>Digital Switch 1</option>
-                                                                        <option value="t2" <?php if($mainRow["legends5_type"]=="t2" ) echo "selected"; ?>>Digital Switch 2</option>
-                                                                        <option value="t3" <?php if($mainRow["legends5_type"]=="t3" ) echo "selected"; ?>>Digital Switch 3</option>
-                                                                        <option value="t4" <?php if($mainRow["legends5_type"]=="t4" ) echo "selected"; ?>>Digital Switch 4</option>
-                                                                        <option value="r1" <?php if($mainRow["legends5_type"]=="r1" ) echo "selected"; ?>>Relay Output 1</option>
-                                                                        <option value="r2" <?php if($mainRow["legends5_type"]=="r2" ) echo "selected"; ?>>Relay Output 2</option>
-                                                                        <option value="r3" <?php if($mainRow["legends5_type"]=="r3" ) echo "selected"; ?>>Relay Output 3</option>
-                                                                        <option value="r4" <?php if($mainRow["legends5_type"]=="r4" ) echo "selected"; ?>>Relay Output 4</option>
-                                                                        <option value="l1" <?php if($mainRow["legends5_type"]=="l1" ) echo "selected"; ?>>Line Detection 1</option>
-                                                                        <option value="l2" <?php if($mainRow["legends5_type"]=="l2" ) echo "selected"; ?>>Line Detection 2</option>
-                                                                        <option value="l3" <?php if($mainRow["legends5_type"]=="l3" ) echo "selected"; ?>>Line Detection 3</option>
-                                                                        <option value="l4" <?php if($mainRow["legends5_type"]=="l4" ) echo "selected"; ?>>Line Detection 4</option>
-                                                                    </select>
-                                                                </div>
-                                                                <input type="text" class="form-control" placeholder="Label"
-                                                                       value="<?php echo $mainRow["legends5_txt"]; ?>" name="legends5_txt">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="input-group mb-3">
-                                                                <div class="input-group-prepend">
-                                                                    <div class="input-group-prepend">
-                                                                        <div class="input-group-text">
-                                                                            <input type="checkbox"  name="legend6"
-                                                                                <?php if($mainRow["legends6"]=="on") echo "checked"; ?>>
-                                                                        </div>
-                                                                    </div>
-                                                                    <select class="custom-select" name="legend_type_6">
-                                                                        <option selected>Channel</option>
-                                                                        <option value="legends1" <?php if($mainRow["legends6_type"]=="legends1") echo "selected"; ?>>Digital 1</option>
-                                                                        <option value="legends2" <?php if($mainRow["legends6_type"]=="legends2") echo "selected"; ?>>Digital 2</option>
-                                                                        <option value="legends3" <?php if($mainRow["legends6_type"]=="legends3") echo "selected"; ?>>Digital 3</option>
-                                                                        <option value="legends4" <?php if($mainRow["legends6_type"]=="legends4") echo "selected"; ?>>Digital 4</option>
-                                                                        <option value="legends5" <?php if($mainRow["legends6_type"]=="legends5") echo "selected"; ?>>Digital 5</option>
-                                                                        <option value="legends6" <?php if($mainRow["legends6_type"]=="legends6") echo "selected"; ?>>Digital 6</option>
-                                                                        <option value="t1" <?php if($mainRow["legends6_type"]=="t1" ) echo "selected"; ?>>Digital Switch 1</option>
-                                                                        <option value="t2" <?php if($mainRow["legends6_type"]=="t2" ) echo "selected"; ?>>Digital Switch 2</option>
-                                                                        <option value="t3" <?php if($mainRow["legends6_type"]=="t3" ) echo "selected"; ?>>Digital Switch 3</option>
-                                                                        <option value="t4" <?php if($mainRow["legends6_type"]=="t4" ) echo "selected"; ?>>Digital Switch 4</option>
-                                                                        <option value="r1" <?php if($mainRow["legends6_type"]=="r1" ) echo "selected"; ?>>Relay Output 1</option>
-                                                                        <option value="r2" <?php if($mainRow["legends6_type"]=="r2" ) echo "selected"; ?>>Relay Output 2</option>
-                                                                        <option value="r3" <?php if($mainRow["legends6_type"]=="r3" ) echo "selected"; ?>>Relay Output 3</option>
-                                                                        <option value="r4" <?php if($mainRow["legends6_type"]=="r4" ) echo "selected"; ?>>Relay Output 4</option>
-                                                                        <option value="l1" <?php if($mainRow["legends6_type"]=="l1" ) echo "selected"; ?>>Line Detection 1</option>
-                                                                        <option value="l2" <?php if($mainRow["legends6_type"]=="l2" ) echo "selected"; ?>>Line Detection 2</option>
-                                                                        <option value="l3" <?php if($mainRow["legends6_type"]=="l3" ) echo "selected"; ?>>Line Detection 3</option>
-                                                                        <option value="l4" <?php if($mainRow["legends6_type"]=="l4" ) echo "selected"; ?>>Line Detection 4</option>
-                                                                    </select>
-                                                                </div>
-                                                                <input type="text" class="form-control" placeholder="Label"
-                                                                       value="<?php echo $mainRow["legends6_txt"]; ?>" name="legends6_txt">
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                     <hr>
                                                     <!-- Digital Channels D1-D6-->
                                                     <div class="row">

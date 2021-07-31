@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 5.1.0
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 29, 2021 at 04:01 PM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 5.5.37
+-- Generation Time: Jul 31, 2021 at 06:56 AM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -118,16 +119,16 @@ INSERT INTO `custom_alerts` (`id`, `device_id`, `today_check`, `today_title`, `l
 CREATE TABLE `custom_conditions` (
   `id` int(11) NOT NULL,
   `device_id` int(10) NOT NULL,
-  `tempGreater` int(10) NOT NULL DEFAULT '1',
-  `tempLoss` int(10) NOT NULL DEFAULT '0',
-  `alarmGreater` int(10) NOT NULL DEFAULT '1',
-  `alarmLess` int(10) NOT NULL DEFAULT '0',
-  `waterInOilGreater` int(10) NOT NULL DEFAULT '1',
-  `waterInOilLess` int(10) NOT NULL DEFAULT '0',
-  `lossMotionGreater` int(10) NOT NULL DEFAULT '1',
-  `lossMotionLess` int(10) NOT NULL DEFAULT '0',
-  `liftPositionGreater` int(10) NOT NULL DEFAULT '1',
-  `liftPositionLower` int(10) NOT NULL DEFAULT '0'
+  `tempGreater` int(10) NOT NULL DEFAULT 1,
+  `tempLoss` int(10) NOT NULL DEFAULT 0,
+  `alarmGreater` int(10) NOT NULL DEFAULT 1,
+  `alarmLess` int(10) NOT NULL DEFAULT 0,
+  `waterInOilGreater` int(10) NOT NULL DEFAULT 1,
+  `waterInOilLess` int(10) NOT NULL DEFAULT 0,
+  `lossMotionGreater` int(10) NOT NULL DEFAULT 1,
+  `lossMotionLess` int(10) NOT NULL DEFAULT 0,
+  `liftPositionGreater` int(10) NOT NULL DEFAULT 1,
+  `liftPositionLower` int(10) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -251,7 +252,7 @@ INSERT INTO `custom_devicestatus` (`id`, `device_id`, `a1`, `a2`, `a3`, `a4`, `a
 (32, 62, 'on', 'on', 'on', 'on', 'on', 'on', 'on', 'on'),
 (33, 63, 'on', 'on', 'on', 'on', 'on', 'on', 'on', 'on'),
 (34, 64, 'on', 'on', 'on', 'on', 'on', 'on', 'on', 'on'),
-(35, 65, 'on', 'on', 'on', 'on', 'on', 'on', 'on', 'on');
+(35, 65, 'on', '', '', '', '', '', '', 'on');
 
 -- --------------------------------------------------------
 
@@ -330,7 +331,7 @@ INSERT INTO `custom_graph` (`id`, `device_id`, `graph_title`, `line_color`, `lin
 (32, 62, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', 0, '', 0, '#FF0000', '#FF0000', '#FF0000', '#FF0000', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 (33, 63, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', 0, '', 0, '#FF0000', '#FF0000', '#FF0000', '#FF0000', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 (34, 64, 'TORQUE HISTORY', '#009cde', 'Torque', 'FT-LBS', '', 0, '', 0, '', 0, '', 0, '#FF0000', '#FF0000', '#FF0000', '#FF0000', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(35, 65, 'Graph', '#009cde', 'Torque', 'FT-LBS', 'marker1', 1000, 'marker2', 2000, 'marker3', 3000, 'marker4', 4000, '#ff0000', '#00ff08', '#1100ff', '#ff00f7', 'on', 'on', 'on', 'on', 'on', 'on', 'on', '1', '2', '3', '4', '5', '6', 'legends1', 'legends2', 'legends3', 'legends4', 'legends5', 'legends6', 'on', 'on', 'on', 'on', 'on', 'on', '11', '22', '33', '44', '55', '66', 'analogue1', 'analogue2', 'analogue3', 'analogue4', 'analogue5', 'analogue6');
+(35, 65, 'Graph', '#009cde', 'Torque', 'FT-LBS', 'marker1', 1000, 'marker2', 2000, 'marker3', 3000, 'marker4', 4000, '#ff0000', '#00ff08', '#1100ff', '#ff00f7', 'on', 'on', 'on', 'on', 'on', 'on', 'on', 'Digital 1', 'Digital 4', 'Digital 2', 'Digital 5', 'Digital 3', 'Digital 6', 'legends1', 'legends2', 'legends3', 'legends4', 'legends5', 'legends6', 'on', 'on', 'on', 'on', 'on', 'on', '11', '22', '33', '44', '55', '66', 'analogue1', 'analogue2', 'analogue3', 'analogue4', 'analogue5', 'analogue6');
 
 -- --------------------------------------------------------
 
@@ -521,7 +522,7 @@ CREATE TABLE `custom_vertical_bar` (
   `id` int(11) NOT NULL,
   `device_id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL DEFAULT 'Lift Position',
-  `maxRange` int(20) NOT NULL DEFAULT '100',
+  `maxRange` int(20) NOT NULL DEFAULT 100,
   `unit` varchar(10) NOT NULL DEFAULT '%'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -548,7 +549,7 @@ CREATE TABLE `dashboard_units` (
   `torque` varchar(50) NOT NULL DEFAULT 'ft-lbs',
   `pressure` varchar(50) NOT NULL DEFAULT 'bar',
   `distance` varchar(50) NOT NULL DEFAULT 'mm',
-  `time_format` int(2) NOT NULL DEFAULT '12',
+  `time_format` int(2) NOT NULL DEFAULT 12,
   `time_zone` varchar(100) NOT NULL DEFAULT 'Asia/Karachi'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -705,7 +706,7 @@ CREATE TABLE `recorded_values` (
   `temp2` float NOT NULL,
   `temp3` float NOT NULL,
   `Torque` int(11) NOT NULL,
-  `date_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date_time` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -6079,7 +6080,7 @@ CREATE TABLE `reset_pass` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `code` varchar(1000) NOT NULL,
-  `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date_time` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -6103,8 +6104,8 @@ CREATE TABLE `users` (
   `username` varchar(20) NOT NULL,
   `email` varchar(30) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `is_admin` tinyint(1) NOT NULL DEFAULT '0',
-  `blocked` tinyint(1) NOT NULL DEFAULT '0',
+  `is_admin` tinyint(1) NOT NULL DEFAULT 0,
+  `blocked` tinyint(1) NOT NULL DEFAULT 0,
   `contact` varchar(50) DEFAULT NULL,
   `company_name` varchar(100) NOT NULL,
   `job_position` varchar(100) NOT NULL,
@@ -6270,91 +6271,110 @@ ALTER TABLE `user_and_devices`
 --
 ALTER TABLE `custom_add_sections`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT for table `custom_alerts`
 --
 ALTER TABLE `custom_alerts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
 --
 -- AUTO_INCREMENT for table `custom_conditions`
 --
 ALTER TABLE `custom_conditions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
 --
 -- AUTO_INCREMENT for table `custom_dashboards`
 --
 ALTER TABLE `custom_dashboards`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+
 --
 -- AUTO_INCREMENT for table `custom_devicestatus`
 --
 ALTER TABLE `custom_devicestatus`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
 --
 -- AUTO_INCREMENT for table `custom_graph`
 --
 ALTER TABLE `custom_graph`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
 --
 -- AUTO_INCREMENT for table `custom_installation_info`
 --
 ALTER TABLE `custom_installation_info`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
 --
 -- AUTO_INCREMENT for table `custom_maintenance`
 --
 ALTER TABLE `custom_maintenance`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
 --
 -- AUTO_INCREMENT for table `custom_sections`
 --
 ALTER TABLE `custom_sections`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
 --
 -- AUTO_INCREMENT for table `custom_vertical_bar`
 --
 ALTER TABLE `custom_vertical_bar`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `dashboard_units`
 --
 ALTER TABLE `dashboard_units`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
 --
 -- AUTO_INCREMENT for table `devices`
 --
 ALTER TABLE `devices`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+
 --
 -- AUTO_INCREMENT for table `installation_info`
 --
 ALTER TABLE `installation_info`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT for table `maintenance_record`
 --
 ALTER TABLE `maintenance_record`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
 -- AUTO_INCREMENT for table `recorded_values`
 --
 ALTER TABLE `recorded_values`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5348;
+
 --
 -- AUTO_INCREMENT for table `reset_pass`
 --
 ALTER TABLE `reset_pass`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+
 --
 -- AUTO_INCREMENT for table `user_and_devices`
 --
 ALTER TABLE `user_and_devices`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

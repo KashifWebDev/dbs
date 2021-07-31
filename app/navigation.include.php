@@ -3,10 +3,14 @@ if (isset($_SESSION["darkTheme"]) && $_SESSION["darkTheme"] == 1){
     $navClass = "bg-dark";
     $txtColor = "text-light";
     $themeLinkText = "Light Theme";
+    $themeLinkText = "Light Theme";
+    $navLogo = "dark.jpg";
 }else{
     $navClass = "bg-light shadow";
     $txtColor = "text-dark";
     $themeLinkText = "Dark Theme";
+    $themeLinkText = "Dark Theme";
+    $navLogo = "dbs.png";
 }
 
 $sql = "SELECT * FROM devices WHERE id=$device_id";
