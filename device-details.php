@@ -311,7 +311,12 @@
                                   cursor: "pointer",
                                   fontSize: 16,
                                   itemclick: toggleDataSeries,
-                                  fontColor: "<?php echo $_SESSION['darkTheme']==0 ? 'black' : '#d2d2c9'; ?>"
+                                  fontColor: "<?php echo $_SESSION['darkTheme']==0 ? 'black' : '#d2d2c9'; ?>",
+                                  itemclick: function(e){
+                                      var newUnit = e.dataSeries.axisYUnit;
+                                      chart.options.axisY.suffix = " " + newUnit;
+                                      chart.render();
+                                  }
                               },
                               axisX:{
                                   labelFontSize: 13,
@@ -323,12 +328,13 @@
                                   labelFontSize: 13,
                                   gridThickness: 0,
                                   labelFontColor: "<?php echo $_SESSION['darkTheme']==0 ? 'black' : '#d2d2c9'; ?>",
-                                  title: "<?php echo $row['y_unit']; ?>",
+                                  //title: "<?php //echo $row['y_unit']; ?>//",
                                   stripLines:[
                                       {
                                           <?php
                                           if(isset($row["line1_value"]) && $row["line1_value"]!=""){
                                           ?>
+                                             axisYUnit: "<?php echo isset($_SESSION["Celcius"]) && $_SESSION["Celcius"]===true ? '°C' : '°F'; ?>",
                                               labelFontColor:"<?php echo $row["line1_clr"]; ?>",
                                               color:"<?php echo $row["line1_clr"]; ?>",
                                               value: <?php echo $row["line1_value"]; ?>,
@@ -341,8 +347,9 @@
                                           <?php
                                           if(isset($row["line2_value"]) && $row["line2_value"]!=""){
                                           ?>
-                                          labelFontColor:"<?php echo $row["line2_clr"]; ?>",
-                                          color:"<?php echo $row["line2_clr"]; ?>",
+                                              axisYUnit: "ft-lbs",
+                                              labelFontColor:"<?php echo $row["line2_clr"]; ?>",
+                                              color:"<?php echo $row["line2_clr"]; ?>",
                                               value: <?php echo $row["line2_value"]; ?>,
                                               label: "<?php echo $row["line2"]; ?>"
                                           <?php
@@ -353,6 +360,7 @@
                                           <?php
                                           if(isset($row["line3_value"]) && $row["line3_value"]!=""){
                                           ?>
+                                          axisYUnit: "bar",
                                           labelFontColor:"<?php echo $row["line3_clr"]; ?>",
                                           color:"<?php echo $row["line3_clr"]; ?>",
                                               value: <?php echo $row["line3_value"]; ?>,
@@ -365,6 +373,7 @@
                                           <?php
                                           if(isset($row["line4_value"]) && $row["line4_value"]!=""){
                                           ?>
+                                          axisYUnit: "mm",
                                           labelFontColor:"<?php echo $row["line4_clr"]; ?>",
                                           color:"<?php echo $row["line4_clr"]; ?>",
                                               value: <?php echo $row["line4_value"]; ?>,
