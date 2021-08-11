@@ -35,12 +35,12 @@ $file = $row["manual"];
                             Account Information
                         </a>
                     </li>
-                    <li class="nav-item ml-3">
-                        <a class="nav-link navbar-link-color <?php echo $txtColor; ?> btn"
-                           type="button" data-toggle="modal" data-target="#dashboard_settings_modal">
-                            Dashboard Settings
-                        </a>
-                    </li>
+<!--                    <li class="nav-item ml-3">-->
+<!--                        <a class="nav-link navbar-link-color --><?php //echo $txtColor; ?><!-- btn"-->
+<!--                           type="button" data-toggle="modal" data-target="#dashboard_settings_modal">-->
+<!--                            Dashboard Settings-->
+<!--                        </a>-->
+<!--                    </li>-->
                     <li class="nav-item ml-3">
                         <a class="nav-link navbar-link-color <?php echo $txtColor; ?>" href="app/logout.php">Logout</a>
                     </li>

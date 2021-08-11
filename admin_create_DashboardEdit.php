@@ -854,6 +854,16 @@ function runQuery($sql, $msg){
                                                                 </div>
                                                                 <input type="text" class="form-control" placeholder="Label"
                                                                     value="<?php echo $mainRow["analogue1_txt"]; ?>" name="analogue1_txt">
+                                                                <select class="custom-select" name="analoge_unit_1">
+                                                                    <option value="">Unit</option>
+                                                                    <option value="°F" <?php if($mainRow["analoge_unit_1"]=="°F" ) echo "selected"; ?>>°F</option>
+                                                                    <option value="°C" <?php if($mainRow["analoge_unit_1"]=="°C" ) echo "selected"; ?>>°C</option>
+                                                                    <option value="ft-Lbs" <?php if($mainRow["analoge_unit_1"]=="ft-Lbs" ) echo "selected"; ?>>ft-Lbs</option>
+                                                                    <option value="Nm" <?php if($mainRow["analoge_unit_1"]=="Nm" ) echo "selected"; ?>>Nm</option>
+                                                                    <option value="mm" <?php if($mainRow["analoge_unit_1"]=="mm" ) echo "selected"; ?>>mm</option>
+                                                                    <option value="in" <?php if($mainRow["analoge_unit_1"]=="in" ) echo "selected"; ?>>in</option>
+                                                                    <option value="Amp" <?php if($mainRow["analoge_unit_1"]=="Amp" ) echo "selected"; ?>>Amp</option>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
@@ -883,6 +893,16 @@ function runQuery($sql, $msg){
                                                                 </div>
                                                                 <input type="text" class="form-control" placeholder="Label"
                                                                     value="<?php echo $mainRow["analogue2_txt"]; ?>" name="analogue2_txt">
+                                                                <select class="custom-select" name="analoge_unit_2">
+                                                                    <option value="">Unit</option>
+                                                                    <option value="°F" <?php if($mainRow["analoge_unit_2"]=="°F" ) echo "selected"; ?>>°F</option>
+                                                                    <option value="°C" <?php if($mainRow["analoge_unit_2"]=="°C" ) echo "selected"; ?>>°C</option>
+                                                                    <option value="ft-Lbs" <?php if($mainRow["analoge_unit_2"]=="ft-Lbs" ) echo "selected"; ?>>ft-Lbs</option>
+                                                                    <option value="Nm" <?php if($mainRow["analoge_unit_2"]=="Nm" ) echo "selected"; ?>>Nm</option>
+                                                                    <option value="mm" <?php if($mainRow["analoge_unit_2"]=="mm" ) echo "selected"; ?>>mm</option>
+                                                                    <option value="in" <?php if($mainRow["analoge_unit_2"]=="in" ) echo "selected"; ?>>in</option>
+                                                                    <option value="Amp" <?php if($mainRow["analoge_unit_2"]=="Amp" ) echo "selected"; ?>>Amp</option>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
@@ -912,6 +932,16 @@ function runQuery($sql, $msg){
                                                                 </div>
                                                                 <input type="text" class="form-control" placeholder="Label"
                                                                     value="<?php echo $mainRow["analogue3_txt"]; ?>" name="analogue3_txt">
+                                                                <select class="custom-select" name="analoge_unit_3">
+                                                                    <option value="">Unit</option>
+                                                                    <option value="°F" <?php if($mainRow["analoge_unit_3"]=="°F" ) echo "selected"; ?>>°F</option>
+                                                                    <option value="°C" <?php if($mainRow["analoge_unit_3"]=="°C" ) echo "selected"; ?>>°C</option>
+                                                                    <option value="ft-Lbs" <?php if($mainRow["analoge_unit_3"]=="ft-Lbs" ) echo "selected"; ?>>ft-Lbs</option>
+                                                                    <option value="Nm" <?php if($mainRow["analoge_unit_3"]=="Nm" ) echo "selected"; ?>>Nm</option>
+                                                                    <option value="mm" <?php if($mainRow["analoge_unit_3"]=="mm" ) echo "selected"; ?>>mm</option>
+                                                                    <option value="in" <?php if($mainRow["analoge_unit_3"]=="in" ) echo "selected"; ?>>in</option>
+                                                                    <option value="Amp" <?php if($mainRow["analoge_unit_3"]=="Amp" ) echo "selected"; ?>>Amp</option>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
@@ -941,6 +971,16 @@ function runQuery($sql, $msg){
                                                                 </div>
                                                                 <input type="text" class="form-control" placeholder="Label"
                                                                     value="<?php echo $mainRow["analogue4_txt"]; ?>" name="analogue4_txt">
+                                                                <select class="custom-select" name="analoge_unit_4">
+                                                                    <option value="">Unit</option>
+                                                                    <option value="°F" <?php if($mainRow["analoge_unit_4"]=="°F" ) echo "selected"; ?>>°F</option>
+                                                                    <option value="°C" <?php if($mainRow["analoge_unit_4"]=="°C" ) echo "selected"; ?>>°C</option>
+                                                                    <option value="ft-Lbs" <?php if($mainRow["analoge_unit_4"]=="ft-Lbs" ) echo "selected"; ?>>ft-Lbs</option>
+                                                                    <option value="Nm" <?php if($mainRow["analoge_unit_4"]=="Nm" ) echo "selected"; ?>>Nm</option>
+                                                                    <option value="mm" <?php if($mainRow["analoge_unit_4"]=="mm" ) echo "selected"; ?>>mm</option>
+                                                                    <option value="in" <?php if($mainRow["analoge_unit_4"]=="in" ) echo "selected"; ?>>in</option>
+                                                                    <option value="Amp" <?php if($mainRow["analoge_unit_4"]=="Amp" ) echo "selected"; ?>>Amp</option>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
@@ -970,6 +1010,16 @@ function runQuery($sql, $msg){
                                                                 </div>
                                                                 <input type="text" class="form-control" placeholder="Label"
                                                                     value="<?php echo $mainRow["analogue5_txt"]; ?>" name="analogue5_txt">
+                                                                <select class="custom-select" name="analoge_unit_5">
+                                                                    <option value="">Unit</option>
+                                                                    <option value="°F" <?php if($mainRow["analoge_unit_5"]=="°F" ) echo "selected"; ?>>°F</option>
+                                                                    <option value="°C" <?php if($mainRow["analoge_unit_5"]=="°C" ) echo "selected"; ?>>°C</option>
+                                                                    <option value="ft-Lbs" <?php if($mainRow["analoge_unit_5"]=="ft-Lbs" ) echo "selected"; ?>>ft-Lbs</option>
+                                                                    <option value="Nm" <?php if($mainRow["analoge_unit_5"]=="Nm" ) echo "selected"; ?>>Nm</option>
+                                                                    <option value="mm" <?php if($mainRow["analoge_unit_5"]=="mm" ) echo "selected"; ?>>mm</option>
+                                                                    <option value="in" <?php if($mainRow["analoge_unit_5"]=="in" ) echo "selected"; ?>>in</option>
+                                                                    <option value="Amp" <?php if($mainRow["analoge_unit_5"]=="Amp" ) echo "selected"; ?>>Amp</option>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
@@ -999,6 +1049,16 @@ function runQuery($sql, $msg){
                                                                 </div>
                                                                 <input type="text" class="form-control" placeholder="Label"
                                                                     value="<?php echo $mainRow["analogue6_txt"]; ?>" name="analogue6_txt">
+                                                                <select class="custom-select" name="analoge_unit_6">
+                                                                    <option value="">Unit</option>
+                                                                    <option value="°F" <?php if($mainRow["analoge_unit_6"]=="°F" ) echo "selected"; ?>>°F</option>
+                                                                    <option value="°C" <?php if($mainRow["analoge_unit_6"]=="°C" ) echo "selected"; ?>>°C</option>
+                                                                    <option value="ft-Lbs" <?php if($mainRow["analoge_unit_6"]=="ft-Lbs" ) echo "selected"; ?>>ft-Lbs</option>
+                                                                    <option value="Nm" <?php if($mainRow["analoge_unit_6"]=="Nm" ) echo "selected"; ?>>Nm</option>
+                                                                    <option value="mm" <?php if($mainRow["analoge_unit_6"]=="mm" ) echo "selected"; ?>>mm</option>
+                                                                    <option value="in" <?php if($mainRow["analoge_unit_6"]=="in" ) echo "selected"; ?>>in</option>
+                                                                    <option value="Amp" <?php if($mainRow["analoge_unit_6"]=="Amp" ) echo "selected"; ?>>Amp</option>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1727,9 +1787,17 @@ function runQuery($sql, $msg){
         $legends5_type = $_POST["analogue1_type_5"];
         $legends6_type = $_POST["analogue1_type_6"];
 
+        $unit1 = $_POST["analoge_unit_1"];
+        $unit2 = $_POST["analoge_unit_2"];
+        $unit3 = $_POST["analoge_unit_3"];
+        $unit4 = $_POST["analoge_unit_4"];
+        $unit5 = $_POST["analoge_unit_5"];
+        $unit6 = $_POST["analoge_unit_6"];
+
         $sql = "UPDATE custom_graph SET analogue1='$legend1', analogue2='$legend2', analogue3='$legend3', analogue4='$legend4',
                  analogue5='$legend5' , analogue6='$legend6' , analogue1_txt='$legends1_txt', analogue2_txt='$legends2_txt', analogue3_txt='$legends3_txt', analogue4_txt='$legends4_txt', analogue5_txt='$legends5_txt', analogue6_txt='$legends6_txt',
-                analogue1_type='$legends1_type', analogue2_type='$legends2_type', analogue3_type='$legends3_type',  analogue4_type='$legends4_type', analogue5_type='$legends5_type', analogue6_type='$legends6_type' 
+                analogue1_type='$legends1_type', analogue2_type='$legends2_type', analogue3_type='$legends3_type',  analogue4_type='$legends4_type', analogue5_type='$legends5_type', analogue6_type='$legends6_type' ,
+                analoge_unit_1='$unit1', analoge_unit_2='$unit2', analoge_unit_3='$unit3', analoge_unit_4='$unit4', analoge_unit_5='$unit5', analoge_unit_6='$unit6'
                 WHERE device_id = $device_id";
 //        echo $sql; exit(); die();
         mysqli_query($con, $sql);

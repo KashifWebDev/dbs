@@ -574,12 +574,12 @@ $_SESSION['currentPath'] = "./";
                             <label for="email" style="color: black;">Primary Contact Number:</label>
                             <div class="row no-gutters">
                                 <div class="col">
-                                    <input type="text" class="form-control" name="contact" placeholder="+1 584 458 485" id="phone1" value="<?php echo $row["contact"]; ?>">
+                                    <input type="text" class="form-control" name="contact" placeholder="+1 584 458 485" id="phone1" value="<?php echo $row1["contact"]; ?>">
                                 </div>
                                 <div class="col d-flex justify-content-center align-items-center">
                                     <div class="form-group form-check">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="checkbox" name="alert1" <?php if($row["alert1"]=="on") echo "checked"; ?>> Send text alert notifications
+                                            <input class="form-check-input" type="checkbox" name="alert1" <?php if($row1["alert1"]=="on") echo "checked"; ?>> Send text alert notifications
                                         </label>
                                     </div>
                                 </div>
@@ -589,12 +589,12 @@ $_SESSION['currentPath'] = "./";
                             <label for="email" style="color: black;">Secondary Contact Number:</label>
                             <div class="row no-gutters">
                                 <div class="col">
-                                    <input type="text" class="form-control" name="phone_2" placeholder="+1 584 458 485" id="phone2" value="<?php echo $row["phone_2"]; ?>">
+                                    <input type="text" class="form-control" name="phone_2" placeholder="+1 584 458 485" id="phone2" value="<?php echo $row1["phone_2"]; ?>">
                                 </div>
                                 <div class="col d-flex justify-content-center align-items-center">
                                     <div class="form-group form-check">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="checkbox" name="alert2" <?php if($row["alert2"]=="on") echo "checked"; ?>> Send text alert notifications
+                                            <input class="form-check-input" type="checkbox" name="alert2" <?php if($row1["alert2"]=="on") echo "checked"; ?>> Send text alert notifications
                                         </label>
                                     </div>
                                 </div>

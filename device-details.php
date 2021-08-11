@@ -310,7 +310,21 @@ if($sectionRow["graph_check"]!="on"){
                             legend:{
                                 cursor: "pointer",
                                 fontSize: 16,
-                                itemclick: toggleDataSeries,
+                                // itemclick: toggleDataSeries,
+                                itemclick: function (e) {
+                                    var newUnit = e.dataSeries.axisYUnit;
+                                    console.log(newUnit);
+                                    chart.options.axisY.suffix = " " + newUnit;
+                                    for(var i = 0; i < chart.options.data.length; i++) {
+                                        if(typeof (e.dataSeries.visible) === "undefined" || i == e.dataSeriesIndex) {
+                                            e.dataSeries.visible = true
+                                        }
+                                        else{
+                                            chart.options.data[i].visible = false
+                                        }
+                                    }
+                                    chart.render();
+                                },
                                 fontColor: "<?php echo $_SESSION['darkTheme']==0 ? 'black' : '#d2d2c9'; ?>"
                                 // itemclick: function(e){
                                 //     var newUnit = e.dataSeries.axisYUnit;
@@ -394,7 +408,8 @@ if($sectionRow["graph_check"]!="on"){
                                     dataPoints: [{}]
                                 },
                                 {
-                                    axisYUnit: "<?php echo isset($_SESSION["Celcius"]) && $_SESSION["Celcius"]===true ? '°C' : '°F'; ?>",
+                                    <?php //echo isset($_SESSION["Celcius"]) && $_SESSION["Celcius"]===true ? '°C' : '°F'; ?>
+                                    axisYUnit: "<?php echo $row['analoge_unit_1']; ?>",
                                     visible: false,
                                     name: "<?php echo $row['analogue1_txt']; ?>",
                                     type: "spline",
@@ -402,7 +417,7 @@ if($sectionRow["graph_check"]!="on"){
                                     dataPoints: [{}]
                                 },
                                 {
-                                    axisYUnit: "Bar",
+                                    axisYUnit: "<?php echo $row['analoge_unit_2']; ?>",
                                     visible: false,
                                     name: "<?php echo $row['analogue2_txt']; ?>",
                                     type: "spline",
@@ -410,7 +425,7 @@ if($sectionRow["graph_check"]!="on"){
                                     dataPoints: [{}]
                                 },
                                 {
-                                    axisYUnit: "mm",
+                                    axisYUnit: "<?php echo $row['analoge_unit_3']; ?>",
                                     visible: false,
                                     name: "<?php echo $row['analogue3_txt']; ?>",
                                     type: "spline",
@@ -418,7 +433,7 @@ if($sectionRow["graph_check"]!="on"){
                                     dataPoints: [{}]
                                 },
                                 {
-                                    axisYUnit: "N/A",
+                                    axisYUnit: "<?php echo $row['analoge_unit_4']; ?>",
                                     visible: false,
                                     name: "<?php echo $row['analogue4_txt']; ?>",
                                     type: "spline",
@@ -426,7 +441,7 @@ if($sectionRow["graph_check"]!="on"){
                                     dataPoints: [{}]
                                 },
                                 {
-                                    axisYUnit: "N/A",
+                                    axisYUnit: "<?php echo $row['analoge_unit_5']; ?>",
                                     visible: false,
                                     name: "<?php echo $row['analogue5_txt']; ?>",
                                     type: "spline",
@@ -434,7 +449,7 @@ if($sectionRow["graph_check"]!="on"){
                                     dataPoints: [{}]
                                 },
                                 {
-                                    axisYUnit: "N/A",
+                                    axisYUnit: "<?php echo $row['analoge_unit_6']; ?>",
                                     visible: false,
                                     name: "<?php echo $row['analogue6_txt']; ?>",
                                     type: "spline",
