@@ -945,8 +945,6 @@ if(isset($_POST["add_record"])){
     </div>
 </div>
 
-
-
 <!-- Add device modal -->
 <div class="modal fade" id="addNewDevice" tabindex="-1" role="dialog" aria-labelledby="addNewDevice" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -1054,18 +1052,13 @@ if(isset($_POST['update_installation'])){
 ?>
 
 <!-- Bootstrap core JavaScript -->
-
 <script src="assets/custom_js/main.js?v=<?php echo rand(); ?>"></script>
 <?php require 'app/footer.include.php'; ?>
 
-
-
 </body>
-
 </html>
 <script>
     function update() {
-        // console.log("update function here");
         setInterval(function() {
             $.getJSON("ajax/getDetails.php", {device_id: "<?php echo $_SESSION['device_details_id']; ?>"}, function(data) {
                 // console.log(data);
@@ -1082,8 +1075,10 @@ if(isset($_POST['update_installation'])){
                 updateGraph(data['graph']);
 
                 // torqueChart.updateSeries(updateCircleChart(parseInt(data['torque'])));
-                // console.log('gauge Value: ' + parseInt(data['torque']));
+                console.log('gauge Value: ' + parseInt(data['torque']));
                 gauge.value = parseInt(data['torque']);
+                gauge.draw();
+                // console.log("torque: "+ data['torque']);
                 setGaugeHeight();
 
             });
@@ -1132,6 +1127,7 @@ if(isset($_POST['update_installation'])){
         chart.options.data[3].dataPoints = [];
         chart.options.data[4].dataPoints = [];
         chart.options.data[5].dataPoints = [];
+        chart.options.data[6].dataPoints = [];
         // chart.options.data[1].dataPoints = []toggle;
         $.each((graphData), function(key, value){
             // console.log("|||||||||||||||||||||||||||||||||");
@@ -1172,6 +1168,12 @@ if(isset($_POST['update_installation'])){
                 {
                     label: value.timeStamp,
                     y: parseInt(value.lossMotion)
+                }
+            );
+            chart.options.data[6].dataPoints.push(
+                {
+                    label: value.timeStamp,
+                    y: parseInt(value.sixth)
                 }
             );
         });

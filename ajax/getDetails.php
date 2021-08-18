@@ -15,6 +15,7 @@ $res = mysqli_query($con, $sql);
 $row = mysqli_fetch_array($res);
 //print_r($row);
 $mac = $row["mac"];
+$deviceID = $row["id"];
 
 //$mac = $_GET["mac"];
 
@@ -31,27 +32,36 @@ $res1 = mysqli_query($con, $sql1);
 $obj = array([], 'graph' => [], 'torque' => []);
 if (mysqli_num_rows($res1)) {
     $row = mysqli_fetch_array($res1);
+//    print_r($row); exit(); die();
+
+
+    $s = "SELECT * FROM custom_graph WHERE device_id=$deviceID";
+    $s1 = mysqli_query($con, $s);
+    $s2 = mysqli_fetch_array($s1);
+
+    $s = "SELECT * FROM custom_sections WHERE device_id=$deviceID";
+    $s1 = mysqli_query($con, $s);
+    $s3= mysqli_fetch_array($s1);
 
     if(isset($_SESSION["Celcius"]) && $_SESSION["Celcius"]===true){
-        $tempValue = round(($row["oilTemp_verticalBar"] - 32) * (5/9)); // in C
+        $tempValue = round(($row[$s3["temp_channel"]] - 32) * (5/9)); // in C
     }else{
 //        $tempValue = (int) (($row["oilTemp_verticalBar"] * 9 / 5) + 32); // in F
-        $tempValue = $row["oilTemp_verticalBar"]; // in F
+        $tempValue = $row[$s3["temp_channel"]]; // in F
     }
-
     $data = array(
-            $row["alarm_cirlcleVal"],
-            $row["cutOff_cirlcleVal"],
-            $row["liftActive_cirlcleVal"],
-            $row["waterInOil_cirlcleVal"],
-            $row["lowOil_cirlcleVal"],
-            $row["lossMotion_cirlcleVal"],
-            $row["leftPosition_verticalBar"],
+            $row[$s2["legends1_type"]],
+            $row[$s2["legends2_type"]],
+            $row[$s2["legends3_type"]],
+            $row[$s2["legends4_type"]],
+            $row[$s2["legends5_type"]],
+            $row[$s2["legends6_type"]],
+            $row[$s3["vertical_bar_channel"]],
             $tempValue
         );
 
 
-    $torqueValue = $row['Torque'];
+    $torqueValue = $row[$s3["torque_channel"]];
     if(isset($_SESSION["torque-FtLbs"]) && !$_SESSION["torque-FtLbs"]){
         $torqueValue = (int) $torqueValue / 0.73756; // in C
     }
@@ -76,13 +86,14 @@ if (mysqli_num_rows($res1)) {
         $date_time = $time;
         $element = array(
             "timeStamp" => $date_time,
-            "temp1" => $row["temp1"],
-            "torque" => get_torque($row["Torque"]),
-            "alarm" => $row["alarm_cirlcleVal"],
-            "cutoff" => $row["cutOff_cirlcleVal"],
-            "liftLower" => $row["lowOil_cirlcleVal"],
-            "liftActive" => $row["liftActive_cirlcleVal"],
-            "lossMotion" => $row["lossMotion_cirlcleVal"],
+            "temp1" => $tempValue,
+            "torque" => $torqueValue,
+            "alarm" => $row[$s2["legends1_type"]],
+            "cutoff" => $row[$s2["legends2_type"]],
+            "liftLower" => $row[$s2["legends3_type"]],
+            "liftActive" => $row[$s2["legends4_type"]],
+            "lossMotion" => $row[$s2["legends5_type"]],
+            "sixth" => $row[$s2["legends6_type"]],
         );
         array_push($obj['graph'],$element);
     }
@@ -102,13 +113,5 @@ function get_time($timestamp){
         $time = date("g:i a", strtotime($new_time[1]));
     }
     return $time;
-}
-function get_torque($torqueValue){
-    if(isset($_SESSION["torque-FtLbs"]) && !$_SESSION["torque-FtLbs"]){
-        $torqueValue = (int) $torqueValue / 0.73756; // Nm
-    }
-    $torqueValue = (int) $torqueValue;
-    $torqueValue = (string) $torqueValue;
-    return $torqueValue;
 }
 ?>

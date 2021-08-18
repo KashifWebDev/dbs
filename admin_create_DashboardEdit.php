@@ -701,6 +701,55 @@ function runQuery($sql, $msg){
                                                 </div>
                                             </div>
 
+                                            <div class="row">
+                                                <?php
+                                                $sql = "SELECT * FROM custom_sections WHERE device_id=$defaultSettingsId";
+                                                $res = mysqli_query($con, $sql);
+                                                $seleCtchn = mysqli_fetch_array($res);
+                                                ?>
+                                                <div class="col">
+                                                    <label class="darkColorInDarkTheme">Temperature Channel</label>
+                                                    <select class="custom-select" name="temp_channel">
+                                                        <option value="analogue1" <?php if($seleCtchn["temp_channel"]=="analogue1") echo "selected"; ?>>Analog 1</option>
+                                                        <option value="analogue2" <?php if($seleCtchn["temp_channel"]=="analogue2") echo "selected"; ?>>Analog 2</option>
+                                                        <option value="analogue3" <?php if($seleCtchn["temp_channel"]=="analogue3") echo "selected"; ?>>Analog 3</option>
+                                                        <option value="analogue4" <?php if($seleCtchn["temp_channel"]=="analogue4") echo "selected"; ?>>Analog 4</option>
+                                                        <option value="analogue5" <?php if($seleCtchn["temp_channel"]=="analogue5") echo "selected"; ?>>Analog 5</option>
+                                                        <option value="analogue6" <?php if($seleCtchn["temp_channel"]=="analogue6" ) echo "selected"; ?>>Analog 6</option>
+                                                        <option value="c1" <?php if($seleCtchn["temp_channel"]=="c1" ) echo "selected"; ?>>Analog Current 1</option>
+                                                        <option value="c2" <?php if($seleCtchn["temp_channel"]=="c2" ) echo "selected"; ?>>Analog Current 2</option>
+                                                        <option value="co1" <?php if($seleCtchn["temp_channel"]=="co1" ) echo "selected"; ?>>Current Output 1</option>
+                                                        <option value="co2" <?php if($seleCtchn["temp_channel"]=="co2" ) echo "selected"; ?>>Current Output 2</option>
+                                                        <option value="tor1" <?php if($seleCtchn["temp_channel"]=="tor1" ) echo "selected"; ?>>Analog Torque 1</option>
+                                                        <option value="tor2" <?php if($seleCtchn["temp_channel"]=="tor2" ) echo "selected"; ?>>Analog Torque 2</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col">
+                                                    <label class="darkColorInDarkTheme">Vertical Bar Channel</label>
+                                                    <select class="custom-select" name="vertical_bar_channel">
+                                                        <option value="analogue1" <?php if($seleCtchn["vertical_bar_channel"]=="analogue1") echo "selected"; ?>>Analog 1</option>
+                                                        <option value="analogue2" <?php if($seleCtchn["vertical_bar_channel"]=="analogue2") echo "selected"; ?>>Analog 2</option>
+                                                        <option value="analogue3" <?php if($seleCtchn["vertical_bar_channel"]=="analogue3") echo "selected"; ?>>Analog 3</option>
+                                                        <option value="analogue4" <?php if($seleCtchn["vertical_bar_channel"]=="analogue4") echo "selected"; ?>>Analog 4</option>
+                                                        <option value="analogue5" <?php if($seleCtchn["vertical_bar_channel"]=="analogue5") echo "selected"; ?>>Analog 5</option>
+                                                        <option value="analogue6" <?php if($seleCtchn["vertical_bar_channel"]=="analogue6" ) echo "selected"; ?>>Analog 6</option>
+                                                        <option value="c1" <?php if($seleCtchn["vertical_bar_channel"]=="c1" ) echo "selected"; ?>>Analog Current 1</option>
+                                                        <option value="c2" <?php if($seleCtchn["vertical_bar_channel"]=="c2" ) echo "selected"; ?>>Analog Current 2</option>
+                                                        <option value="co1" <?php if($seleCtchn["vertical_bar_channel"]=="co1" ) echo "selected"; ?>>Current Output 1</option>
+                                                        <option value="co2" <?php if($seleCtchn["vertical_bar_channel"]=="co2" ) echo "selected"; ?>>Current Output 2</option>
+                                                        <option value="tor1" <?php if($seleCtchn["vertical_bar_channel"]=="tor1" ) echo "selected"; ?>>Analog Torque 1</option>
+                                                        <option value="tor2" <?php if($seleCtchn["vertical_bar_channel"]=="tor2" ) echo "selected"; ?>>Analog Torque 2</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col">
+                                                    <label class="darkColorInDarkTheme">Torque Channel</label>
+                                                    <select class="custom-select" name="torque_channel">
+                                                        <option value="tor1" <?php if($seleCtchn["torque_channel"]=="tor1" ) echo "selected"; ?>>Analog Torque 1</option>
+                                                        <option value="tor2" <?php if($seleCtchn["torque_channel"]=="tor2" ) echo "selected"; ?>>Analog Torque 2</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -1819,12 +1868,16 @@ function runQuery($sql, $msg){
             $maintenance_title = $_POST['maintenance_title'];
             $relay_check = isset($_POST['relay_check']) ? $_POST['relay_check'] : '';
             $relay_title = $_POST['relay_title'];
+            $temp_channel = $_POST['temp_channel'];
+            $vertical_bar_channel = $_POST['vertical_bar_channel'];
+            $torque_channel = $_POST['torque_channel'];
 
 
             $sql = "UPDATE custom_sections SET device_settings_check='$device_settings_check', device_settings_title='$device_settings_title',
             torque_gauge_check='$torque_gauge_check', torque_title='$torque_title', graph_check='$graph_check', graph_title='$graph_title',
             installation_info_check='$installation_info_check', installation_info_title='$installation_info_title', alerts_check='$alerts_check',
-            alerts_title='$alerts_title', maintenance_check='$maintenance_check', maintenance_title='$maintenance_title', relays_title='$relay_title', relays_check='$relay_check'
+            alerts_title='$alerts_title', maintenance_check='$maintenance_check', maintenance_title='$maintenance_title', relays_title='$relay_title', relays_check='$relay_check',
+            vertical_bar_channel='$vertical_bar_channel', temp_channel='$temp_channel', torque_channel='$torque_channel'
             WHERE device_id= $device_id";
 
 
