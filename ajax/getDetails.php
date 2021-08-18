@@ -60,25 +60,25 @@ if (mysqli_num_rows($res1)) {
             $tempValue
         );
 
-
-    $torqueValue = $row[$s3["torque_channel"]];
-    if(isset($_SESSION["torque-FtLbs"]) && !$_SESSION["torque-FtLbs"]){
-        $torqueValue = (int) $torqueValue / 0.73756; // in C
-    }
-    $torqueValue = (int) $torqueValue;
-    $torqueValue = (string) $torqueValue;
-        array_push($obj[0], $data);
-        array_push($obj['torque'], $torqueValue);
+        $myRow = $row;
 
     $sql1 = "SELECT * FROM recorded_values WHERE mac='$mac' ORDER BY id  DESC LIMIT 10 ";
     $sql1 = "SELECT * FROM (
                 SELECT * FROM recorded_values WHERE mac='$mac' ORDER BY id DESC LIMIT 10
             ) sub
             ORDER BY id ASC";
+//    echo $sql1;
     $res = mysqli_query($con, $sql1);
     while($row = mysqli_fetch_array($res)) {
         $time = get_time($row["date_time"]);
         $date = get_date($row["date_time"]);
+
+        $torqueValue = $row[$s3["torque_channel"]];
+        if(isset($_SESSION["torque-FtLbs"]) && !$_SESSION["torque-FtLbs"]){
+            $torqueValue = (int) $torqueValue / 0.73756; // in C
+        }
+        $torqueValue = (int) $torqueValue;
+        $torqueValue = (string) $torqueValue;
 
 //        $time = $row["time_now"];
 //        $date = $row["date_now"];
@@ -97,6 +97,9 @@ if (mysqli_num_rows($res1)) {
         );
         array_push($obj['graph'],$element);
     }
+
+    array_push($obj[0], $data);
+    array_push($obj['torque'], $torqueValue);
 }
 echo json_encode($obj);
 
