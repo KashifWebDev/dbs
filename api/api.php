@@ -13,7 +13,8 @@
 
   $data = json_decode(file_get_contents("php://input"));
 
-$mac = $data->Machine_MAC == '' ? 0 : $data->Machine_MAC;
+//$mac = $data->Machine_MAC == '' ? 0 : $data->Machine_MAC;
+$mac = $data->Machine_MAC;
 $D1 = $data->D1 == '' ? 0 : $data->D1;
 $D2 = $data->D2 == '' ? 0 : $data->D2;
 $D3 = $data->D3 == '' ? 0 : $data->D3;
