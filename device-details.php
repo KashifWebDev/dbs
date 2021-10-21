@@ -598,7 +598,7 @@ if($sectionRow["graph_check"]!="on"){
                     if($_SESSION['is_admin']){
                         ?>
                         <td>
-                            <button class="btn btn-info font-weight-bold" data-toggle="modal" data-target="#addNewDevice" style="background-color: #009cde">Edit</button>
+                            <button class="btn btn-info font-weight-bold" data-toggle="modal" data-target="#addNewDevice" style="background-color: #009cde;position: absolute;right: 26px;bottom: 15px;">Edit</button>
                         </td>
                         <?php
                     }
