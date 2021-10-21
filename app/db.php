@@ -1,17 +1,14 @@
 <?php
 
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "project_dbs";
 
 $servername = "server127.web-hosting.com";
 $username = "turkvjwp_fingerprinttest";
 $password = "fingerprinttest";
 $dbname = "turkvjwp_dbs";
-
-
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "project_dbs";
 
 
 $con = mysqli_connect($servername, $username, $password, $dbname);
