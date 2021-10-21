@@ -494,6 +494,7 @@ if($sectionRow["graph_check"]!="on"){
         $sql = "SELECT * FROM custom_installation_info WHERE device_id=$device_id";
         $res = mysqli_query($con, $sql);
         $row1 = mysqli_fetch_array($res);
+//        print_r($row1);
         if($sectionRow["installation_info_check"]=="on"){
             ?>
             <div class="col-md-4 h-45 second_row_class <?php if($graph_const_height) echo " mt-50_per_for_graphmt-50_per_for_graph";?>">
@@ -505,8 +506,10 @@ if($sectionRow["graph_check"]!="on"){
                     $row = mysqli_fetch_array($res);
                     $mac = $row["mac"];
                     $sql = "SELECT * FROM installation_info WHERE mac='$mac'";
+//                    echo $sql;
                     $res = mysqli_query($con, $sql);
                     $installationInfo = mysqli_fetch_array($res);
+//                    echo "data: ".$installationInfo."-_-";
                     if(mysqli_num_rows($res)){
                         ?>
                         <table class="text-dark-grey bar_font_size auto_color_txt">
@@ -586,20 +589,20 @@ if($sectionRow["graph_check"]!="on"){
                                 <tr>
                                     <td class="font-weight-bold"><?php echo $row1["drive_service_title"] ?> :</td>
                                     <td><?php echo $installationInfo["service_since"]; ?></td>
-                                    <?php
-                                    if($_SESSION['is_admin']){
-                                        ?>
-                                        <td>
-                                            <button class="btn btn-info font-weight-bold" data-toggle="modal" data-target="#addNewDevice" style="background-color: #009cde">Edit</button>
-                                        </td>
-                                        <?php
-                                    }
-                                    ?>
                                 </tr>
                             <?php }
                             ?>
                         </table>
                     <?php } ?>
+                    <?php
+                    if($_SESSION['is_admin']){
+                        ?>
+                        <td>
+                            <button class="btn btn-info font-weight-bold" data-toggle="modal" data-target="#addNewDevice" style="background-color: #009cde">Edit</button>
+                        </td>
+                        <?php
+                    }
+                    ?>
                 </div>
             </div>
             <?php

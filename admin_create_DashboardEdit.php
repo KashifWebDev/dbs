@@ -440,7 +440,7 @@ function runQuery($sql, $msg){
                                                                 </div>
                                                             </div>
                                                             <select class="custom-select" name="legend_type_1">
-                                                                <option selected>Channel</option>
+                                                                <option>Channel</option>
                                                                 <option value="legends1" <?php if($mainRow["legends1_type"]=="legends1") echo "selected"; ?>>Digital 1</option>
                                                                 <option value="legends2" <?php if($mainRow["legends1_type"]=="legends2") echo "selected"; ?>>Digital 2</option>
                                                                 <option value="legends3" <?php if($mainRow["legends1_type"]=="legends3") echo "selected"; ?>>Digital 3</option>
@@ -475,7 +475,7 @@ function runQuery($sql, $msg){
                                                                 </div>
                                                             </div>
                                                             <select class="custom-select" name="legend_type_2">
-                                                                <option selected>Channel</option>
+                                                                <option>Channel</option>
                                                                 <option value="legends1" <?php if($mainRow["legends2_type"]=="legends1") echo "selected"; ?>>Digital 1</option>
                                                                 <option value="legends2" <?php if($mainRow["legends2_type"]=="legends2") echo "selected"; ?>>Digital 2</option>
                                                                 <option value="legends3" <?php if($mainRow["legends2_type"]=="legends3") echo "selected"; ?>>Digital 3</option>
@@ -510,7 +510,7 @@ function runQuery($sql, $msg){
                                                                 </div>
                                                             </div>
                                                             <select class="custom-select" name="legend_type_3">
-                                                                <option selected>Channel</option>
+                                                                <option>Channel</option>
                                                                 <option value="legends1" <?php if($mainRow["legends3_type"]=="legends1") echo "selected"; ?>>Digital 1</option>
                                                                 <option value="legends2" <?php if($mainRow["legends3_type"]=="legends2") echo "selected"; ?>>Digital 2</option>
                                                                 <option value="legends3" <?php if($mainRow["legends3_type"]=="legends3") echo "selected"; ?>>Digital 3</option>
@@ -545,7 +545,7 @@ function runQuery($sql, $msg){
                                                                 </div>
                                                             </div>
                                                             <select class="custom-select" name="legend_type_4">
-                                                                <option selected>Channel</option>
+                                                                <option>Channel</option>
                                                                 <option value="legends1" <?php if($mainRow["legends4_type"]=="legends1") echo "selected"; ?>>Digital 1</option>
                                                                 <option value="legends2" <?php if($mainRow["legends4_type"]=="legends2") echo "selected"; ?>>Digital 2</option>
                                                                 <option value="legends3" <?php if($mainRow["legends4_type"]=="legends3") echo "selected"; ?>>Digital 3</option>
@@ -580,7 +580,7 @@ function runQuery($sql, $msg){
                                                                 </div>
                                                             </div>
                                                             <select class="custom-select" name="legend_type_5">
-                                                                <option selected>Channel</option>
+                                                                <option>Channel</option>
                                                                 <option value="legends1" <?php if($mainRow["legends5_type"]=="legends1") echo "selected"; ?>>Digital 1</option>
                                                                 <option value="legends2" <?php if($mainRow["legends5_type"]=="legends2") echo "selected"; ?>>Digital 2</option>
                                                                 <option value="legends3" <?php if($mainRow["legends5_type"]=="legends3") echo "selected"; ?>>Digital 3</option>
@@ -615,7 +615,7 @@ function runQuery($sql, $msg){
                                                                 </div>
                                                             </div>
                                                             <select class="custom-select" name="legend_type_6">
-                                                                <option selected>Channel</option>
+                                                                <option>Channel</option>
                                                                 <option value="legends1" <?php if($mainRow["legends6_type"]=="legends1") echo "selected"; ?>>Digital 1</option>
                                                                 <option value="legends2" <?php if($mainRow["legends6_type"]=="legends2") echo "selected"; ?>>Digital 2</option>
                                                                 <option value="legends3" <?php if($mainRow["legends6_type"]=="legends3") echo "selected"; ?>>Digital 3</option>
