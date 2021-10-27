@@ -38,15 +38,13 @@ while($row = mysqli_fetch_array($res)) {
     $date_time = $date.' ('.$time.')';
     $element = array(
          $date_time,
-        $row["Torque"],
-        $row["alarm_cirlcleVal"],
-        $row["cutOff_cirlcleVal"],
-        $row["lowOil_cirlcleVal"],
-        $row["liftActive_cirlcleVal"],
-        $row["lossMotion_cirlcleVal"],
-        $row["temp1"],
-        $row["temp2"],
-        $row["temp3"]
+        $row["tor1"],
+        $row["analogue1"],
+        $row["analogue2"],
+        $row["analogue3"],
+        $row["analogue4"],
+        $row["analogue5"],
+        $row["analogue6"]
     );
     array_push($obj,$element);
 }

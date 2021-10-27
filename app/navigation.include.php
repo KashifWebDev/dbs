@@ -210,60 +210,60 @@ $file = $row["manual"];
                             },
                             data: [
                                 {
-                                    name: "Torque",
+                                    name: "Analogue 1",
                                     type: "spline",
                                     color: "#009cde",
                                     showInLegend: true,
                                     dataPoints: [{}]
                                 }
                                 ,{  visible: false,
-                                    name: "Alarm",
+                                    name: "Analogue 2",
                                     type: "spline",
                                     showInLegend: true,
                                     dataPoints: [{}]
                                 }
                                 ,{  visible: false,
-                                    name: "CutOff",
+                                    name: "Analogue 3",
                                     type: "spline",
                                     showInLegend: true,
                                     dataPoints: [{}]
                                 }
                                 ,{  visible: false,
-                                    name: "Lift Lower",
+                                    name: "Analogue 4",
                                     type: "spline",
                                     showInLegend: true,
                                     dataPoints: [{}]
                                 }
                                 ,{  visible: false,
-                                    name: "Lift Raise",
+                                    name: "Analogue 5",
                                     type: "spline",
                                     showInLegend: true,
                                     dataPoints: [{}]
                                 }
                                 ,{  visible: false,
-                                    name: "Loss Motion",
+                                    name: "Analogue 6",
                                     type: "spline",
                                     showInLegend: true,
                                     dataPoints: [{}]
                                 }
-                                ,{  visible: false,
-                                    name: "Temperature 1",
-                                    type: "spline",
-                                    showInLegend: true,
-                                    dataPoints: [{}]
-                                }
-                                ,{  visible: false,
-                                    name: "Temperature 2",
-                                    type: "spline",
-                                    showInLegend: true,
-                                    dataPoints: [{}]
-                                }
-                                ,{  visible: false,
-                                    name: "Temperature 3",
-                                    type: "spline",
-                                    showInLegend: true,
-                                    dataPoints: [{}]
-                                }
+                                // ,{  visible: false,
+                                //     name: "Temperature 1",
+                                //     type: "spline",
+                                //     showInLegend: true,
+                                //     dataPoints: [{}]
+                                // }
+                                // ,{  visible: false,
+                                //     name: "Temperature 2",
+                                //     type: "spline",
+                                //     showInLegend: true,
+                                //     dataPoints: [{}]
+                                // }
+                                // ,{  visible: false,
+                                //     name: "Temperature 3",
+                                //     type: "spline",
+                                //     showInLegend: true,
+                                //     dataPoints: [{}]
+                                // }
                             ]
                         });
 
@@ -293,9 +293,9 @@ $file = $row["manual"];
                             searchChart.options.data[3].dataPoints = [];
                             searchChart.options.data[4].dataPoints = [];
                             searchChart.options.data[5].dataPoints = [];
-                            searchChart.options.data[6].dataPoints = [];
-                            searchChart.options.data[7].dataPoints = [];
-                            searchChart.options.data[8].dataPoints = [];
+                            // searchChart.options.data[6].dataPoints = [];
+                            // searchChart.options.data[7].dataPoints = [];
+                            // searchChart.options.data[8].dataPoints = [];
 
                             $.each(data, function(key, value) {
                                 searchChart.options.data[0].dataPoints.push(
@@ -334,24 +334,24 @@ $file = $row["manual"];
                                         y: parseInt(value[6])
                                     }
                                 );
-                                searchChart.options.data[6].dataPoints.push(
-                                    {
-                                        label: value[0],
-                                        y: parseInt(value[7])
-                                    }
-                                );
-                                searchChart.options.data[7].dataPoints.push(
-                                    {
-                                        label: value[0],
-                                        y: parseInt(value[8])
-                                    }
-                                );
-                                searchChart.options.data[8].dataPoints.push(
-                                    {
-                                        label: value[0],
-                                        y: parseInt(value[9])
-                                    }
-                                );
+                                // searchChart.options.data[6].dataPoints.push(
+                                //     {
+                                //         label: value[0],
+                                //         y: parseInt(value[7])
+                                //     }
+                                // );
+                                // searchChart.options.data[7].dataPoints.push(
+                                //     {
+                                //         label: value[0],
+                                //         y: parseInt(value[8])
+                                //     }
+                                // );
+                                // searchChart.options.data[8].dataPoints.push(
+                                //     {
+                                //         label: value[0],
+                                //         y: parseInt(value[9])
+                                //     }
+                                // );
 
                             });
 
