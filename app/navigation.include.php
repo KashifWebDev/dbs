@@ -100,6 +100,7 @@ $file = $row["manual"];
                 <!-- Modal body -->
                 <div class="modal-body">
                     <div class="form-row">
+                        <input type="hidden" name="deviceID" value="<?php echo $_GET["id"]; ?>">
                         <div class="form-group col-md-6">
                             <label class="darkColorInDarkTheme">From Date</label>
                             <input type="date" name="startDate" class="form-control">

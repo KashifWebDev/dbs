@@ -11,7 +11,7 @@ $dateTime = $date = date('Y-m-d H:i:s');
 
 $uname = isset($_SESSION["username"]) ? $_SESSION["username"] : "user";
 $uname = $_SESSION["username"];
-$device_id = 48;
+$device_id = $_POST["deviceID"];
 ?>
 <!doctype html>
 <html lang="en">
@@ -275,10 +275,10 @@ $device_id = 48;
             ?>
             <tr>
                 <td><?php echo $row["id"]; ?></td>
-                <td><?php echo $row["Torque"]; ?></td>
-                <td><?php echo $row["temp1"]; ?></td>
-                <td><?php echo $row["temp2"]; ?></td>
-                <td><?php echo $row["temp3"]; ?></td>
+                <td><?php echo $row["tor1"]; ?></td>
+                <td><?php echo $row["analogue1"]; ?></td>
+                <td><?php echo $row["analogue2"]; ?></td>
+                <td><?php echo $row["analogue3"]; ?></td>
                 <td><?php echo date("d-M-Y h:i:sa", strtotime($row["date_time"])); ?></td>
             </tr>
             <?php

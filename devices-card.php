@@ -1,5 +1,6 @@
 <div class="col-md-4 mb-3">
     <?php
+    $rand = rand();
     if (isset($_SESSION["darkTheme"]) && $_SESSION["darkTheme"]==1){
         $boxClass = "bg-dark";
         $fontColor = "text-white-50";
@@ -22,8 +23,10 @@
                         </p>
                         <div class="d-flex justify-content-between">
                             <div class="mt-2 d-flex">
-                                <span style="height: 15px; width: 15px; border-radius: 20px; display: block;" class="bg-danger mt-1 mr-1"></span>
-                                <span>Offline</span>
+                                <div class="d-flex status_<?php echo $rand; ?>">
+                                    <span style="height: 15px; width: 15px; border-radius: 20px; display: block;" class="bg-danger mt-1 mr-1"></span>
+                                    <span>Offline</span>
+                                </div>
                                 <span style="height: 15px; width: 15px; border-radius: 20px; display: block;" class="bg-success mt-1 ml-2 mr-1"></span>
                                 <span>No Alarms</span>
                             </div>
@@ -47,3 +50,26 @@
             </div>
         </div>
 </div>
+
+<script>
+
+    $(document).ready(function(){
+        update_status('status_<?php echo $rand; ?>', '<?php echo $row["mac"]; ?>');
+    });
+    function update_status(div_id, mac) {
+        $.ajax({
+            url: 'ajax/device_status.php',
+            type: 'post',
+            data: {
+                mac:mac
+            },
+            success: function (response) {
+                // alert(response);
+                // console.log('mac: '+)
+                $("."+div_id).html(response);
+                console.log("Updated! "+div_id);
+            }
+        });
+        setTimeout('update_status("'+div_id+'", "'+mac+'")', 1000);
+    }
+</script>
