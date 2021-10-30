@@ -1516,7 +1516,7 @@ function runQuery($sql, $msg){
                     <!--Conditioning Tab-->
                     <div class="tab-pane fade bg-white shadow p-3 autoColorTable_theme" id="v-pills-conditioning" role="tabpanel" aria-labelledby="v-pills-conditioning-tab">
                         <?php
-                        $sql = "SELECT * FROM alerts WHERE device_id=$device_id";
+                        $sql = "SELECT * FROM alerts WHERE device_id=$device_id ORDER BY id DESC";
                         $res = mysqli_query($con, $sql);
                         $row = mysqli_fetch_array($res);
                         ?>
