@@ -161,7 +161,7 @@ if(!($D6>=$row["start6"]) || !($D6<=$row["end6"])){
         <table role="presentation" style="width:602px;border-collapse:collapse;border:1px solid #cccccc;border-spacing:0;text-align:left;">
           <tr>
             <td align="center" style="padding:40px 0 30px 0;background:#0070c1;">
-              <img src="../assets/logo/dbs.png" alt="" width="300" style="height:auto;display:block;" />
+              <img src="http://embeddediiot.com/dbs/assets/imgs/dbs.png" alt="" width="300" style="height:auto;display:block;" />
             </td>
           </tr>
           <tr>
