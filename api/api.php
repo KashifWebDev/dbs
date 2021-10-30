@@ -64,45 +64,45 @@ $sql = "SELECT * FROM custom_dashboards WHERE device_id=$device_id";
 $res = mysqli_query($con, $sql);
 $email = mysqli_fetch_array($res);
 
-print_r($row);
+//print_r($row);
 
 if(!($D1>=$row["start1"]) || !($D1<=$row["end1"])){
-    echo "mailling 1    $D1".$row["start1"]."     ".$row["end1"];
+//    echo "mailling 1    $D1".$row["start1"]."     ".$row["end1"];
     sendMail($email["email"], "Digital 1");
     sendMail($email["email1"], "Digital 1");
     sendMail($email["email2"], "Digital 1");
     sendMail($email["email3"], "Digital 1");
 }
 if(!($D2>=$row["start2"]) || !($D2<=$row["end2"])){
-    echo "mailling 2    $D2".$row["start2"]."     ".$row["end2"];
+//    echo "mailling 2    $D2".$row["start2"]."     ".$row["end2"];
     sendMail($email["email"], "Digital 2");
     sendMail($email["email1"], "Digital 2");
     sendMail($email["email2"], "Digital 2");
     sendMail($email["email3"], "Digital 2");
 }
 if(!($D3>=$row["start3"]) || !($D3<=$row["end3"])){
-    echo "mailling 3    $D3".$row["start3"]."     ".$row["end3"];
+//    echo "mailling 3    $D3".$row["start3"]."     ".$row["end3"];
     sendMail($email["email"], "Digital 3");
     sendMail($email["email1"], "Digital 3");
     sendMail($email["email2"], "Digital 3");
     sendMail($email["email3"], "Digital 3");
 }
 if(!($D4>=$row["start4"]) || !($D4<=$row["end4"])){
-    echo "mailling 4    $D4".$row["start4"]."     ".$row["end4"];
+//    echo "mailling 4    $D4".$row["start4"]."     ".$row["end4"];
     sendMail($email["email"], "Digital 4");
     sendMail($email["email1"], "Digital 4");
     sendMail($email["email2"], "Digital 4");
     sendMail($email["email3"], "Digital 4");
 }
 if(!($D5>=$row["start5"]) || !($D5<=$row["end5"])){
-    echo "mailling 5    $D5".$row["start5"]."     ".$row["end5"];
+//    echo "mailling 5    $D5".$row["start5"]."     ".$row["end5"];
     sendMail($email["email"], "Digital 5");
     sendMail($email["email1"], "Digital 5");
     sendMail($email["email2"], "Digital 5");
     sendMail($email["email3"], "Digital 5");
 }
 if(!($D6>=$row["start6"]) || !($D6<=$row["end6"])){
-    echo "mailling 6    $D6".$row["start6"]."     ".$row["end6"];
+//    echo "mailling 6    $D6".$row["start6"]."     ".$row["end6"];
     sendMail($email["email"], "Digital 6");
     sendMail($email["email1"], "Digital 6");
     sendMail($email["email2"], "Digital 6");
