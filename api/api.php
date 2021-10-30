@@ -64,6 +64,8 @@ $sql = "SELECT * FROM custom_dashboards WHERE device_id=$device_id";
 $res = mysqli_query($con, $sql);
 $email = mysqli_fetch_array($res);
 
+print_r($row);
+
 if(!$D1>=$row["start1"] || !$D1<=$row["end1"]){
     sendMail($email["email"], "Digital 1");
     sendMail($email["email1"], "Digital 1");
