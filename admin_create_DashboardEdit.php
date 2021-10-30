@@ -1516,19 +1516,19 @@ function runQuery($sql, $msg){
                     <!--Conditioning Tab-->
                     <div class="tab-pane fade bg-white shadow p-3 autoColorTable_theme" id="v-pills-conditioning" role="tabpanel" aria-labelledby="v-pills-conditioning-tab">
                         <?php
-                        $sql = "SELECT * FROM custom_conditions WHERE device_id=$device_id";
+                        $sql = "SELECT * FROM alerts WHERE device_id=$device_id";
                         $res = mysqli_query($con, $sql);
                         $row = mysqli_fetch_array($res);
                         ?>
                         <div class="row ml-3">
-                            <div class="conditionHeading"><h3>Temperature: </h3></div>
+                            <div class="conditionHeading"><h3>Digital 1: </h3></div>
                             <div class="col-sm-12 col-md-4">
                                 <div class="input-group mb-3">
                                     <label for="" class="mt-1 mr-3"><span class="text-success font-weight-bold">ON</span> Condition</label>
                                     <div class="input-group-prepend">
                                         <span class="input-group-text font-weight-bold" id="basic-addon1">&#8805;</span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="1" name="tempGreater" value="<?php echo $row["tempGreater"]; ?>">
+                                    <input type="text" class="form-control" name="alert1" value="<?php echo $row["start1"]; ?>">
                                 </div>
                             </div>
                             <div class="col-sm-12 col-md-4">
@@ -1537,20 +1537,20 @@ function runQuery($sql, $msg){
                                     <div class="input-group-prepend">
                                         <span class="input-group-text font-weight-bold" id="basic-addon1">&#8804;</span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="0" name="tempLoss" value="<?php echo $row["tempLoss"]; ?>">
+                                    <input type="text" class="form-control"  name="alert2" value="<?php echo $row["end1"]; ?>">
                                 </div>
                             </div>
                         </div>
                         <hr>
                         <div class="row ml-3">
-                            <div class="conditionHeading"><h3>Alarm: </h3></div>
+                            <div class="conditionHeading"><h3>Digital 2: </h3></div>
                             <div class="col-sm-12 col-md-4">
                                 <div class="input-group mb-3">
                                     <label for="" class="mt-1 mr-3"><span class="text-success font-weight-bold">ON</span> Condition</label>
                                     <div class="input-group-prepend">
                                         <span class="input-group-text font-weight-bold" id="basic-addon1">&#8805;</span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="1" name="alarmGreater" value="<?php echo $row["alarmGreater"]; ?>">
+                                    <input type="text" class="form-control" name="alert3" value="<?php echo $row["start2"]; ?>">
                                 </div>
                             </div>
                             <div class="col-sm-12 col-md-4">
@@ -1559,20 +1559,20 @@ function runQuery($sql, $msg){
                                     <div class="input-group-prepend">
                                         <span class="input-group-text font-weight-bold" id="basic-addon1">&#8804;</span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="0" name="alarmLess" value="<?php echo $row["alarmLess"]; ?>">
+                                    <input type="text" class="form-control" name="alert4" value="<?php echo $row["end2"]; ?>">
                                 </div>
                             </div>
                         </div>
                         <hr>
                         <div class="row ml-3">
-                            <div class="conditionHeading"><h3>Water in Oil: </h3></div>
+                            <div class="conditionHeading"><h3>Digital 3: </h3></div>
                             <div class="col-sm-12 col-md-4">
                                 <div class="input-group mb-3">
                                     <label for="" class="mt-1 mr-3"><span class="text-success font-weight-bold">ON</span> Condition</label>
                                     <div class="input-group-prepend">
                                         <span class="input-group-text font-weight-bold" id="basic-addon1">&#8805;</span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="1" name="waterInOilGreater" value="<?php echo $row["waterInOilGreater"]; ?>">
+                                    <input type="text" class="form-control" name="alert5" value="<?php echo $row["start3"]; ?>">
                                 </div>
                             </div>
                             <div class="col-sm-12 col-md-4">
@@ -1581,20 +1581,20 @@ function runQuery($sql, $msg){
                                     <div class="input-group-prepend">
                                         <span class="input-group-text font-weight-bold" id="basic-addon1">&#8804;</span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="0" name="waterInOilLess" value="<?php echo $row["waterInOilLess"]; ?>">
+                                    <input type="text" class="form-control" name="alert6" value="<?php echo $row["end3"]; ?>">
                                 </div>
                             </div>
                         </div>
                         <hr>
                         <div class="row ml-3">
-                            <div class="conditionHeading"><h3>Loss Motion: </h3></div>
+                            <div class="conditionHeading"><h3>Digital 4: </h3></div>
                             <div class="col-sm-12 col-md-4">
                                 <div class="input-group mb-3">
                                     <label for="" class="mt-1 mr-3"><span class="text-success font-weight-bold">ON</span> Condition</label>
                                     <div class="input-group-prepend">
                                         <span class="input-group-text font-weight-bold" id="basic-addon1">&#8805;</span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="1" name="lossMotionGreater" value="<?php echo $row["lossMotionGreater"]; ?>">
+                                    <input type="text" class="form-control" name="alert7" value="<?php echo $row["start4"]; ?>">
                                 </div>
                             </div>
                             <div class="col-sm-12 col-md-4">
@@ -1603,20 +1603,20 @@ function runQuery($sql, $msg){
                                     <div class="input-group-prepend">
                                         <span class="input-group-text font-weight-bold" id="basic-addon1">&#8804;</span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="0" name="lossMotionLess" value="<?php echo $row["lossMotionLess"]; ?>">
+                                    <input type="text" class="form-control" name="alert8" value="<?php echo $row["end4"]; ?>">
                                 </div>
                             </div>
                         </div>
                         <hr>
                         <div class="row ml-3">
-                            <div class="conditionHeading"><h3>Lift Position: </h3></div>
+                            <div class="conditionHeading"><h3>Digital 5: </h3></div>
                             <div class="col-sm-12 col-md-4">
                                 <div class="input-group mb-3">
                                     <label for="" class="mt-1 mr-3"><span class="text-success font-weight-bold">ON</span> Condition</label>
                                     <div class="input-group-prepend">
                                         <span class="input-group-text font-weight-bold" id="basic-addon1">&#8805;</span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="1" name="liftPositionGreater" value="<?php echo $row["liftPositionGreater"]; ?>">
+                                    <input type="text" class="form-control" name="alert9" value="<?php echo $row["start5"]; ?>">
                                 </div>
                             </div>
                             <div class="col-sm-12 col-md-4">
@@ -1625,7 +1625,29 @@ function runQuery($sql, $msg){
                                     <div class="input-group-prepend">
                                         <span class="input-group-text font-weight-bold" id="basic-addon1">&#8804;</span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="0" name="liftPositionLower" value="<?php echo $row["liftPositionLower"]; ?>">
+                                    <input type="text" class="form-control" name="alert10" value="<?php echo $row["end5"]; ?>">
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row ml-3">
+                            <div class="conditionHeading"><h3>Digital 6: </h3></div>
+                            <div class="col-sm-12 col-md-4">
+                                <div class="input-group mb-3">
+                                    <label for="" class="mt-1 mr-3"><span class="text-success font-weight-bold">ON</span> Condition</label>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text font-weight-bold" id="basic-addon1">&#8805;</span>
+                                    </div>
+                                    <input type="text" class="form-control" name="alert11" value="<?php echo $row["start6"]; ?>">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-4">
+                                <div class="input-group mb-3">
+                                    <label for="" class="mt-1 mr-3"><span class="text-danger font-weight-bold">OFF</span> Condition</label>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text font-weight-bold" id="basic-addon1">&#8804;</span>
+                                    </div>
+                                    <input type="text" class="form-control"  name="alert12" value="<?php echo $row["end6"]; ?>">
                                 </div>
                             </div>
                         </div>
@@ -1755,21 +1777,28 @@ function runQuery($sql, $msg){
         mysqli_query($con, $sql);
 
         // Custom Conditions
-        $tempGreater = $_POST["tempGreater"];
-        $tempLoss = $_POST["tempLoss"];
-        $alarmGreater = $_POST["alarmGreater"];
-        $alarmLess = $_POST["alarmLess"];
-        $waterInOilGreater = $_POST["waterInOilGreater"];
-        $waterInOilLess = $_POST["waterInOilLess"];
-        $lossMotionGreater = $_POST["lossMotionGreater"];
-        $lossMotionLess = $_POST["lossMotionLess"];
-        $liftPositionGreater = $_POST["liftPositionGreater"];
-        $liftPositionLower = $_POST["liftPositionLower"];
+        $alert1 = $_POST["alert1"];
+        $alert2 = $_POST["alert2"];
+        $alert3 = $_POST["alert3"];
+        $alert4 = $_POST["alert4"];
+        $alert5 = $_POST["alert5"];
+        $alert6 = $_POST["alert6"];
+        $alert7 = $_POST["alert7"];
+        $alert8 = $_POST["alert8"];
+        $alert9 = $_POST["alert9"];
+        $alert10 = $_POST["alert10"];
+        $alert11 = $_POST["alert11"];
+        $alert12 = $_POST["alert12"];
 
-        $sql = "UPDATE custom_conditions SET tempGreater=$tempGreater , tempLoss=$tempLoss, alarmGreater=$alarmGreater, alarmLess=$alarmLess,
-                waterInOilGreater=$waterInOilGreater, waterInOilLess=$waterInOilLess, lossMotionGreater=$lossMotionGreater, lossMotionLess= $lossMotionLess,
-                liftPositionGreater=$liftPositionGreater, liftPositionLower=$liftPositionLower
-                WHERE device_id = $device_id";
+        $sql = "INSERT INTO alerts (start1, end1, start2, end2, start3, end3, start4, end4, start5, end5, start6, end6, device_id) VALUES 
+                ($alert1, $alert2, $alert3, $alert4, $alert5, $alert6, $alert7, $alert8, $alert9, $alert10, $alert11, $alert12, $device_id)";
+
+//        $sql = "UPDATE alerts SET start1=$alert1 , end1=$alert2, start2=$alert3, end2=$alert4,
+//                start3=$alert5, end3=$alert6, start4=$alert7, end4= $alert8,
+//                start5=$alert9, end5=$alert10,start6=$alert11, end6=$alert12
+//                WHERE device_id = $device_id";
+
+//        echo $sql; exit(); die();
 
         mysqli_query($con, $sql);
 
