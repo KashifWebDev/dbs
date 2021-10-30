@@ -4,3 +4,4 @@ assets/manuals
 assets/logo
 ./assets/manuals/*
 ./assets/logo/*
+api/error_log

@@ -187,6 +187,6 @@ if(!$D1>=$row["start6"] || !$D1<=$row["end6"]){
         $headers = "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 
-        mail($to, "Alert form DBS Dashboard", $msg, $headers);
+        mail($to, "Alert form DBS Dashboard for $parameter", $msg, $headers);
     }
 ?>
