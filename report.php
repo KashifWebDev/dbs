@@ -42,7 +42,8 @@ $device_id = $_POST["deviceID"];
         <p>
             <span class="font-weight-bold">Date: </span> <?php echo $dateTime; ?>
         </p>
-        <h2 class="font-roboto">Device Report</h2>
+<!--        <h2 class="font-roboto">Device Report</h2>-->
+        <a href="report1.php" target="_blank" class="btn btn-danger font-roboto">Download PDF</a>
         <p>
             <span class="font-weight-bold">User: </span> <span><?php echo $uname; ?></span>
         </p>
@@ -295,7 +296,7 @@ $device_id = $_POST["deviceID"];
     $a4 = isset($_POST["4"]) ? $_POST["4"] : "";
     ?>
     <div class="d-flex justify-content-end">
-        <a href="report1.php" target="_blank" class="btn btn-danger font-roboto my-5">Download PDF</a>
+<!--        <a href="report1.php" target="_blank" class="btn btn-danger font-roboto my-5">Download PDF</a>-->
     </div>
 </div>
 

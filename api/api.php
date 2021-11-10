@@ -8,6 +8,7 @@
 
 
   date_default_timezone_set("Asia/Karachi");
+  date_default_timezone_set("America/New_York");
   $now = new DateTime();
   $cur_time=$now->format('Y-m-d H:i:s');
 

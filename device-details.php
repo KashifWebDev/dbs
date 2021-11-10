@@ -617,6 +617,7 @@ if($sectionRow["graph_check"]!="on"){
             <div class="col-md-4 alert_details_margin_top h-45 second_row_class <?php if($graph_const_height) echo " mt-50_per_for_graphmt-50_per_for_graph";?>">
                 <div class="custom_card w-100 d-flex flex-column bar_font_size">
                     <p class="text-center font-weight-bolder font-size-larger m-0">ALERTS</p>
+                    <?php /* HIde Table*/ if(false){ ?>
                     <table class="text-dark-grey auto_color_txt">
                         <?php
                         if($row["today_check"]=="on"){
@@ -660,6 +661,67 @@ if($sectionRow["graph_check"]!="on"){
                         ?>
                         <!--                    <tr><td>&nbsp;</td></tr>-->
                         <!--                    <tr><td>&nbsp;</td></tr>-->
+                    </table>
+                    <?php /* HIde Table*/ } ?>
+                    <table class="text-dark-grey auto_color_txt">
+                        <?php
+                        $sql = "SELECT * FROM alerts WHERE device_id=$device_id ORDER By id DESC";
+                        $res = mysqli_query($con, $sql);
+                        $row = mysqli_fetch_array($res);
+
+
+                        $sql = "SELECT * FROM recorded_values WHERE mac='$mac' ORDER By id DESC";
+                        $res = mysqli_query($con, $sql);
+                        $recordedValues = mysqli_fetch_array($res);   ?>
+
+                        <?php
+                        if(!($recordedValues["legends1"]>=$row["start1"]) || !($recordedValues["legends1"]<=$row["end1"])){
+                        ?>
+                        <tr class="alert_info_bg_redddd">
+                            <td><span class="font-weight-bold">Digital 1 alarm</span>  </td>
+                            <td class="text-left"><?php echo $recordedValues["date_time"]; ?></td>
+                        </tr>
+                        <?php } ?>
+                        <?php
+                        if(!($recordedValues["legends2"]>=$row["start2"]) || !($recordedValues["legends2"]<=$row["end2"])){
+                        ?>
+                        <tr class="alert_info_bg_redddd">
+                            <td><span class="font-weight-bold">Digital 2 alarm</span>  </td>
+                            <td class="text-left"><?php echo $recordedValues["date_time"]; ?></td>
+                        </tr>
+                        <?php } ?>
+                        <?php
+                        if(!($recordedValues["legends3"]>=$row["start3"]) || !($recordedValues["legends3"]<=$row["end3"])){
+                        ?>
+                        <tr class="alert_info_bg_redddd">
+                            <td><span class="font-weight-bold">Digital 3 alarm</span>  </td>
+                            <td class="text-left"><?php echo $recordedValues["date_time"]; ?></td>
+                        </tr>
+                        <?php } ?>
+                        <?php
+                        if(!($recordedValues["legends4"]>=$row["start4"]) || !($recordedValues["legends4"]<=$row["end4"])){
+                        ?>
+                        <tr class="alert_info_bg_redddd">
+                            <td><span class="font-weight-bold">Digital 4 alarm</span>  </td>
+                            <td class="text-left"><?php echo $recordedValues["date_time"]; ?></td>
+                        </tr>
+                        <?php } ?>
+                        <?php
+                        if(!($recordedValues["legends5"]>=$row["start5"]) || !($recordedValues["legends5"]<=$row["end5"])){
+                        ?>
+                        <tr class="alert_info_bg_redddd">
+                            <td><span class="font-weight-bold">Digital 5 alarm</span>  </td>
+                            <td class="text-left"><?php echo $recordedValues["date_time"]; ?></td>
+                        </tr>
+                        <?php } ?>
+                        <?php
+                        if(!($recordedValues["legends6"]>=$row["start6"]) || !($recordedValues["legends6"]<=$row["end6"])){
+                        ?>
+                        <tr class="alert_info_bg_redddd">
+                            <td><span class="font-weight-bold">Digital 6 alarm</span>  </td>
+                            <td class="text-left"><?php echo $recordedValues["date_time"]; ?></td>
+                        </tr>
+                        <?php } ?>
                     </table>
                 </div>
             </div>
