@@ -23,7 +23,7 @@ if(isset($_POST["mac"])){
         $now = new DateTime();
         $cur_time=$now->format('H:i:s');
 
-        $plustime = date("H:i:s", (strtotime($date_time) + 40));
+        $plustime = date("H:i:s", (strtotime($date_time) + 120));
         echo 'Current: '.$cur_time.'<br>'.'Database: '.$date_time.'<br>'.'+10sec: '.$plustime;
 
         if($plustime>$cur_time){
