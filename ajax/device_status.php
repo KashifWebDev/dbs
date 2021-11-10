@@ -19,6 +19,7 @@ if(isset($_POST["mac"])){
 
 
 
+        date_default_timezone_set("America/New_York");
         $now = new DateTime();
         $cur_time=$now->format('H:i:s');
 
