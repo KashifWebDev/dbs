@@ -26,9 +26,11 @@
                                 <div class="d-flex status_<?php echo $rand; ?>">
                                     <span style="height: 15px; width: 15px; border-radius: 20px; display: block;" class="bg-danger mt-1 mr-1"></span>
                                     <span>Offline</span>
+                                    <span style="height: 15px; width: 15px; border-radius: 20px; display: block;" class="bg-success mt-1 ml-2 mr-1"></span>
+                                    <span>No Alarms</span>
                                 </div>
-                                <span style="height: 15px; width: 15px; border-radius: 20px; display: block;" class="bg-success mt-1 ml-2 mr-1"></span>
-                                <span>No Alarms</span>
+<!--                                <span style="height: 15px; width: 15px; border-radius: 20px; display: block;" class="bg-success mt-1 ml-2 mr-1"></span>-->
+<!--                                <span>No Alarms</span>-->
                             </div>
                             <?php
                             if($_SESSION['is_admin']){

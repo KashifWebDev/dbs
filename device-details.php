@@ -672,7 +672,9 @@ if($sectionRow["graph_check"]!="on"){
 
                         $sql = "SELECT * FROM recorded_values WHERE mac='$mac' ORDER By id DESC";
                         $res = mysqli_query($con, $sql);
-                        $recordedValues = mysqli_fetch_array($res);   ?>
+                        $recordedValues = mysqli_fetch_array($res);
+
+                        ?>
 
                         <?php
                         if(!($recordedValues["legends1"]>=$row["start1"]) || !($recordedValues["legends1"]<=$row["end1"])){
