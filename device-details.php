@@ -663,67 +663,8 @@ if($sectionRow["graph_check"]!="on"){
                         <!--                    <tr><td>&nbsp;</td></tr>-->
                     </table>
                     <?php /* HIde Table*/ } ?>
-                    <table class="text-dark-grey auto_color_txt">
-                        <?php
-                        $sql = "SELECT * FROM alerts WHERE device_id=$device_id ORDER By id DESC";
-                        $res = mysqli_query($con, $sql);
-                        $row = mysqli_fetch_array($res);
+                    <table class="text-dark-grey auto_color_txt autoUpdateAlerts">
 
-
-                        $sql = "SELECT * FROM recorded_values WHERE mac='$mac' ORDER By id DESC";
-                        $res = mysqli_query($con, $sql);
-                        $recordedValues = mysqli_fetch_array($res);
-
-                        ?>
-
-                        <?php
-                        if(!($recordedValues["legends1"]>=$row["start1"]) || !($recordedValues["legends1"]<=$row["end1"])){
-                        ?>
-                        <tr class="alert_info_bg_redddd">
-                            <td><span class="font-weight-bold">Digital 1 alarm</span>  </td>
-                            <td class="text-left"><?php echo $recordedValues["date_time"]; ?></td>
-                        </tr>
-                        <?php } ?>
-                        <?php
-                        if(!($recordedValues["legends2"]>=$row["start2"]) || !($recordedValues["legends2"]<=$row["end2"])){
-                        ?>
-                        <tr class="alert_info_bg_redddd">
-                            <td><span class="font-weight-bold">Digital 2 alarm</span>  </td>
-                            <td class="text-left"><?php echo $recordedValues["date_time"]; ?></td>
-                        </tr>
-                        <?php } ?>
-                        <?php
-                        if(!($recordedValues["legends3"]>=$row["start3"]) || !($recordedValues["legends3"]<=$row["end3"])){
-                        ?>
-                        <tr class="alert_info_bg_redddd">
-                            <td><span class="font-weight-bold">Digital 3 alarm</span>  </td>
-                            <td class="text-left"><?php echo $recordedValues["date_time"]; ?></td>
-                        </tr>
-                        <?php } ?>
-                        <?php
-                        if(!($recordedValues["legends4"]>=$row["start4"]) || !($recordedValues["legends4"]<=$row["end4"])){
-                        ?>
-                        <tr class="alert_info_bg_redddd">
-                            <td><span class="font-weight-bold">Digital 4 alarm</span>  </td>
-                            <td class="text-left"><?php echo $recordedValues["date_time"]; ?></td>
-                        </tr>
-                        <?php } ?>
-                        <?php
-                        if(!($recordedValues["legends5"]>=$row["start5"]) || !($recordedValues["legends5"]<=$row["end5"])){
-                        ?>
-                        <tr class="alert_info_bg_redddd">
-                            <td><span class="font-weight-bold">Digital 5 alarm</span>  </td>
-                            <td class="text-left"><?php echo $recordedValues["date_time"]; ?></td>
-                        </tr>
-                        <?php } ?>
-                        <?php
-                        if(!($recordedValues["legends6"]>=$row["start6"]) || !($recordedValues["legends6"]<=$row["end6"])){
-                        ?>
-                        <tr class="alert_info_bg_redddd">
-                            <td><span class="font-weight-bold">Digital 6 alarm</span>  </td>
-                            <td class="text-left"><?php echo $recordedValues["date_time"]; ?></td>
-                        </tr>
-                        <?php } ?>
                     </table>
                 </div>
             </div>
@@ -1147,9 +1088,32 @@ if(isset($_POST['update_installation'])){
                 gauge.draw();
                 // console.log("torque: "+ data['torque']);
                 setGaugeHeight();
+                updateAlertSection();
 
             });
-        }, 1500);
+        }, 3000);
+    }
+
+    function updateAlertSection() {
+        console.log("testing on 1098");
+        $.ajax({
+            url: 'ajax/updateAlertSection.php',
+            type: 'post',
+            data: {
+                mac:'<?php echo $mac; ?>',
+                deviceID: <?php echo $device_id; ?>
+            },
+            success: function (response) {
+                $(".autoUpdateAlerts").html(response);
+                // alert(response);
+                // console.log('mac: '+)
+                console.log("Success from 1110! ");
+            },
+            error: function (err) {
+                console.log("Success from 1113! ");
+                console.log(err);
+            }
+        });
     }
 
     function setGaugeHeight(){
