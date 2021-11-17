@@ -43,7 +43,11 @@ if (mysqli_num_rows($res1)) {
     $s1 = mysqli_query($con, $s);
     $s3= mysqli_fetch_array($s1);
 
-    if(isset($_SESSION["Celcius"]) && $_SESSION["Celcius"]===true){
+    $s = "SELECT * FROM dashboard_units WHERE device_id=$deviceID";
+    $s1 = mysqli_query($con, $s);
+    $s4= mysqli_fetch_array($s1);
+
+    if($s4["temp"]=="c"){
         $tempValue = round(($row[$s3["temp_channel"]] - 32) * (5/9)); // in C
     }else{
 //        $tempValue = (int) (($row["oilTemp_verticalBar"] * 9 / 5) + 32); // in F
@@ -74,7 +78,7 @@ if (mysqli_num_rows($res1)) {
         $date = get_date($row["date_time"]);
 
         $torqueValue = $row[$s3["torque_channel"]];
-        if(isset($_SESSION["torque-FtLbs"]) && !$_SESSION["torque-FtLbs"]){
+        if($s4["temp"]=="ft-lbs"){
             $torqueValue = (int) $torqueValue / 0.73756; // in C
         }
         $torqueValue = (int) $torqueValue;

@@ -12,6 +12,11 @@ $_SESSION["device_details_id"] = $device_id = isset($_GET['id']) ? $_GET['id'] :
 $sql = "SELECT * FROM custom_sections WHERE device_id=$device_id";
 $res = mysqli_query($con, $sql);
 $sectionRow = mysqli_fetch_array($res);
+
+
+$sql = "SELECT * FROM dashboard_units WHERE device_id=$device_id";
+$res = mysqli_query($con, $sql);
+$dashboardUnits = mysqli_fetch_array($res);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -182,13 +187,7 @@ if($sectionRow["graph_check"]!="on"){
                                                 <div class="customMeter">
                                                     <span id="tempValue" class="tempValueFormAPI">--</span>
                                                     <span id="tempValue" class="ml-2">
-                                                      <?php
-                                                      if(isset($_SESSION["Celcius"]) && $_SESSION["Celcius"]===true){
-                                                          echo "°C";
-                                                      }else{
-                                                          echo "°F";
-                                                      }
-                                                      ?>
+                                                      <?php echo $dashboardUnits["temp"]=="c" ? "°C" : "°F"; ?>
                                                       </span>
                                                 </div>
                                             </div>
@@ -400,7 +399,8 @@ if($sectionRow["graph_check"]!="on"){
                             },
                             data: [ // For Digital Channels
                                 {
-                                    axisYUnit: "ft-lbs",
+                                    // axisYUnit: "ft-lbs",
+                                    axisYUnit: "<?php echo $_SESSION["torque"]; ?>",
                                     name: "<?php echo $row['line_name']; ?>",
                                     type: "spline",
                                     color: "<?php echo $row['line_color']; ?>",

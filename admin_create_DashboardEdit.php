@@ -1771,6 +1771,10 @@ function runQuery($sql, $msg){
         $time_format = $_POST["time_format"];
         $timezone = $_POST["timezone"];
 
+        session_start();
+        $_SESSION["Celcius"] = $temperature_unit=="c" ? true : false;
+        $_SESSION["torque"] = $torque_unit;
+
 
         $sql = "UPDATE dashboard_units SET temp='$temperature_unit', torque='$torque_unit', pressure='$pressure_unit', distance='$distance_unit',
                 time_format='$time_format', time_zone='$timezone' WHERE device_id=$device_id";
